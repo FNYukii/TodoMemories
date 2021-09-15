@@ -25,16 +25,18 @@ struct EditView: View {
                         //Todoをピン留めする
                     }){
                         HStack {
-                            Image(systemName: "pin")
                             Text("Todoを固定")
+                            Spacer()
+                            Image(systemName: "pin")
                         }
                     }
                     Button(action: {
                         //Todoを削除
                     }){
                         HStack {
-                            Image(systemName: "trash")
                             Text("Todoを削除")
+                            Spacer()
+                            Image(systemName: "trash")
                         }
                         .foregroundColor(.red)
                         
