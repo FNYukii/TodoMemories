@@ -15,6 +15,9 @@
 		54B6705026F1C2DD00DB5688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704E26F1C2DD00DB5688 /* LaunchScreen.storyboard */; };
 		54B6705B26F1C2DD00DB5688 /* TodoDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6705A26F1C2DD00DB5688 /* TodoDiaryTests.swift */; };
 		54B6706626F1C2DD00DB5688 /* TodoDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6706526F1C2DD00DB5688 /* TodoDiaryUITests.swift */; };
+		54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6707326F1C4F900DB5688 /* FirstView.swift */; };
+		54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6707526F1C54A00DB5688 /* SecondView.swift */; };
+		54B6707826F1C55600DB5688 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6707726F1C55600DB5688 /* ThirdView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		54B6706126F1C2DD00DB5688 /* TodoDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B6706526F1C2DD00DB5688 /* TodoDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDiaryUITests.swift; sourceTree = "<group>"; };
 		54B6706726F1C2DD00DB5688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54B6707326F1C4F900DB5688 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		54B6707526F1C54A00DB5688 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		54B6707726F1C55600DB5688 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +107,10 @@
 			children = (
 				54B6704326F1C2DB00DB5688 /* AppDelegate.swift */,
 				54B6704526F1C2DB00DB5688 /* SceneDelegate.swift */,
+				54B6707526F1C54A00DB5688 /* SecondView.swift */,
+				54B6707726F1C55600DB5688 /* ThirdView.swift */,
 				54B6704726F1C2DB00DB5688 /* ContentView.swift */,
+				54B6707326F1C4F900DB5688 /* FirstView.swift */,
 				54B6704926F1C2DD00DB5688 /* Assets.xcassets */,
 				54B6704E26F1C2DD00DB5688 /* LaunchScreen.storyboard */,
 				54B6705126F1C2DD00DB5688 /* Info.plist */,
@@ -267,7 +276,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				54B6704426F1C2DB00DB5688 /* AppDelegate.swift in Sources */,
+				54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */,
+				54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */,
 				54B6704626F1C2DB00DB5688 /* SceneDelegate.swift in Sources */,
+				54B6707826F1C55600DB5688 /* ThirdView.swift in Sources */,
 				54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
