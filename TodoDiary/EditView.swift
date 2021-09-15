@@ -21,14 +21,23 @@ struct EditView: View {
                 TextField("Todoを入力", text: $content)
                 
                 Section {
-                    Button("Todoを固定"){
-                        //Todoを固定
+                    Button(action: {
+                        //Todoをピン留めする
+                    }){
+                        HStack {
+                            Image(systemName: "pin")
+                            Text("Todoを固定")
+                        }
                     }
                     Button(action: {
                         //Todoを削除
                     }){
-                        Text("Todoを削除")
-                            .foregroundColor(.red)
+                        HStack {
+                            Image(systemName: "trash")
+                            Text("Todoを削除")
+                        }
+                        .foregroundColor(.red)
+                        
                     }
                 }
             }
