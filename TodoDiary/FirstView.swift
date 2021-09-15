@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FirstView: View {
+    
+    @State var isShowSheet = false
+    
     var body: some View {
         NavigationView {
             
@@ -27,12 +30,14 @@ struct FirstView: View {
                 
             }
             
-
+            .sheet(isPresented: $isShowSheet) {
+                EditView()
+            }
             
             .navigationBarTitle("Todo")
             .navigationBarItems(trailing:
                 Button(action: {
-                    //Open sheet
+                    isShowSheet.toggle()
                 }){
                     Image(systemName: "plus.circle.fill")
                     Text("新しいTodo")

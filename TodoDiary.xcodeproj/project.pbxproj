@@ -18,6 +18,7 @@
 		54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6707326F1C4F900DB5688 /* FirstView.swift */; };
 		54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6707526F1C54A00DB5688 /* SecondView.swift */; };
 		54B6707826F1C55600DB5688 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6707726F1C55600DB5688 /* ThirdView.swift */; };
+		54B6707A26F1C63700DB5688 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6707926F1C63700DB5688 /* EditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		54B6707326F1C4F900DB5688 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		54B6707526F1C54A00DB5688 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		54B6707726F1C55600DB5688 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
+		54B6707926F1C63700DB5688 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				54B6704326F1C2DB00DB5688 /* AppDelegate.swift */,
 				54B6704526F1C2DB00DB5688 /* SceneDelegate.swift */,
+				54B6707926F1C63700DB5688 /* EditView.swift */,
 				54B6707526F1C54A00DB5688 /* SecondView.swift */,
 				54B6707726F1C55600DB5688 /* ThirdView.swift */,
 				54B6704726F1C2DB00DB5688 /* ContentView.swift */,
@@ -279,6 +282,7 @@
 				54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */,
 				54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */,
 				54B6704626F1C2DB00DB5688 /* SceneDelegate.swift in Sources */,
+				54B6707A26F1C63700DB5688 /* EditView.swift in Sources */,
 				54B6707826F1C55600DB5688 /* ThirdView.swift in Sources */,
 				54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */,
 			);
