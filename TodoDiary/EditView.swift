@@ -26,6 +26,7 @@ struct EditView: View {
             Form {
                 TextField("Todoを入力", text: $content)
                 Section {
+                    //固定切り替えボタン
                     Button(action: {
                         isPinned.toggle()
                         saveRecord()
@@ -42,6 +43,7 @@ struct EditView: View {
                             }
                         }
                     }
+                    //完了切り替えボタン
                     Button(action: {
                         isAchieved.toggle()
                         if isAchieved {
@@ -61,6 +63,7 @@ struct EditView: View {
                             }
                         }
                     }
+                    //削除ボタン
                     Button(action: {
                         deleteRecord()
                         myProtocol.reloadRecords()
@@ -77,7 +80,6 @@ struct EditView: View {
             .onAppear {
                 loadTodo()
             }
-            
             
             //ナビゲーションバーの設定
             .navigationBarTitle("Todoを編集", displayMode: .inline)
