@@ -27,27 +27,25 @@ struct EditView: View {
                         //
                     }){
                         HStack {
-                            Text("Todoを固定")
-                            Spacer()
                             Image(systemName: "pin")
+                            Text("Todoを固定")
+                            
                         }
                     }
                     Button(action: {
                         //
                     }){
                         HStack {
-                            Text("完了済みに変更")
-                            Spacer()
                             Image(systemName: "checkmark")
+                            Text("完了済みに変更")
                         }
                     }
                     Button(action: {
                         //
                     }){
                         HStack {
-                            Text("Todoを削除")
-                            Spacer()
                             Image(systemName: "trash")
+                            Text("Todoを削除")
                         }
                         .foregroundColor(.red)
                         
