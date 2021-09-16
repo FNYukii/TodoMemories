@@ -71,7 +71,7 @@ struct FirstView: View, MyProtocol {
                     }
                 }
                 
-                if pinnedTodos.count == 0 && unpinnedTodos.count == 0 {
+                if pinnedTodos.count == 0 && unpinnedTodos.count == 0 && achievedTodos.count == 0 {
                     Text("まだTodoがありません")
                         .foregroundColor(.secondary)
                 }
