@@ -24,7 +24,7 @@ struct EditView: View {
                 
                 Section {
                     Button(action: {
-                        //Todoをピン留めする
+                        //
                     }){
                         HStack {
                             Text("Todoを固定")
@@ -33,7 +33,16 @@ struct EditView: View {
                         }
                     }
                     Button(action: {
-                        //Todoを削除
+                        //
+                    }){
+                        HStack {
+                            Text("完了済みに変更")
+                            Spacer()
+                            Image(systemName: "checkmark")
+                        }
+                    }
+                    Button(action: {
+                        //
                     }){
                         HStack {
                             Text("Todoを削除")
