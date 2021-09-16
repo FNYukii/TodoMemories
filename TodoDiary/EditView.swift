@@ -29,19 +29,33 @@ struct EditView: View {
                     Button(action: {
                         isPinned.toggle()
                         saveRecord()
+                        myProtocol.reloadRecords()
+                        presentation.wrappedValue.dismiss()
                     }){
                         HStack {
-                            Image(systemName: "pin")
-                            Text("Todoを固定")
+                            if isPinned {
+                                Image(systemName: "pin.slash")
+                                Text("固定を外す")
+                            } else {
+                                Image(systemName: "pin.fill")
+                                Text("Todoを固定")
+                            }
                         }
                     }
                     Button(action: {
                         isAchieved.toggle()
                         saveRecord()
+                        myProtocol.reloadRecords()
+                        presentation.wrappedValue.dismiss()
                     }){
                         HStack {
-                            Image(systemName: "checkmark")
-                            Text("完了済みに変更")
+                            if isAchieved {
+                                Image(systemName: "xmark")
+                                Text("未完了に戻す")
+                            } else {
+                                Image(systemName: "checkmark")
+                                Text("完了済みに変更")
+                            }
                         }
                     }
                     Button(action: {
