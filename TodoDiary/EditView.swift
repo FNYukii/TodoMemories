@@ -27,6 +27,11 @@ struct EditView: View {
             //Todo編集エリア
             Form {
                 TextField("Todoを入力", text: $content)
+                if isAchieved {
+                    Section {
+                        DatePicker("完了日時", selection: $achievedDate)
+                    }
+                }
                 Section {
                     //固定切り替えボタン
                     if !isAchieved {
