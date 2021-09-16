@@ -11,7 +11,8 @@ struct FirstView: View, MyProtocol {
     
     @State var isShowSheet = false
     
-    @State var todos = Todo.all()
+    @State var pinnedTodos = Todo.pinnedTodos()
+    @State var unpinnedTodos = Todo.unpinnedTodos()
     
     @State var selectedTodoId = 0
     
@@ -21,12 +22,17 @@ struct FirstView: View, MyProtocol {
             Form {
                 
                 Section(header: Text("固定済み")) {
-                    Text("ご飯食べる")
-                    Text("バグ直す")
+                    ForEach(pinnedTodos.freeze()) { todo in
+                        Button("\(todo.content)"){
+                            selectedTodoId = todo.id
+                            isShowSheet.toggle()
+                        }
+                        .foregroundColor(.primary)
+                    }
                 }
                 
                 Section(header: Text("その他")) {
-                    ForEach(todos.freeze()) { todo in
+                    ForEach(unpinnedTodos.freeze()) { todo in
                         Button("\(todo.content)"){
                             selectedTodoId = todo.id
                             isShowSheet.toggle()
@@ -44,6 +50,7 @@ struct FirstView: View, MyProtocol {
             .navigationBarTitle("Todo")
             .navigationBarItems(trailing:
                 Button(action: {
+                    selectedTodoId = 0
                     isShowSheet.toggle()
                 }){
                     Image(systemName: "plus.circle.fill")
@@ -56,7 +63,8 @@ struct FirstView: View, MyProtocol {
     }
     
     func reloadRecords()  {
-        todos = Todo.all()
+        pinnedTodos = Todo.pinnedTodos()
+        unpinnedTodos = Todo.unpinnedTodos()
     }
     
     func getSelectedDiaryId() -> Int {
