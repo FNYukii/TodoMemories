@@ -15,6 +15,7 @@ struct EditView: View {
     
     @State var navBarTitle = "Todoを追加"
     @State var isShowAlert = false
+    @State var isDoneDisabled = false
     
     @State var id = 0
     @State var content = ""
@@ -28,6 +29,9 @@ struct EditView: View {
             //Todo編集エリア
             Form {
                 TextField("Todoを入力", text: $content)
+                    .onChange(of: content, perform: { value in
+                        textCheck()
+                    })
                 if isAchieved {
                     Section {
                         DatePicker("完了日時", selection: $achievedDate)
@@ -93,13 +97,13 @@ struct EditView: View {
             //削除確認アラート
             .alert(isPresented: $isShowAlert) {
                 Alert(title: Text("確認"),
-                      message: Text("このTodoを削除してもよろしいですか？"),
-                      primaryButton: .cancel(Text("キャンセル")),
-                      secondaryButton: .destructive(Text("削除"), action: {
-                            deleteRecord()
-                            myProtocol.reloadRecords()
-                            presentation.wrappedValue.dismiss()
-                      })
+                    message: Text("このTodoを削除してもよろしいですか？"),
+                    primaryButton: .cancel(Text("キャンセル")),
+                    secondaryButton: .destructive(Text("削除"), action: {
+                        deleteRecord()
+                        myProtocol.reloadRecords()
+                        presentation.wrappedValue.dismiss()
+                    })
                 )
             }
             
@@ -117,6 +121,7 @@ struct EditView: View {
                     myProtocol.reloadRecords()
                     presentation.wrappedValue.dismiss()
                 }
+                .disabled(isDoneDisabled)
             )
         }
     }
@@ -131,6 +136,15 @@ struct EditView: View {
             isAchieved = todo.isAchieved
             achievedDate = todo.achievedDate
             navBarTitle = "Todoを編集"
+        }
+        textCheck()
+    }
+    
+    func textCheck() {
+        if content.isEmpty {
+            isDoneDisabled = true
+        } else {
+            isDoneDisabled = false
         }
     }
     
