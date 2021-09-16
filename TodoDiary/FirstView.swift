@@ -11,6 +11,8 @@ struct FirstView: View {
     
     @State var isShowSheet = false
     
+    @State var todos = Todo.all()
+    
     var body: some View {
         NavigationView {
             
@@ -22,9 +24,9 @@ struct FirstView: View {
                 }
                 
                 Section(header: Text("その他")) {
-                    Text("買い物する")
-                    Text("7Days to Die")
-                    Text("ステーキ食べに行く")
+                    ForEach(todos.freeze()) { todo in
+                        Text(todo.content)
+                    }
                 }
                 
                 

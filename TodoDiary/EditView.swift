@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct EditView: View {
     
@@ -54,10 +55,27 @@ struct EditView: View {
                         .fontWeight(.regular)
                 },
                 trailing: Button("完了"){
-                    //Save Todo
+                    saveDiary()
                     presentation.wrappedValue.dismiss()
                 }
             )
         }
     }
+    
+    func saveDiary() {
+        //新規レコード用のidを生成
+        let realm = try! Realm()
+        let maxId = realm.objects(Todo.self).sorted(byKeyPath: "id").last?.id ?? 0
+        let newId = maxId + 1
+        //新規レコード生成
+        let todo = Todo()
+        todo.id = newId
+        todo.content = content
+        //新規レコード追加
+        try! realm.write {
+            realm.add(todo)
+        }
+    }
+    
+    
 }
