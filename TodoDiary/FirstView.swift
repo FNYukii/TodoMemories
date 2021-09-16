@@ -21,17 +21,31 @@ struct FirstView: View, MyProtocol {
             
             Form {
                 
-                Section(header: Text("固定済み")) {
-                    ForEach(pinnedTodos.freeze()) { todo in
-                        Button("\(todo.content)"){
-                            selectedTodoId = todo.id
-                            isShowSheet.toggle()
+                if pinnedTodos.count != 0 {
+                    Section(header: Text("固定済み")) {
+                        ForEach(pinnedTodos.freeze()) { todo in
+                            Button("\(todo.content)"){
+                                selectedTodoId = todo.id
+                                isShowSheet.toggle()
+                            }
+                            .foregroundColor(.primary)
                         }
-                        .foregroundColor(.primary)
                     }
                 }
                 
-                Section(header: Text("その他")) {
+                if unpinnedTodos.count != 0 && pinnedTodos.count != 0 {
+                    Section(header: Text("その他")) {
+                        ForEach(unpinnedTodos.freeze()) { todo in
+                            Button("\(todo.content)"){
+                                selectedTodoId = todo.id
+                                isShowSheet.toggle()
+                            }
+                            .foregroundColor(.primary)
+                        }
+                    }
+                }
+                
+                if unpinnedTodos.count != 0 && pinnedTodos.count == 0 {
                     ForEach(unpinnedTodos.freeze()) { todo in
                         Button("\(todo.content)"){
                             selectedTodoId = todo.id
@@ -56,7 +70,6 @@ struct FirstView: View, MyProtocol {
                     Image(systemName: "plus.circle.fill")
                     Text("新しいTodo")
                 }
-            
             )
             
         }
