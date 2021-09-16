@@ -44,6 +44,9 @@ struct EditView: View {
                     }
                     Button(action: {
                         isAchieved.toggle()
+                        if isAchieved {
+                            isPinned = false
+                        }
                         saveRecord()
                         myProtocol.reloadRecords()
                         presentation.wrappedValue.dismiss()
