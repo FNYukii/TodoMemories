@@ -27,19 +27,21 @@ struct EditView: View {
                 TextField("Todoを入力", text: $content)
                 Section {
                     //固定切り替えボタン
-                    Button(action: {
-                        isPinned.toggle()
-                        saveRecord()
-                        myProtocol.reloadRecords()
-                        presentation.wrappedValue.dismiss()
-                    }){
-                        HStack {
-                            if isPinned {
-                                Image(systemName: "pin.slash")
-                                Text("固定を外す")
-                            } else {
-                                Image(systemName: "pin.fill")
-                                Text("Todoを固定")
+                    if !isAchieved {
+                        Button(action: {
+                            isPinned.toggle()
+                            saveRecord()
+                            myProtocol.reloadRecords()
+                            presentation.wrappedValue.dismiss()
+                        }){
+                            HStack {
+                                if isPinned {
+                                    Image(systemName: "pin.slash")
+                                    Text("固定を外す")
+                                } else {
+                                    Image(systemName: "pin.fill")
+                                    Text("Todoを固定")
+                                }
                             }
                         }
                     }
