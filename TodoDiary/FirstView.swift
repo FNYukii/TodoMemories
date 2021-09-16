@@ -31,6 +31,7 @@ struct FirstView: View, MyProtocol {
                             selectedTodoId = todo.id
                             isShowSheet.toggle()
                         }
+                        .foregroundColor(.primary)
                     }
                 }
                 
