@@ -13,6 +13,8 @@ struct FirstView: View, MyProtocol {
     
     @State var todos = Todo.all()
     
+    @State var selectedTodoId = 0
+    
     var body: some View {
         NavigationView {
             
@@ -25,7 +27,10 @@ struct FirstView: View, MyProtocol {
                 
                 Section(header: Text("その他")) {
                     ForEach(todos.freeze()) { todo in
-                        Text(todo.content)
+                        Button("\(todo.content)"){
+                            selectedTodoId = todo.id
+                            isShowSheet.toggle()
+                        }
                     }
                 }
                 
@@ -51,6 +56,10 @@ struct FirstView: View, MyProtocol {
     
     func reloadRecords()  {
         todos = Todo.all()
+    }
+    
+    func getSelectedDiaryId() -> Int {
+        return selectedTodoId
     }
     
 }

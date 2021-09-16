@@ -13,7 +13,11 @@ struct EditView: View {
     @Environment(\.presentationMode) var presentation
     var myProtocol: MyProtocol
     
+    @State var id = 0
     @State var content = ""
+    @State var isPinned = false
+    @State var isAchieved = false
+    @State var achievedDate = Date()
     
     var body: some View {
         NavigationView {
@@ -21,19 +25,19 @@ struct EditView: View {
             //Todo編集エリア
             Form {
                 TextField("Todoを入力", text: $content)
-                
                 Section {
                     Button(action: {
-                        //
+                        isPinned.toggle()
+                        saveRecord()
                     }){
                         HStack {
                             Image(systemName: "pin")
                             Text("Todoを固定")
-                            
                         }
                     }
                     Button(action: {
-                        //
+                        isAchieved.toggle()
+                        saveRecord()
                     }){
                         HStack {
                             Image(systemName: "checkmark")
@@ -41,17 +45,22 @@ struct EditView: View {
                         }
                     }
                     Button(action: {
-                        //
+                        deleteRecord()
+                        myProtocol.reloadRecords()
+                        presentation.wrappedValue.dismiss()
                     }){
                         HStack {
                             Image(systemName: "trash")
                             Text("Todoを削除")
                         }
                         .foregroundColor(.red)
-                        
                     }
                 }
             }
+            .onAppear {
+                loadTodo()
+            }
+            
             
             //ナビゲーションバーの設定
             .navigationBarTitle("Todoを編集", displayMode: .inline)
@@ -63,7 +72,7 @@ struct EditView: View {
                         .fontWeight(.regular)
                 },
                 trailing: Button("完了"){
-                    saveDiary()
+                    saveRecord()
                     myProtocol.reloadRecords()
                     presentation.wrappedValue.dismiss()
                 }
@@ -71,18 +80,53 @@ struct EditView: View {
         }
     }
     
-    func saveDiary() {
-        //新規レコード用のidを生成
+    func loadTodo() {
+        id = myProtocol.getSelectedDiaryId()
+        if id != 0 {
+            let realm = try! Realm()
+            let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+            content = todo.content
+            isPinned = todo.isPinned
+            isAchieved = todo.isAchieved
+            achievedDate = todo.achievedDate
+        }
+    }
+    
+    func saveRecord() {
+        
+        if id == 0 {
+            //新規レコード用のidを生成
+            let realm = try! Realm()
+            let maxId = realm.objects(Todo.self).sorted(byKeyPath: "id").last?.id ?? 0
+            let newId = maxId + 1
+            //新規レコード生成
+            let todo = Todo()
+            todo.id = newId
+            todo.content = content
+            //新規レコード追加
+            try! realm.write {
+                realm.add(todo)
+            }
+        }
+        
+        if id != 0 {
+            let realm = try! Realm()
+            let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+            try! realm.write {
+                todo.isPinned = isPinned
+                todo.isAchieved = isAchieved
+                todo.achievedDate = Date()
+                todo.content = content
+            }
+        }
+        
+    }
+    
+    func deleteRecord() {
         let realm = try! Realm()
-        let maxId = realm.objects(Todo.self).sorted(byKeyPath: "id").last?.id ?? 0
-        let newId = maxId + 1
-        //新規レコード生成
-        let todo = Todo()
-        todo.id = newId
-        todo.content = content
-        //新規レコード追加
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
         try! realm.write {
-            realm.add(todo)
+            realm.delete(todo)
         }
     }
     

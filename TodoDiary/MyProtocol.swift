@@ -9,4 +9,5 @@ import Foundation
 
 protocol MyProtocol {
     func reloadRecords()
+    func getSelectedDiaryId() -> Int
 }
