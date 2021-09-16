@@ -79,14 +79,16 @@ struct EditView: View {
                         }
                     }
                     //削除ボタン
-                    Button(action: {
-                        isShowAlert.toggle()
-                    }){
-                        HStack {
-                            Image(systemName: "trash")
-                            Text("Todoを削除")
+                    if id != 0 {
+                        Button(action: {
+                            isShowAlert.toggle()
+                        }){
+                            HStack {
+                                Image(systemName: "trash")
+                                Text("Todoを削除")
+                            }
+                            .foregroundColor(.red)
                         }
-                        .foregroundColor(.red)
                     }
                 }
             }
