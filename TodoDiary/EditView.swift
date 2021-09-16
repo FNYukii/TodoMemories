@@ -15,7 +15,7 @@ struct EditView: View {
     
     @State var navBarTitle = "Todoを追加"
     @State var isShowAlert = false
-    @State var isDoneDisabled = false
+    @State var isSaveDisabled = false
     
     @State var id = 0
     @State var content = ""
@@ -56,6 +56,7 @@ struct EditView: View {
                                 }
                             }
                         }
+                        .disabled(isSaveDisabled)
                     }
                     //完了切り替えボタン
                     Button(action: {
@@ -78,6 +79,7 @@ struct EditView: View {
                             }
                         }
                     }
+                    .disabled(isSaveDisabled)
                     //削除ボタン
                     if id != 0 {
                         Button(action: {
@@ -123,7 +125,7 @@ struct EditView: View {
                     myProtocol.reloadRecords()
                     presentation.wrappedValue.dismiss()
                 }
-                .disabled(isDoneDisabled)
+                .disabled(isSaveDisabled)
             )
         }
     }
@@ -144,9 +146,9 @@ struct EditView: View {
     
     func textCheck() {
         if content.isEmpty {
-            isDoneDisabled = true
+            isSaveDisabled = true
         } else {
-            isDoneDisabled = false
+            isSaveDisabled = false
         }
     }
     
