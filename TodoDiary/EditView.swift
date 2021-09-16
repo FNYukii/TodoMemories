@@ -57,6 +57,7 @@ struct EditView: View {
                         isAchieved.toggle()
                         if isAchieved {
                             isPinned = false
+                            achievedDate = Date()
                         }
                         saveRecord()
                         myProtocol.reloadRecords()
@@ -144,7 +145,7 @@ struct EditView: View {
             try! realm.write {
                 todo.isPinned = isPinned
                 todo.isAchieved = isAchieved
-                todo.achievedDate = Date()
+                todo.achievedDate = achievedDate
                 todo.content = content
             }
         }
