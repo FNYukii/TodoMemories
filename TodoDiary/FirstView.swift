@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FirstView: View {
+struct FirstView: View, MyProtocol {
     
     @State var isShowSheet = false
     
@@ -29,11 +29,10 @@ struct FirstView: View {
                     }
                 }
                 
-                
             }
             
             .sheet(isPresented: $isShowSheet) {
-                EditView()
+                EditView(myProtocol: self)
             }
             
             .navigationBarTitle("Todo")
@@ -49,4 +48,9 @@ struct FirstView: View {
             
         }
     }
+    
+    func reloadRecords()  {
+        todos = Todo.all()
+    }
+    
 }

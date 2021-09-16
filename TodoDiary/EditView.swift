@@ -11,6 +11,7 @@ import RealmSwift
 struct EditView: View {
     
     @Environment(\.presentationMode) var presentation
+    var myProtocol: MyProtocol
     
     @State var content = ""
     
@@ -56,6 +57,7 @@ struct EditView: View {
                 },
                 trailing: Button("完了"){
                     saveDiary()
+                    myProtocol.reloadRecords()
                     presentation.wrappedValue.dismiss()
                 }
             )
