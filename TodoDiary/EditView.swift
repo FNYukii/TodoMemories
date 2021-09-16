@@ -13,6 +13,8 @@ struct EditView: View {
     @Environment(\.presentationMode) var presentation
     var myProtocol: MyProtocol
     
+    @State var navBarTitle = "Todoを追加"
+    
     @State var id = 0
     @State var content = ""
     @State var isPinned = false
@@ -84,7 +86,7 @@ struct EditView: View {
             }
             
             //ナビゲーションバーの設定
-            .navigationBarTitle("Todoを編集", displayMode: .inline)
+            .navigationBarTitle(navBarTitle, displayMode: .inline)
             .navigationBarItems(
                 leading: Button(action: {
                     presentation.wrappedValue.dismiss()
@@ -110,11 +112,12 @@ struct EditView: View {
             isPinned = todo.isPinned
             isAchieved = todo.isAchieved
             achievedDate = todo.achievedDate
+            navBarTitle = "Todoを編集"
         }
     }
     
     func saveRecord() {
-        
+        //レコードを追加する場合
         if id == 0 {
             //新規レコード用のidを生成
             let realm = try! Realm()
@@ -129,7 +132,7 @@ struct EditView: View {
                 realm.add(todo)
             }
         }
-        
+        //レコードを更新する場合
         if id != 0 {
             let realm = try! Realm()
             let todo = realm.objects(Todo.self).filter("id == \(id)").first!
@@ -140,7 +143,6 @@ struct EditView: View {
                 todo.content = content
             }
         }
-        
     }
     
     func deleteRecord() {
@@ -150,6 +152,5 @@ struct EditView: View {
             realm.delete(todo)
         }
     }
-    
     
 }
