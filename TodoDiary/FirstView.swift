@@ -19,22 +19,35 @@ struct FirstView: View, MyProtocol {
     var body: some View {
         NavigationView {
             
-            Form {
+            ZStack {
                 
-                if pinnedTodos.count != 0 {
-                    Section(header: Text("固定済み")) {
-                        ForEach(pinnedTodos.freeze()) { todo in
-                            Button("\(todo.content)"){
-                                selectedTodoId = todo.id
-                                isShowSheet.toggle()
+                Form {
+                    //固定済みTodoが1件以上
+                    if pinnedTodos.count != 0 {
+                        Section(header: Text("固定済み")) {
+                            ForEach(pinnedTodos.freeze()) { todo in
+                                Button("\(todo.content)"){
+                                    selectedTodoId = todo.id
+                                    isShowSheet.toggle()
+                                }
+                                .foregroundColor(.primary)
                             }
-                            .foregroundColor(.primary)
                         }
                     }
-                }
-                
-                if unpinnedTodos.count != 0 && pinnedTodos.count != 0 {
-                    Section(header: Text("その他")) {
+                    //固定済みTodoと未固定Todo両方存在する
+                    if unpinnedTodos.count != 0 && pinnedTodos.count != 0 {
+                        Section(header: Text("その他")) {
+                            ForEach(unpinnedTodos.freeze()) { todo in
+                                Button("\(todo.content)"){
+                                    selectedTodoId = todo.id
+                                    isShowSheet.toggle()
+                                }
+                                .foregroundColor(.primary)
+                            }
+                        }
+                    }
+                    //未固定Todoしか存在しないならSectionHeaderのテキストは非表示
+                    if unpinnedTodos.count != 0 && pinnedTodos.count == 0 {
                         ForEach(unpinnedTodos.freeze()) { todo in
                             Button("\(todo.content)"){
                                 selectedTodoId = todo.id
@@ -45,14 +58,9 @@ struct FirstView: View, MyProtocol {
                     }
                 }
                 
-                if unpinnedTodos.count != 0 && pinnedTodos.count == 0 {
-                    ForEach(unpinnedTodos.freeze()) { todo in
-                        Button("\(todo.content)"){
-                            selectedTodoId = todo.id
-                            isShowSheet.toggle()
-                        }
-                        .foregroundColor(.primary)
-                    }
+                if pinnedTodos.count == 0 && unpinnedTodos.count == 0 {
+                    Text("まだTodoがありません")
+                        .foregroundColor(.secondary)
                 }
                 
             }
