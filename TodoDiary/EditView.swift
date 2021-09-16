@@ -14,6 +14,7 @@ struct EditView: View {
     var myProtocol: MyProtocol
     
     @State var navBarTitle = "Todoを追加"
+    @State var isShowAlert = false
     
     @State var id = 0
     @State var content = ""
@@ -75,9 +76,7 @@ struct EditView: View {
                     }
                     //削除ボタン
                     Button(action: {
-                        deleteRecord()
-                        myProtocol.reloadRecords()
-                        presentation.wrappedValue.dismiss()
+                        isShowAlert.toggle()
                     }){
                         HStack {
                             Image(systemName: "trash")
@@ -89,6 +88,19 @@ struct EditView: View {
             }
             .onAppear {
                 loadTodo()
+            }
+            
+            //削除確認アラート
+            .alert(isPresented: $isShowAlert) {
+                Alert(title: Text("確認"),
+                      message: Text("このTodoを削除してもよろしいですか？"),
+                      primaryButton: .cancel(Text("キャンセル")),
+                      secondaryButton: .destructive(Text("削除"), action: {
+                            deleteRecord()
+                            myProtocol.reloadRecords()
+                            presentation.wrappedValue.dismiss()
+                      })
+                )
             }
             
             //ナビゲーションバーの設定
