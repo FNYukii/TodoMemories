@@ -9,12 +9,11 @@ import SwiftUI
 
 struct FirstView: View, MyProtocol {
     
-    @State var isShowSheet = false
-    
     @State var pinnedTodos = Todo.pinnedTodos()
     @State var unpinnedTodos = Todo.unpinnedTodos()
     @State var achievedTodos = Todo.achievedTodos()
     
+    @State var isShowSheet = false
     @State var selectedTodoId = 0
     
     var body: some View {

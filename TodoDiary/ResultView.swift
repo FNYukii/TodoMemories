@@ -8,9 +8,12 @@
 import SwiftUI
 import RealmSwift
 
-struct ResultView: View {
+struct ResultView: View, MyProtocol {
     
     let selectedDate: Date
+    
+    @State var isShowSheet = false
+    @State var selectedTodoId = 0
     
     @State var todos = Todo.noRecord()
     
@@ -19,8 +22,8 @@ struct ResultView: View {
         Form {
             ForEach(todos.freeze()) { todo in
                 Button("\(todo.content)"){
-//                    selectedTodoId = todo.id
-//                    isShowSheet.toggle()
+                    selectedTodoId = todo.id
+                    isShowSheet.toggle()
                 }
                 .foregroundColor(.primary)
             }
@@ -29,14 +32,26 @@ struct ResultView: View {
             loadTodos()
         }
         
+        .sheet(isPresented: $isShowSheet) {
+            EditView(myProtocol: self)
+        }
+        
         .navigationBarTitle("\(toYmdText(inputDate: selectedDate)) \(toWeekdayText(inputDate: selectedDate))")
+    }
+    
+    func reloadRecords()  {
+        loadTodos()
+    }
+    
+    func getSelectedDiaryId() -> Int {
+        return selectedTodoId
     }
     
     //検索結果のTodosを取得
     func loadTodos() {
         let realm = try! Realm()
         let achievedYmd = toYmdNumber(inputDate: selectedDate)
-        todos = realm.objects(Todo.self).filter("achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: false)
+        todos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: false)
     }
     
     //Date型変数を年月日の数字に変換する
