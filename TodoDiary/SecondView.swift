@@ -15,7 +15,7 @@ struct SecondView: View {
                 Text("Orange")
                 Text("Strawberry")
             }
-            .navigationBarTitle("Planets")
+            .navigationBarTitle("検索")
         }
     }
 }
