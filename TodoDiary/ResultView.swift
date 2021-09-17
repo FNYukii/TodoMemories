@@ -19,17 +19,26 @@ struct ResultView: View, MyProtocol {
     
     var body: some View {
         
-        Form {
-            ForEach(todos.freeze()) { todo in
-                Button("\(todo.content)"){
-                    selectedTodoId = todo.id
-                    isShowSheet.toggle()
+        ZStack {
+            
+            Form {
+                ForEach(todos.freeze()) { todo in
+                    Button("\(todo.content)"){
+                        selectedTodoId = todo.id
+                        isShowSheet.toggle()
+                    }
+                    .foregroundColor(.primary)
                 }
-                .foregroundColor(.primary)
             }
-        }
-        .onAppear {
-            loadTodos()
+            .onAppear {
+                loadTodos()
+            }
+            
+            if todos.count == 0 {
+                Text("この日に完了したTodoはありません")
+                    .foregroundColor(.secondary)
+            }
+            
         }
         
         .sheet(isPresented: $isShowSheet) {
