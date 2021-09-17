@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct SecondView: View {
-    var planets = ["Mercury", "Venus", "Earth", "Mars"]
-    @State var searchText: String = ""
-    
     var body: some View {
         NavigationView {
             Form {
