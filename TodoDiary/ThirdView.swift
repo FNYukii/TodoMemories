@@ -21,9 +21,6 @@ struct ThirdView: View {
                 .onChange(of: selectedDate, perform: { value in
                     isNavLinkActive = true
                 })
-                .onAppear {
-                    selectedDate = Calendar.current.date(byAdding: .year, value: 0, to: Date())!
-                }
                     
                 NavigationLink(destination: ResultView(selectedDate: selectedDate), isActive: $isNavLinkActive) {
                     EmptyView()
