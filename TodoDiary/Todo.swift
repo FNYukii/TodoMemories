@@ -16,6 +16,7 @@ class Todo: Object, Identifiable {
     @objc dynamic var isPinned = false
     @objc dynamic var isAchieved = false
     @objc dynamic var achievedDate = Date()
+    @objc dynamic var achievedYmd = 0
     
     //全てのレコード
     static func all() -> Results<Todo> {
@@ -39,6 +40,12 @@ class Todo: Object, Identifiable {
     static func achievedTodos() -> Results<Todo> {
         let realm = try! Realm()
         return realm.objects(Todo.self).filter("isAchieved == true").sorted(byKeyPath: "achievedDate", ascending: false)
+    }
+    
+    //0件の結果
+    static func noRecord() -> Results<Todo> {
+        let realm = try! Realm()
+        return realm.objects(Todo.self).filter("id == -1")
     }
     
 }

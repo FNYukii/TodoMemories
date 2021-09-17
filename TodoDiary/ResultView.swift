@@ -6,24 +6,50 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ResultView: View {
     
     let selectedDate: Date
     
+    @State var todos = Todo.noRecord()
+    
     var body: some View {
         
         Form {
-            Text("Apple")
-            Text("Orange")
-            Text("Strawberry")
+            ForEach(todos.freeze()) { todo in
+                Button("\(todo.content)"){
+//                    selectedTodoId = todo.id
+//                    isShowSheet.toggle()
+                }
+                .foregroundColor(.primary)
+            }
+        }
+        .onAppear {
+            loadTodos()
         }
         
-        .navigationBarTitle("\(ymdText(inputDate: selectedDate)) \(weekdayText(inputDate: selectedDate))")
+        .navigationBarTitle("\(toYmdText(inputDate: selectedDate)) \(toWeekdayText(inputDate: selectedDate))")
+    }
+    
+    //検索結果のTodosを取得
+    func loadTodos() {
+        let realm = try! Realm()
+        let achievedYmd = toYmdNumber(inputDate: selectedDate)
+        todos = realm.objects(Todo.self).filter("achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: false)
+    }
+    
+    //Date型変数を年月日の数字に変換する
+    func toYmdNumber(inputDate: Date) -> Int {
+        let calendar = Calendar(identifier: .gregorian)
+        let year = calendar.component(.year, from: inputDate)
+        let month = calendar.component(.month, from: inputDate)
+        let day = calendar.component(.day, from: inputDate)
+        return year * 10000 + month * 100 + day
     }
     
     //Date型変数を年月日のみの文字列に変換する
-    func ymdText(inputDate: Date) -> String {
+    func toYmdText(inputDate: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ja_JP")
         dateFormatter.dateStyle = .medium
@@ -32,7 +58,7 @@ struct ResultView: View {
     }
     
     //Date型変数を曜日のみの文字列に変換する
-    func weekdayText(inputDate: Date) -> String {
+    func toWeekdayText(inputDate: Date) -> String {
         let calendar = Calendar(identifier: .gregorian)
         let weekdayNumber = calendar.component(.weekday, from: inputDate)
         let weekdaySymbolIndex: Int = weekdayNumber - 1
