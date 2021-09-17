@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct ThirdView: View {
+    
+    @State var selectedDate = Date()
+    
     var body: some View {
         NavigationView {
-            Text("Hello")
+            
+            CalendarView(selectedDate: $selectedDate)
+                                
             .navigationBarTitle("カレンダー")
         }
     }

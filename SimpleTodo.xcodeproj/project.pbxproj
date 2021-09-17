@@ -23,6 +23,8 @@
 		54B6707F26F2CB9B00DB5688 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6707E26F2CB9B00DB5688 /* RealmSwift */; };
 		54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708026F2CBCF00DB5688 /* Todo.swift */; };
 		54B6708326F35E0900DB5688 /* MyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708226F35E0900DB5688 /* MyProtocol.swift */; };
+		54B6708926F4A28D00DB5688 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708826F4A28D00DB5688 /* CalendarView.swift */; };
+		54B6708C26F4A30D00DB5688 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6708B26F4A30D00DB5688 /* FSCalendar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,7 @@
 		54B6707926F1C63700DB5688 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		54B6708026F2CBCF00DB5688 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		54B6708226F35E0900DB5688 /* MyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProtocol.swift; sourceTree = "<group>"; };
+		54B6708826F4A28D00DB5688 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54B6707F26F2CB9B00DB5688 /* RealmSwift in Frameworks */,
+				54B6708C26F4A30D00DB5688 /* FSCalendar in Frameworks */,
 				54B6707D26F2CB9B00DB5688 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,6 +126,7 @@
 				54B6707526F1C54A00DB5688 /* SecondView.swift */,
 				54B6707726F1C55600DB5688 /* ThirdView.swift */,
 				54B6708026F2CBCF00DB5688 /* Todo.swift */,
+				54B6708826F4A28D00DB5688 /* CalendarView.swift */,
 				54B6704726F1C2DB00DB5688 /* ContentView.swift */,
 				54B6707326F1C4F900DB5688 /* FirstView.swift */,
 				54B6704926F1C2DD00DB5688 /* Assets.xcassets */,
@@ -177,6 +182,7 @@
 			packageProductDependencies = (
 				54B6707C26F2CB9B00DB5688 /* Realm */,
 				54B6707E26F2CB9B00DB5688 /* RealmSwift */,
+				54B6708B26F4A30D00DB5688 /* FSCalendar */,
 			);
 			productName = TodoDiary;
 			productReference = 54B6704026F1C2DB00DB5688 /* TodoDiary.app */;
@@ -251,6 +257,7 @@
 			mainGroup = 54B6703726F1C2DB00DB5688;
 			packageReferences = (
 				54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				54B6708A26F4A30C00DB5688 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 54B6704126F1C2DB00DB5688 /* Products */;
 			projectDirPath = "";
@@ -295,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54B6708926F4A28D00DB5688 /* CalendarView.swift in Sources */,
 				54B6704426F1C2DB00DB5688 /* AppDelegate.swift in Sources */,
 				54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */,
 				54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */,
@@ -642,6 +650,14 @@
 				minimumVersion = 10.15.1;
 			};
 		};
+		54B6708A26F4A30C00DB5688 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -654,6 +670,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
+		};
+		54B6708B26F4A30D00DB5688 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54B6708A26F4A30C00DB5688 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
