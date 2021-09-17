@@ -48,7 +48,7 @@ struct EditView: View {
                         }){
                             HStack {
                                 if isPinned {
-                                    Image(systemName: "pin.slash")
+                                    Image(systemName: "pin.slash.fill")
                                     Text("固定を外す")
                                 } else {
                                     Image(systemName: "pin.fill")
