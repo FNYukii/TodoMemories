@@ -13,23 +13,12 @@ struct SecondView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                TextField("Search", text: $searchText)
-                    .padding(7)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
-                
-                ForEach(
-                    planets.filter {
-                        searchText.isEmpty ||
-                        $0.localizedStandardContains(searchText)
-                    },
-                    id: \.self
-                ) { eachPlanet in
-                    Text(eachPlanet)
-                }
+            Form {
+                Text("Apple")
+                Text("Orange")
+                Text("Strawberry")
             }
-                .navigationBarTitle("Planets")
+            .navigationBarTitle("Planets")
         }
     }
 }
