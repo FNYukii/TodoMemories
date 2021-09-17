@@ -34,9 +34,9 @@ struct CalendarView: UIViewRepresentable{
         fsCalendar.appearance.todayColor = .clear
         fsCalendar.appearance.titleTodayColor = .red
         //選択日のスタイル
-        fsCalendar.appearance.selectionColor = UIColor.secondaryLabel
+        fsCalendar.appearance.selectionColor = .clear
         fsCalendar.appearance.borderSelectionColor = .clear
-        fsCalendar.appearance.titleSelectionColor = .white
+        fsCalendar.appearance.titleSelectionColor = UIColor.label
         
         
         return fsCalendar

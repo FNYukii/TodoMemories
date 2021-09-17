@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ThirdView: View {
     
-    @State var selectedDate = Date()
+    @State var selectedDate: Date = Date()
     
     @State var isNavLinkActive = false
     
@@ -21,8 +21,11 @@ struct ThirdView: View {
                 .onChange(of: selectedDate, perform: { value in
                     isNavLinkActive = true
                 })
+                .onAppear {
+                    selectedDate = Calendar.current.date(byAdding: .year, value: 0, to: Date())!
+                }
                     
-                NavigationLink(destination: ResultView(), isActive: $isNavLinkActive) {
+                NavigationLink(destination: ResultView(selectedDate: selectedDate), isActive: $isNavLinkActive) {
                     EmptyView()
                 }
             }
