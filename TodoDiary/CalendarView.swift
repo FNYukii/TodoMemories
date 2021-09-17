@@ -62,11 +62,14 @@ struct CalendarView: UIViewRepresentable{
             dateFormatter.dateFormat = "MMM dd, yyyy"
             
             //日記が作成された日の配列を作成
-            let eventsDate: [Date] = [Date()]
-
-                        
+            var eventsDates: [Date] = []
+            let achievedTodos = Todo.achievedTodos()
+            for achievedTodo in achievedTodos {
+                eventsDates.append(achievedTodo.achievedDate)
+            }
+                                    
             //カレンダーにイベント日を設定
-            for eventDate in eventsDate{
+            for eventDate in eventsDates{
                 guard let eventDate = dateFormatter.date(from: dateFormatYMD(date: eventDate)) else { return 0 }
                 if date.compare(eventDate) == .orderedSame{
                     return 1
