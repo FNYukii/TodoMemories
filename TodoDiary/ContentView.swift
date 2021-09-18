@@ -17,8 +17,8 @@ struct ContentView: View {
                 }
             SecondView()
                 .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("検索")
+                    Image(systemName: "checkmark")
+                    Text("完了済み")
                 }
             ThirdView()
                 .tabItem {

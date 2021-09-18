@@ -69,6 +69,9 @@ struct FirstView: View, MyProtocol {
                         }
                     }
                 }
+                .onAppear {
+                    reloadRecords()
+                }
                 
                 if pinnedTodos.count == 0 && unpinnedTodos.count == 0 && achievedTodos.count == 0 {
                     Text("まだTodoがありません")
