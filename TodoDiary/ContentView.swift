@@ -22,8 +22,8 @@ struct ContentView: View {
                 }
             ThirdView()
                 .tabItem {
-                    Image(systemName: "calendar")
-                    Text("カレンダー")
+                    Image(systemName: "chart.xyaxis.line")
+                    Text("完了グラフ")
                 }
         }
     }
