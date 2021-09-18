@@ -11,7 +11,6 @@ struct FirstView: View, MyProtocol {
     
     @State var pinnedTodos = Todo.pinnedTodos()
     @State var unpinnedTodos = Todo.unpinnedTodos()
-    @State var achievedTodos = Todo.achievedTodos()
     
     @State var isShowSheet = false
     @State var selectedTodoId = 0
@@ -56,24 +55,13 @@ struct FirstView: View, MyProtocol {
                             .foregroundColor(.primary)
                         }
                     }
-                    //完了済みTodo
-                    if achievedTodos.count != 0 {
-                        Section(header: Text("完了済み")) {
-                            ForEach(achievedTodos.freeze()) { todo in
-                                Button("\(todo.content)"){
-                                    selectedTodoId = todo.id
-                                    isShowSheet.toggle()
-                                }
-                                .foregroundColor(.primary)
-                            }
-                        }
-                    }
+
                 }
                 .onAppear {
                     reloadRecords()
                 }
                 
-                if pinnedTodos.count == 0 && unpinnedTodos.count == 0 && achievedTodos.count == 0 {
+                if pinnedTodos.count == 0 && unpinnedTodos.count == 0 {
                     Text("まだTodoがありません")
                         .foregroundColor(.secondary)
                 }
@@ -101,7 +89,6 @@ struct FirstView: View, MyProtocol {
     func reloadRecords()  {
         pinnedTodos = Todo.pinnedTodos()
         unpinnedTodos = Todo.unpinnedTodos()
-        achievedTodos = Todo.achievedTodos()
     }
     
     func getSelectedDiaryId() -> Int {
