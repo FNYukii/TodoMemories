@@ -10,27 +10,23 @@ import RealmSwift
 
 struct SecondView: View, MyProtocol {
     
-    @State var todos = Todo.achievedTodos()
     @State var isShowSheet = false
     @State var selectedTodoId = 0
     
-    @State var ymds: [Int] = [20210916, 20210916, 20210917]
+    //Todoを完了した年月日の配列
+    @State var achievedYmds: [Int] = []
+    init() {
+        _achievedYmds = State(initialValue: getAchievedYmds())
+    }
     
     var body: some View {
         NavigationView {
             
             Form {
-                ForEach(todos.freeze()){ todo in
-                    Button("\(todo.content)"){
-                        selectedTodoId = todo.id
-                        isShowSheet.toggle()
-                    }
-                    .foregroundColor(.primary)
-                }
                 
-                ForEach(0..<ymds.count) { index in
-                    Section(header: Text("\(ymds[index])")) {
-                        ForEach(getDailyTodos(achievedYmd: ymds[index]).freeze()){ todo in
+                ForEach(0..<achievedYmds.count) { index in
+                    Section(header: Text("\(achievedYmds[index])")) {
+                        ForEach(getDailyTodos(achievedYmd: achievedYmds[index]).freeze()){ todo in
                             Button("\(todo.content)"){
                                 selectedTodoId = todo.id
                                 isShowSheet.toggle()
@@ -53,13 +49,26 @@ struct SecondView: View, MyProtocol {
         }
     }
     
+    //Todo完了年月日の配列を生成する
+    func getAchievedYmds() -> [Int] {
+        var ymds: [Int] = []
+        let achievedTodos = Todo.achievedTodos()
+        for achievedTodo in achievedTodos {
+            ymds.append(achievedTodo.achievedYmd)
+        }
+        let orderedSet = NSOrderedSet(array: ymds)
+        ymds = orderedSet.array as! [Int]
+        return ymds
+    }
+    
+    //特定の年月日に完了したTodoを取得する
     func getDailyTodos(achievedYmd: Int) -> Results<Todo> {
         let realm = try! Realm()
         return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: false)
     }
     
     func reloadRecords() {
-        todos = Todo.achievedTodos()
+        achievedYmds = getAchievedYmds()
     }
     
     func getSelectedDiaryId() -> Int {
