@@ -23,7 +23,6 @@ struct SecondView: View, MyProtocol {
         NavigationView {
             
             Form {
-                
                 ForEach(0..<achievedYmds.count) { index in
                     Section(header: Text("\(toYmdText(inputDate: toDate(inputYmd: achievedYmds[index]))) \(toWeekdayText(inputDate: toDate(inputYmd: achievedYmds[index])))")) {
                         ForEach(getDailyTodos(achievedYmd: achievedYmds[index]).freeze()){ todo in
@@ -35,7 +34,6 @@ struct SecondView: View, MyProtocol {
                         }
                     }
                 }
-                
             }
             .onAppear {
                 reloadRecords()
