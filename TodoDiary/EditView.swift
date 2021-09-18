@@ -163,6 +163,10 @@ struct EditView: View {
             let todo = Todo()
             todo.id = newId
             todo.content = content
+            todo.isPinned = isPinned
+            todo.isAchieved = isAchieved
+            todo.achievedDate = achievedDate
+            todo.achievedYmd = toYmdNumber(inputDate: achievedDate)
             //新規レコード追加
             try! realm.write {
                 realm.add(todo)
@@ -173,11 +177,11 @@ struct EditView: View {
             let realm = try! Realm()
             let todo = realm.objects(Todo.self).filter("id == \(id)").first!
             try! realm.write {
+                todo.content = content
                 todo.isPinned = isPinned
                 todo.isAchieved = isAchieved
                 todo.achievedDate = achievedDate
                 todo.achievedYmd = toYmdNumber(inputDate: achievedDate)
-                todo.content = content
             }
         }
     }
