@@ -25,7 +25,7 @@ struct SecondView: View, MyProtocol {
             Form {
                 
                 ForEach(0..<achievedYmds.count) { index in
-                    Section(header: Text("\(achievedYmds[index])")) {
+                    Section(header: Text("\(toYmdText(inputDate: toDate(inputYmd: achievedYmds[index]))) \(toWeekdayText(inputDate: toDate(inputYmd: achievedYmds[index])))")) {
                         ForEach(getDailyTodos(achievedYmd: achievedYmds[index]).freeze()){ todo in
                             Button("\(todo.content)"){
                                 selectedTodoId = todo.id
@@ -65,6 +65,34 @@ struct SecondView: View, MyProtocol {
     func getDailyTodos(achievedYmd: Int) -> Results<Todo> {
         let realm = try! Realm()
         return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: false)
+    }
+    
+    //Int型の年月日をDate型に変換する
+    func toDate(inputYmd: Int) -> Date {
+        let year = inputYmd / 10000
+        let month = (inputYmd % 10000) / 100
+        let day = (inputYmd % 100)
+        let dateComponent = DateComponents(calendar: Calendar.current, year: year, month: month, day: day)
+        return dateComponent.date!
+    }
+    
+    //Date型変数を年月日のみの文字列に変換する
+    func toYmdText(inputDate: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ja_JP")
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "yyyy年 M月 d日"
+        return dateFormatter.string(from: inputDate)
+    }
+    
+    //Date型変数を曜日のみの文字列に変換する
+    func toWeekdayText(inputDate: Date) -> String {
+        let calendar = Calendar(identifier: .gregorian)
+        let weekdayNumber = calendar.component(.weekday, from: inputDate)
+        let weekdaySymbolIndex: Int = weekdayNumber - 1
+        let formatter: DateFormatter = DateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "ja") as Locale
+        return formatter.shortWeekdaySymbols[weekdaySymbolIndex]
     }
     
     func reloadRecords() {
