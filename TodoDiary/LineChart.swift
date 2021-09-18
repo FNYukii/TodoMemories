@@ -54,10 +54,12 @@ struct LineChart : UIViewRepresentable {
         lineChartView.data = data
         
         //チャートのスタイルをカスタマイズ
+        lineChartView.legend.enabled = false
         lineChartView.data!.setDrawValues(false)
         lineChartView.rightAxis.enabled = false
         lineChartView.leftAxis.axisMinimum = 0.0
         lineChartView.leftAxis.granularity = 1.0
+        lineChartView.doubleTapToZoomEnabled = false
         
         //チャートY軸の表示する高さを設定
         let maxAchieveCount = achieveCounts.max() ?? 0
