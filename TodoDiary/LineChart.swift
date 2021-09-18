@@ -26,7 +26,7 @@ struct LineChart : UIViewRepresentable {
         //折れ線のスタイルをカスタマイズ
         dataSet.drawCirclesEnabled = false
         dataSet.setColor(UIColor.systemBlue)
-        //チャートを生成して折れ線データをセット
+        //チャートを生成して折れ線をセット
         let lineChartView = LineChartView()
         data.append(dataSet)
         lineChartView.data = data
