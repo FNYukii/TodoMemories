@@ -59,6 +59,14 @@ struct LineChart : UIViewRepresentable {
         lineChartView.leftAxis.axisMinimum = 0.0
         lineChartView.leftAxis.granularity = 1.0
         
+        //チャートY軸の表示する高さを設定
+        let maxAchieveCount = achieveCounts.max() ?? 0
+        if(maxAchieveCount > 5){
+            lineChartView.leftAxis.axisMaximum = Double(maxAchieveCount)
+        }else{
+            lineChartView.leftAxis.axisMaximum = 5.0
+        }
+        
         return lineChartView
     }
     
