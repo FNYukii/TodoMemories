@@ -94,6 +94,7 @@ struct SecondView: View, MyProtocol {
     }
     
     func reloadRecords() {
+        achievedYmds = []
         achievedYmds = getAchievedYmds()
     }
     
