@@ -17,13 +17,14 @@ struct ThirdView: View {
         NavigationView {
             
             VStack {
-//                CalendarView(selectedDate: $selectedDate)
-//                .onChange(of: selectedDate, perform: { value in
-//                    isNavLinkActive = true
-//                })
                 
                 LineChart()
-                    .frame(height: 400)
+                    .frame(height: 250)
+                
+                CalendarView(selectedDate: $selectedDate)
+                .onChange(of: selectedDate, perform: { value in
+                    isNavLinkActive = true
+                })
                     
                 NavigationLink(destination: ResultView(selectedDate: selectedDate), isActive: $isNavLinkActive) {
                     EmptyView()
