@@ -7,19 +7,28 @@
 
 import Charts
 import SwiftUI
+import RealmSwift
 
 struct LineChart : UIViewRepresentable {
     
     func makeUIView(context: Context) -> LineChartView {
-        //折れ線用のデータ
-        let lineChartEntry : [ChartDataEntry] = [
-            ChartDataEntry(x: 0, y: 3),
-            ChartDataEntry(x: 1, y: 5),
-            ChartDataEntry(x: 2, y: 4),
-            ChartDataEntry(x: 3, y: 8),
-            ChartDataEntry(x: 4, y: 2),
-            ChartDataEntry(x: 5, y: 3),
-        ]
+        //当月の日数を取得
+        let currentDate = Date()
+        let calendar = Calendar(identifier: .gregorian)
+        let currentMonth = calendar.component(.month, from: currentDate)
+        let dayCount = dayCount(month: currentMonth)
+        print(dayCount)
+        
+        //折れ線グラフ用の日別Todo完了数データを取得
+        var lineChartEntry : [ChartDataEntry] = []
+        for day in (0..<dayCount) {
+            let currentYear = calendar.component(.year, from: currentDate)
+            let achievedYmd = currentYear * 10000 + currentMonth * 100 + day
+            let realm = try! Realm()
+            let achievedTodos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd = \(achievedYmd)")
+            lineChartEntry.append(ChartDataEntry(x: Double(day), y: Double(achievedTodos.count)))
+        }
+        
         //折れ線を生成
         let data = LineChartData()
         let dataSet = LineChartDataSet(entries: lineChartEntry)
@@ -33,12 +42,24 @@ struct LineChart : UIViewRepresentable {
         //チャートのスタイルをカスタマイズ
         lineChartView.data!.setDrawValues(false)
         lineChartView.rightAxis.enabled = false
+        lineChartView.leftAxis.axisMinimum = 0.0
+        lineChartView.leftAxis.granularity = 1.0
         
         return lineChartView
     }
     
     func updateUIView(_ uiView: LineChartView, context: Context) {
         //
+    }
+    
+    func dayCount(month: Int) -> Int {
+        let calendar = Calendar(identifier: .gregorian)
+        var components = DateComponents()
+        components.year = 2012
+        components.month = month + 1
+        components.day = 0
+        let date = calendar.date(from: components)!
+        return calendar.component(.day, from: date)
     }
     
 }
