@@ -12,33 +12,47 @@ import RealmSwift
 struct LineChart : UIViewRepresentable {
     
     func makeUIView(context: Context) -> LineChartView {
+        
         //当月の日数を取得
         let currentDate = Date()
         let calendar = Calendar(identifier: .gregorian)
         let currentMonth = calendar.component(.month, from: currentDate)
-        let dayCount = dayCount(month: currentMonth)
-        print(dayCount)
+        var components = DateComponents()
+        components.year = 2012
+        components.month = currentMonth + 1
+        components.day = 0
+        let date = calendar.date(from: components)!
+        let dayCount = calendar.component(.day, from: date)
         
-        //折れ線グラフ用の日別Todo完了数データを取得
-        var lineChartEntry : [ChartDataEntry] = []
+        //当月のTodo日別完了数の配列を生成
+        var achieveCounts: [Int] = []
         for day in (0..<dayCount) {
             let currentYear = calendar.component(.year, from: currentDate)
             let achievedYmd = currentYear * 10000 + currentMonth * 100 + day
             let realm = try! Realm()
             let achievedTodos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd = \(achievedYmd)")
-            lineChartEntry.append(ChartDataEntry(x: Double(day), y: Double(achievedTodos.count)))
+            achieveCounts.append(achievedTodos.count)
+        }
+        
+        //achieveCountsを元に折れ線用のデータを生成
+        var lineChartEntry : [ChartDataEntry] = []
+        for day in (0..<dayCount) {
+            lineChartEntry.append(ChartDataEntry(x: Double(day), y: Double(achieveCounts[day])))
         }
         
         //折れ線を生成
         let data = LineChartData()
         let dataSet = LineChartDataSet(entries: lineChartEntry)
+        
         //折れ線のスタイルをカスタマイズ
         dataSet.drawCirclesEnabled = false
         dataSet.setColor(UIColor.systemBlue)
+        
         //チャートを生成して折れ線をセット
         let lineChartView = LineChartView()
         data.append(dataSet)
         lineChartView.data = data
+        
         //チャートのスタイルをカスタマイズ
         lineChartView.data!.setDrawValues(false)
         lineChartView.rightAxis.enabled = false
@@ -51,15 +65,5 @@ struct LineChart : UIViewRepresentable {
     func updateUIView(_ uiView: LineChartView, context: Context) {
         //
     }
-    
-    func dayCount(month: Int) -> Int {
-        let calendar = Calendar(identifier: .gregorian)
-        var components = DateComponents()
-        components.year = 2012
-        components.month = month + 1
-        components.day = 0
-        let date = calendar.date(from: components)!
-        return calendar.component(.day, from: date)
-    }
-    
+        
 }
