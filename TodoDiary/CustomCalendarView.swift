@@ -20,11 +20,11 @@ struct CustomCalendarView: View {
                 .font(.title)
             
             //曜日を表示
-            HStack {
-                Spacer()
-                ForEach(0..<weekDays.count){ index in
-                    Text(weekDays[index])
-                    Spacer()
+            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
+                ForEach((0..<weekDays.count), id: \.self) { index in
+                    Text("\(weekDays[index])")
+                        .frame(alignment: .center)
+                        .foregroundColor(.secondary)
                 }
             }
             
@@ -32,6 +32,7 @@ struct CustomCalendarView: View {
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
                 ForEach((0..<showDays.count), id: \.self) { index in
                     Text("\(showDays[index])")
+                        .frame(height: 50, alignment: .center)
                 }
             }
             .onAppear {

@@ -18,6 +18,8 @@ struct ThirdView: View {
             
             VStack {
                 
+                
+                
                 LineChart()
                     .frame(height: 250)
                 
