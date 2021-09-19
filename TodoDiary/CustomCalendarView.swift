@@ -16,6 +16,10 @@ struct CustomCalendarView: View {
     @State var showYear = 0
     @State var showMonth = 0
     
+    //本日の年と月
+    @State var currentYear = 0
+    @State var currentMonth = 0
+    
     let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     @State var showDays: [Int] = []
     
@@ -38,7 +42,7 @@ struct CustomCalendarView: View {
                     if showDays[index] == 0 {
                         Text("")
                             .foregroundColor(.clear)
-                    } else if showDays[index] == today() {
+                    } else if showDays[index] == today() && showYear == currentYear && showMonth == currentMonth {
                         Text("\(showDays[index])")
                             .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     } else {
@@ -50,14 +54,10 @@ struct CustomCalendarView: View {
                 .font(.subheadline)
             }
             .onAppear {
-                showYear = calendarProtocol.getShowYear()
-                showMonth = calendarProtocol.getShowMonth()
-                showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
+                loadCalendar()
             }
             .onChange(of: changeFrag, perform: { _ in
-                showYear = calendarProtocol.getShowYear()
-                showMonth = calendarProtocol.getShowMonth()
-                showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
+                loadCalendar()
             })
             
         }
@@ -111,6 +111,15 @@ struct CustomCalendarView: View {
         }
         
         return days
+    }
+    
+    func loadCalendar() {
+        let calenar = Calendar(identifier: .gregorian)
+        currentYear = calenar.component(.year, from: Date())
+        currentMonth = calenar.component(.month, from: Date())
+        showYear = calendarProtocol.getShowYear()
+        showMonth = calendarProtocol.getShowMonth()
+        showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
     }
     
 }
