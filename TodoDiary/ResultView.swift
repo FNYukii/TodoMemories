@@ -59,12 +59,12 @@ struct ResultView: View, MyProtocol {
     //検索結果のTodosを取得
     func loadTodos() {
         let realm = try! Realm()
-        let achievedYmd = toYmdNumber(inputDate: selectedDate)
+        let achievedYmd = toYmd(inputDate: selectedDate)
         todos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: false)
     }
     
     //Date型変数を年月日の数字に変換する
-    func toYmdNumber(inputDate: Date) -> Int {
+    func toYmd(inputDate: Date) -> Int {
         let calendar = Calendar(identifier: .gregorian)
         let year = calendar.component(.year, from: inputDate)
         let month = calendar.component(.month, from: inputDate)
