@@ -22,22 +22,33 @@ struct SecondView: View, MyProtocol {
     var body: some View {
         NavigationView {
             
-            Form {
-                ForEach(0..<achievedYmds.count) { index in
-                    Section(header: Text("\(toYmdwText(inputDate: toDate(inputYmd: achievedYmds[index])))")) {
-                        ForEach(getDailyTodos(achievedYmd: achievedYmds[index]).freeze()){ todo in
-                            Button("\(todo.content)"){
-                                selectedTodoId = todo.id
-                                isShowSheet.toggle()
+            ZStack {
+                
+                Form {
+                    ForEach(0..<achievedYmds.count) { index in
+                        Section(header: Text("\(toYmdwText(inputDate: toDate(inputYmd: achievedYmds[index])))")) {
+                            ForEach(getDailyTodos(achievedYmd: achievedYmds[index]).freeze()){ todo in
+                                Button("\(todo.content)"){
+                                    selectedTodoId = todo.id
+                                    isShowSheet.toggle()
+                                }
+                                .foregroundColor(.primary)
                             }
-                            .foregroundColor(.primary)
                         }
                     }
                 }
+                .onAppear {
+                    reloadRecords()
+                }
+                
+                if achievedYmds.count == 0 {
+                    Text("達成済みのTodoはありません")
+                        .foregroundColor(.secondary)
+                }
+                
             }
-            .onAppear {
-                reloadRecords()
-            }
+            
+            
             
             .sheet(isPresented: $isShowSheet) {
                 EditView(myProtocol: self)
