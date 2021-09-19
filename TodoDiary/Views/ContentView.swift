@@ -25,6 +25,11 @@ struct ContentView: View {
                     Image(systemName: "calendar")
                     Text("達成グラフ")
                 }
+            FourthView()
+                .tabItem {
+                    Image(systemName: "pin")
+                    Text("テスト")
+                }
         }
     }
 }
