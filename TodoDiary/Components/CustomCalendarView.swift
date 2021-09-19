@@ -193,7 +193,6 @@ struct CustomCalendarView: View {
             achieveCounts.append(achievedTodos.count)
         }
         
-        print(achieveCounts)
         return achieveCounts
     }
     
