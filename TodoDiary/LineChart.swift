@@ -12,7 +12,7 @@ import RealmSwift
 struct LineChart : UIViewRepresentable {
     
     let showYear: Int
-    @Binding var showMonth: Int
+    let showMonth: Int
     
     func makeUIView(context: Context) -> LineChartView {
 
@@ -79,7 +79,6 @@ struct LineChart : UIViewRepresentable {
         }else{
             uiView.leftAxis.axisMaximum = 5.0
         }
-        
         
     }
         
