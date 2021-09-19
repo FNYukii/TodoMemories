@@ -129,17 +129,10 @@
 			children = (
 				54B6704326F1C2DB00DB5688 /* AppDelegate.swift */,
 				54B6704526F1C2DB00DB5688 /* SceneDelegate.swift */,
-				54B6707926F1C63700DB5688 /* EditView.swift */,
-				54B6708226F35E0900DB5688 /* MyProtocol.swift */,
-				54B6707526F1C54A00DB5688 /* SecondView.swift */,
-				54B6707726F1C55600DB5688 /* ThirdView.swift */,
-				54B6709B26F644EC00DB5688 /* LineChart.swift */,
-				54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */,
-				54DE523926F74D130053F126 /* CalendarProtocol.swift */,
-				54B6708026F2CBCF00DB5688 /* Todo.swift */,
-				54B6708D26F4CE9200DB5688 /* ResultView.swift */,
-				54B6704726F1C2DB00DB5688 /* ContentView.swift */,
-				54B6707326F1C4F900DB5688 /* FirstView.swift */,
+				54DE523D26F7946C0053F126 /* Models */,
+				54DE523C26F794300053F126 /* Views */,
+				54DE523B26F793CF0053F126 /* Protocols */,
+				54DE523E26F794A00053F126 /* Components */,
 				54B6704926F1C2DD00DB5688 /* Assets.xcassets */,
 				54B6704E26F1C2DD00DB5688 /* LaunchScreen.storyboard */,
 				54B6705126F1C2DD00DB5688 /* Info.plist */,
@@ -172,6 +165,45 @@
 				54B6706726F1C2DD00DB5688 /* Info.plist */,
 			);
 			path = TodoDiaryUITests;
+			sourceTree = "<group>";
+		};
+		54DE523B26F793CF0053F126 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				54B6708226F35E0900DB5688 /* MyProtocol.swift */,
+				54DE523926F74D130053F126 /* CalendarProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		54DE523C26F794300053F126 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				54B6707926F1C63700DB5688 /* EditView.swift */,
+				54B6707726F1C55600DB5688 /* ThirdView.swift */,
+				54B6708D26F4CE9200DB5688 /* ResultView.swift */,
+				54B6707326F1C4F900DB5688 /* FirstView.swift */,
+				54B6704726F1C2DB00DB5688 /* ContentView.swift */,
+				54B6707526F1C54A00DB5688 /* SecondView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		54DE523D26F7946C0053F126 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				54B6708026F2CBCF00DB5688 /* Todo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		54DE523E26F794A00053F126 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */,
+				54B6709B26F644EC00DB5688 /* LineChart.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
