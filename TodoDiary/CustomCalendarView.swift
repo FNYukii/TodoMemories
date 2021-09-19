@@ -27,8 +27,14 @@ struct CustomCalendarView: View {
             //日を表示
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
                 ForEach((0..<showDays.count), id: \.self) { index in
-                    Text("\(showDays[index])")
-                        .frame(height: 50, alignment: .center)
+                    if showDays[index] == 0 {
+                        Text("\(showDays[index])")
+                            .frame(height: 50, alignment: .center)
+                            .foregroundColor(.clear)
+                    } else {
+                        Text("\(showDays[index])")
+                            .frame(height: 50, alignment: .center)
+                    }
                 }
             }
             .onAppear {
