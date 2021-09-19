@@ -29,7 +29,6 @@ struct ThirdView: View, CalendarProtocol {
                     .font(.title3)
                 
                 LineChart(showYear: showYear, showMonth: showMonth)
-                    .frame(height: 250)
                 
                 CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
                     

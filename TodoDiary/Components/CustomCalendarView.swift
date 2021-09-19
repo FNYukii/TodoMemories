@@ -47,7 +47,7 @@ struct CustomCalendarView: View {
                     if showDays[index] == 0 {
                         Text("")
                             .foregroundColor(.clear)
-                            .frame(height: 50)
+                            .frame(height: 45)
                     }
                     
                     if showDays[index] != 0 {
@@ -96,7 +96,7 @@ struct CustomCalendarView: View {
                             
                         }
                         .font(.subheadline)
-                        .frame(height: 50, alignment: .top)
+                        .frame(height: 45, alignment: .center)
                     }
 
                 }
