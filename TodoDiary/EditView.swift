@@ -169,7 +169,7 @@ struct EditView: View {
             todo.isPinned = isPinned
             todo.isAchieved = isAchieved
             todo.achievedDate = achievedDate
-            todo.achievedYmd = toYmdNumber(inputDate: achievedDate)
+            todo.achievedYmd = toYmd(inputDate: achievedDate)
             //新規レコード追加
             try! realm.write {
                 realm.add(todo)
@@ -184,7 +184,7 @@ struct EditView: View {
                 todo.isPinned = isPinned
                 todo.isAchieved = isAchieved
                 todo.achievedDate = achievedDate
-                todo.achievedYmd = toYmdNumber(inputDate: achievedDate)
+                todo.achievedYmd = toYmd(inputDate: achievedDate)
             }
         }
     }
@@ -198,7 +198,7 @@ struct EditView: View {
     }
     
     //Date型変数を年月日の数字に変換する
-    func toYmdNumber(inputDate: Date) -> Int {
+    func toYmd(inputDate: Date) -> Int {
         let calendar = Calendar(identifier: .gregorian)
         let year = calendar.component(.year, from: inputDate)
         let month = calendar.component(.month, from: inputDate)
