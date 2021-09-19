@@ -60,6 +60,8 @@ struct LineChart : UIViewRepresentable {
         lineChartView.leftAxis.axisMinimum = 0.0
         lineChartView.leftAxis.granularity = 1.0
         lineChartView.doubleTapToZoomEnabled = false
+        lineChartView.scaleXEnabled = false
+        lineChartView.scaleYEnabled = false
         
         //チャートY軸の表示する高さを設定
         let maxAchieveCount = achieveCounts.max() ?? 0
