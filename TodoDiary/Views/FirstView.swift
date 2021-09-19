@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FirstView: View, MyProtocol {
+struct FirstView: View, EditProtocol {
     
     @State var pinnedTodos = Todo.pinnedTodos()
     @State var unpinnedTodos = Todo.unpinnedTodos()
@@ -69,7 +69,7 @@ struct FirstView: View, MyProtocol {
             }
             
             .sheet(isPresented: $isShowSheet) {
-                EditView(myProtocol: self)
+                EditView(editProtocol: self)
             }
             
             .navigationBarTitle("Todo")

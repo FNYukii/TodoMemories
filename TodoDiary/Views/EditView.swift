@@ -11,7 +11,7 @@ import RealmSwift
 struct EditView: View {
     
     @Environment(\.presentationMode) var presentation
-    var myProtocol: MyProtocol
+    var editProtocol: EditProtocol
     
     @State var navBarTitle = "Todoを追加"
     @State var isShowAlert = false
@@ -38,7 +38,7 @@ struct EditView: View {
                         Button(action: {
                             isPinned.toggle()
                             saveRecord()
-                            myProtocol.reloadRecords()
+                            editProtocol.reloadRecords()
                             presentation.wrappedValue.dismiss()
                         }){
                             HStack {
@@ -67,7 +67,7 @@ struct EditView: View {
                             achievedDate = Date()
                         }
                         saveRecord()
-                        myProtocol.reloadRecords()
+                        editProtocol.reloadRecords()
                         presentation.wrappedValue.dismiss()
                     }){
                         HStack {
@@ -108,7 +108,7 @@ struct EditView: View {
                     primaryButton: .cancel(Text("キャンセル")),
                     secondaryButton: .destructive(Text("削除"), action: {
                         deleteRecord()
-                        myProtocol.reloadRecords()
+                        editProtocol.reloadRecords()
                         presentation.wrappedValue.dismiss()
                     })
                 )
@@ -125,7 +125,7 @@ struct EditView: View {
                 },
                 trailing: Button("完了"){
                     saveRecord()
-                    myProtocol.reloadRecords()
+                    editProtocol.reloadRecords()
                     presentation.wrappedValue.dismiss()
                 }
                 .disabled(isSaveDisabled)
@@ -134,7 +134,7 @@ struct EditView: View {
     }
     
     func loadTodo() {
-        id = myProtocol.getSelectedDiaryId()
+        id = editProtocol.getSelectedDiaryId()
         if id != 0 {
             let realm = try! Realm()
             let todo = realm.objects(Todo.self).filter("id == \(id)").first!

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MyProtocol {
+protocol EditProtocol {
     func reloadRecords()
     func getSelectedDiaryId() -> Int
 }

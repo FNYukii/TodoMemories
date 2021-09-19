@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct SecondView: View, MyProtocol {
+struct SecondView: View, EditProtocol {
     
     @State var isShowSheet = false
     @State var selectedTodoId = 0
@@ -51,7 +51,7 @@ struct SecondView: View, MyProtocol {
             
             
             .sheet(isPresented: $isShowSheet) {
-                EditView(myProtocol: self)
+                EditView(editProtocol: self)
             }
             
             .navigationBarTitle("達成済み")

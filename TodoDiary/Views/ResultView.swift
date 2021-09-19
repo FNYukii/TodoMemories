@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct ResultView: View, MyProtocol {
+struct ResultView: View, EditProtocol {
     
     let selectedDate: Date
     
@@ -42,7 +42,7 @@ struct ResultView: View, MyProtocol {
         }
         
         .sheet(isPresented: $isShowSheet) {
-            EditView(myProtocol: self)
+            EditView(editProtocol: self)
         }
         
         .navigationBarTitle("\(toYmdwText(inputDate: selectedDate))")
