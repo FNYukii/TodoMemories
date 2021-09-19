@@ -45,8 +45,8 @@ struct LineChart : UIViewRepresentable {
         let dataSet = LineChartDataSet(entries: lineChartEntry)
         
         //折れ線のスタイルをカスタマイズ
-        dataSet.drawCirclesEnabled = false
-        dataSet.setColor(UIColor.systemBlue)
+        dataSet.drawCirclesEnabled = false //折れ線グラフのデータ値の丸を非表示
+        dataSet.setColor(UIColor.systemBlue) //折れ線グラフの色
         
         //チャートを生成して折れ線をセット
         let lineChartView = LineChartView()
@@ -54,14 +54,15 @@ struct LineChart : UIViewRepresentable {
         lineChartView.data = data
         
         //チャートのスタイルをカスタマイズ
-        lineChartView.legend.enabled = false
-        lineChartView.data!.setDrawValues(false)
-        lineChartView.rightAxis.enabled = false
-        lineChartView.leftAxis.axisMinimum = 0.0
-        lineChartView.leftAxis.granularity = 1.0
-        lineChartView.doubleTapToZoomEnabled = false
-        lineChartView.scaleXEnabled = false
-        lineChartView.scaleYEnabled = false
+        lineChartView.legend.enabled = false //チャートのデータ概要非表示
+        lineChartView.data!.setDrawValues(false) //折れ線グラフのデータ値非表示
+        lineChartView.rightAxis.enabled = false //右側のY軸目盛り非表示
+        lineChartView.leftAxis.axisMinimum = 0.0 //左側のY軸目盛り最小値
+        lineChartView.leftAxis.granularity = 1.0 //左側のY軸目盛りの区切り地
+        lineChartView.doubleTapToZoomEnabled = false //ダブルタップでズームを無効
+        lineChartView.scaleXEnabled = false //X軸ピンチアウトを無効
+        lineChartView.scaleYEnabled = false //Y軸ピンチアウトを無効
+        lineChartView.highlightPerDragEnabled = false //ドラッグでハイライト線表示を無効
         
         //チャートY軸の表示する高さを設定
         let maxAchieveCount = achieveCounts.max() ?? 0
