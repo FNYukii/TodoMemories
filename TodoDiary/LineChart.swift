@@ -11,15 +11,16 @@ import RealmSwift
 
 struct LineChart : UIViewRepresentable {
     
+    let showYear = 2021
+    let showMonth = 8
+    
     func makeUIView(context: Context) -> LineChartView {
         
         //当月の日数を取得
-        let currentDate = Date()
         let calendar = Calendar(identifier: .gregorian)
-        let currentMonth = calendar.component(.month, from: currentDate)
         var components = DateComponents()
         components.year = 2012
-        components.month = currentMonth + 1
+        components.month = showMonth + 1
         components.day = 0
         let date = calendar.date(from: components)!
         let dayCount = calendar.component(.day, from: date)
@@ -27,8 +28,7 @@ struct LineChart : UIViewRepresentable {
         //当月のTodo日別達成数の配列を生成
         var achieveCounts: [Int] = []
         for day in (0..<dayCount) {
-            let currentYear = calendar.component(.year, from: currentDate)
-            let achievedYmd = currentYear * 10000 + currentMonth * 100 + day
+            let achievedYmd = showYear * 10000 + showMonth * 100 + day
             let realm = try! Realm()
             let achievedTodos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd = \(achievedYmd)")
             achieveCounts.append(achievedTodos.count)
