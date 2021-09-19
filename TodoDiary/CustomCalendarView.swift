@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct CustomCalendarView: View {
     
@@ -20,6 +21,9 @@ struct CustomCalendarView: View {
     @State var currentYear = 0
     @State var currentMonth = 0
     
+    //日別Todo完了数
+    @State var achieveCounts: [Int] = []
+
     let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     @State var showDays: [Int] = []
     
@@ -39,23 +43,39 @@ struct CustomCalendarView: View {
             //日を表示
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
                 ForEach((0..<showDays.count), id: \.self) { index in
+                    
                     if showDays[index] == 0 {
                         Text("")
                             .foregroundColor(.clear)
-                    } else if showDays[index] == today() && showYear == currentYear && showMonth == currentMonth {
-                        Button("\(showDays[index])"){
-                            calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
-                        }
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    } else {
-                        Button("\(showDays[index])"){
-                            calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
-                        }
-                        .foregroundColor(.primary)
+                            .frame(height: 50)
                     }
+                    
+                    if showDays[index] != 0 {
+                        VStack {
+                            //日付の数字を表示
+                            if showDays[index] == today() && showYear == currentYear && showMonth == currentMonth {
+                                Button("\(showDays[index])"){
+                                    calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                                }
+                                .foregroundColor(.blue)
+                            } else {
+                                Button("\(showDays[index])"){
+                                    calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                                }
+                                .foregroundColor(.primary)
+                            }
+                            //その日にTodoを完了しているなら、点を表示
+                            if achieveCounts[showDays[index] - 1] != 0 {
+                                Text("・")
+                                    .fontWeight(.black)
+                                    .foregroundColor(.blue)
+                            }
+                        }
+                        .font(.subheadline)
+                        .frame(height: 50, alignment: .top)
+                    }
+
                 }
-                .frame(height: 50, alignment: .center)
-                .font(.subheadline)
             }
             .onAppear {
                 loadCalendar()
@@ -67,6 +87,7 @@ struct CustomCalendarView: View {
         }
     }
     
+    //今日の日をInt型で返す
     func today() -> Int {
         let calendar = Calendar(identifier: .gregorian)
         return calendar.component(.day, from: Date())
@@ -117,6 +138,7 @@ struct CustomCalendarView: View {
         return days
     }
     
+    //カレンダーを更新する
     func loadCalendar() {
         let calenar = Calendar(identifier: .gregorian)
         currentYear = calenar.component(.year, from: Date())
@@ -124,6 +146,31 @@ struct CustomCalendarView: View {
         showYear = calendarProtocol.getShowYear()
         showMonth = calendarProtocol.getShowMonth()
         showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
+        achieveCounts = dailyAchieveCounts()
+    }
+    
+    //日別Todo達成数の配列 例: [0, 0, 1, 0, 3, 2...]
+    func dailyAchieveCounts() -> [Int] {
+        //当月の日数を取得
+        let calendar = Calendar(identifier: .gregorian)
+        var components = DateComponents()
+        components.year = 2012
+        components.month = showMonth + 1
+        components.day = 0
+        let date = calendar.date(from: components)!
+        let dayCount = calendar.component(.day, from: date)
+        
+        //当月のTodo日別達成数の配列を生成
+        var achieveCounts: [Int] = []
+        for day in (1...dayCount) {
+            let achievedYmd = showYear * 10000 + showMonth * 100 + day
+            let realm = try! Realm()
+            let achievedTodos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd = \(achievedYmd)")
+            achieveCounts.append(achievedTodos.count)
+        }
+        
+        print(achieveCounts)
+        return achieveCounts
     }
     
 }
