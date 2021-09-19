@@ -15,10 +15,6 @@ struct CustomCalendarView: View {
     var body: some View {
         VStack {
             
-            //年と月を表示
-            Text(ymText())
-                .font(.title)
-            
             //曜日を表示
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
                 ForEach((0..<weekDays.count), id: \.self) { index in
@@ -40,15 +36,6 @@ struct CustomCalendarView: View {
             }
             
         }
-    }
-    
-    //年と月のテキストを生成
-    func ymText() -> String {
-        let calendar = Calendar(identifier: .gregorian)
-        let currentDate = Date()
-        let year = calendar.component(.year, from: currentDate)
-        let month = calendar.component(.month, from: currentDate)
-        return "\(year)年 \(month)月"
     }
     
     //当月の一日の曜日

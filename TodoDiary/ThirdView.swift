@@ -9,24 +9,21 @@ import SwiftUI
 
 struct ThirdView: View {
     
-    @State var selectedDate: Date = Date()
-    
     @State var isNavLinkActive = false
+    @State var selectedDate: Date = Date()
     
     var body: some View {
         NavigationView {
             
             VStack {
                 
-                
+                Text(ymText())
+                    .font(.title3)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
                 
                 LineChart()
                     .frame(height: 250)
-                
-//                CalendarView(selectedDate: $selectedDate)
-//                .onChange(of: selectedDate, perform: { value in
-//                    isNavLinkActive = true
-//                })
                 
                 CustomCalendarView()
                     
@@ -38,4 +35,14 @@ struct ThirdView: View {
             .navigationBarTitle("達成グラフ")
         }
     }
+    
+    //年と月のテキストを生成
+    func ymText() -> String {
+        let calendar = Calendar(identifier: .gregorian)
+        let currentDate = Date()
+        let year = calendar.component(.year, from: currentDate)
+        let month = calendar.component(.month, from: currentDate)
+        return "\(year)年 \(month)月"
+    }
+    
 }
