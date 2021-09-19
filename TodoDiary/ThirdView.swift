@@ -21,10 +21,12 @@ struct ThirdView: View {
                 LineChart()
                     .frame(height: 250)
                 
-                CalendarView(selectedDate: $selectedDate)
-                .onChange(of: selectedDate, perform: { value in
-                    isNavLinkActive = true
-                })
+//                CalendarView(selectedDate: $selectedDate)
+//                .onChange(of: selectedDate, perform: { value in
+//                    isNavLinkActive = true
+//                })
+                
+                CustomCalendarView()
                     
                 NavigationLink(destination: ResultView(selectedDate: selectedDate), isActive: $isNavLinkActive) {
                     EmptyView()
