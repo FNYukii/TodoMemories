@@ -23,7 +23,6 @@
 		54B6707F26F2CB9B00DB5688 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6707E26F2CB9B00DB5688 /* RealmSwift */; };
 		54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708026F2CBCF00DB5688 /* Todo.swift */; };
 		54B6708326F35E0900DB5688 /* MyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708226F35E0900DB5688 /* MyProtocol.swift */; };
-		54B6708926F4A28D00DB5688 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708826F4A28D00DB5688 /* CalendarView.swift */; };
 		54B6708C26F4A30D00DB5688 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6708B26F4A30D00DB5688 /* FSCalendar */; };
 		54B6708E26F4CE9200DB5688 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708D26F4CE9200DB5688 /* ResultView.swift */; };
 		54B6709A26F644DE00DB5688 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6709926F644DE00DB5688 /* Charts */; };
@@ -70,7 +69,6 @@
 		54B6707926F1C63700DB5688 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		54B6708026F2CBCF00DB5688 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		54B6708226F35E0900DB5688 /* MyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProtocol.swift; sourceTree = "<group>"; };
-		54B6708826F4A28D00DB5688 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		54B6708D26F4CE9200DB5688 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		54B6709B26F644EC00DB5688 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 				54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */,
 				54DE523926F74D130053F126 /* CalendarProtocol.swift */,
 				54B6708026F2CBCF00DB5688 /* Todo.swift */,
-				54B6708826F4A28D00DB5688 /* CalendarView.swift */,
 				54B6708D26F4CE9200DB5688 /* ResultView.swift */,
 				54B6704726F1C2DB00DB5688 /* ContentView.swift */,
 				54B6707326F1C4F900DB5688 /* FirstView.swift */,
@@ -318,7 +315,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54B6708926F4A28D00DB5688 /* CalendarView.swift in Sources */,
 				54B6704426F1C2DB00DB5688 /* AppDelegate.swift in Sources */,
 				54B6708E26F4CE9200DB5688 /* ResultView.swift in Sources */,
 				54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */,
