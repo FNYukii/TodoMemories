@@ -29,6 +29,7 @@
 		54B6709A26F644DE00DB5688 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6709926F644DE00DB5688 /* Charts */; };
 		54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709B26F644EC00DB5688 /* LineChart.swift */; };
 		54B6709E26F70EDE00DB5688 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */; };
+		54DE523A26F74D130053F126 /* CalendarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE523926F74D130053F126 /* CalendarProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		54B6708D26F4CE9200DB5688 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		54B6709B26F644EC00DB5688 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
+		54DE523926F74D130053F126 /* CalendarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				54B6707726F1C55600DB5688 /* ThirdView.swift */,
 				54B6709B26F644EC00DB5688 /* LineChart.swift */,
 				54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */,
+				54DE523926F74D130053F126 /* CalendarProtocol.swift */,
 				54B6708026F2CBCF00DB5688 /* Todo.swift */,
 				54B6708826F4A28D00DB5688 /* CalendarView.swift */,
 				54B6708D26F4CE9200DB5688 /* ResultView.swift */,
@@ -322,6 +325,7 @@
 				54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */,
 				54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */,
 				54B6704626F1C2DB00DB5688 /* SceneDelegate.swift in Sources */,
+				54DE523A26F74D130053F126 /* CalendarProtocol.swift in Sources */,
 				54B6709E26F70EDE00DB5688 /* CustomCalendarView.swift in Sources */,
 				54B6707A26F1C63700DB5688 /* EditView.swift in Sources */,
 				54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */,

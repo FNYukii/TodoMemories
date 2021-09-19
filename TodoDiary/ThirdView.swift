@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ThirdView: View {
+struct ThirdView: View, CalendarProtocol {
     
     @State var isNavLinkActive = false
     @State var selectedDate: Date = Date()
@@ -31,7 +31,7 @@ struct ThirdView: View {
                 LineChart()
                     .frame(height: 250)
                 
-                CustomCalendarView(showYear: showYear, showMonth: showMonth)
+                CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
                     
                 NavigationLink(destination: ResultView(selectedDate: selectedDate), isActive: $isNavLinkActive) {
                     EmptyView()
@@ -70,6 +70,14 @@ struct ThirdView: View {
         }
     }
     
+    //CustomCalendarViewに表示年を渡す
+    func getShowYear() -> Int {
+        return showYear
+    }
     
-        
+    //CustomCalendarViewに表示月を渡す
+    func getShowMonth() -> Int {
+        return showMonth
+    }
+    
 }

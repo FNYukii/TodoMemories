@@ -9,9 +9,12 @@ import SwiftUI
 
 struct CustomCalendarView: View {
     
+    var calendarProtocol: CalendarProtocol
+    let changeFrag: Int
+    
     //カレンダーに表示する年と月
-    let showYear: Int
-    let showMonth: Int
+    @State var showYear = 0
+    @State var showMonth = 0
     
     let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     @State var showDays: [Int] = []
@@ -47,11 +50,13 @@ struct CustomCalendarView: View {
                 .font(.subheadline)
             }
             .onAppear {
+                showYear = calendarProtocol.getShowYear()
+                showMonth = calendarProtocol.getShowMonth()
                 showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
-                print("\(showYear) / \(showMonth)")
             }
-            .onChange(of: showMonth, perform: { _ in
-                print("\(showYear) / \(showMonth)")
+            .onChange(of: changeFrag, perform: { _ in
+                showYear = calendarProtocol.getShowYear()
+                showMonth = calendarProtocol.getShowMonth()
                 showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
             })
             
