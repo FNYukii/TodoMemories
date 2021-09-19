@@ -52,24 +52,48 @@ struct CustomCalendarView: View {
                     
                     if showDays[index] != 0 {
                         VStack {
-                            //日付の数字を表示
-                            if showDays[index] == today() && showYear == currentYear && showMonth == currentMonth {
-                                Button("\(showDays[index])"){
-                                    calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                            
+                            //表示する日付が今日
+                            if isToday(showDay: showDays[index]) {
+                                //Todo達成済み
+                                if achieveCounts[showDays[index] - 1] != 0 {
+                                    Button(action: {
+                                        calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                                    }){
+                                        Text("\(showDays[index])")
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.blue)
+                                    }
                                 }
-                                .foregroundColor(.blue)
-                            } else {
-                                Button("\(showDays[index])"){
-                                    calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                                //Todo未達成
+                                else {
+                                    Button(action: {
+                                        calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                                    }){
+                                        Text("\(showDays[index])")
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.primary)
+                                    }
                                 }
-                                .foregroundColor(.primary)
                             }
-                            //その日にTodoを完了しているなら、点を表示
-                            if achieveCounts[showDays[index] - 1] != 0 {
-                                Text("・")
-                                    .fontWeight(.black)
+                            //表示する日付が今日でない
+                            else {
+                                //Todo達成済み
+                                if achieveCounts[showDays[index] - 1] != 0 {
+                                    Button("\(showDays[index])") {
+                                        calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                                    }
                                     .foregroundColor(.blue)
+                                }
+                                //Todo未達成
+                                else {
+                                    Button("\(showDays[index])") {
+                                        calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                                    }
+                                    .foregroundColor(.primary)
+                                }
                             }
+                            
                         }
                         .font(.subheadline)
                         .frame(height: 50, alignment: .top)
@@ -171,6 +195,14 @@ struct CustomCalendarView: View {
         
         print(achieveCounts)
         return achieveCounts
+    }
+    
+    func isToday(showDay: Int) -> Bool {
+        if showDay == today() && showYear == currentYear && showMonth == currentMonth {
+            return true
+        } else {
+            return false
+        }
     }
     
 }
