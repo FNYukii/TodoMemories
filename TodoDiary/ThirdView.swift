@@ -25,7 +25,7 @@ struct ThirdView: View {
             
             VStack {
                 
-                Text("\(showYear)年 \(showMonth)日")
+                Text("\(showYear)年 \(showMonth)月")
                     .font(.title3)
                 
                 LineChart()
@@ -41,13 +41,35 @@ struct ThirdView: View {
             .navigationBarTitle("達成グラフ")
             .navigationBarItems(
                 leading: Button("前の月"){
-                    //
+                    prevMonth()
                 },
                 trailing: Button("次の月"){
-                    //
+                    nextMonth()
                 }
             )
         }
     }
+    
+    //showYearとshowMonthを1つ前にずらす
+    func prevMonth() {
+        if showMonth == 1 {
+            showMonth = 12
+            showYear -= 1
+        } else {
+            showMonth -= 1
+        }
+    }
+    
+    //showYearとshowMonthを1つ次にずらす
+    func nextMonth() {
+        if showMonth == 12 {
+            showMonth = 1
+            showYear += 1
+        } else {
+            showMonth += 1
+        }
+    }
+    
+    
         
 }
