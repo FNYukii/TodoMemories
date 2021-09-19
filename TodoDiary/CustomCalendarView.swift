@@ -9,6 +9,10 @@ import SwiftUI
 
 struct CustomCalendarView: View {
     
+    //カレンダーに表示する年と月
+    let showYear: Int
+    let showMonth: Int
+    
     let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     @State var showDays: [Int] = [0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     
