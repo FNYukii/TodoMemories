@@ -26,17 +26,12 @@ struct EditView: View {
     var body: some View {
         NavigationView {
             
-            //Todo編集エリア
             Form {
+                //Todo内容入力エリア
                 TextField("Todoを入力", text: $content)
                     .onChange(of: content, perform: { value in
                         textCheck()
                     })
-                if isAchieved {
-                    Section {
-                        DatePicker("完了日時", selection: $achievedDate)
-                    }
-                }
                 Section {
                     //固定切り替えボタン
                     if !isAchieved {
@@ -57,6 +52,12 @@ struct EditView: View {
                             }
                         }
                         .disabled(isSaveDisabled)
+                    }
+                    //完了日時
+                    if isAchieved {
+                        Section {
+                            DatePicker("完了日時", selection: $achievedDate)
+                        }
                     }
                     //完了切り替えボタン
                     Button(action: {
@@ -80,8 +81,10 @@ struct EditView: View {
                         }
                     }
                     .disabled(isSaveDisabled)
-                    //削除ボタン
-                    if id != 0 {
+                }
+                //削除ボタン
+                if id != 0 {
+                    Section {
                         Button(action: {
                             isShowAlert.toggle()
                         }){
