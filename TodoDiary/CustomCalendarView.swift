@@ -43,11 +43,15 @@ struct CustomCalendarView: View {
                         Text("")
                             .foregroundColor(.clear)
                     } else if showDays[index] == today() && showYear == currentYear && showMonth == currentMonth {
-                        Text("\(showDays[index])")
-                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        Button("\(showDays[index])"){
+                            calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                        }
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     } else {
-                        Text("\(showDays[index])")
-                            .fontWeight(.light)
+                        Button("\(showDays[index])"){
+                            calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                        }
+                        .foregroundColor(.primary)
                     }
                 }
                 .frame(height: 50, alignment: .center)

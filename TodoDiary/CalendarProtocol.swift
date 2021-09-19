@@ -10,4 +10,5 @@ import Foundation
 protocol CalendarProtocol {
     func getShowYear() -> Int
     func getShowMonth() -> Int
+    func jumpToResultView(year: Int, month: Int, day: Int)
 }
