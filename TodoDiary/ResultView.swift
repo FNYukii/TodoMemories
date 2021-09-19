@@ -35,7 +35,7 @@ struct ResultView: View, MyProtocol {
             }
             
             if todos.count == 0 {
-                Text("この日に完了したTodoはありません")
+                Text("この日に達成したTodoはありません")
                     .foregroundColor(.secondary)
             }
             

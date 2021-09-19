@@ -13,7 +13,7 @@ struct SecondView: View, MyProtocol {
     @State var isShowSheet = false
     @State var selectedTodoId = 0
     
-    //Todoを完了した年月日の配列
+    //Todoを達成した年月日の配列
     @State var achievedYmds: [Int] = []
     init() {
         _achievedYmds = State(initialValue: getAchievedYmds())
@@ -43,11 +43,11 @@ struct SecondView: View, MyProtocol {
                 EditView(myProtocol: self)
             }
             
-            .navigationBarTitle("完了済み")
+            .navigationBarTitle("達成済み")
         }
     }
     
-    //Todo完了年月日の配列を生成する
+    //Todo達成年月日の配列を生成する
     func getAchievedYmds() -> [Int] {
         var ymds: [Int] = []
         let achievedTodos = Todo.achievedTodos()
@@ -59,7 +59,7 @@ struct SecondView: View, MyProtocol {
         return ymds
     }
     
-    //特定の年月日に完了したTodoを取得する
+    //特定の年月日に達成したTodoを取得する
     func getDailyTodos(achievedYmd: Int) -> Results<Todo> {
         let realm = try! Realm()
         return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: false)

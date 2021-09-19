@@ -18,12 +18,12 @@ struct ContentView: View {
             SecondView()
                 .tabItem {
                     Image(systemName: "checkmark")
-                    Text("完了済み")
+                    Text("達成済み")
                 }
             ThirdView()
                 .tabItem {
                     Image(systemName: "calendar")
-                    Text("完了グラフ")
+                    Text("達成グラフ")
                 }
         }
     }

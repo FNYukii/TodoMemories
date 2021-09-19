@@ -24,19 +24,19 @@ class Todo: Object, Identifiable {
         return realm.objects(Todo.self)
     }
     
-    //固定済み未完了Todo
+    //固定済み未達成Todo
     static func pinnedTodos() -> Results<Todo> {
         let realm = try! Realm()
         return realm.objects(Todo.self).filter("isPinned == true && isAchieved == false").sorted(byKeyPath: "id", ascending: false)
     }
     
-    //未固定未完了Todo
+    //未固定未達成Todo
     static func unpinnedTodos() -> Results<Todo> {
         let realm = try! Realm()
         return realm.objects(Todo.self).filter("isPinned == false && isAchieved == false").sorted(byKeyPath: "id", ascending: false)
     }
     
-    //完了済みTodo
+    //達成済みTodo
     static func achievedTodos() -> Results<Todo> {
         let realm = try! Realm()
         return realm.objects(Todo.self).filter("isAchieved == true").sorted(byKeyPath: "achievedDate", ascending: false)

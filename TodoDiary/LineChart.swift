@@ -24,7 +24,7 @@ struct LineChart : UIViewRepresentable {
         let date = calendar.date(from: components)!
         let dayCount = calendar.component(.day, from: date)
         
-        //当月のTodo日別完了数の配列を生成
+        //当月のTodo日別達成数の配列を生成
         var achieveCounts: [Int] = []
         for day in (0..<dayCount) {
             let currentYear = calendar.component(.year, from: currentDate)

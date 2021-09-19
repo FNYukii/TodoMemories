@@ -31,7 +31,7 @@ struct ThirdView: View {
                 }
             }
             
-            .navigationBarTitle("完了グラフ")
+            .navigationBarTitle("達成グラフ")
         }
     }
 }

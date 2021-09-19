@@ -53,13 +53,13 @@ struct EditView: View {
                         }
                         .disabled(isSaveDisabled)
                     }
-                    //完了日時
+                    //達成日時
                     if isAchieved {
                         Section {
-                            DatePicker("完了日時", selection: $achievedDate)
+                            DatePicker("達成日時", selection: $achievedDate)
                         }
                     }
-                    //完了切り替えボタン
+                    //達成切り替えボタン
                     Button(action: {
                         isAchieved.toggle()
                         if isAchieved {
@@ -73,10 +73,10 @@ struct EditView: View {
                         HStack {
                             if isAchieved {
                                 Image(systemName: "xmark")
-                                Text("未完了に戻す")
+                                Text("未達成に戻す")
                             } else {
                                 Image(systemName: "checkmark")
-                                Text("完了済みに変更")
+                                Text("達成済みに変更")
                             }
                         }
                     }
