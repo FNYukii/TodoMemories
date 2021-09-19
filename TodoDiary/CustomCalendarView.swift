@@ -19,6 +19,7 @@ struct CustomCalendarView: View {
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
                 ForEach((0..<weekDays.count), id: \.self) { index in
                     Text("\(weekDays[index])")
+                        .font(.subheadline)
                         .frame(alignment: .center)
                         .foregroundColor(.secondary)
                 }
