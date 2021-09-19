@@ -24,7 +24,7 @@ struct SecondView: View, MyProtocol {
             
             Form {
                 ForEach(0..<achievedYmds.count) { index in
-                    Section(header: Text("\(toYmdText(inputDate: toDate(inputYmd: achievedYmds[index]))) \(toWeekdayText(inputDate: toDate(inputYmd: achievedYmds[index])))")) {
+                    Section(header: Text("\(toYmdwText(inputDate: toDate(inputYmd: achievedYmds[index])))")) {
                         ForEach(getDailyTodos(achievedYmd: achievedYmds[index]).freeze()){ todo in
                             Button("\(todo.content)"){
                                 selectedTodoId = todo.id
@@ -74,23 +74,23 @@ struct SecondView: View, MyProtocol {
         return dateComponent.date!
     }
     
-    //Date型変数を年月日のみの文字列に変換する
-    func toYmdText(inputDate: Date) -> String {
+    //Date型変数を年月日と曜日のテキストに変換する
+    func toYmdwText(inputDate: Date) -> String {
+        //年月日のテキストを生成
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ja_JP")
         dateFormatter.dateStyle = .medium
         dateFormatter.dateFormat = "yyyy年 M月 d日"
-        return dateFormatter.string(from: inputDate)
-    }
-    
-    //Date型変数を曜日のみの文字列に変換する
-    func toWeekdayText(inputDate: Date) -> String {
+        let ymdText = dateFormatter.string(from: inputDate)
+        //曜日のテキストを生成
         let calendar = Calendar(identifier: .gregorian)
         let weekdayNumber = calendar.component(.weekday, from: inputDate)
         let weekdaySymbolIndex: Int = weekdayNumber - 1
         let formatter: DateFormatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "ja") as Locale
-        return formatter.shortWeekdaySymbols[weekdaySymbolIndex]
+        let weekDayText = formatter.shortWeekdaySymbols[weekdaySymbolIndex]
+        //２つのテキストを文字列連結する
+        return ymdText + " " + weekDayText
     }
     
     func reloadRecords() {
