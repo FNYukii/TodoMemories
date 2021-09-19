@@ -28,7 +28,7 @@ struct ThirdView: View, CalendarProtocol {
                 Text("\(showYear)年 \(showMonth)月")
                     .font(.title3)
                 
-                LineChart()
+                LineChart(showYear: showYear, showMonth: self.$showMonth)
                     .frame(height: 250)
                 
                 CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
