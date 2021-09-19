@@ -48,7 +48,12 @@ struct CustomCalendarView: View {
             }
             .onAppear {
                 showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
+                print("\(showYear) / \(showMonth)")
             }
+            .onChange(of: showMonth, perform: { _ in
+                print("\(showYear) / \(showMonth)")
+                showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
+            })
             
         }
     }
