@@ -19,8 +19,6 @@ struct ThirdView: View {
                 
                 Text(ymText())
                     .font(.title3)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading)
                 
                 LineChart()
                     .frame(height: 250)

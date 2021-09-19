@@ -12,6 +12,7 @@ struct CustomCalendarView: View {
     let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     @State var showDays: [Int] = [0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     
+    
     var body: some View {
         VStack {
             
@@ -29,20 +30,29 @@ struct CustomCalendarView: View {
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
                 ForEach((0..<showDays.count), id: \.self) { index in
                     if showDays[index] == 0 {
-                        Text("\(showDays[index])")
-                            .frame(height: 50, alignment: .center)
+                        Text("")
                             .foregroundColor(.clear)
+                    } else if showDays[index] == today() {
+                        Text("\(showDays[index])")
+                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     } else {
                         Text("\(showDays[index])")
-                            .frame(height: 50, alignment: .center)
+                            .fontWeight(.light)
                     }
                 }
+                .frame(height: 50, alignment: .center)
+                .font(.subheadline)
             }
             .onAppear {
                 showDays = daysOfMonth()
             }
             
         }
+    }
+    
+    func today() -> Int {
+        let calendar = Calendar(identifier: .gregorian)
+        return calendar.component(.day, from: Date())
     }
     
     //当月の一日の曜日
