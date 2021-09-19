@@ -68,10 +68,10 @@ struct CustomCalendarView: View {
         return calendar.component(.day, from: Date())
     }
     
-    //当月の日の配列 例: [0, 0, 0, 1, 2, 3, ...]
+    //表示月の日の配列 例: [0, 0, 0, 1, 2, 3, ...]
     func daysOfMonth(inputYear: Int, inputMonth: Int) -> [Int] {
         
-        //当月の日数を取得
+        //表示月の日数を取得
         let calendar = Calendar(identifier: .gregorian)
         var components = DateComponents()
         components.year = inputYear
@@ -80,14 +80,14 @@ struct CustomCalendarView: View {
         let date = calendar.date(from: components)!
         let dayCount = calendar.component(.day, from: date)
         
-        //当月一日の曜日を取得 Sat: 1, Sun: 2, Mon: 3... Fri: 7
+        //表示月一日の曜日を取得 Sat: 1, Sun: 2, Mon: 3... Fri: 7
         let firstDate = calendar.date(from: DateComponents(year: inputYear, month: inputMonth, day: 1, hour: 21, minute: 0, second: 0))!
         let firstWeekday = calendar.component(.weekday, from: firstDate)
 
-        //当月の全ての日の配列を生成
+        //表示月の全ての日の配列を生成
         var days: [Int] = []
         
-        //当月一日の曜日を元に、当月開始日まで0で埋めていく
+        //表示月一日の曜日を元に、当月開始日まで0で埋めていく
         switch firstWeekday {
         case 2:
             days.append(0)
@@ -105,7 +105,7 @@ struct CustomCalendarView: View {
             break
         }
         
-        //残りの日を当月日数分埋めていく
+        //残りの日を表示月日数分埋めていく
         for index in (1...dayCount) {
             days.append(index)
         }
