@@ -12,7 +12,7 @@ struct ContentView: View {
         TabView {
             FirstView()
                 .tabItem {
-                    Image(systemName: "list.bullet.rectangle")
+                    Image(systemName: "list.bullet")
                     Text("Todo")
                 }
             SecondView()
