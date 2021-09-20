@@ -57,6 +57,7 @@ struct EditView: View {
                     if isAchieved {
                         Section {
                             DatePicker("達成日時", selection: $achievedDate)
+                                .environment(\.locale, Locale(identifier: "ja_JP"))
                         }
                     }
                     //達成切り替えボタン
