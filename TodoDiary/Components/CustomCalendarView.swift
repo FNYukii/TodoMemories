@@ -96,7 +96,7 @@ struct CustomCalendarView: View {
                             
                         }
                         .font(.subheadline)
-                        .frame(height: 45, alignment: .center)
+                        .frame(height: 45, alignment: .top)
                     }
 
                 }
