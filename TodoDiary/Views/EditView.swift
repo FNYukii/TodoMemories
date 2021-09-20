@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import WidgetKit
 
 struct EditView: View {
     
@@ -38,6 +39,7 @@ struct EditView: View {
                         Button(action: {
                             isPinned.toggle()
                             saveRecord()
+                            WidgetCenter.shared.reloadAllTimelines()
                             editProtocol.reloadRecords()
                             presentation.wrappedValue.dismiss()
                         }){
@@ -68,6 +70,7 @@ struct EditView: View {
                             achievedDate = Date()
                         }
                         saveRecord()
+                        WidgetCenter.shared.reloadAllTimelines()
                         editProtocol.reloadRecords()
                         presentation.wrappedValue.dismiss()
                     }){
@@ -109,6 +112,7 @@ struct EditView: View {
                     primaryButton: .cancel(Text("キャンセル")),
                     secondaryButton: .destructive(Text("削除"), action: {
                         deleteRecord()
+                        WidgetCenter.shared.reloadAllTimelines()
                         editProtocol.reloadRecords()
                         presentation.wrappedValue.dismiss()
                     })
@@ -126,6 +130,7 @@ struct EditView: View {
                 },
                 trailing: Button("完了"){
                     saveRecord()
+                    WidgetCenter.shared.reloadAllTimelines()
                     editProtocol.reloadRecords()
                     presentation.wrappedValue.dismiss()
                 }
