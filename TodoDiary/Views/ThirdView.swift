@@ -31,6 +31,7 @@ struct ThirdView: View, CalendarProtocol {
             VStack {
                 
                 LineChart(showYear: showYear, showMonth: showMonth)
+                    .padding(.leading, 3)
                 
                 CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
                     
