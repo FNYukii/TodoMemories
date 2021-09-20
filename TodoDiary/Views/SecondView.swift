@@ -72,7 +72,7 @@ struct SecondView: View, EditProtocol {
     
     //特定の年月日に達成したTodoを取得する
     func getDailyTodos(achievedYmd: Int) -> Results<Todo> {
-        let realm = try! Realm()
+        let realm = Todo.customRealm()
         return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: false)
     }
     

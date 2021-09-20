@@ -137,7 +137,7 @@ struct EditView: View {
     func loadTodo() {
         id = editProtocol.getSelectedDiaryId()
         if id != 0 {
-            let realm = try! Realm()
+            let realm = Todo.customRealm()
             let todo = realm.objects(Todo.self).filter("id == \(id)").first!
             content = todo.content
             isPinned = todo.isPinned
@@ -160,7 +160,7 @@ struct EditView: View {
         //レコードを追加する場合
         if id == 0 {
             //新規レコード用のidを生成
-            let realm = try! Realm()
+            let realm = Todo.customRealm()
             let maxId = realm.objects(Todo.self).sorted(byKeyPath: "id").last?.id ?? 0
             let newId = maxId + 1
             //新規レコード生成
@@ -178,7 +178,7 @@ struct EditView: View {
         }
         //レコードを更新する場合
         if id != 0 {
-            let realm = try! Realm()
+            let realm = Todo.customRealm()
             let todo = realm.objects(Todo.self).filter("id == \(id)").first!
             try! realm.write {
                 todo.content = content
@@ -191,7 +191,7 @@ struct EditView: View {
     }
     
     func deleteRecord() {
-        let realm = try! Realm()
+        let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
         try! realm.write {
             realm.delete(todo)

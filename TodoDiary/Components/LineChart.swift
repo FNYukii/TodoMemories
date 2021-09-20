@@ -47,7 +47,7 @@ struct LineChart : UIViewRepresentable {
         var achieveCounts: [Int] = []
         for day in (0..<dayCount) {
             let achievedYmd = showYear * 10000 + showMonth * 100 + day
-            let realm = try! Realm()
+            let realm = Todo.customRealm()
             let achievedTodos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd = \(achievedYmd)")
             achieveCounts.append(achievedTodos.count)
         }

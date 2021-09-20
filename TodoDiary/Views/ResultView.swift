@@ -58,7 +58,7 @@ struct ResultView: View, EditProtocol {
     
     //検索結果のTodosを取得
     func loadTodos() {
-        let realm = try! Realm()
+        let realm = Todo.customRealm()
         let achievedYmd = toYmd(inputDate: selectedDate)
         todos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: false)
     }
