@@ -9,9 +9,11 @@ import SwiftUI
 
 struct ThirdView: View, CalendarProtocol {
     
+    //NavigationLink
     @State var isNavLinkActive = false
     @State var selectedDate: Date = Date()
     
+    //チャートとカレンダーが表示する年月
     @State var showYear = 0
     @State var showMonth = 0
     init() {
@@ -20,6 +22,9 @@ struct ThirdView: View, CalendarProtocol {
         _showMonth = State(initialValue: calendar.component(.month, from: Date()))
     }
     
+    //スワイプ座標
+    @State private var labelPosX:CGFloat = 0
+
     var body: some View {
         NavigationView {
             
@@ -36,6 +41,16 @@ struct ThirdView: View, CalendarProtocol {
                     EmptyView()
                 }
             }
+            .gesture(DragGesture()
+                .onEnded({ value in
+                    if (abs(value.translation.width) < 10) { return }
+                    if (value.translation.width < 0 ) {
+                        nextMonth()
+                    } else if (value.translation.width > 0 ) {
+                        prevMonth()
+                    }
+                })
+            )
             
             .navigationBarTitle("達成グラフ")
             .navigationBarItems(
