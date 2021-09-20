@@ -30,9 +30,6 @@ struct ThirdView: View, CalendarProtocol {
             
             VStack {
                 
-                Text("\(showYear)年 \(showMonth)月")
-                    .font(.title3)
-                
                 LineChart(showYear: showYear, showMonth: showMonth)
                 
                 CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
@@ -52,15 +49,8 @@ struct ThirdView: View, CalendarProtocol {
                 })
             )
             
-            .navigationBarTitle("達成グラフ")
-            .navigationBarItems(
-                leading: Button("前の月"){
-                    prevMonth()
-                },
-                trailing: Button("次の月"){
-                    nextMonth()
-                }
-            )
+            .navigationBarTitle("\(showYear)年 \(showMonth)月")
+
         }
     }
     
