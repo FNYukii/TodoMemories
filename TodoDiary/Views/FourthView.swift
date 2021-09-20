@@ -14,30 +14,31 @@ struct FourthView: View {
     @State private var currentPage = 0
     
     var body: some View {
-        VStack {
-            PageView([
-                AnyView(Page1()),
-                AnyView(Page2()),
-                AnyView(Page3())
-            ], currentPage: $currentPage)
-        }
+        PageView([
+            AnyView(Page1(offset: 3)),
+            AnyView(Page2(offset: 5)),
+            AnyView(Page3(offset: 7))
+        ], currentPage: $currentPage)
     }
 }
 
 struct Page1: View {
+    let offset: Int
     var body: some View {
-        Text("Page1")
+        Text("Page1 \(offset)")
     }
 }
 
 struct Page2: View {
+    let offset: Int
     var body: some View {
-        Text("Page2")
+        Text("Page2 \(offset)")
     }
 }
 
 struct Page3: View {
+    let offset: Int
     var body: some View {
-        Text("Page3")
+        Text("Page3 \(offset)")
     }
 }
