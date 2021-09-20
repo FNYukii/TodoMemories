@@ -67,7 +67,7 @@ struct FirstWidgetEntryView : View {
                 }
                 
                 ForEach(0..<entry.pinnedTodoStrs.count) { index in
-                    Text("\(entry.pinnedTodoStrs[index])")
+                    Text("• \(entry.pinnedTodoStrs[index])")
                         .font(.subheadline)
                 }
                 
@@ -83,7 +83,7 @@ struct FirstWidgetEntryView : View {
                 }
                 
                 ForEach(0..<entry.unpinnedTodoStrs.count) { index in
-                    Text("\(entry.unpinnedTodoStrs[index])")
+                    Text("• \(entry.unpinnedTodoStrs[index])")
                         .font(.subheadline)
                 }
                             
