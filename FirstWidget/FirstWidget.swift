@@ -22,7 +22,17 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         
         //全てのTodoを取得
-        let todoStrs = ["Blueberry", "Yucca"]
+        var todoStrs: [String] = []
+        let todos = Todo.unachievedTodos()
+        print(todos.count)
+        for todo in todos {
+            todoStrs.append(todo.content)
+        }
+        
+        
+        
+        
+        
         
         //Entryにデータをセット
         var entries: [SimpleEntry] = []

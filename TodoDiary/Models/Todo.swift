@@ -24,6 +24,12 @@ class Todo: Object, Identifiable {
         return realm.objects(Todo.self)
     }
     
+    //未達成Todo
+    static func unachievedTodos() -> Results<Todo> {
+        let realm = try! Realm()
+        return realm.objects(Todo.self).filter("isAchieved == false").sorted(byKeyPath: "id", ascending: false)
+    }
+    
     //固定済み未達成Todo
     static func pinnedTodos() -> Results<Todo> {
         let realm = try! Realm()

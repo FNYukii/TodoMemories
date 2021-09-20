@@ -35,6 +35,9 @@
 		54DE529226F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 54DE528E26F8A1DF0053F126 /* FirstWidget.intentdefinition */; };
 		54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 54DE528E26F8A1DF0053F126 /* FirstWidget.intentdefinition */; };
 		54DE529626F8A1E00053F126 /* FirstWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		54DE529C26F8B6E10053F126 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708026F2CBCF00DB5688 /* Todo.swift */; };
+		54DE529E26F8B7310053F126 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 54DE529D26F8B7310053F126 /* Realm */; };
+		54DE52A026F8B7340053F126 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54DE529F26F8B7340053F126 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +110,8 @@
 		54DE528E26F8A1DF0053F126 /* FirstWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = FirstWidget.intentdefinition; sourceTree = "<group>"; };
 		54DE528F26F8A1E00053F126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54DE529126F8A1E00053F126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54DE52A126F8B7D50053F126 /* TodoDiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodoDiary.entitlements; sourceTree = "<group>"; };
+		54DE52A226F8B80C0053F126 /* FirstWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FirstWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +143,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54DE52A026F8B7340053F126 /* RealmSwift in Frameworks */,
+				54DE529E26F8B7310053F126 /* Realm in Frameworks */,
 				54DE528A26F8A1DF0053F126 /* SwiftUI.framework in Frameworks */,
 				54DE528826F8A1DF0053F126 /* WidgetKit.framework in Frameworks */,
 			);
@@ -149,6 +156,7 @@
 		54B6703726F1C2DB00DB5688 = {
 			isa = PBXGroup;
 			children = (
+				54DE52A226F8B80C0053F126 /* FirstWidgetExtension.entitlements */,
 				54B6704226F1C2DB00DB5688 /* TodoDiary */,
 				54B6705926F1C2DD00DB5688 /* TodoDiaryTests */,
 				54B6706426F1C2DD00DB5688 /* TodoDiaryUITests */,
@@ -172,6 +180,7 @@
 		54B6704226F1C2DB00DB5688 /* TodoDiary */ = {
 			isa = PBXGroup;
 			children = (
+				54DE52A126F8B7D50053F126 /* TodoDiary.entitlements */,
 				54B6704326F1C2DB00DB5688 /* AppDelegate.swift */,
 				54B6704526F1C2DB00DB5688 /* SceneDelegate.swift */,
 				54DE523D26F7946C0053F126 /* Models */,
@@ -347,6 +356,10 @@
 			dependencies = (
 			);
 			name = FirstWidgetExtension;
+			packageProductDependencies = (
+				54DE529D26F8B7310053F126 /* Realm */,
+				54DE529F26F8B7340053F126 /* RealmSwift */,
+			);
 			productName = FirstWidgetExtension;
 			productReference = 54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -479,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54DE528D26F8A1DF0053F126 /* FirstWidget.swift in Sources */,
+				54DE529C26F8B6E10053F126 /* Todo.swift in Sources */,
 				54DE529226F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +651,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TodoDiary/TodoDiary.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TodoDiary/Preview Content\"";
 				DEVELOPMENT_TEAM = RY7754Y275;
@@ -659,6 +674,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TodoDiary/TodoDiary.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TodoDiary/Preview Content\"";
 				DEVELOPMENT_TEAM = RY7754Y275;
@@ -764,6 +780,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FirstWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RY7754Y275;
 				INFOPLIST_FILE = FirstWidget/Info.plist;
@@ -785,6 +802,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FirstWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RY7754Y275;
 				INFOPLIST_FILE = FirstWidget/Info.plist;
@@ -885,6 +903,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54B6709826F644DE00DB5688 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
+		};
+		54DE529D26F8B7310053F126 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		54DE529F26F8B7340053F126 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
