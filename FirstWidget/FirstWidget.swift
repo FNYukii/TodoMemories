@@ -52,7 +52,12 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct FirstWidgetEntryView : View {
+    
+    //Todoのデータ
     var entry: Provider.Entry
+    
+    //Todoテキストの行の高さ
+    let lineHeight: CGFloat = 20
 
     var body: some View {
         
@@ -68,6 +73,7 @@ struct FirstWidgetEntryView : View {
                 ForEach(0..<entry.pinnedTodoStrs.count) { index in
                     Text("• \(entry.pinnedTodoStrs[index])")
                         .font(.subheadline)
+                        .frame(height: lineHeight)
                 }
                 //スペース
                 if entry.pinnedTodoStrs.count != 0 && entry.unpinnedTodoStrs.count != 0 {
@@ -84,6 +90,7 @@ struct FirstWidgetEntryView : View {
                 ForEach(0..<entry.unpinnedTodoStrs.count) { index in
                     Text("• \(entry.unpinnedTodoStrs[index])")
                         .font(.subheadline)
+                        .frame(height: lineHeight)
                 }
                 Spacer()
             }
