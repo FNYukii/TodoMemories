@@ -57,40 +57,37 @@ struct FirstWidgetEntryView : View {
     var body: some View {
         
         HStack {
-            
             VStack(alignment: .leading) {
-                
+                //固定済みラベル
                 if entry.pinnedTodoStrs.count != 0 {
                     Text("固定済み")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-                
+                //固定済みTodo一覧
                 ForEach(0..<entry.pinnedTodoStrs.count) { index in
                     Text("• \(entry.pinnedTodoStrs[index])")
                         .font(.subheadline)
                 }
-                
+                //スペース
                 if entry.pinnedTodoStrs.count != 0 && entry.unpinnedTodoStrs.count != 0 {
                     Text("")
                         .frame(height: 5)
                 }
-                
+                //その他ラベル
                 if entry.pinnedTodoStrs.count != 0 && entry.unpinnedTodoStrs.count != 0 {
                     Text("その他")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-                
+                //未固定Todo一覧
                 ForEach(0..<entry.unpinnedTodoStrs.count) { index in
                     Text("• \(entry.unpinnedTodoStrs[index])")
                         .font(.subheadline)
                 }
-                            
+                Spacer()
             }
-            
             Spacer()
-            
         }
         .padding(7)
         
