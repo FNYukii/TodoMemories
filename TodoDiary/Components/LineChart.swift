@@ -24,10 +24,11 @@ struct LineChart : UIViewRepresentable {
         lineChartView.rightAxis.enabled = false //右側のY軸目盛り非表示
         lineChartView.leftAxis.axisMinimum = 0.0 //左側のY軸目盛り最小値
         lineChartView.leftAxis.granularity = 1.0 //左側のY軸目盛りの区切り地
-        lineChartView.doubleTapToZoomEnabled = false //ダブルタップでズームを無効
+        lineChartView.doubleTapToZoomEnabled = false //ダブルタップによるズームを無効
         lineChartView.scaleXEnabled = false //X軸ピンチアウトを無効
         lineChartView.scaleYEnabled = false //Y軸ピンチアウトを無効
-        lineChartView.highlightPerDragEnabled = false //ドラッグでハイライト線表示を無効
+        lineChartView.highlightPerDragEnabled = false //ドラッグによるハイライト線表示を無効
+        lineChartView.highlightPerTapEnabled = false //タップによるハイライト線表示を無効
         
         return lineChartView
     }
