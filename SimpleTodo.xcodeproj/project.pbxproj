@@ -28,6 +28,13 @@
 		54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709B26F644EC00DB5688 /* LineChart.swift */; };
 		54B6709E26F70EDE00DB5688 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */; };
 		54DE523A26F74D130053F126 /* CalendarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE523926F74D130053F126 /* CalendarProtocol.swift */; };
+		54DE528826F8A1DF0053F126 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528726F8A1DF0053F126 /* WidgetKit.framework */; };
+		54DE528A26F8A1DF0053F126 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528926F8A1DF0053F126 /* SwiftUI.framework */; };
+		54DE528D26F8A1DF0053F126 /* FirstWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE528C26F8A1DF0053F126 /* FirstWidget.swift */; };
+		54DE529026F8A1E00053F126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54DE528F26F8A1E00053F126 /* Assets.xcassets */; };
+		54DE529226F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 54DE528E26F8A1DF0053F126 /* FirstWidget.intentdefinition */; };
+		54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 54DE528E26F8A1DF0053F126 /* FirstWidget.intentdefinition */; };
+		54DE529626F8A1E00053F126 /* FirstWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +52,28 @@
 			remoteGlobalIDString = 54B6703F26F1C2DB00DB5688;
 			remoteInfo = TodoDiary;
 		};
+		54DE529426F8A1E00053F126 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54B6703826F1C2DB00DB5688 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54DE528426F8A1DF0053F126;
+			remoteInfo = FirstWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		54DE529A26F8A1E00053F126 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				54DE529626F8A1E00053F126 /* FirstWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		54B6704026F1C2DB00DB5688 /* TodoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +100,13 @@
 		54B6709B26F644EC00DB5688 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		54DE523926F74D130053F126 /* CalendarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProtocol.swift; sourceTree = "<group>"; };
+		54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FirstWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		54DE528726F8A1DF0053F126 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		54DE528926F8A1DF0053F126 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		54DE528C26F8A1DF0053F126 /* FirstWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstWidget.swift; sourceTree = "<group>"; };
+		54DE528E26F8A1DF0053F126 /* FirstWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = FirstWidget.intentdefinition; sourceTree = "<group>"; };
+		54DE528F26F8A1E00053F126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		54DE529126F8A1E00053F126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +134,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		54DE528226F8A1DF0053F126 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54DE528A26F8A1DF0053F126 /* SwiftUI.framework in Frameworks */,
+				54DE528826F8A1DF0053F126 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -108,6 +152,8 @@
 				54B6704226F1C2DB00DB5688 /* TodoDiary */,
 				54B6705926F1C2DD00DB5688 /* TodoDiaryTests */,
 				54B6706426F1C2DD00DB5688 /* TodoDiaryUITests */,
+				54DE528B26F8A1DF0053F126 /* FirstWidget */,
+				54DE528626F8A1DF0053F126 /* Frameworks */,
 				54B6704126F1C2DB00DB5688 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,6 +164,7 @@
 				54B6704026F1C2DB00DB5688 /* TodoDiary.app */,
 				54B6705626F1C2DD00DB5688 /* TodoDiaryTests.xctest */,
 				54B6706126F1C2DD00DB5688 /* TodoDiaryUITests.xctest */,
+				54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -204,6 +251,26 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		54DE528626F8A1DF0053F126 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				54DE528726F8A1DF0053F126 /* WidgetKit.framework */,
+				54DE528926F8A1DF0053F126 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		54DE528B26F8A1DF0053F126 /* FirstWidget */ = {
+			isa = PBXGroup;
+			children = (
+				54DE528C26F8A1DF0053F126 /* FirstWidget.swift */,
+				54DE528E26F8A1DF0053F126 /* FirstWidget.intentdefinition */,
+				54DE528F26F8A1E00053F126 /* Assets.xcassets */,
+				54DE529126F8A1E00053F126 /* Info.plist */,
+			);
+			path = FirstWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,10 +281,12 @@
 				54B6703C26F1C2DB00DB5688 /* Sources */,
 				54B6703D26F1C2DB00DB5688 /* Frameworks */,
 				54B6703E26F1C2DB00DB5688 /* Resources */,
+				54DE529A26F8A1E00053F126 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				54DE529526F8A1E00053F126 /* PBXTargetDependency */,
 			);
 			name = TodoDiary;
 			packageProductDependencies = (
@@ -265,6 +334,23 @@
 			productReference = 54B6706126F1C2DD00DB5688 /* TodoDiaryUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		54DE528426F8A1DF0053F126 /* FirstWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54DE529726F8A1E00053F126 /* Build configuration list for PBXNativeTarget "FirstWidgetExtension" */;
+			buildPhases = (
+				54DE528126F8A1DF0053F126 /* Sources */,
+				54DE528226F8A1DF0053F126 /* Frameworks */,
+				54DE528326F8A1DF0053F126 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FirstWidgetExtension;
+			productName = FirstWidgetExtension;
+			productReference = 54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -284,6 +370,9 @@
 					54B6706026F1C2DD00DB5688 = {
 						CreatedOnToolsVersion = 12.5.1;
 						TestTargetID = 54B6703F26F1C2DB00DB5688;
+					};
+					54DE528426F8A1DF0053F126 = {
+						CreatedOnToolsVersion = 12.5.1;
 					};
 				};
 			};
@@ -307,6 +396,7 @@
 				54B6703F26F1C2DB00DB5688 /* TodoDiary */,
 				54B6705526F1C2DD00DB5688 /* TodoDiaryTests */,
 				54B6706026F1C2DD00DB5688 /* TodoDiaryUITests */,
+				54DE528426F8A1DF0053F126 /* FirstWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -336,6 +426,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		54DE528326F8A1DF0053F126 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54DE529026F8A1E00053F126 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -348,6 +446,7 @@
 				54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */,
 				54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */,
 				54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */,
+				54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
 				54B6704626F1C2DB00DB5688 /* SceneDelegate.swift in Sources */,
 				54DE523A26F74D130053F126 /* CalendarProtocol.swift in Sources */,
 				54B6709E26F70EDE00DB5688 /* CustomCalendarView.swift in Sources */,
@@ -375,6 +474,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		54DE528126F8A1DF0053F126 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54DE528D26F8A1DF0053F126 /* FirstWidget.swift in Sources */,
+				54DE529226F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -387,6 +495,11 @@
 			isa = PBXTargetDependency;
 			target = 54B6703F26F1C2DB00DB5688 /* TodoDiary */;
 			targetProxy = 54B6706226F1C2DD00DB5688 /* PBXContainerItemProxy */;
+		};
+		54DE529526F8A1E00053F126 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54DE528426F8A1DF0053F126 /* FirstWidgetExtension */;
+			targetProxy = 54DE529426F8A1E00053F126 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -521,6 +634,7 @@
 		54B6706B26F1C2DD00DB5688 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -542,6 +656,7 @@
 		54B6706C26F1C2DD00DB5688 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -644,6 +759,48 @@
 			};
 			name = Release;
 		};
+		54DE529826F8A1E00053F126 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY7754Y275;
+				INFOPLIST_FILE = FirstWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.y.TodoDiary.FirstWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		54DE529926F8A1E00053F126 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY7754Y275;
+				INFOPLIST_FILE = FirstWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.y.TodoDiary.FirstWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -679,6 +836,15 @@
 			buildConfigurations = (
 				54B6707126F1C2DD00DB5688 /* Debug */,
 				54B6707226F1C2DD00DB5688 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54DE529726F8A1E00053F126 /* Build configuration list for PBXNativeTarget "FirstWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54DE529826F8A1E00053F126 /* Debug */,
+				54DE529926F8A1E00053F126 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
