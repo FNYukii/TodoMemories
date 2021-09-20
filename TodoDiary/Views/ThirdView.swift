@@ -49,7 +49,7 @@ struct ThirdView: View, CalendarProtocol {
                 })
             )
             
-            .navigationBarTitle("\(showYear)年 \(showMonth)月")
+            .navigationBarTitle("\(String(showYear))年 \(showMonth)月")
 
         }
     }
