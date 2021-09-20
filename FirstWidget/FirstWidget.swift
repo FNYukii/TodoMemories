@@ -55,16 +55,40 @@ struct FirstWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-            ForEach(0..<entry.pinnedTodoStrs.count) { index in
-                Text("\(entry.pinnedTodoStrs[index])")
+        
+        HStack {
+            
+            VStack(alignment: .leading) {
+                
+                if entry.pinnedTodoStrs.count != 0 {
+                    Text("固定済み")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                
+                ForEach(0..<entry.pinnedTodoStrs.count) { index in
+                    Text("\(entry.pinnedTodoStrs[index])")
+                        .font(.subheadline)
+                }
+                
+                if entry.pinnedTodoStrs.count != 0 && entry.unpinnedTodoStrs.count != 0 {
+                    Text("その他")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                
+                ForEach(0..<entry.unpinnedTodoStrs.count) { index in
+                    Text("\(entry.unpinnedTodoStrs[index])")
+                        .font(.subheadline)
+                }
+                            
             }
-            ForEach(0..<entry.unpinnedTodoStrs.count) { index in
-                Text("\(entry.unpinnedTodoStrs[index])")
-            }
+            
             Spacer()
+            
         }
-        .font(.subheadline)
+        .padding(7)
+        
     }
 }
 
