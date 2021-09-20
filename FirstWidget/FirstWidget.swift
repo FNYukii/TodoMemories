@@ -72,6 +72,11 @@ struct FirstWidgetEntryView : View {
                 }
                 
                 if entry.pinnedTodoStrs.count != 0 && entry.unpinnedTodoStrs.count != 0 {
+                    Text("")
+                        .frame(height: 5)
+                }
+                
+                if entry.pinnedTodoStrs.count != 0 && entry.unpinnedTodoStrs.count != 0 {
                     Text("その他")
                         .font(.caption)
                         .foregroundColor(.secondary)
