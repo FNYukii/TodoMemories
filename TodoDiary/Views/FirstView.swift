@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct FirstView: View, EditProtocol {
     
@@ -66,6 +67,10 @@ struct FirstView: View, EditProtocol {
                         .foregroundColor(.secondary)
                 }
                 
+                Button("マイグレーション") {
+                    migration()
+                }
+                
             }
             
             .sheet(isPresented: $isShowSheet) {
@@ -93,6 +98,40 @@ struct FirstView: View, EditProtocol {
     
     func getSelectedDiaryId() -> Int {
         return selectedTodoId
+    }
+    
+    func migration() {
+        print("migration started")
+        
+        //古いレコードを取得
+        let realm = try! Realm()
+        let oldRecords = realm.objects(Todo.self)
+        
+        for oldrecord in oldRecords {
+            
+            //新規レコード用のidを生成
+            let customRealm = Todo.customRealm()
+            let maxId = customRealm.objects(Todo.self).sorted(byKeyPath: "id").last?.id ?? 0
+            let newId = maxId + 1
+            //新規レコード生成
+            let todo = Todo()
+            todo.id = newId
+            todo.content = oldrecord.content
+            todo.isPinned = oldrecord.isPinned
+            todo.isAchieved = oldrecord.isAchieved
+            todo.achievedDate = oldrecord.achievedDate
+            todo.achievedYmd = oldrecord.achievedYmd
+            //新規レコード追加
+            try! customRealm.write {
+                customRealm.add(todo)
+            }
+            
+        }
+        
+        
+        
+        
+        print("migration done")
     }
     
 }
