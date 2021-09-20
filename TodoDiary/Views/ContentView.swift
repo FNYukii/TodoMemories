@@ -22,7 +22,7 @@ struct ContentView: View {
                 }
             ThirdView()
                 .tabItem {
-                    Image(systemName: "calendar")
+                    Image(systemName: "chart.bar.xaxis")
                     Text("達成グラフ")
                 }
         }
