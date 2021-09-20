@@ -23,7 +23,6 @@
 		54B6707F26F2CB9B00DB5688 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6707E26F2CB9B00DB5688 /* RealmSwift */; };
 		54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708026F2CBCF00DB5688 /* Todo.swift */; };
 		54B6708326F35E0900DB5688 /* EditProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708226F35E0900DB5688 /* EditProtocol.swift */; };
-		54B6708C26F4A30D00DB5688 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6708B26F4A30D00DB5688 /* FSCalendar */; };
 		54B6708E26F4CE9200DB5688 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708D26F4CE9200DB5688 /* ResultView.swift */; };
 		54B6709A26F644DE00DB5688 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6709926F644DE00DB5688 /* Charts */; };
 		54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709B26F644EC00DB5688 /* LineChart.swift */; };
@@ -81,7 +80,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				54B6707F26F2CB9B00DB5688 /* RealmSwift in Frameworks */,
-				54B6708C26F4A30D00DB5688 /* FSCalendar in Frameworks */,
 				54B6707D26F2CB9B00DB5688 /* Realm in Frameworks */,
 				54B6709A26F644DE00DB5688 /* Charts in Frameworks */,
 			);
@@ -225,7 +223,6 @@
 			packageProductDependencies = (
 				54B6707C26F2CB9B00DB5688 /* Realm */,
 				54B6707E26F2CB9B00DB5688 /* RealmSwift */,
-				54B6708B26F4A30D00DB5688 /* FSCalendar */,
 				54B6709926F644DE00DB5688 /* Charts */,
 			);
 			productName = TodoDiary;
@@ -301,7 +298,6 @@
 			mainGroup = 54B6703726F1C2DB00DB5688;
 			packageReferences = (
 				54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
-				54B6708A26F4A30C00DB5688 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				54B6709826F644DE00DB5688 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 54B6704126F1C2DB00DB5688 /* Products */;
@@ -698,14 +694,6 @@
 				minimumVersion = 10.15.1;
 			};
 		};
-		54B6708A26F4A30C00DB5688 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.8.2;
-			};
-		};
 		54B6709826F644DE00DB5688 /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts";
@@ -726,11 +714,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
-		};
-		54B6708B26F4A30D00DB5688 /* FSCalendar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 54B6708A26F4A30C00DB5688 /* XCRemoteSwiftPackageReference "FSCalendar" */;
-			productName = FSCalendar;
 		};
 		54B6709926F644DE00DB5688 /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
