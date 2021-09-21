@@ -71,24 +71,33 @@ struct SecondView: View, EditProtocol {
             
             .navigationBarTitle("達成済み")
             .navigationBarItems(
-                leading: Button(action: {
-                    isSortAscending.toggle()
-                    reloadRecords()
-                }){
-                    if isSortAscending {
-                        Text("新しい順に並べる")
-                    } else {
-                        Text("古い順に並べる")
+                trailing: Menu {
+                    Button(action: {
+                        isSortAscending.toggle()
+                        reloadRecords()
+                    }){
+                        if isSortAscending {
+                            Image(systemName: "arrow.up")
+                            Text("新しい順に並べる")
+                        } else {
+                            Image(systemName: "arrow.down")
+                            Text("古い順に並べる")
+                        }
                     }
-                },
-                trailing: Button(action: {
-                    isShowAchievedTime.toggle()
-                }){
-                    if isShowAchievedTime {
-                        Text("達成時刻を非表示")
-                    } else {
-                        Text("達成時刻を表示")
+                    Button(action: {
+                        isShowAchievedTime.toggle()
+                    }){
+                        if isShowAchievedTime {
+                            Image(systemName: "clock")
+                            Text("達成時刻を非表示")
+                        } else {
+                            Image(systemName: "clock.fill")
+                            Text("達成時刻を表示")
+                        }
                     }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                        .font(.title2)
                 }
             )
             
