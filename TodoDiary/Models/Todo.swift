@@ -10,7 +10,7 @@ import RealmSwift
 
 class Todo: Object, Identifiable {
     
-    //列定義
+    //Todoの列定義
     @objc dynamic var id = 0
     @objc dynamic var content = ""
     @objc dynamic var isPinned = false
