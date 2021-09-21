@@ -19,6 +19,9 @@ struct SecondView: View, EditProtocol {
         _achievedYmds = State(initialValue: getAchievedYmds())
     }
     
+    //達成時刻を表示するかどうか
+    @State var isShowAchievedTime = false
+    
     var body: some View {
         NavigationView {
             
@@ -34,8 +37,10 @@ struct SecondView: View, EditProtocol {
                                     isShowSheet.toggle()
                                 }){
                                     HStack {
-                                        Text("\(toHmText(inputDate: todo.achievedDate))")
-                                            .foregroundColor(.secondary)
+                                        if isShowAchievedTime {
+                                            Text("\(toHmText(inputDate: todo.achievedDate))")
+                                                .foregroundColor(.secondary)
+                                        }
                                         Text("\(todo.content)")
                                             .foregroundColor(.primary)
                                     }
@@ -63,6 +68,20 @@ struct SecondView: View, EditProtocol {
             }
             
             .navigationBarTitle("達成済み")
+            .navigationBarItems(
+                trailing: Button(action: {
+                    isShowAchievedTime.toggle()
+                }){
+                    if isShowAchievedTime {
+                        Text("達成時刻を非表示")
+                    } else {
+                        Text("達成時刻を表示")
+                    }
+                    
+                }
+            )
+            
+            
         }
     }
     
