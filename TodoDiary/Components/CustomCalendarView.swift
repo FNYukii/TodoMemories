@@ -21,6 +21,9 @@ struct CustomCalendarView: View {
     @State var currentYear = 0
     @State var currentMonth = 0
     
+    //カレンダーの日付の高さ
+    let lineHeight: CGFloat = 45
+    
     //日別Todo完了数
     @State var achieveCounts: [Int] = []
 
@@ -47,7 +50,7 @@ struct CustomCalendarView: View {
                     if showDays[index] == 0 {
                         Text("")
                             .foregroundColor(.clear)
-                            .frame(height: 50)
+                            .frame(height: lineHeight)
                     }
                     
                     if showDays[index] != 0 {
@@ -96,7 +99,7 @@ struct CustomCalendarView: View {
                             
                         }
                         .font(.subheadline)
-                        .frame(height: 50, alignment: .top)
+                        .frame(height: lineHeight, alignment: .top)
                     }
 
                 }
