@@ -26,12 +26,6 @@ struct ResultView: View, EditProtocol {
             
             Form {
                 ForEach(todos.freeze()) { todo in
-//                    Button("\(todo.content)"){
-//                        selectedTodoId = todo.id
-//                        isShowSheet.toggle()
-//                    }
-//                    .foregroundColor(.primary)
-                    
                     Button(action: {
                         selectedTodoId = todo.id
                         isShowSheet.toggle()
@@ -45,8 +39,6 @@ struct ResultView: View, EditProtocol {
                                 .foregroundColor(.primary)
                         }
                     }
-                    
-                    
                 }
             }
             .onAppear {
