@@ -10,6 +10,7 @@ import RealmSwift
 
 struct ResultView: View, EditProtocol {
     
+    //ThirdViewのカレンダーで選択された日
     let selectedDate: Date
     
     @State var isShowSheet = false
@@ -17,17 +18,35 @@ struct ResultView: View, EditProtocol {
     
     @State var todos = Todo.noRecord()
     
+    @State var isShowAchievedTime = false
+    
     var body: some View {
         
         ZStack {
             
             Form {
                 ForEach(todos.freeze()) { todo in
-                    Button("\(todo.content)"){
+//                    Button("\(todo.content)"){
+//                        selectedTodoId = todo.id
+//                        isShowSheet.toggle()
+//                    }
+//                    .foregroundColor(.primary)
+                    
+                    Button(action: {
                         selectedTodoId = todo.id
                         isShowSheet.toggle()
+                    }){
+                        HStack {
+                            if isShowAchievedTime {
+                                Text("\(toHmText(inputDate: todo.achievedDate))")
+                                    .foregroundColor(.secondary)
+                            }
+                            Text("\(todo.content)")
+                                .foregroundColor(.primary)
+                        }
                     }
-                    .foregroundColor(.primary)
+                    
+                    
                 }
             }
             .onAppear {
@@ -46,6 +65,18 @@ struct ResultView: View, EditProtocol {
         }
         
         .navigationBarTitle("\(toYmdwText(inputDate: selectedDate))")
+        .navigationBarItems(
+            trailing: Button(action: {
+                isShowAchievedTime.toggle()
+            }){
+                if isShowAchievedTime {
+                    Text("達成時刻を非表示")
+                } else {
+                    Text("達成時刻を表示")
+                }
+            }
+        )
+        
     }
     
     func reloadRecords()  {
@@ -90,5 +121,16 @@ struct ResultView: View, EditProtocol {
         //２つのテキストを文字列連結する
         return ymdText + " " + weekDayText
     }
+    
+    //Date型変数を時刻のテキストに変換する
+    func toHmText(inputDate: Date) -> String {
+        let calendar = Calendar(identifier: .gregorian)
+        let hour = calendar.component(.hour, from: inputDate)
+        let minute = calendar.component(.minute, from: inputDate)
+        let hourStr = String(NSString(format: "%02d", hour))
+        let minuteStr = String(NSString(format: "%02d", minute))
+        return hourStr + ":" + minuteStr
+    }
+    
     
 }

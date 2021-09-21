@@ -77,7 +77,6 @@ struct SecondView: View, EditProtocol {
                     } else {
                         Text("達成時刻を表示")
                     }
-                    
                 }
             )
             
