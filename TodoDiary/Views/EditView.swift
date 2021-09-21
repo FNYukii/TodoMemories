@@ -205,6 +205,4 @@ struct EditView: View {
         }
     }
     
-    
-    
 }
