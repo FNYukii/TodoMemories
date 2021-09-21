@@ -74,16 +74,7 @@ struct ThirdView: View, CalendarProtocol {
             showMonth += 1
         }
     }
-    
-    //Int型のymdをDate型に変換する
-    func toDate(inputYmd: Int) -> Date {
-        let year = inputYmd / 10000
-        let month = (inputYmd % 10000) / 100
-        let day = (inputYmd % 100)
-        let dateComponent = DateComponents(calendar: Calendar.current, year: year, month: month, day: day)
-        return dateComponent.date!
-    }
-    
+        
     //CustomCalendarViewに表示年を渡す
     func getShowYear() -> Int {
         return showYear
@@ -96,7 +87,8 @@ struct ThirdView: View, CalendarProtocol {
     
     func jumpToResultView(year: Int, month: Int, day: Int) {
         let selectedYmd = year * 10000 + month * 100 + day
-        selectedDate = toDate(inputYmd: selectedYmd)
+        let converter = Converter()
+        selectedDate = converter.toDate(inputYmd: selectedYmd)
         isNavLinkActive.toggle()
     }
     

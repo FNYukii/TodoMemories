@@ -24,6 +24,8 @@ struct SecondView: View, EditProtocol {
     //達成日が古い順に並べるかどうか
     @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
     
+    let converter = Converter()
+    
     var body: some View {
         NavigationView {
             
@@ -31,7 +33,7 @@ struct SecondView: View, EditProtocol {
                 
                 Form {
                     ForEach(0..<achievedYmds.count) { index in
-                        Section(header: Text("\(toYmdwText(inputDate: toDate(inputYmd: achievedYmds[index])))")) {
+                        Section(header: Text("\(converter.toYmdwText(inputDate: converter.toDate(inputYmd: achievedYmds[index])))")) {
                             ForEach(getDailyTodos(achievedYmd: achievedYmds[index]).freeze()){ todo in
                                 
                                 Button(action: {
@@ -40,7 +42,7 @@ struct SecondView: View, EditProtocol {
                                 }){
                                     HStack {
                                         if isShowTime {
-                                            Text("\(toHmText(inputDate: todo.achievedDate))")
+                                            Text("\(converter.toHmText(inputDate: todo.achievedDate))")
                                                 .foregroundColor(.secondary)
                                         }
                                         Text("\(todo.content)")
@@ -127,43 +129,7 @@ struct SecondView: View, EditProtocol {
         return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isAscending)
     }
     
-    //Int型の年月日をDate型に変換する
-    func toDate(inputYmd: Int) -> Date {
-        let year = inputYmd / 10000
-        let month = (inputYmd % 10000) / 100
-        let day = (inputYmd % 100)
-        let dateComponent = DateComponents(calendar: Calendar.current, year: year, month: month, day: day)
-        return dateComponent.date!
-    }
     
-    //Date型変数を年月日と曜日のテキストに変換する
-    func toYmdwText(inputDate: Date) -> String {
-        //年月日のテキストを生成
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "yyyy年 M月 d日"
-        let ymdText = dateFormatter.string(from: inputDate)
-        //曜日のテキストを生成
-        let calendar = Calendar(identifier: .gregorian)
-        let weekdayNumber = calendar.component(.weekday, from: inputDate)
-        let weekdaySymbolIndex: Int = weekdayNumber - 1
-        let formatter: DateFormatter = DateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "ja") as Locale
-        let weekDayText = formatter.shortWeekdaySymbols[weekdaySymbolIndex]
-        //２つのテキストを文字列連結する
-        return ymdText + " " + weekDayText
-    }
-    
-    //Date型変数を時刻のテキストに変換する
-    func toHmText(inputDate: Date) -> String {
-        let calendar = Calendar(identifier: .gregorian)
-        let hour = calendar.component(.hour, from: inputDate)
-        let minute = calendar.component(.minute, from: inputDate)
-        let hourStr = String(NSString(format: "%02d", hour))
-        let minuteStr = String(NSString(format: "%02d", minute))
-        return hourStr + ":" + minuteStr
-    }
     
     func reloadRecords() {
         achievedYmds = []
