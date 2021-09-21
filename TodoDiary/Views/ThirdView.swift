@@ -7,89 +7,24 @@
 
 import SwiftUI
 
-struct ThirdView: View, CalendarProtocol {
+struct ThirdView: View {
     
-    //NavigationLink
-    @State var isNavLinkActive = false
-    @State var selectedDate: Date = Date()
+    let pageCount = 100
+    var pages: [AnyView] = []
+    @State var currentPage = 0
     
-    //チャートとカレンダーが表示する年月
-    @State var showYear = 0
-    @State var showMonth = 0
     init() {
-        let calendar = Calendar(identifier: .gregorian)
-        _showYear = State(initialValue: calendar.component(.year, from: Date()))
-        _showMonth = State(initialValue: calendar.component(.month, from: Date()))
+        //最初に表示するページの番号を決める
+        _currentPage = State(initialValue: pageCount / 2)
+        //pageCountの分だけページを用意する
+        for index in 0..<pageCount {
+            let offset = index - pageCount / 2
+            pages.append(AnyView(OnaPageView(offset: offset)))
+        }
     }
     
-    //スワイプ座標
-    @State private var labelPosX:CGFloat = 0
-
     var body: some View {
-        NavigationView {
-            
-            VStack {
-                
-                LineChart(showYear: showYear, showMonth: showMonth)
-                    .padding(.leading, 3)
-                
-                CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
-                    
-                NavigationLink(destination: ResultView(selectedDate: selectedDate), isActive: $isNavLinkActive) {
-                    EmptyView()
-                }
-            }
-            .gesture(DragGesture()
-                .onEnded({ value in
-                    if (abs(value.translation.width) < 10) { return }
-                    if (value.translation.width < 0 ) {
-                        nextMonth()
-                    } else if (value.translation.width > 0 ) {
-                        prevMonth()
-                    }
-                })
-            )
-            
-            .navigationBarTitle("\(String(showYear))年 \(showMonth)月")
-
-        }
-    }
-    
-    //showYearとshowMonthを1つ前にずらす
-    func prevMonth() {
-        if showMonth == 1 {
-            showMonth = 12
-            showYear -= 1
-        } else {
-            showMonth -= 1
-        }
-    }
-    
-    //showYearとshowMonthを1つ次にずらす
-    func nextMonth() {
-        if showMonth == 12 {
-            showMonth = 1
-            showYear += 1
-        } else {
-            showMonth += 1
-        }
-    }
-        
-    //CustomCalendarViewに表示年を渡す
-    func getShowYear() -> Int {
-        return showYear
-    }
-    
-    //CustomCalendarViewに表示月を渡す
-    func getShowMonth() -> Int {
-        return showMonth
-    }
-    
-    func jumpToResultView(year: Int, month: Int, day: Int) {
-        let selectedYmd = year * 10000 + month * 100 + day
-        let converter = Converter()
-        selectedDate = converter.toDate(inputYmd: selectedYmd)
-        isNavLinkActive.toggle()
+        PageView(pages, currentPage: $currentPage)
     }
     
 }
