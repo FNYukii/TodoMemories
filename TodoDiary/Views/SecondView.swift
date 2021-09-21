@@ -73,6 +73,7 @@ struct SecondView: View, EditProtocol {
             .navigationBarItems(
                 leading: Button(action: {
                     isSortAscending.toggle()
+                    reloadRecords()
                 }){
                     if isSortAscending {
                         Text("新しい順に並べる")
@@ -103,13 +104,16 @@ struct SecondView: View, EditProtocol {
         }
         let orderedSet = NSOrderedSet(array: ymds)
         ymds = orderedSet.array as! [Int]
+        if (isSortAscending) {
+            ymds = ymds.reversed()
+        }
         return ymds
     }
     
     //特定の年月日に達成したTodoを取得する
     func getDailyTodos(achievedYmd: Int) -> Results<Todo> {
         let realm = Todo.customRealm()
-        return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: false)
+        return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isSortAscending)
     }
     
     //Int型の年月日をDate型に変換する
