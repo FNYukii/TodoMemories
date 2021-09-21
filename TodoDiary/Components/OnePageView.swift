@@ -52,20 +52,21 @@ struct OnaPageView: View, CalendarProtocol {
     }
     
     var body: some View {
-        NavigationView {
-            VStack {
-                                
-                NavigationLink(destination: ResultView(selectedDate: selectedDate), isActive: $isNavLinkActive) {
-                    EmptyView()
-                }
-                
-                LineChart(showYear: showYear, showMonth: showMonth)
-                    .padding(.leading, 3)
-                
-                CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
-                    
+        VStack(alignment: .leading) {
+                            
+            Text("\(String(showYear))年 \(showMonth)月")
+                .font(.title2)
+                .padding(.leading)
+            
+            LineChart(showYear: showYear, showMonth: showMonth)
+                .padding(.leading, 3)
+            
+            CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
+            
+            NavigationLink(destination: ResultView(selectedDate: selectedDate), isActive: $isNavLinkActive) {
+                EmptyView()
             }
-            .navigationBarTitle("\(String(showYear))年 \(showMonth)月")
+                
         }
     }
     

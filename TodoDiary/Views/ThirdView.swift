@@ -24,7 +24,11 @@ struct ThirdView: View {
     }
     
     var body: some View {
-        PageView(pages, currentPage: $currentPage)
+        NavigationView {
+            PageView(pages, currentPage: $currentPage)
+            .navigationBarTitle("達成グラフ")
+        }
+        
     }
     
 }
