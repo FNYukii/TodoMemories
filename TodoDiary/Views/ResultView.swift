@@ -19,6 +19,7 @@ struct ResultView: View, EditProtocol {
     @State var todos = Todo.noRecord()
     
     @State var isShowAchievedTime = false
+    @State var isSortAscending = false
     
     var body: some View {
         
@@ -42,7 +43,7 @@ struct ResultView: View, EditProtocol {
                 }
             }
             .onAppear {
-                loadTodos()
+                reloadRecords()
             }
             
             if todos.count == 0 {
@@ -58,32 +59,46 @@ struct ResultView: View, EditProtocol {
         
         .navigationBarTitle("\(toYmdwText(inputDate: selectedDate))")
         .navigationBarItems(
-            trailing: Button(action: {
-                isShowAchievedTime.toggle()
-            }){
-                if isShowAchievedTime {
-                    Text("達成時刻を非表示")
-                } else {
-                    Text("達成時刻を表示")
+            trailing: Menu {
+                Button(action: {
+                    isSortAscending.toggle()
+                    reloadRecords()
+                }){
+                    if isSortAscending {
+                        Image(systemName: "arrow.up")
+                        Text("新しい順に並べる")
+                    } else {
+                        Image(systemName: "arrow.down")
+                        Text("古い順に並べる")
+                    }
                 }
+                Button(action: {
+                    isShowAchievedTime.toggle()
+                }){
+                    if isShowAchievedTime {
+                        Image(systemName: "clock")
+                        Text("達成時刻を非表示")
+                    } else {
+                        Image(systemName: "clock.fill")
+                        Text("達成時刻を表示")
+                    }
+                }
+            } label: {
+                Image(systemName: "ellipsis.circle")
+                    .font(.title2)
             }
         )
         
     }
     
     func reloadRecords()  {
-        loadTodos()
+        let realm = Todo.customRealm()
+        let achievedYmd = toYmd(inputDate: selectedDate)
+        todos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isSortAscending)
     }
     
     func getSelectedDiaryId() -> Int {
         return selectedTodoId
-    }
-    
-    //検索結果のTodosを取得
-    func loadTodos() {
-        let realm = Todo.customRealm()
-        let achievedYmd = toYmd(inputDate: selectedDate)
-        todos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: false)
     }
     
     //Date型変数を年月日の数字に変換する
