@@ -18,8 +18,8 @@ struct ResultView: View, EditProtocol {
     
     @State var todos = Todo.noRecord()
     
-    @State var isShowAchievedTime = false
-    @State var isSortAscending = false
+    @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
+    @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
     
     var body: some View {
         
@@ -32,7 +32,7 @@ struct ResultView: View, EditProtocol {
                         isShowSheet.toggle()
                     }){
                         HStack {
-                            if isShowAchievedTime {
+                            if isShowTime {
                                 Text("\(toHmText(inputDate: todo.achievedDate))")
                                     .foregroundColor(.secondary)
                             }
@@ -61,10 +61,11 @@ struct ResultView: View, EditProtocol {
         .navigationBarItems(
             trailing: Menu {
                 Button(action: {
-                    isSortAscending.toggle()
+                    isAscending.toggle()
+                    UserDefaults.standard.setValue(isAscending, forKey: "isAscending")
                     reloadRecords()
                 }){
-                    if isSortAscending {
+                    if isAscending {
                         Image(systemName: "arrow.up")
                         Text("新しい順に並べる")
                     } else {
@@ -73,9 +74,10 @@ struct ResultView: View, EditProtocol {
                     }
                 }
                 Button(action: {
-                    isShowAchievedTime.toggle()
+                    isShowTime.toggle()
+                    UserDefaults.standard.setValue(isShowTime, forKey: "isShowTime")
                 }){
-                    if isShowAchievedTime {
+                    if isShowTime {
                         Image(systemName: "clock")
                         Text("達成時刻を非表示")
                     } else {
@@ -94,7 +96,7 @@ struct ResultView: View, EditProtocol {
     func reloadRecords()  {
         let realm = Todo.customRealm()
         let achievedYmd = toYmd(inputDate: selectedDate)
-        todos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isSortAscending)
+        todos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isAscending)
     }
     
     func getSelectedDiaryId() -> Int {

@@ -20,9 +20,9 @@ struct SecondView: View, EditProtocol {
     }
     
     //達成時刻を表示するかどうか
-    @State var isShowAchievedTime = false
+    @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
     //達成日が古い順に並べるかどうか
-    @State var isSortAscending = false
+    @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
     
     var body: some View {
         NavigationView {
@@ -39,7 +39,7 @@ struct SecondView: View, EditProtocol {
                                     isShowSheet.toggle()
                                 }){
                                     HStack {
-                                        if isShowAchievedTime {
+                                        if isShowTime {
                                             Text("\(toHmText(inputDate: todo.achievedDate))")
                                                 .foregroundColor(.secondary)
                                         }
@@ -73,10 +73,11 @@ struct SecondView: View, EditProtocol {
             .navigationBarItems(
                 trailing: Menu {
                     Button(action: {
-                        isSortAscending.toggle()
+                        isAscending.toggle()
+                        UserDefaults.standard.setValue(isAscending, forKey: "isAscending")
                         reloadRecords()
                     }){
-                        if isSortAscending {
+                        if isAscending {
                             Image(systemName: "arrow.up")
                             Text("新しい順に並べる")
                         } else {
@@ -85,9 +86,10 @@ struct SecondView: View, EditProtocol {
                         }
                     }
                     Button(action: {
-                        isShowAchievedTime.toggle()
+                        isShowTime.toggle()
+                        UserDefaults.standard.setValue(isShowTime, forKey: "isShowTime")
                     }){
-                        if isShowAchievedTime {
+                        if isShowTime {
                             Image(systemName: "clock")
                             Text("達成時刻を非表示")
                         } else {
@@ -113,7 +115,7 @@ struct SecondView: View, EditProtocol {
         }
         let orderedSet = NSOrderedSet(array: ymds)
         ymds = orderedSet.array as! [Int]
-        if (isSortAscending) {
+        if (isAscending) {
             ymds = ymds.reversed()
         }
         return ymds
@@ -122,7 +124,7 @@ struct SecondView: View, EditProtocol {
     //特定の年月日に達成したTodoを取得する
     func getDailyTodos(achievedYmd: Int) -> Results<Todo> {
         let realm = Todo.customRealm()
-        return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isSortAscending)
+        return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isAscending)
     }
     
     //Int型の年月日をDate型に変換する
