@@ -28,11 +28,19 @@ struct SecondView: View, EditProtocol {
                     ForEach(0..<achievedYmds.count) { index in
                         Section(header: Text("\(toYmdwText(inputDate: toDate(inputYmd: achievedYmds[index])))")) {
                             ForEach(getDailyTodos(achievedYmd: achievedYmds[index]).freeze()){ todo in
-                                Button("\(todo.content)"){
+                                
+                                Button(action: {
                                     selectedTodoId = todo.id
                                     isShowSheet.toggle()
+                                }){
+                                    HStack {
+                                        Text("\(toHmText(inputDate: todo.achievedDate))")
+                                            .foregroundColor(.secondary)
+                                        Text("\(todo.content)")
+                                            .foregroundColor(.primary)
+                                    }
                                 }
-                                .foregroundColor(.primary)
+                                
                             }
                         }
                     }
@@ -102,6 +110,16 @@ struct SecondView: View, EditProtocol {
         let weekDayText = formatter.shortWeekdaySymbols[weekdaySymbolIndex]
         //２つのテキストを文字列連結する
         return ymdText + " " + weekDayText
+    }
+    
+    //Date型変数を時刻のテキストに変換する
+    func toHmText(inputDate: Date) -> String {
+        let calendar = Calendar(identifier: .gregorian)
+        let hour = calendar.component(.hour, from: inputDate)
+        let minute = calendar.component(.minute, from: inputDate)
+        let hourStr = String(NSString(format: "%02d", hour))
+        let minuteStr = String(NSString(format: "%02d", minute))
+        return hourStr + ":" + minuteStr
     }
     
     func reloadRecords() {
