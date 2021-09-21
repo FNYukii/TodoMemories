@@ -21,6 +21,8 @@ struct SecondView: View, EditProtocol {
     
     //達成時刻を表示するかどうか
     @State var isShowAchievedTime = false
+    //達成日が古い順に並べるかどうか
+    @State var isSortAscending = false
     
     var body: some View {
         NavigationView {
@@ -69,6 +71,15 @@ struct SecondView: View, EditProtocol {
             
             .navigationBarTitle("達成済み")
             .navigationBarItems(
+                leading: Button(action: {
+                    isSortAscending.toggle()
+                }){
+                    if isSortAscending {
+                        Text("新しい順に並べる")
+                    } else {
+                        Text("古い順に並べる")
+                    }
+                },
                 trailing: Button(action: {
                     isShowAchievedTime.toggle()
                 }){
@@ -79,7 +90,6 @@ struct SecondView: View, EditProtocol {
                     }
                 }
             )
-            
             
         }
     }
