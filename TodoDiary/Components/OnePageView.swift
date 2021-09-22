@@ -59,9 +59,10 @@ struct OnaPageView: View, CalendarProtocol {
                 .padding(.leading)
             
             LineChart(showYear: showYear, showMonth: showMonth)
-                .padding(.leading, 3)
+                .padding(.horizontal, 5)
             
             CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
+                .padding(.horizontal, 5)
             
             NavigationLink(destination: ResultView(selectedDate: selectedDate), isActive: $isNavLinkActive) {
                 EmptyView()
