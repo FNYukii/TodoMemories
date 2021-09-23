@@ -57,7 +57,7 @@ struct FirstWidgetEntryView : View {
     var entry: Provider.Entry
     
     //Todoテキストの行の高さ
-    let lineHeight: CGFloat = 23
+    let lineHeight: CGFloat = 28
 
     var body: some View {
         ZStack {
@@ -74,14 +74,14 @@ struct FirstWidgetEntryView : View {
                     }
                     //固定済みTodo一覧
                     ForEach(0..<entry.pinnedTodoStrs.count) { index in
-                        Text("• \(entry.pinnedTodoStrs[index])")
+                        Text("\(entry.pinnedTodoStrs[index])")
                             .font(.subheadline)
                             .frame(height: lineHeight)
                     }
                     //スペース
                     if entry.pinnedTodoStrs.count != 0 && entry.unpinnedTodoStrs.count != 0 {
                         Text("")
-                            .frame(height: 5)
+                            .frame(height: 8)
                     }
                     //その他ラベル
                     if entry.pinnedTodoStrs.count != 0 && entry.unpinnedTodoStrs.count != 0 {
@@ -91,7 +91,7 @@ struct FirstWidgetEntryView : View {
                     }
                     //未固定Todo一覧
                     ForEach(0..<entry.unpinnedTodoStrs.count) { index in
-                        Text("• \(entry.unpinnedTodoStrs[index])")
+                        Text("\(entry.unpinnedTodoStrs[index])")
                             .font(.subheadline)
                             .frame(height: lineHeight)
                     }
