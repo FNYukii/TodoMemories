@@ -45,8 +45,8 @@ struct LineChart : UIViewRepresentable {
         
         //当月のTodo日別達成数の配列を生成
         var achieveCounts: [Int] = []
-        for day in (0..<dayCount) {
-            let achievedYmd = showYear * 10000 + showMonth * 100 + day + 1
+        for day in (1..<dayCount + 1) {
+            let achievedYmd = showYear * 10000 + showMonth * 100 + day
             let realm = Todo.customRealm()
             let achievedTodos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd = \(achievedYmd)")
             achieveCounts.append(achievedTodos.count)
