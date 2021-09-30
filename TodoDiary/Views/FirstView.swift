@@ -37,15 +37,21 @@ struct FirstView: View, EditProtocol {
                                         Text("編集")
                                         Image(systemName: "pencil")
                                     }
-                                    Button(action: unpinTodo) {
+                                    Button(action: {
+                                        unpinTodo(id: todo.id)
+                                    }){
                                         Text("固定を外す")
                                         Image(systemName: "pin.slash")
                                     }
-                                    Button(action: achieveTodo) {
+                                    Button(action: {
+                                        achieveTodo(id: todo.id)
+                                    }){
                                         Text("達成済みに変更")
                                         Image(systemName: "checkmark")
                                     }
-                                    Button(action: deleteTodo) {
+                                    Button(action: {
+                                        deleteTodo(id: todo.id)
+                                    }){
                                         Text("削除")
                                         Image(systemName: "trash")
                                     }
@@ -62,6 +68,32 @@ struct FirstView: View, EditProtocol {
                                     isShowSheet.toggle()
                                 }
                                 .foregroundColor(.primary)
+                                .contextMenu(ContextMenu(menuItems: {
+                                    Button(action:{
+                                        editTodo(id: todo.id)
+                                    }){
+                                        Text("編集")
+                                        Image(systemName: "pencil")
+                                    }
+                                    Button(action: {
+                                        pinTodo(id: todo.id)
+                                    }){
+                                        Text("固定する")
+                                        Image(systemName: "pin.fill")
+                                    }
+                                    Button(action: {
+                                        achieveTodo(id: todo.id)
+                                    }){
+                                        Text("達成済みに変更")
+                                        Image(systemName: "checkmark")
+                                    }
+                                    Button(action: {
+                                        deleteTodo(id: todo.id)
+                                    }){
+                                        Text("削除")
+                                        Image(systemName: "trash")
+                                    }
+                                }))
                             }
                         }
                     }
@@ -73,6 +105,32 @@ struct FirstView: View, EditProtocol {
                                 isShowSheet.toggle()
                             }
                             .foregroundColor(.primary)
+                            .contextMenu(ContextMenu(menuItems: {
+                                Button(action:{
+                                    editTodo(id: todo.id)
+                                }){
+                                    Text("編集")
+                                    Image(systemName: "pencil")
+                                }
+                                Button(action: {
+                                    pinTodo(id: todo.id)
+                                }){
+                                    Text("固定する")
+                                    Image(systemName: "pin.fill")
+                                }
+                                Button(action: {
+                                    achieveTodo(id: todo.id)
+                                }){
+                                    Text("達成済みに変更")
+                                    Image(systemName: "checkmark")
+                                }
+                                Button(action: {
+                                    deleteTodo(id: todo.id)
+                                }){
+                                    Text("削除")
+                                    Image(systemName: "trash")
+                                }
+                            }))
                         }
                     }
 
@@ -120,21 +178,42 @@ struct FirstView: View, EditProtocol {
         isShowSheet.toggle()
     }
     
-    func pinTodo() {
-        //
+    func pinTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            todo.isPinned = true
+        }
+        reloadRecords()
     }
     
-    func unpinTodo() {
-        //
+    func unpinTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            todo.isPinned = false
+        }
+        reloadRecords()
     }
     
-    func achieveTodo() {
-        //
+    func achieveTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            todo.isAchieved = true
+            let converter = Converter()
+            todo.achievedYmd = converter.toYmd(inputDate: Date())
+        }
+        reloadRecords()
     }
     
-    func deleteTodo() {
-        //
+    func deleteTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            realm.delete(todo)
+        }
+        reloadRecords()
     }
 
-    
 }
