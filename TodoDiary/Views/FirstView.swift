@@ -31,6 +31,24 @@ struct FirstView: View, EditProtocol {
                                     isShowSheet.toggle()
                                 }
                                 .foregroundColor(.primary)
+                                .contextMenu(ContextMenu(menuItems: {
+                                    Button(action: editTodo){
+                                        Text("編集")
+                                        Image(systemName: "pencil")
+                                    }
+                                    Button(action: unpinTodo) {
+                                        Text("固定を外す")
+                                        Image(systemName: "pin.slash")
+                                    }
+                                    Button(action: achieveTodo) {
+                                        Text("達成済みに変更")
+                                        Image(systemName: "checkmark")
+                                    }
+                                    Button(action: deleteTodo) {
+                                        Text("削除")
+                                        Image(systemName: "trash")
+                                    }
+                                }))
                             }
                         }
                     }
@@ -86,6 +104,28 @@ struct FirstView: View, EditProtocol {
             
         }
     }
+    
+    
+    func editTodo() {
+        //
+    }
+    
+    func pinTodo() {
+        //
+    }
+    
+    func unpinTodo() {
+        //
+    }
+    
+    func achieveTodo() {
+        //
+    }
+    
+    func deleteTodo() {
+        //
+    }
+    
     
     func reloadRecords()  {
         pinnedTodos = Todo.pinnedTodos()
