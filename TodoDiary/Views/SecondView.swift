@@ -7,11 +7,13 @@
 
 import SwiftUI
 import RealmSwift
+import WidgetKit
 
 struct SecondView: View, EditProtocol {
     
     @State var isShowSheet = false
     @State var selectedTodoId = 0
+    @State var isShowAlert = false
     
     //Todoを達成した年月日の配列
     @State var achievedYmds: [Int] = []
@@ -37,8 +39,7 @@ struct SecondView: View, EditProtocol {
                             ForEach(getDailyTodos(achievedYmd: achievedYmds[index]).freeze()){ todo in
                                 
                                 Button(action: {
-                                    selectedTodoId = todo.id
-                                    isShowSheet.toggle()
+                                    editTodo(id: todo.id)
                                 }){
                                     HStack {
                                         if isShowTime {
@@ -49,6 +50,27 @@ struct SecondView: View, EditProtocol {
                                             .foregroundColor(.primary)
                                     }
                                 }
+                                .contextMenu(ContextMenu(menuItems: {
+                                    Button(action: {
+                                        editTodo(id: todo.id)
+                                    }) {
+                                        Text("編集")
+                                        Image(systemName: "pencil")
+                                    }
+                                    Button(action: {
+                                        unachieveTodo(id: todo.id)
+                                    }) {
+                                        Text("未達成に変更")
+                                        Image(systemName: "xmark")
+                                    }
+                                    Button(action: {
+                                        selectedTodoId = todo.id
+                                        isShowAlert.toggle()
+                                    }) {
+                                        Text("削除")
+                                        Image(systemName: "trash")
+                                    }
+                                }))
                                 
                             }
                         }
@@ -65,10 +87,18 @@ struct SecondView: View, EditProtocol {
                 
             }
             
-            
-            
             .sheet(isPresented: $isShowSheet) {
                 EditView(editProtocol: self)
+            }
+            
+            .alert(isPresented: $isShowAlert) {
+                Alert(title: Text("確認"),
+                    message: Text("このTodoを削除してもよろしいですか？"),
+                    primaryButton: .cancel(Text("キャンセル")),
+                    secondaryButton: .destructive(Text("削除"), action: {
+                        deleteTodo()
+                    })
+                )
             }
             
             .navigationBarTitle("達成済み")
@@ -129,7 +159,30 @@ struct SecondView: View, EditProtocol {
         return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isAscending)
     }
     
+    func editTodo(id: Int) {
+        selectedTodoId = id
+        isShowSheet.toggle()
+    }
     
+    func unachieveTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            todo.isAchieved = false
+        }
+        reloadRecords()
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    func deleteTodo() {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(selectedTodoId)").first!
+        try! realm.write {
+            realm.delete(todo)
+        }
+        reloadRecords()
+        WidgetCenter.shared.reloadAllTimelines()
+    }
     
     func reloadRecords() {
         achievedYmds = []
