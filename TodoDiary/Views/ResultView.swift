@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import WidgetKit
 
 struct ResultView: View, EditProtocol {
     
@@ -15,6 +16,7 @@ struct ResultView: View, EditProtocol {
     
     @State var isShowSheet = false
     @State var selectedTodoId = 0
+    @State var isShowAlert = false
     
     @State var todos = Todo.noRecord()
     
@@ -42,6 +44,27 @@ struct ResultView: View, EditProtocol {
                                 .foregroundColor(.primary)
                         }
                     }
+                    .contextMenu(ContextMenu(menuItems: {
+                        Button(action: {
+                            editTodo(id: todo.id)
+                        }) {
+                            Text("編集")
+                            Image(systemName: "pencil")
+                        }
+                        Button(action: {
+                            unachieveTodo(id: todo.id)
+                        }) {
+                            Text("未達成に変更")
+                            Image(systemName: "xmark")
+                        }
+                        Button(action: {
+                            selectedTodoId = todo.id
+                            isShowAlert.toggle()
+                        }) {
+                            Text("削除")
+                            Image(systemName: "trash")
+                        }
+                    }))
                 }
             }
             .onAppear {
@@ -57,6 +80,16 @@ struct ResultView: View, EditProtocol {
         
         .sheet(isPresented: $isShowSheet) {
             EditView(editProtocol: self)
+        }
+        
+        .alert(isPresented: $isShowAlert) {
+            Alert(title: Text("確認"),
+                message: Text("このTodoを削除してもよろしいですか？"),
+                primaryButton: .cancel(Text("キャンセル")),
+                secondaryButton: .destructive(Text("削除"), action: {
+                    deleteTodo()
+                })
+            )
         }
         
         .navigationBarTitle("\(converter.toYmdwText(inputDate: selectedDate))")
@@ -93,6 +126,31 @@ struct ResultView: View, EditProtocol {
             }
         )
         
+    }
+    
+    func editTodo(id: Int) {
+        selectedTodoId = id
+        isShowSheet.toggle()
+    }
+    
+    func unachieveTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            todo.isAchieved = false
+        }
+        reloadRecords()
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    func deleteTodo() {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(selectedTodoId)").first!
+        try! realm.write {
+            realm.delete(todo)
+        }
+        reloadRecords()
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func reloadRecords()  {
