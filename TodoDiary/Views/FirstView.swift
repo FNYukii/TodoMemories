@@ -43,7 +43,7 @@ struct FirstView: View, EditProtocol {
                                         unpinTodo(id: todo.id)
                                     }){
                                         Text("固定を外す")
-                                        Image(systemName: "pin.slash")
+                                        Image(systemName: "pin.slash.fill")
                                     }
                                     Button(action: {
                                         achieveTodo(id: todo.id)
@@ -218,6 +218,7 @@ struct FirstView: View, EditProtocol {
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
         try! realm.write {
             todo.isAchieved = true
+            todo.achievedDate = Date()
             let converter = Converter()
             todo.achievedYmd = converter.toYmd(inputDate: Date())
         }
