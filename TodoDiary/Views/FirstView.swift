@@ -43,7 +43,7 @@ struct FirstView: View, EditProtocol {
                                         unpinTodo(id: todo.id)
                                     }){
                                         Text("固定を外す")
-                                        Image(systemName: "pin.slash.fill")
+                                        Image(systemName: "pin.slash")
                                     }
                                     Button(action: {
                                         achieveTodo(id: todo.id)
@@ -82,7 +82,7 @@ struct FirstView: View, EditProtocol {
                                         pinTodo(id: todo.id)
                                     }){
                                         Text("固定する")
-                                        Image(systemName: "pin.fill")
+                                        Image(systemName: "pin")
                                     }
                                     Button(action: {
                                         achieveTodo(id: todo.id)
@@ -120,7 +120,7 @@ struct FirstView: View, EditProtocol {
                                     pinTodo(id: todo.id)
                                 }){
                                     Text("固定する")
-                                    Image(systemName: "pin.fill")
+                                    Image(systemName: "pin")
                                 }
                                 Button(action: {
                                     achieveTodo(id: todo.id)
