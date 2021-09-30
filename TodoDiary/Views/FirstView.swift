@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import WidgetKit
 
 struct FirstView: View, EditProtocol {
     
@@ -185,6 +186,7 @@ struct FirstView: View, EditProtocol {
             todo.isPinned = true
         }
         reloadRecords()
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func unpinTodo(id: Int) {
@@ -194,6 +196,7 @@ struct FirstView: View, EditProtocol {
             todo.isPinned = false
         }
         reloadRecords()
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func achieveTodo(id: Int) {
@@ -205,6 +208,7 @@ struct FirstView: View, EditProtocol {
             todo.achievedYmd = converter.toYmd(inputDate: Date())
         }
         reloadRecords()
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func deleteTodo(id: Int) {
@@ -214,6 +218,7 @@ struct FirstView: View, EditProtocol {
             realm.delete(todo)
         }
         reloadRecords()
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
 }
