@@ -16,6 +16,7 @@ struct FirstView: View, EditProtocol {
     
     @State var isShowSheet = false
     @State var selectedTodoId = 0
+    @State var isShowAlert = false
     
     var body: some View {
         NavigationView {
@@ -51,7 +52,8 @@ struct FirstView: View, EditProtocol {
                                         Image(systemName: "checkmark")
                                     }
                                     Button(action: {
-                                        deleteTodo(id: todo.id)
+                                        selectedTodoId = todo.id
+                                        isShowAlert.toggle()
                                     }){
                                         Text("削除")
                                         Image(systemName: "trash")
@@ -89,7 +91,8 @@ struct FirstView: View, EditProtocol {
                                         Image(systemName: "checkmark")
                                     }
                                     Button(action: {
-                                        deleteTodo(id: todo.id)
+                                        selectedTodoId = todo.id
+                                        isShowAlert.toggle()
                                     }){
                                         Text("削除")
                                         Image(systemName: "trash")
@@ -126,7 +129,8 @@ struct FirstView: View, EditProtocol {
                                     Image(systemName: "checkmark")
                                 }
                                 Button(action: {
-                                    deleteTodo(id: todo.id)
+                                    selectedTodoId = todo.id
+                                    isShowAlert.toggle()
                                 }){
                                     Text("削除")
                                     Image(systemName: "trash")
@@ -149,6 +153,16 @@ struct FirstView: View, EditProtocol {
             
             .sheet(isPresented: $isShowSheet) {
                 EditView(editProtocol: self)
+            }
+            
+            .alert(isPresented: $isShowAlert) {
+                Alert(title: Text("確認"),
+                    message: Text("このTodoを削除してもよろしいですか？"),
+                    primaryButton: .cancel(Text("キャンセル")),
+                    secondaryButton: .destructive(Text("削除"), action: {
+                        deleteTodo()
+                    })
+                )
             }
             
             .navigationBarTitle("Todo")
@@ -211,9 +225,9 @@ struct FirstView: View, EditProtocol {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    func deleteTodo(id: Int) {
+    func deleteTodo() {
         let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        let todo = realm.objects(Todo.self).filter("id == \(selectedTodoId)").first!
         try! realm.write {
             realm.delete(todo)
         }
