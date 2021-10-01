@@ -29,16 +29,11 @@ struct FirstView: View, EditProtocol {
                         Section(header: Text("固定済み")) {
                             ForEach(pinnedTodos.freeze()) { todo in
                                 Button("\(todo.content)"){
-                                    editTodo(id: todo.id)
+                                    selectedTodoId = todo.id
+                                    isShowSheet.toggle()
                                 }
                                 .foregroundColor(.primary)
                                 .contextMenu(ContextMenu(menuItems: {
-                                    Button(action:{
-                                        editTodo(id: todo.id)
-                                    }){
-                                        Text("編集")
-                                        Image(systemName: "pencil")
-                                    }
                                     Button(action: {
                                         unpinTodo(id: todo.id)
                                     }){
@@ -72,12 +67,6 @@ struct FirstView: View, EditProtocol {
                                 }
                                 .foregroundColor(.primary)
                                 .contextMenu(ContextMenu(menuItems: {
-                                    Button(action:{
-                                        editTodo(id: todo.id)
-                                    }){
-                                        Text("編集")
-                                        Image(systemName: "pencil")
-                                    }
                                     Button(action: {
                                         pinTodo(id: todo.id)
                                     }){
@@ -110,12 +99,6 @@ struct FirstView: View, EditProtocol {
                             }
                             .foregroundColor(.primary)
                             .contextMenu(ContextMenu(menuItems: {
-                                Button(action:{
-                                    editTodo(id: todo.id)
-                                }){
-                                    Text("編集")
-                                    Image(systemName: "pencil")
-                                }
                                 Button(action: {
                                     pinTodo(id: todo.id)
                                 }){
@@ -186,11 +169,6 @@ struct FirstView: View, EditProtocol {
     
     func getSelectedDiaryId() -> Int {
         return selectedTodoId
-    }
-    
-    func editTodo(id: Int) {
-        selectedTodoId = id
-        isShowSheet.toggle()
     }
     
     func pinTodo(id: Int) {

@@ -46,12 +46,6 @@ struct ResultView: View, EditProtocol {
                     }
                     .contextMenu(ContextMenu(menuItems: {
                         Button(action: {
-                            editTodo(id: todo.id)
-                        }) {
-                            Text("編集")
-                            Image(systemName: "pencil")
-                        }
-                        Button(action: {
                             unachieveTodo(id: todo.id)
                         }) {
                             Text("未達成に変更")
@@ -126,11 +120,6 @@ struct ResultView: View, EditProtocol {
             }
         )
         
-    }
-    
-    func editTodo(id: Int) {
-        selectedTodoId = id
-        isShowSheet.toggle()
     }
     
     func unachieveTodo(id: Int) {

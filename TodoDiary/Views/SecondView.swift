@@ -39,7 +39,8 @@ struct SecondView: View, EditProtocol {
                             ForEach(getDailyTodos(achievedYmd: achievedYmds[index]).freeze()){ todo in
                                 
                                 Button(action: {
-                                    editTodo(id: todo.id)
+                                    selectedTodoId = todo.id
+                                    isShowSheet.toggle()
                                 }){
                                     HStack {
                                         if isShowTime {
@@ -51,12 +52,6 @@ struct SecondView: View, EditProtocol {
                                     }
                                 }
                                 .contextMenu(ContextMenu(menuItems: {
-                                    Button(action: {
-                                        editTodo(id: todo.id)
-                                    }) {
-                                        Text("編集")
-                                        Image(systemName: "pencil")
-                                    }
                                     Button(action: {
                                         unachieveTodo(id: todo.id)
                                     }) {
@@ -157,11 +152,6 @@ struct SecondView: View, EditProtocol {
     func getDailyTodos(achievedYmd: Int) -> Results<Todo> {
         let realm = Todo.customRealm()
         return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isAscending)
-    }
-    
-    func editTodo(id: Int) {
-        selectedTodoId = id
-        isShowSheet.toggle()
     }
     
     func unachieveTodo(id: Int) {
