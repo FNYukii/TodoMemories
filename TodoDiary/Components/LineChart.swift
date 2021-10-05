@@ -54,7 +54,7 @@ struct LineChart : UIViewRepresentable {
         
         //achieveCountsを元に折れ線用のデータを生成
         var lineChartEntry : [ChartDataEntry] = []
-        for day in (0..<dayCount) {
+        for day in (1..<dayCount) {
             lineChartEntry.append(ChartDataEntry(x: Double(day), y: Double(achieveCounts[day])))
         }
         
