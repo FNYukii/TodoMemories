@@ -61,7 +61,7 @@ struct OnaPageView: View, CalendarProtocol {
 //            LineChart(showYear: showYear, showMonth: showMonth)
 //                .padding(.horizontal, 5)
             
-            BarChart()
+            BarChart(showYear: showYear, showMonth: showMonth)
                 .padding(.horizontal, 5)
             
             CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
