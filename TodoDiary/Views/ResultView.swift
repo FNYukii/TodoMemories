@@ -29,53 +29,42 @@ struct ResultView: View, EditProtocol {
     
     var body: some View {
         
-        ZStack {
-            
-            Form {
-                Section(header: Text("\(converter.toYmdwText(inputDate: selectedDate))")) {
-                    ForEach(todos.freeze()) { todo in
+        Form {
+            Section(header: Text("\(converter.toYmdwText(inputDate: selectedDate))")) {
+                ForEach(todos.freeze()) { todo in
+                    Button(action: {
+                        selectedTodoId = todo.id
+                        isShowSheet.toggle()
+                    }){
+                        HStack {
+                            if isShowTime {
+                                Text("\(converter.toHmText(inputDate: todo.achievedDate))")
+                                    .foregroundColor(.secondary)
+                            }
+                            Text("\(todo.content)")
+                                .foregroundColor(.primary)
+                        }
+                    }
+                    .contextMenu(ContextMenu(menuItems: {
+                        Button(action: {
+                            unachieveTodo(id: todo.id)
+                        }) {
+                            Text("未達成に変更")
+                            Image(systemName: "xmark")
+                        }
                         Button(action: {
                             selectedTodoId = todo.id
-                            isShowSheet.toggle()
-                        }){
-                            HStack {
-                                if isShowTime {
-                                    Text("\(converter.toHmText(inputDate: todo.achievedDate))")
-                                        .foregroundColor(.secondary)
-                                }
-                                Text("\(todo.content)")
-                                    .foregroundColor(.primary)
-                            }
+                            isShowAlert.toggle()
+                        }) {
+                            Text("削除")
+                            Image(systemName: "trash")
                         }
-                        .contextMenu(ContextMenu(menuItems: {
-                            Button(action: {
-                                unachieveTodo(id: todo.id)
-                            }) {
-                                Text("未達成に変更")
-                                Image(systemName: "xmark")
-                            }
-                            Button(action: {
-                                selectedTodoId = todo.id
-                                isShowAlert.toggle()
-                            }) {
-                                Text("削除")
-                                Image(systemName: "trash")
-                            }
-                        }))
-                    }
+                    }))
                 }
             }
-            .onAppear {
-                reloadRecords()
-            }
-            
-            
-            
-            if todos.count == 0 {
-                Text("この日に達成したTodoはありません")
-                    .foregroundColor(.secondary)
-            }
-            
+        }
+        .onAppear {
+            reloadRecords()
         }
         
         .sheet(isPresented: $isShowSheet) {
