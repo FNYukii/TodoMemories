@@ -11,6 +11,8 @@ import WidgetKit
 
 struct ResultView: View, EditProtocol {
     
+    @Environment(\.presentationMode) var presentation
+    
     //ThirdViewのカレンダーで選択された日
     let selectedDate: Date
     
@@ -150,6 +152,9 @@ struct ResultView: View, EditProtocol {
         let realm = Todo.customRealm()
         let achievedYmd = converter.toYmd(inputDate: selectedDate)
         todos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isAscending)
+        if todos.count == 0 {
+            presentation.wrappedValue.dismiss()
+        }
     }
     
     func getSelectedDiaryId() -> Int {

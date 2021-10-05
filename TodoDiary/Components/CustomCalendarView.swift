@@ -65,18 +65,13 @@ struct CustomCalendarView: View {
                                     }){
                                         Text("\(showDays[index])")
                                             .fontWeight(.bold)
-                                            .foregroundColor(.blue)
                                     }
                                 }
                                 //Todo未達成
                                 else {
-                                    Button(action: {
-                                        calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
-                                    }){
-                                        Text("\(showDays[index])")
-                                            .fontWeight(.bold)
-                                            .foregroundColor(.primary)
-                                    }
+                                    Text("\(showDays[index])")
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.secondary)
                                 }
                             }
                             //表示する日付が今日でない
@@ -86,14 +81,11 @@ struct CustomCalendarView: View {
                                     Button("\(showDays[index])") {
                                         calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
                                     }
-                                    .foregroundColor(.blue)
                                 }
                                 //Todo未達成
                                 else {
-                                    Button("\(showDays[index])") {
-                                        calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
-                                    }
-                                    .foregroundColor(.primary)
+                                    Text("\(showDays[index])")
+                                    .foregroundColor(.secondary)
                                 }
                             }
                             
