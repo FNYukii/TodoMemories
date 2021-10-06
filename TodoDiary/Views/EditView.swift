@@ -43,14 +43,10 @@ struct EditView: View {
                             editProtocol.reloadRecords()
                             presentation.wrappedValue.dismiss()
                         }){
-                            HStack {
-                                if isPinned {
-                                    Image(systemName: "pin.slash")
-                                    Text("固定を外す")
-                                } else {
-                                    Image(systemName: "pin")
-                                    Text("Todoを固定")
-                                }
+                            if isPinned {
+                                Label("固定を外す", systemImage: "pin.slash")
+                            } else {
+                                Label("Todoを固定", systemImage: "pin")
                             }
                         }
                         .disabled(isSaveDisabled)
@@ -74,14 +70,10 @@ struct EditView: View {
                         editProtocol.reloadRecords()
                         presentation.wrappedValue.dismiss()
                     }){
-                        HStack {
-                            if isAchieved {
-                                Image(systemName: "xmark")
-                                Text("未達成に戻す")
-                            } else {
-                                Image(systemName: "checkmark")
-                                Text("達成済みに変更")
-                            }
+                        if isAchieved {
+                            Label("未達成に戻す", systemImage: "xmark")
+                        } else {
+                            Label("達成済みに変更", systemImage: "checkmark")
                         }
                     }
                     .disabled(isSaveDisabled)
@@ -92,11 +84,8 @@ struct EditView: View {
                         Button(action: {
                             isShowAlert.toggle()
                         }){
-                            HStack {
-                                Image(systemName: "trash")
-                                Text("Todoを削除")
-                            }
-                            .foregroundColor(.red)
+                            Label("Todoを削除", systemImage: "trash")
+                                .foregroundColor(.red)
                         }
                     }
                 }
