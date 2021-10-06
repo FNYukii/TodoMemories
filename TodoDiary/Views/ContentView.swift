@@ -12,18 +12,15 @@ struct ContentView: View {
         TabView {
             FirstView()
                 .tabItem {
-                    Image(systemName: "list.bullet")
-                    Text("Todo")
+                    Label("Todo", systemImage: "list.bullet")
                 }
             SecondView()
                 .tabItem {
-                    Image(systemName: "checkmark")
-                    Text("達成済み")
+                    Label("達成済み", systemImage: "checkmark")
                 }
             ThirdView()
                 .tabItem {
-                    Image(systemName: "chart.bar.xaxis")
-                    Text("達成グラフ")
+                    Label("達成グラフ", systemImage: "chart.bar.xaxis")
                 }
         }
     }
