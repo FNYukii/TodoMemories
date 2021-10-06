@@ -55,15 +55,13 @@ struct SecondView: View, EditProtocol {
                                     Button(action: {
                                         unachieveTodo(id: todo.id)
                                     }) {
-                                        Text("未達成に変更")
-                                        Image(systemName: "xmark")
+                                        Label("未達成に変更", systemImage: "xmark")
                                     }
                                     Button(action: {
                                         selectedTodoId = todo.id
                                         isShowAlert.toggle()
                                     }) {
-                                        Text("削除")
-                                        Image(systemName: "trash")
+                                        Label("削除", systemImage: "trash")
                                     }
                                 }))
                                 
@@ -105,11 +103,9 @@ struct SecondView: View, EditProtocol {
                         reloadRecords()
                     }){
                         if isAscending {
-                            Image(systemName: "arrow.up")
-                            Text("新しい順に並べる")
+                            Label("新しい順に並べる", systemImage: "arrow.up")
                         } else {
-                            Image(systemName: "arrow.down")
-                            Text("古い順に並べる")
+                            Label("古い順に並べる", systemImage: "arrow.down")
                         }
                     }
                     Button(action: {
@@ -117,11 +113,9 @@ struct SecondView: View, EditProtocol {
                         UserDefaults.standard.setValue(isShowTime, forKey: "isShowTime")
                     }){
                         if isShowTime {
-                            Image(systemName: "clock")
-                            Text("達成時刻を非表示")
+                            Label("達成時刻を非表示", systemImage: "clock")
                         } else {
-                            Image(systemName: "clock.fill")
-                            Text("達成時刻を表示")
+                            Label("達成時刻を表示", systemImage: "clock.fill")
                         }
                     }
                 } label: {
