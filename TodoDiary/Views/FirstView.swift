@@ -37,21 +37,18 @@ struct FirstView: View, EditProtocol {
                                     Button(action: {
                                         unpinTodo(id: todo.id)
                                     }){
-                                        Text("固定を外す")
-                                        Image(systemName: "pin.slash")
+                                        Label("固定を外す", systemImage: "pin.slash")
                                     }
                                     Button(action: {
                                         achieveTodo(id: todo.id)
                                     }){
-                                        Text("達成済みに変更")
-                                        Image(systemName: "checkmark")
+                                        Label("達成済みに変更", systemImage: "checkmark")
                                     }
                                     Button(action: {
                                         selectedTodoId = todo.id
                                         isShowAlert.toggle()
                                     }){
-                                        Text("削除")
-                                        Image(systemName: "trash")
+                                        Label("削除", systemImage: "trash")
                                     }
                                 }))
                             }
@@ -70,21 +67,18 @@ struct FirstView: View, EditProtocol {
                                     Button(action: {
                                         pinTodo(id: todo.id)
                                     }){
-                                        Text("固定する")
-                                        Image(systemName: "pin")
+                                        Label("固定する", systemImage: "pin")
                                     }
                                     Button(action: {
                                         achieveTodo(id: todo.id)
                                     }){
-                                        Text("達成済みに変更")
-                                        Image(systemName: "checkmark")
+                                        Label("達成済みに変更", systemImage: "checkmark")
                                     }
                                     Button(action: {
                                         selectedTodoId = todo.id
                                         isShowAlert.toggle()
                                     }){
-                                        Text("削除")
-                                        Image(systemName: "trash")
+                                        Label("削除", systemImage: "trash")
                                     }
                                 }))
                             }
@@ -102,21 +96,18 @@ struct FirstView: View, EditProtocol {
                                 Button(action: {
                                     pinTodo(id: todo.id)
                                 }){
-                                    Text("固定する")
-                                    Image(systemName: "pin")
+                                    Label("固定する", systemImage: "pin")
                                 }
                                 Button(action: {
                                     achieveTodo(id: todo.id)
                                 }){
-                                    Text("達成済みに変更")
-                                    Image(systemName: "checkmark")
+                                    Label("達成済みに変更", systemImage: "checkmark")
                                 }
                                 Button(action: {
                                     selectedTodoId = todo.id
                                     isShowAlert.toggle()
                                 }){
-                                    Text("削除")
-                                    Image(systemName: "trash")
+                                    Label("削除", systemImage: "trash")
                                 }
                             }))
                         }
@@ -154,8 +145,7 @@ struct FirstView: View, EditProtocol {
                     selectedTodoId = 0
                     isShowSheet.toggle()
                 }){
-                    Image(systemName: "plus.circle.fill")
-                    Text("新しいTodo")
+                    Label("新しいTodo", systemImage: "plus.circle.fill")
                 }
             )
             
