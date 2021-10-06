@@ -49,7 +49,7 @@ struct BarChart : UIViewRepresentable {
 //            entries.append(ChartDataEntry(x: Double(day), y: Double(achieveCounts[day])))
 //        }
         
-        let rawData: [Int] = [5, 4, 2, 4, 1, 3, 4, 4, 3, 2, 5, 4, 2, 4, 1, 3, 4, 4, 3, 2, 5, 4, 2, 4, 1, 3, 4, 4, 3, 2, ]
+        let rawData: [Int] = [5, 4, 2, 4, 1, 2, 5, 1, 2, 5, 2, 3, 1, 4, 2, 3, 3, 2, 4, 1, 0, 4, 2, 0, 2, 2, 1, 3, 3, 2]
         let entries = rawData.enumerated().map { BarChartDataEntry(x: Double($0.offset + 1), y: Double($0.element)) }
         
         //データセットを生成
