@@ -51,11 +51,11 @@ struct LineChart : UIViewRepresentable {
             let achievedTodos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd = \(achievedYmd)")
             achieveCounts.append(achievedTodos.count)
         }
-        
+                
         //achieveCountsを元に折れ線用のデータを生成
         var lineChartEntry : [ChartDataEntry] = []
-        for day in (1..<dayCount) {
-            lineChartEntry.append(ChartDataEntry(x: Double(day), y: Double(achieveCounts[day])))
+        for day in (0..<dayCount) {
+            lineChartEntry.append(ChartDataEntry(x: Double(day + 1), y: Double(achieveCounts[day])))
         }
         
         //折れ線を生成
