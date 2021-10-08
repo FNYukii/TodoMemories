@@ -45,20 +45,16 @@ struct EditView: View {
                     })
                 Section {
                     //固定切り替えスイッチ
-                    Toggle(isOn: $isPinned) {
-                        Text("Todoを固定")
-                    }
-                    .disabled(isSaveDisabled || isAchieved)
+                    Toggle("Todoを固定", isOn: $isPinned)
+                        .disabled(isSaveDisabled || isAchieved)
                     //達成切り替えスイッチ
-                    Toggle(isOn: $isAchieved) {
-                        Text("達成済み")
-                    }
-                    .onChange(of: isAchieved) {value in
-                        if value {
-                            isPinned = false
+                    Toggle("達成済み", isOn: $isAchieved)
+                        .disabled(isSaveDisabled)
+                        .onChange(of: isAchieved) {value in
+                            if value {
+                                isPinned = false
+                            }
                         }
-                    }
-                    .disabled(isSaveDisabled)
                     //達成日時
                     if isAchieved {
                         DatePicker("達成日時", selection: $achievedDate)
