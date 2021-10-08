@@ -44,53 +44,26 @@ struct EditView: View {
                         textCheck()
                     })
                 Section {
-                    //固定切り替えボタン
-                    if !isAchieved {
-                        Button(action: {
-                            isPinned.toggle()
-                            saveRecord()
-                            WidgetCenter.shared.reloadAllTimelines()
-                            editProtocol.reloadRecords()
-                            presentation.wrappedValue.dismiss()
-                        }){
-                            if id == 0 {
-                                Label("Todoを固定して追加", systemImage: "pin")
-                            } else if id != 0 && !isPinned {
-                                Label("Todoを固定する", systemImage: "pin")
-                            } else {
-                                Label("固定を解除", systemImage: "pin.slash")
-                            }
-                        }
-                        .disabled(isSaveDisabled)
+                    //固定切り替えスイッチ
+                    Toggle(isOn: $isPinned) {
+                        Text("Todoを固定")
                     }
-                    //達成日時
-                    if isAchieved {
-                        Section {
-                            DatePicker("達成日時", selection: $achievedDate)
-                                .environment(\.locale, Locale(identifier: "ja_JP"))
-                        }
+                    .disabled(isSaveDisabled || isAchieved)
+                    //達成切り替えスイッチ
+                    Toggle(isOn: $isAchieved) {
+                        Text("達成済み")
                     }
-                    //達成切り替えボタン
-                    Button(action: {
-                        isAchieved.toggle()
-                        if isAchieved {
+                    .onChange(of: isAchieved) {value in
+                        if value {
                             isPinned = false
-                            achievedDate = Date()
-                        }
-                        saveRecord()
-                        WidgetCenter.shared.reloadAllTimelines()
-                        editProtocol.reloadRecords()
-                        presentation.wrappedValue.dismiss()
-                    }){
-                        if id == 0 {
-                            Label("達成済みに変更して追加", systemImage: "checkmark")
-                        } else if id != 0 && !isAchieved {
-                            Label("達成済みに変更", systemImage: "checkmark")
-                        } else {
-                            Label("未達成に戻す", systemImage: "xmark")
                         }
                     }
                     .disabled(isSaveDisabled)
+                    //達成日時
+                    if isAchieved {
+                        DatePicker("達成日時", selection: $achievedDate)
+                            .environment(\.locale, Locale(identifier: "ja_JP"))
+                    }
                 }
                 //削除ボタン
                 if id != 0 {
@@ -98,7 +71,7 @@ struct EditView: View {
                         Button(action: {
                             isShowAlert.toggle()
                         }){
-                            Label("Todoを削除", systemImage: "trash")
+                            Text("Todoを削除")
                                 .foregroundColor(.red)
                         }
                     }
