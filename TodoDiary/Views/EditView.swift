@@ -53,6 +53,7 @@ struct EditView: View {
                         .onChange(of: isAchieved) {value in
                             if value {
                                 isPinned = false
+                                achievedDate = Date()
                             }
                         }
                     //達成日時
@@ -69,6 +70,7 @@ struct EditView: View {
                         }){
                             Text("Todoを削除")
                                 .foregroundColor(.red)
+                                .frame(maxWidth: .infinity, alignment: .center)
                         }
                     }
                 }
