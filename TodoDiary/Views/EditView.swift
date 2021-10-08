@@ -33,6 +33,7 @@ struct EditView: View {
                 //Todo内容入力エリア
                 TextField("Todoを入力", text: $content)
                     .introspectTextField { textField in
+                        textField.returnKeyType = .done
                         if isStartEditing && id == 0 {
                             textField.becomeFirstResponder()
                             isStartEditing = false
