@@ -12,6 +12,7 @@
 		5403443126FA102B00BC8C97 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5403443026FA102B00BC8C97 /* PageView.swift */; };
 		5403443326FA105F00BC8C97 /* OnePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5403443226FA105F00BC8C97 /* OnePageView.swift */; };
 		542F9A8C270BCF87003ACEE7 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F9A8B270BCF87003ACEE7 /* BarChart.swift */; };
+		54919C6C27101C1700EC9907 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54919C6B27101C1700EC9907 /* Introspect */; };
 		54B6704426F1C2DB00DB5688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6704326F1C2DB00DB5688 /* AppDelegate.swift */; };
 		54B6704626F1C2DB00DB5688 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6704526F1C2DB00DB5688 /* SceneDelegate.swift */; };
 		54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6704726F1C2DB00DB5688 /* ContentView.swift */; };
@@ -131,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54B6707F26F2CB9B00DB5688 /* RealmSwift in Frameworks */,
+				54919C6C27101C1700EC9907 /* Introspect in Frameworks */,
 				54B6707D26F2CB9B00DB5688 /* Realm in Frameworks */,
 				54B6709A26F644DE00DB5688 /* Charts in Frameworks */,
 			);
@@ -319,6 +321,7 @@
 				54B6707C26F2CB9B00DB5688 /* Realm */,
 				54B6707E26F2CB9B00DB5688 /* RealmSwift */,
 				54B6709926F644DE00DB5688 /* Charts */,
+				54919C6B27101C1700EC9907 /* Introspect */,
 			);
 			productName = TodoDiary;
 			productReference = 54B6704026F1C2DB00DB5688 /* TodoDiary.app */;
@@ -418,6 +421,7 @@
 			packageReferences = (
 				54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				54B6709826F644DE00DB5688 /* XCRemoteSwiftPackageReference "Charts" */,
+				54919C6A27101C1700EC9907 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 54B6704126F1C2DB00DB5688 /* Products */;
 			projectDirPath = "";
@@ -892,6 +896,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		54919C6A27101C1700EC9907 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
 		54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
@@ -911,6 +923,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		54919C6B27101C1700EC9907 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54919C6A27101C1700EC9907 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
 		54B6707C26F2CB9B00DB5688 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */;

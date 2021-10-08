@@ -8,6 +8,7 @@
 import SwiftUI
 import RealmSwift
 import WidgetKit
+import Introspect
 
 struct EditView: View {
     
@@ -17,6 +18,7 @@ struct EditView: View {
     @State var navBarTitle = "Todoを追加"
     @State var isShowAlert = false
     @State var isSaveDisabled = false
+    @State var isStartEditing = true
     
     @State var id = 0
     @State var content = ""
@@ -30,6 +32,12 @@ struct EditView: View {
             Form {
                 //Todo内容入力エリア
                 TextField("Todoを入力", text: $content)
+                    .introspectTextField { textField in
+                        if isStartEditing && id == 0 {
+                            textField.becomeFirstResponder()
+                            isStartEditing = false
+                        }
+                    }
                     .onChange(of: content, perform: { value in
                         textCheck()
                     })
