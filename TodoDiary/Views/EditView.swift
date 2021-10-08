@@ -15,7 +15,8 @@ struct EditView: View {
     @Environment(\.presentationMode) var presentation
     var editProtocol: EditProtocol
     
-    @State var navBarTitle = "Todoを追加"
+    @State var navBarTitle = "新しいTodo"
+    @State var navBarDoneText = "追加"
     @State var isShowAlert = false
     @State var isSaveDisabled = false
     @State var isStartEditing = true
@@ -126,7 +127,7 @@ struct EditView: View {
                     Text("キャンセル")
                         .fontWeight(.regular)
                 },
-                trailing: Button("完了"){
+                trailing: Button(navBarDoneText){
                     saveRecord()
                     WidgetCenter.shared.reloadAllTimelines()
                     editProtocol.reloadRecords()
@@ -147,6 +148,7 @@ struct EditView: View {
             isAchieved = todo.isAchieved
             achievedDate = todo.achievedDate
             navBarTitle = "Todoを編集"
+            navBarDoneText = "完了"
         }
         textCheck()
     }
