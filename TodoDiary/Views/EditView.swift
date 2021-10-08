@@ -53,10 +53,12 @@ struct EditView: View {
                             editProtocol.reloadRecords()
                             presentation.wrappedValue.dismiss()
                         }){
-                            if isPinned {
-                                Label("固定を外す", systemImage: "pin.slash")
+                            if id == 0 {
+                                Label("Todoを固定して追加", systemImage: "pin")
+                            } else if id != 0 && !isPinned {
+                                Label("Todoを固定する", systemImage: "pin")
                             } else {
-                                Label("Todoを固定", systemImage: "pin")
+                                Label("固定を解除", systemImage: "pin.slash")
                             }
                         }
                         .disabled(isSaveDisabled)
@@ -80,10 +82,12 @@ struct EditView: View {
                         editProtocol.reloadRecords()
                         presentation.wrappedValue.dismiss()
                     }){
-                        if isAchieved {
-                            Label("未達成に戻す", systemImage: "xmark")
-                        } else {
+                        if id == 0 {
+                            Label("達成済みに変更して追加", systemImage: "checkmark")
+                        } else if id != 0 && !isAchieved {
                             Label("達成済みに変更", systemImage: "checkmark")
+                        } else {
+                            Label("未達成に戻す", systemImage: "xmark")
                         }
                     }
                     .disabled(isSaveDisabled)
