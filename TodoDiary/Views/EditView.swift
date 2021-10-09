@@ -18,7 +18,6 @@ struct EditView: View {
     @State var navBarTitle = "新しいTodo"
     @State var navBarDoneText = "追加"
     @State var isShowAlert = false
-    @State var isSaveDisabled = false
     @State var isStartEditing = true
     
     @State var id = 0
@@ -40,18 +39,15 @@ struct EditView: View {
                             isStartEditing = false
                         }
                     }
-                    .onChange(of: content, perform: { value in
-                        textCheck()
-                    })
                 Section {
                     //固定切り替えスイッチ
                     Toggle("Todoを固定", isOn: $isPinned)
                         .toggleStyle(SwitchToggleStyle(tint: Color.accentColor))
-                        .disabled(isSaveDisabled || isAchieved)
+                        .disabled(content.isEmpty || isAchieved)
                     //達成切り替えスイッチ
                     Toggle("達成済み", isOn: $isAchieved)
                         .toggleStyle(SwitchToggleStyle(tint: Color.accentColor))
-                        .disabled(isSaveDisabled)
+                        .disabled(content.isEmpty)
                         .onChange(of: isAchieved) {value in
                             if value {
                                 isPinned = false
@@ -110,7 +106,7 @@ struct EditView: View {
                     editProtocol.reloadRecords()
                     presentation.wrappedValue.dismiss()
                 }
-                .disabled(isSaveDisabled)
+                    .disabled(content.isEmpty)
             )
         }
     }
@@ -126,15 +122,6 @@ struct EditView: View {
             achievedDate = todo.achievedDate
             navBarTitle = "Todoを編集"
             navBarDoneText = "完了"
-        }
-        textCheck()
-    }
-    
-    func textCheck() {
-        if content.isEmpty {
-            isSaveDisabled = true
-        } else {
-            isSaveDisabled = false
         }
     }
     
