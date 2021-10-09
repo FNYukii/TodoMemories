@@ -46,9 +46,11 @@ struct EditView: View {
                 Section {
                     //固定切り替えスイッチ
                     Toggle("Todoを固定", isOn: $isPinned)
+                        .toggleStyle(SwitchToggleStyle(tint: Color.accentColor))
                         .disabled(isSaveDisabled || isAchieved)
                     //達成切り替えスイッチ
                     Toggle("達成済み", isOn: $isAchieved)
+                        .toggleStyle(SwitchToggleStyle(tint: Color.accentColor))
                         .disabled(isSaveDisabled)
                         .onChange(of: isAchieved) {value in
                             if value {
