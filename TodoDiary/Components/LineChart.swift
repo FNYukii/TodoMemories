@@ -64,7 +64,7 @@ struct LineChart : UIViewRepresentable {
         
         //折れ線のスタイルをカスタマイズ
         dataSet.drawCirclesEnabled = false //折れ線グラフのデータ値の丸を非表示
-        dataSet.setColor(UIColor.systemBlue) //折れ線グラフの色
+        dataSet.setColor(UIColor.systemRed) //折れ線グラフの色
         
         //折れ線データを生成
         data.append(dataSet)

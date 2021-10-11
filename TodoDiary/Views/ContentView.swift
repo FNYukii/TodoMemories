@@ -23,5 +23,6 @@ struct ContentView: View {
                     Label("達成グラフ", systemImage: "chart.bar.xaxis")
                 }
         }
+        .accentColor(.red)
     }
 }
