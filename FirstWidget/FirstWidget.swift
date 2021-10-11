@@ -11,11 +11,11 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), pinnedTodoStrs: ["Apple", "Orange"], unpinnedTodoStrs: ["Strawberry", "melon"])
+        SimpleEntry(date: Date(), pinnedTodoStrs: ["買い物に行く", "宿題をする"], unpinnedTodoStrs: ["洗濯物を畳む", "早く寝る"])
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), pinnedTodoStrs: ["Apple", "Orange"], unpinnedTodoStrs: ["Strawberry", "melon"])
+        let entry = SimpleEntry(date: Date(), pinnedTodoStrs: ["買い物に行く", "宿題をする"], unpinnedTodoStrs: ["洗濯物を畳む", "早く寝る"])
         completion(entry)
     }
 
