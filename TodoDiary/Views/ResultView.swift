@@ -18,7 +18,7 @@ struct ResultView: View, EditProtocol {
     
     @State var isShowSheet = false
     @State var selectedTodoId = 0
-    @State var isShowAlert = false
+    @State var isShowActionSheet = false
     
     @State var todos = Todo.noRecord()
     
@@ -53,7 +53,7 @@ struct ResultView: View, EditProtocol {
                         }
                         Button(action: {
                             selectedTodoId = todo.id
-                            isShowAlert.toggle()
+                            isShowActionSheet.toggle()
                         }) {
                             Label("削除", systemImage: "trash")
                         }
@@ -69,13 +69,16 @@ struct ResultView: View, EditProtocol {
             EditView(editProtocol: self)
         }
         
-        .alert(isPresented: $isShowAlert) {
-            Alert(title: Text("確認"),
-                message: Text("このTodoを削除してもよろしいですか？"),
-                primaryButton: .cancel(Text("キャンセル")),
-                secondaryButton: .destructive(Text("削除"), action: {
-                    deleteTodo()
-                })
+        .actionSheet(isPresented: $isShowActionSheet) {
+            ActionSheet(
+                title: Text(""),
+                message: Text("このTodoを削除してもよろしいですか?"),
+                buttons:[
+                    .destructive(Text("Todoを削除")) {
+                        deleteTodo()
+                    },
+                    .cancel()
+                ]
             )
         }
         

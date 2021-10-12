@@ -84,13 +84,16 @@ struct SecondView: View, EditProtocol {
                 EditView(editProtocol: self)
             }
             
-            .alert(isPresented: $isShowAlert) {
-                Alert(title: Text("確認"),
-                    message: Text("このTodoを削除してもよろしいですか？"),
-                    primaryButton: .cancel(Text("キャンセル")),
-                    secondaryButton: .destructive(Text("削除"), action: {
-                        deleteTodo()
-                    })
+            .actionSheet(isPresented: $isShowAlert) {
+                ActionSheet(
+                    title: Text(""),
+                    message: Text("このTodoを削除してもよろしいですか?"),
+                    buttons:[
+                        .destructive(Text("Todoを削除")) {
+                            deleteTodo()
+                        },
+                        .cancel()
+                    ]
                 )
             }
             
