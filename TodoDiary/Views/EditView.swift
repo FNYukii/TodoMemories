@@ -76,16 +76,30 @@ struct EditView: View {
             }
             
             //削除確認アラート
-            .alert(isPresented: $isShowAlert) {
-                Alert(title: Text("確認"),
-                    message: Text("このTodoを削除してもよろしいですか？"),
-                    primaryButton: .cancel(Text("キャンセル")),
-                    secondaryButton: .destructive(Text("削除"), action: {
-                        deleteRecord()
-                        WidgetCenter.shared.reloadAllTimelines()
-                        editProtocol.reloadRecords()
-                        presentation.wrappedValue.dismiss()
-                    })
+//            .alert(isPresented: $isShowAlert) {
+//                Alert(title: Text("確認"),
+//                    message: Text("このTodoを削除してもよろしいですか？"),
+//                    primaryButton: .cancel(Text("キャンセル")),
+//                    secondaryButton: .destructive(Text("削除"), action: {
+//                        deleteRecord()
+//                        WidgetCenter.shared.reloadAllTimelines()
+//                        editProtocol.reloadRecords()
+//                        presentation.wrappedValue.dismiss()
+//                    })
+//                )
+//            }
+            
+            //削除確認アクションシート
+            .actionSheet(isPresented: $isShowAlert) {
+                ActionSheet(
+                    title: Text("確認"),
+                    message: Text("このTodoを削除してもよろしいですか?"),
+                    buttons:[
+                        .default(Text("Todoを削除")) {
+                            //
+                        },
+                        .cancel()
+                    ]
                 )
             }
             
