@@ -28,6 +28,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+        
+        //ActionSheetのアクセントカラーを赤色に変更
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.red
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

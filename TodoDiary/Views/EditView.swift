@@ -17,7 +17,7 @@ struct EditView: View {
     
     @State var navBarTitle = "新しいTodo"
     @State var navBarDoneText = "追加"
-    @State var isShowAlert = false
+    @State var isShowActionSheet = false
     @State var isStartEditing = true
     
     @State var id = 0
@@ -62,7 +62,7 @@ struct EditView: View {
                 if id != 0 {
                     Section {
                         Button(action: {
-                            isShowAlert.toggle()
+                            isShowActionSheet.toggle()
                         }){
                             Text("Todoを削除")
                                 .foregroundColor(.red)
@@ -75,28 +75,17 @@ struct EditView: View {
                 loadTodo()
             }
             
-            //削除確認アラート
-//            .alert(isPresented: $isShowAlert) {
-//                Alert(title: Text("確認"),
-//                    message: Text("このTodoを削除してもよろしいですか？"),
-//                    primaryButton: .cancel(Text("キャンセル")),
-//                    secondaryButton: .destructive(Text("削除"), action: {
-//                        deleteRecord()
-//                        WidgetCenter.shared.reloadAllTimelines()
-//                        editProtocol.reloadRecords()
-//                        presentation.wrappedValue.dismiss()
-//                    })
-//                )
-//            }
-            
             //削除確認アクションシート
-            .actionSheet(isPresented: $isShowAlert) {
+            .actionSheet(isPresented: $isShowActionSheet) {
                 ActionSheet(
-                    title: Text("確認"),
+                    title: Text(""),
                     message: Text("このTodoを削除してもよろしいですか?"),
                     buttons:[
-                        .default(Text("Todoを削除")) {
-                            //
+                        .destructive(Text("Todoを削除")) {
+                            deleteRecord()
+                            WidgetCenter.shared.reloadAllTimelines()
+                            editProtocol.reloadRecords()
+                            presentation.wrappedValue.dismiss()
                         },
                         .cancel()
                     ]
