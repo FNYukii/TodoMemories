@@ -42,10 +42,9 @@ struct EditView: View {
                 Section {
                     //固定切り替えスイッチ
                     Toggle("Todoを固定", isOn: $isPinned)
-                        .disabled(content.isEmpty || isAchieved)
+                        .disabled(isAchieved)
                     //達成切り替えスイッチ
                     Toggle("達成済み", isOn: $isAchieved)
-                        .disabled(content.isEmpty)
                         .onChange(of: isAchieved) {value in
                             if value {
                                 isPinned = false
