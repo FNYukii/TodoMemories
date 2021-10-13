@@ -188,6 +188,7 @@ struct FirstView: View, EditProtocol {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
         try! realm.write {
+            todo.isPinned = false
             todo.isAchieved = true
             todo.achievedDate = Date()
             let converter = Converter()
