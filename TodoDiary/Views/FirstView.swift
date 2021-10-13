@@ -82,6 +82,9 @@ struct FirstView: View, EditProtocol {
                                     }
                                 }))
                             }
+//                            .onMove{_, _ in
+//
+//                            }
                         }
                     }
                     //未固定Todoしか存在しないならSectionHeaderのテキストは非表示
@@ -144,8 +147,9 @@ struct FirstView: View, EditProtocol {
             }
             
             .navigationBarTitle("Todo")
-            .navigationBarItems(trailing:
-                Button(action: {
+            .navigationBarItems(
+                leading: EditButton(),
+                trailing: Button(action: {
                     selectedTodoId = 0
                     isShowSheet.toggle()
                 }){
