@@ -33,7 +33,7 @@ struct SecondView: View, EditProtocol {
             
             ZStack {
                 
-                Form {
+                List {
                     ForEach(0..<achievedYmds.count) { index in
                         Section(header: Text("\(converter.toYmdwText(inputDate: converter.toDate(inputYmd: achievedYmds[index])))")) {
                             ForEach(getDailyTodos(achievedYmd: achievedYmds[index]).freeze()){ todo in
@@ -69,6 +69,7 @@ struct SecondView: View, EditProtocol {
                         }
                     }
                 }
+                .listStyle(InsetGroupedListStyle())
                 .onAppear {
                     reloadRecords()
                 }

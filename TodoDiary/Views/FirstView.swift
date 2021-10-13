@@ -23,7 +23,7 @@ struct FirstView: View, EditProtocol {
             
             ZStack {
                 
-                Form {
+                List {
                     //固定済みTodoが1件以上
                     if pinnedTodos.count != 0 {
                         Section(header: Text("固定済み")) {
@@ -114,6 +114,7 @@ struct FirstView: View, EditProtocol {
                     }
 
                 }
+                .listStyle(InsetGroupedListStyle())
                 .onAppear {
                     reloadRecords()
                 }

@@ -29,7 +29,7 @@ struct ResultView: View, EditProtocol {
     
     var body: some View {
         
-        Form {
+        List {
             Section(header: Text("\(converter.toYmdwText(inputDate: selectedDate))")) {
                 ForEach(todos.freeze()) { todo in
                     Button(action: {
@@ -61,6 +61,7 @@ struct ResultView: View, EditProtocol {
                 }
             }
         }
+        .listStyle(InsetGroupedListStyle())
         .onAppear {
             reloadRecords()
         }
