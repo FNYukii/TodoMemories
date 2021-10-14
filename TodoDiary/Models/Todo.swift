@@ -51,19 +51,19 @@ class Todo: Object, Identifiable {
     //未達成Todo
     static func unachievedTodos() -> Results<Todo> {
         let realm = Todo.customRealm()
-        return realm.objects(Todo.self).filter("isAchieved == false").sorted(byKeyPath: "order", ascending: false)
+        return realm.objects(Todo.self).filter("isAchieved == false").sorted(byKeyPath: "order", ascending: true)
     }
     
     //固定済み未達成Todo
     static func pinnedTodos() -> Results<Todo> {
         let realm = Todo.customRealm()
-        return realm.objects(Todo.self).filter("isPinned == true && isAchieved == false").sorted(byKeyPath: "order", ascending: false)
+        return realm.objects(Todo.self).filter("isPinned == true && isAchieved == false").sorted(byKeyPath: "order", ascending: true)
     }
     
     //未固定未達成Todo
     static func unpinnedTodos() -> Results<Todo> {
         let realm = Todo.customRealm()
-        return realm.objects(Todo.self).filter("isPinned == false && isAchieved == false").sorted(byKeyPath: "order", ascending: false)
+        return realm.objects(Todo.self).filter("isPinned == false && isAchieved == false").sorted(byKeyPath: "order", ascending: true)
     }
     
     //達成済みTodo
