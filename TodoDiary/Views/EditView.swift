@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import RealmSwift
-import WidgetKit
 import Introspect
 
 struct EditView: View {
@@ -82,7 +80,6 @@ struct EditView: View {
                     buttons:[
                         .destructive(Text("Todoを削除")) {
                             Todo.deleteTodo(id: id)
-                            WidgetCenter.shared.reloadAllTimelines()
                             editProtocol.reloadRecords()
                             presentation.wrappedValue.dismiss()
                         },
@@ -106,7 +103,6 @@ struct EditView: View {
                     } else {
                         Todo.updateTodo(id: id, content: content, isPinned: isPinned, isAchieved: isAchieved, achievedDate: achievedDate)
                     }
-                    WidgetCenter.shared.reloadAllTimelines()
                     editProtocol.reloadRecords()
                     presentation.wrappedValue.dismiss()
                 }
@@ -119,8 +115,7 @@ struct EditView: View {
     func loadTodo() {
         id = editProtocol.getSelectedDiaryId()
         if id != 0 {
-            let realm = Todo.customRealm()
-            let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+            let todo = Todo.oneTodo(id: id)
             content = todo.content
             isPinned = todo.isPinned
             isAchieved = todo.isAchieved

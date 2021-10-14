@@ -66,7 +66,7 @@ struct ResultView: View, EditProtocol {
                 message: Text("このTodoを削除してもよろしいですか?"),
                 buttons:[
                     .destructive(Text("Todoを削除")) {
-                        deleteTodo()
+                        Todo.deleteTodo(id: selectedTodoId)
                     },
                     .cancel()
                 ]
@@ -103,26 +103,6 @@ struct ResultView: View, EditProtocol {
             }
         )
         
-    }
-    
-    func unachieveTodo(id: Int) {
-        let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        try! realm.write {
-            todo.isAchieved = false
-        }
-        reloadRecords()
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-    
-    func deleteTodo() {
-        let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(selectedTodoId)").first!
-        try! realm.write {
-            realm.delete(todo)
-        }
-        reloadRecords()
-        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func reloadRecords()  {

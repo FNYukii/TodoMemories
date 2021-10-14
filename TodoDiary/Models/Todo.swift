@@ -40,6 +40,7 @@ class Todo: Object, Identifiable {
         return realm
     }
     
+    
     //全てのレコード
     static func all() -> Results<Todo> {
         let realm = Todo.customRealm()
@@ -75,7 +76,20 @@ class Todo: Object, Identifiable {
         let realm = Todo.customRealm()
         return realm.objects(Todo.self).filter("id == -1")
     }
+    
+    //指定されたidのTodo
+    static func oneTodo(id: Int) -> Todo {
+        let realm = Todo.customRealm()
+        return realm.objects(Todo.self).filter("id == \(id)").first!
+    }
+    
+    //指定された年月日に達成されたTodo
+    static func todosOfTheDay(achievedYmd: Int, isAscending: Bool) -> Results<Todo> {
+        let realm = Todo.customRealm()
+        return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isAscending)
+    }
         
+    
     //新規Todo追加
     static func insertTodo(content: String, isPinned: Bool, isAchieved: Bool, achievedDate: Date) {
         let realm = Todo.customRealm()
@@ -183,6 +197,7 @@ class Todo: Object, Identifiable {
                 todoB.order = destination
             }
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
 }
