@@ -154,5 +154,35 @@ class Todo: Object, Identifiable {
     }
     
     //Todoを並べ替え
+    static func sortTodos(todos: Results<Todo>, sourceIndexSet: IndexSet, destination: Int) {
+        guard let source = sourceIndexSet.first else {
+            return
+        }
+        let realm = Todo.customRealm()
+        let moveId = todos[source].id
+        if source < destination {
+            print("down")
+            try! realm.write {
+                for i in (source + 1)...(destination - 1) {
+                    let todoA = realm.objects(Todo.self).filter("id == \(todos[i].id)").first!
+                    todoA.order = todos[i].order - 1
+                }
+                let todoB = realm.objects(Todo.self).filter("id == \(moveId)").first!
+                todoB.order = destination - 1
+            }
+        }
+        if destination < source {
+            print("up")
+            try! realm.write {
+                
+                for i in (destination...(source - 1)).reversed() {
+                    let todoA = realm.objects(Todo.self).filter("id == \(todos[i].id)").first!
+                    todoA.order = todos[i].order + 1
+                }
+                let todoB = realm.objects(Todo.self).filter("id == \(moveId)").first!
+                todoB.order = destination
+            }
+        }
+    }
     
 }
