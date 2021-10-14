@@ -152,15 +152,15 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    //TodoのisPinned切り替え
-    static func switchIsPinned(id: Int) {
-        let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        try! realm.write {
-            todo.isPinned = !todo.isPinned
-        }
-        WidgetCenter.shared.reloadAllTimelines()
-    }
+//    //TodoのisPinned切り替え
+//    static func switchIsPinned(id: Int) {
+//        let realm = Todo.customRealm()
+//        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+//        try! realm.write {
+//            todo.isPinned = !todo.isPinned
+//        }
+//        WidgetCenter.shared.reloadAllTimelines()
+//    }
     
     //Todoを固定する
     static func pinTodo(id: Int) {
@@ -222,6 +222,49 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
+    //Todoを達成済みに変更する
+    static func achieveTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        
+        //選択されたTodo以外のTodoのorderを調整
+        let selectedOrder = todo.order
+        var todos = Todo.noRecord()
+        if !todo.isPinned {
+            todos = Todo.unpinnedTodos()
+        } else {
+            todos = Todo.pinnedTodos()
+        }
+        let todosMaxOrder = todos.sorted(byKeyPath: "order").last?.order ?? -1
+        if selectedOrder != todosMaxOrder {
+            for index in selectedOrder + 1 ... todosMaxOrder {
+                Todo.changeOrder(id: todos[index].id, newOrder: todos[index].order - 1)
+            }
+        }
+        
+        //選択されたTodoを達成済みにする
+        try! realm.write {
+            todo.order = -1
+            todo.isPinned = false
+            todo.isAchieved = true
+        }
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    //Todoを未達成に戻す
+    static func unachieveTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        let maxOrder = Todo.unpinnedTodos().sorted(byKeyPath: "order").last?.order ?? -1
+        let newOrder = maxOrder + 1
+        try! realm.write {
+            todo.order = newOrder
+            todo.isAchieved = false
+        }
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    //Todoのorderを変更する
     static func changeOrder(id: Int, newOrder: Int) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!

@@ -44,7 +44,7 @@ struct ListContextMenuItems: View {
             //達成ボタン
             if !isAchieved {
                 Button(action: {
-                    Todo.switchIsAchieved(id: todoId)
+                    Todo.achieveTodo(id: todoId)
                     editProtocol.reloadRecords()
                 }){
                     Label("達成済みに変更", systemImage: "checkmark")
@@ -54,7 +54,7 @@ struct ListContextMenuItems: View {
             //達成解除ボタン
             if isAchieved {
                 Button(action: {
-                    Todo.switchIsAchieved(id: todoId)
+                    Todo.unachieveTodo(id: todoId)
                     editProtocol.reloadRecords()
                 }){
                     Label("未達成に戻す", systemImage: "checkmark")
