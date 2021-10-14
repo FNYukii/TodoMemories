@@ -97,13 +97,18 @@ class Todo: Object, Identifiable {
         let maxId = realm.objects(Todo.self).sorted(byKeyPath: "id").last?.id ?? 0
         let newId = maxId + 1
         //新規レコード用のorderを生成
-        var maxOrder = 0
-        if !isPinned {
-            maxOrder = Todo.unpinnedTodos().sorted(byKeyPath: "order").last?.order ?? -1
+        var newOrder = 0
+        if !isAchieved {
+            var maxOrder = 0
+            if !isPinned {
+                maxOrder = Todo.unpinnedTodos().sorted(byKeyPath: "order").last?.order ?? -1
+            } else {
+                maxOrder = Todo.pinnedTodos().sorted(byKeyPath: "order").last?.order ?? -1
+            }
+            newOrder = maxOrder + 1
         } else {
-            maxOrder = Todo.pinnedTodos().sorted(byKeyPath: "order").last?.order ?? -1
+            newOrder = -1
         }
-        let newOrder = maxOrder + 1
         //新規レコード生成
         let todo = Todo()
         todo.id = newId
@@ -111,12 +116,14 @@ class Todo: Object, Identifiable {
         todo.content = content
         todo.isPinned = isPinned
         todo.isAchieved = isAchieved
-        todo.achievedDate = achievedDate
-        let calendar = Calendar(identifier: .gregorian)
-        let year = calendar.component(.year, from: achievedDate)
-        let month = calendar.component(.month, from: achievedDate)
-        let day = calendar.component(.day, from: achievedDate)
-        todo.achievedYmd = year * 10000 + month * 100 + day
+        if isAchieved {
+            todo.achievedDate = achievedDate
+            let calendar = Calendar(identifier: .gregorian)
+            let year = calendar.component(.year, from: achievedDate)
+            let month = calendar.component(.month, from: achievedDate)
+            let day = calendar.component(.day, from: achievedDate)
+            todo.achievedYmd = year * 10000 + month * 100 + day
+        }
         //新規レコード追加
         try! realm.write {
             realm.add(todo)
@@ -132,12 +139,14 @@ class Todo: Object, Identifiable {
             todo.content = content
             todo.isPinned = isPinned
             todo.isAchieved = isAchieved
-            todo.achievedDate = achievedDate
-            let calendar = Calendar(identifier: .gregorian)
-            let year = calendar.component(.year, from: achievedDate)
-            let month = calendar.component(.month, from: achievedDate)
-            let day = calendar.component(.day, from: achievedDate)
-            todo.achievedYmd = year * 10000 + month * 100 + day
+            if isAchieved {
+                todo.achievedDate = achievedDate
+                let calendar = Calendar(identifier: .gregorian)
+                let year = calendar.component(.year, from: achievedDate)
+                let month = calendar.component(.month, from: achievedDate)
+                let day = calendar.component(.day, from: achievedDate)
+                todo.achievedYmd = year * 10000 + month * 100 + day
+            }
         }
         WidgetCenter.shared.reloadAllTimelines()
     }
@@ -151,16 +160,6 @@ class Todo: Object, Identifiable {
         }
         WidgetCenter.shared.reloadAllTimelines()
     }
-    
-//    //TodoのisPinned切り替え
-//    static func switchIsPinned(id: Int) {
-//        let realm = Todo.customRealm()
-//        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-//        try! realm.write {
-//            todo.isPinned = !todo.isPinned
-//        }
-//        WidgetCenter.shared.reloadAllTimelines()
-//    }
     
     //Todoを固定する
     static func pinTodo(id: Int) {
@@ -212,16 +211,6 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    //TodoのisAchieved切り替え
-    static func switchIsAchieved(id: Int) {
-        let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        try! realm.write {
-            todo.isAchieved = !todo.isAchieved
-        }
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-    
     //Todoを達成済みに変更する
     static func achieveTodo(id: Int) {
         let realm = Todo.customRealm()
@@ -247,6 +236,12 @@ class Todo: Object, Identifiable {
             todo.order = -1
             todo.isPinned = false
             todo.isAchieved = true
+            todo.achievedDate = Date()
+            let calendar = Calendar(identifier: .gregorian)
+            let year = calendar.component(.year, from: Date())
+            let month = calendar.component(.month, from: Date())
+            let day = calendar.component(.day, from: Date())
+            todo.achievedYmd = year * 10000 + month * 100 + day
         }
         WidgetCenter.shared.reloadAllTimelines()
     }
