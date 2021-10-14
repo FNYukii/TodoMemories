@@ -63,8 +63,6 @@ struct ListContextMenuItems: View {
             //削除ボタン
             Button(action: {
                 isShowActionSheet.toggle()
-//                Todo.deleteTodo(id: todoId)
-//                editProtocol.reloadRecords()
             }){
                 Label("削除", systemImage: "trash")
             }
