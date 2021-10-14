@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContextMenuItems: View {
+struct ListContextMenuItems: View {
     
     var editProtocol: EditProtocol
     

@@ -44,7 +44,7 @@
 		54DE529C26F8B6E10053F126 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708026F2CBCF00DB5688 /* Todo.swift */; };
 		54DE529E26F8B7310053F126 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 54DE529D26F8B7310053F126 /* Realm */; };
 		54DE52A026F8B7340053F126 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54DE529F26F8B7340053F126 /* RealmSwift */; };
-		54FFFCE227184947007C5D7A /* ContextMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FFFCE127184947007C5D7A /* ContextMenuItems.swift */; };
+		54FFFCE227184947007C5D7A /* ListContextMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FFFCE127184947007C5D7A /* ListContextMenuItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +125,7 @@
 		54DE529126F8A1E00053F126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54DE52A126F8B7D50053F126 /* TodoDiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodoDiary.entitlements; sourceTree = "<group>"; };
 		54DE52A226F8B80C0053F126 /* FirstWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FirstWidgetExtension.entitlements; sourceTree = "<group>"; };
-		54FFFCE127184947007C5D7A /* ContextMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuItems.swift; sourceTree = "<group>"; };
+		54FFFCE127184947007C5D7A /* ListContextMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContextMenuItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,7 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */,
-				54FFFCE127184947007C5D7A /* ContextMenuItems.swift */,
+				54FFFCE127184947007C5D7A /* ListContextMenuItems.swift */,
 				5403442E26FA0FEA00BC8C97 /* PageViewController.swift */,
 				542F9A8B270BCF87003ACEE7 /* BarChart.swift */,
 				5403443226FA105F00BC8C97 /* OnePageView.swift */,
@@ -486,7 +486,7 @@
 				5403442D26FA0D4700BC8C97 /* Converter.swift in Sources */,
 				54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */,
 				54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
-				54FFFCE227184947007C5D7A /* ContextMenuItems.swift in Sources */,
+				54FFFCE227184947007C5D7A /* ListContextMenuItems.swift in Sources */,
 				54B6704626F1C2DB00DB5688 /* SceneDelegate.swift in Sources */,
 				54DE523A26F74D130053F126 /* CalendarProtocol.swift in Sources */,
 				54B6709E26F70EDE00DB5688 /* CustomCalendarView.swift in Sources */,
