@@ -52,17 +52,7 @@ struct SecondView: View, EditProtocol {
                                     }
                                 }
                                 .contextMenu(ContextMenu(menuItems: {
-                                    Button(action: {
-                                        unachieveTodo(id: todo.id)
-                                    }) {
-                                        Label("未達成に変更", systemImage: "xmark")
-                                    }
-                                    Button(action: {
-                                        selectedTodoId = todo.id
-                                        isShowAlert.toggle()
-                                    }) {
-                                        Label("削除", systemImage: "trash")
-                                    }
+                                    ContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
                                 }))
                                 
                             }

@@ -39,22 +39,7 @@ struct FirstView: View, EditProtocol {
                                 }
                                 .foregroundColor(.primary)
                                 .contextMenu(ContextMenu(menuItems: {
-                                    Button(action: {
-                                        unpinTodo(id: todo.id)
-                                    }){
-                                        Label("固定を外す", systemImage: "pin.slash")
-                                    }
-                                    Button(action: {
-                                        achieveTodo(id: todo.id)
-                                    }){
-                                        Label("達成済みに変更", systemImage: "checkmark")
-                                    }
-                                    Button(action: {
-                                        selectedTodoId = todo.id
-                                        isShowActionSheet.toggle()
-                                    }){
-                                        Label("削除", systemImage: "trash")
-                                    }
+                                    ContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
                                 }))
                             }
                             .onMove {sourceIndexSet, destination in
@@ -73,22 +58,7 @@ struct FirstView: View, EditProtocol {
                                 }
                                 .foregroundColor(.primary)
                                 .contextMenu(ContextMenu(menuItems: {
-                                    Button(action: {
-                                        pinTodo(id: todo.id)
-                                    }){
-                                        Label("固定する", systemImage: "pin")
-                                    }
-                                    Button(action: {
-                                        achieveTodo(id: todo.id)
-                                    }){
-                                        Label("達成済みに変更", systemImage: "checkmark")
-                                    }
-                                    Button(action: {
-                                        selectedTodoId = todo.id
-                                        isShowActionSheet.toggle()
-                                    }){
-                                        Label("削除", systemImage: "trash")
-                                    }
+                                    ContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
                                 }))
                             }
                             .onMove {sourceIndexSet, destination in
@@ -106,22 +76,7 @@ struct FirstView: View, EditProtocol {
                             }
                             .foregroundColor(.primary)
                             .contextMenu(ContextMenu(menuItems: {
-                                Button(action: {
-                                    pinTodo(id: todo.id)
-                                }){
-                                    Label("固定する", systemImage: "pin")
-                                }
-                                Button(action: {
-                                    achieveTodo(id: todo.id)
-                                }){
-                                    Label("達成済みに変更", systemImage: "checkmark")
-                                }
-                                Button(action: {
-                                    selectedTodoId = todo.id
-                                    isShowActionSheet.toggle()
-                                }){
-                                    Label("削除", systemImage: "trash")
-                                }
+                                ContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
                             }))
                         }
                         .onMove {sourceIndexSet, destination in
@@ -152,7 +107,7 @@ struct FirstView: View, EditProtocol {
                     message: Text("このTodoを削除してもよろしいですか?"),
                     buttons:[
                         .destructive(Text("Todoを削除")) {
-                            deleteTodo()
+                            Todo.deleteTodo(id: selectedTodoId)
                         },
                         .cancel()
                     ]
@@ -180,50 +135,6 @@ struct FirstView: View, EditProtocol {
     
     func getSelectedDiaryId() -> Int {
         return selectedTodoId
-    }
-    
-    func pinTodo(id: Int) {
-        let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        try! realm.write {
-            todo.isPinned = true
-        }
-        reloadRecords()
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-    
-    func unpinTodo(id: Int) {
-        let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        try! realm.write {
-            todo.isPinned = false
-        }
-        reloadRecords()
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-    
-    func achieveTodo(id: Int) {
-        let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        try! realm.write {
-            todo.isPinned = false
-            todo.isAchieved = true
-            todo.achievedDate = Date()
-            let converter = Converter()
-            todo.achievedYmd = converter.toYmd(inputDate: Date())
-        }
-        reloadRecords()
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-    
-    func deleteTodo() {
-        let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(selectedTodoId)").first!
-        try! realm.write {
-            realm.delete(todo)
-        }
-        reloadRecords()
-        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func sortTodos(todos: Results<Todo>, sourceIndexSet: IndexSet, destination: Int) {

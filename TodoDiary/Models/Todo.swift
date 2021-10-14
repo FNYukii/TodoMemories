@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import WidgetKit
 
 class Todo: Object, Identifiable {
     
@@ -101,6 +102,7 @@ class Todo: Object, Identifiable {
         try! realm.write {
             realm.add(todo)
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     //既存Todo更新
@@ -118,7 +120,29 @@ class Todo: Object, Identifiable {
             let day = calendar.component(.day, from: achievedDate)
             todo.achievedYmd = year * 10000 + month * 100 + day
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
+    
+    //既存TodoのisPinned設定
+    static func switchIsPinned(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            todo.isPinned = !todo.isPinned
+        }
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    //既存TodoのisAchieved切り替え
+    static func switchIsAchieved(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            todo.isAchieved = !todo.isAchieved
+        }
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
     
     //既存Todo削除
     static func deleteTodo(id: Int) {
@@ -127,6 +151,7 @@ class Todo: Object, Identifiable {
         try! realm.write {
             realm.delete(todo)
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
 }
