@@ -43,7 +43,7 @@ struct FirstView: View, EditProtocol {
                     if pinnedTodos.count != 0 {
                         Section(header: Text("固定済み")) {
                             ForEach(pinnedTodos.freeze()) { todo in
-                                Button("\(todo.content)"){
+                                Button("\(todo.content) : \(todo.order)"){
                                     selectedTodoId = todo.id
                                     isShowSheet.toggle()
                                 }
@@ -70,7 +70,7 @@ struct FirstView: View, EditProtocol {
                             .onMove{indexSet, index in
 
                             }
-                            .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
+//                            .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
                         }
                     }
                     
@@ -78,7 +78,7 @@ struct FirstView: View, EditProtocol {
                     if unpinnedTodos.count != 0 && pinnedTodos.count != 0 {
                         Section(header: Text("その他")) {
                             ForEach(unpinnedTodos.freeze()) { todo in
-                                Button("\(todo.content)"){
+                                Button("\(todo.content) : \(todo.order)"){
                                     selectedTodoId = todo.id
                                     isShowSheet.toggle()
                                 }
@@ -105,7 +105,7 @@ struct FirstView: View, EditProtocol {
                             .onMove{indexSet, index in
 
                             }
-                            .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
+//                            .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
                         }
                     }
                     
@@ -174,7 +174,7 @@ struct FirstView: View, EditProtocol {
                                 return
                             }
                         }
-                        .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
+//                        .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
                     }
                     
                 }
@@ -207,10 +207,11 @@ struct FirstView: View, EditProtocol {
                 )
             }
             
-            .environment(\.editMode, .constant(EditMode.active))
+//            .environment(\.editMode, .constant(EditMode.active))
             
             .navigationBarTitle("Todo")
             .navigationBarItems(
+                leading: EditButton(),
                 trailing: Button(action: {
                     selectedTodoId = 0
                     isShowSheet.toggle()
