@@ -9,10 +9,6 @@ import SwiftUI
 import RealmSwift
 import WidgetKit
 
-struct todoMirror: Identifiable {
-    var id: Int
-    let content: String
-}
 
 
 struct FirstView: View, EditProtocol {
@@ -23,12 +19,6 @@ struct FirstView: View, EditProtocol {
     @State var isShowSheet = false
     @State var selectedTodoId = 0
     @State var isShowActionSheet = false
-    
-    @State var todoMirrors: [todoMirror] = [
-        todoMirror(id: 3, content: "hello"),
-        todoMirror(id: 5, content: "Snow"),
-        todoMirror(id: 6, content: "Moon")
-    ]
     
     @Environment(\.editMode) var editMode
     
