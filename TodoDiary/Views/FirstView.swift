@@ -39,9 +39,6 @@ struct FirstView: View, EditProtocol {
                 
                 List {
 
-                    
-                    
-                    
                     //固定済みTodoが1件以上
                     if pinnedTodos.count != 0 {
                         Section(header: Text("固定済み")) {
@@ -70,12 +67,13 @@ struct FirstView: View, EditProtocol {
                                     }
                                 }))
                             }
-                            .onMove{_, _ in
+                            .onMove{indexSet, index in
 
                             }
                             .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
                         }
                     }
+                    
                     //固定済みTodoと未固定Todo両方存在する
                     if unpinnedTodos.count != 0 && pinnedTodos.count != 0 {
                         Section(header: Text("その他")) {
@@ -104,12 +102,17 @@ struct FirstView: View, EditProtocol {
                                     }
                                 }))
                             }
+                            .onMove{indexSet, index in
+
+                            }
+                            .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
                         }
                     }
+                    
                     //未固定Todoしか存在しないならSectionHeaderのテキストは非表示
                     if unpinnedTodos.count != 0 && pinnedTodos.count == 0 {
                         ForEach(unpinnedTodos.freeze()) { todo in
-                            Button("\(todo.content)"){
+                            Button("\(todo.content) : \(todo.order)"){
                                 selectedTodoId = todo.id
                                 isShowSheet.toggle()
                             }
@@ -133,8 +136,12 @@ struct FirstView: View, EditProtocol {
                                 }
                             }))
                         }
-                    }
+                        .onMove{indexSet, index in
 
+                        }
+                        .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
+                    }
+                    
                 }
                 .listStyle(InsetGroupedListStyle())
                 .onAppear {

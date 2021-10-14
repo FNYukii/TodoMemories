@@ -133,9 +133,15 @@ struct EditView: View {
             let realm = Todo.customRealm()
             let maxId = realm.objects(Todo.self).sorted(byKeyPath: "id").last?.id ?? 0
             let newId = maxId + 1
+            
+            //新規レコード用のorderを生成
+            let maxOrder = Todo.all().sorted(byKeyPath: "order").last?.order ?? 0
+            let newOrder = maxOrder + 1
+            
             //新規レコード生成
             let todo = Todo()
             todo.id = newId
+            todo.order = newOrder
             todo.content = content
             todo.isPinned = isPinned
             todo.isAchieved = isAchieved
