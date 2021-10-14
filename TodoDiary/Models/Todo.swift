@@ -97,7 +97,12 @@ class Todo: Object, Identifiable {
         let maxId = realm.objects(Todo.self).sorted(byKeyPath: "id").last?.id ?? 0
         let newId = maxId + 1
         //新規レコード用のorderを生成
-        let maxOrder = Todo.all().sorted(byKeyPath: "order").last?.order ?? 0
+        var maxOrder = 0
+        if !isPinned {
+            maxOrder = Todo.unpinnedTodos().sorted(byKeyPath: "order").last?.order ?? 0
+        } else {
+            maxOrder = Todo.pinnedTodos().sorted(byKeyPath: "order").last?.order ?? 0
+        }
         let newOrder = maxOrder + 1
         //新規レコード生成
         let todo = Todo()
@@ -154,6 +159,25 @@ class Todo: Object, Identifiable {
         try! realm.write {
             todo.isPinned = !todo.isPinned
         }
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    //Todoを固定する
+    static func pinTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        let oldOrder = todo.order
+        let maxOrder = Todo.all().sorted(byKeyPath: "order").last?.order ?? 0
+        let newOrder = maxOrder + 1
+        try! realm.write {
+            todo.isPinned = true
+            todo.order = newOrder
+        }
+        
+        let todos = Todo.unpinnedTodos()
+        
+        
+        //今固定したTodo以外の未固定Todoのorderを調整
         WidgetCenter.shared.reloadAllTimelines()
     }
     
