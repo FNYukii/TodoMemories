@@ -11,7 +11,7 @@ struct SecondView: View, EditProtocol {
     
     @State var isShowSheet = false
     @State var selectedTodoId = 0
-    @State var isShowAlert = false
+    @State var isShowActionSheet = false
     
     //Todoを達成した年月日の配列
     @State var achievedYmds: [Int] = []
@@ -49,7 +49,7 @@ struct SecondView: View, EditProtocol {
                                     }
                                 }
                                 .contextMenu(ContextMenu(menuItems: {
-                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
+                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet)
                                 }))
                                 
                             }
@@ -72,7 +72,7 @@ struct SecondView: View, EditProtocol {
                 EditView(editProtocol: self)
             }
             
-            .actionSheet(isPresented: $isShowAlert) {
+            .actionSheet(isPresented: $isShowActionSheet) {
                 ActionSheet(
                     title: Text(""),
                     message: Text("このTodoを削除してもよろしいですか?"),

@@ -15,6 +15,8 @@ struct ListContextMenuItems: View {
     let isPinned: Bool
     let isAchieved: Bool
     
+    @Binding var isShowActionSheet: Bool
+    
     var body: some View {
         Group {
             
@@ -60,8 +62,9 @@ struct ListContextMenuItems: View {
             
             //削除ボタン
             Button(action: {
-                Todo.deleteTodo(id: todoId)
-                editProtocol.reloadRecords()
+                isShowActionSheet.toggle()
+//                Todo.deleteTodo(id: todoId)
+//                editProtocol.reloadRecords()
             }){
                 Label("削除", systemImage: "trash")
             }
