@@ -7,7 +7,6 @@
 
 import Charts
 import SwiftUI
-import RealmSwift
 
 struct LineChart : UIViewRepresentable {
     
@@ -47,9 +46,8 @@ struct LineChart : UIViewRepresentable {
         var achieveCounts: [Int] = []
         for day in (1..<dayCount + 1) {
             let achievedYmd = showYear * 10000 + showMonth * 100 + day
-            let realm = Todo.customRealm()
-            let achievedTodos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd = \(achievedYmd)")
-            achieveCounts.append(achievedTodos.count)
+            let todos = Todo.todosOfTheDay(achievedYmd: achievedYmd, isAscending: true)
+            achieveCounts.append(todos.count)
         }
                 
         //achieveCountsを元に折れ線用のデータを生成

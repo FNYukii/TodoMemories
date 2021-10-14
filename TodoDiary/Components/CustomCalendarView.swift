@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 struct CustomCalendarView: View {
     
@@ -183,9 +182,8 @@ struct CustomCalendarView: View {
         var achieveCounts: [Int] = []
         for day in (1...dayCount) {
             let achievedYmd = showYear * 10000 + showMonth * 100 + day
-            let realm = Todo.customRealm()
-            let achievedTodos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd = \(achievedYmd)")
-            achieveCounts.append(achievedTodos.count)
+            let todos = Todo.todosOfTheDay(achievedYmd: achievedYmd, isAscending: true)
+            achieveCounts.append(todos.count)
         }
         
         return achieveCounts
