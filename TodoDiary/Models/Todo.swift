@@ -147,7 +147,7 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    //TodoのisPinned設定
+    //TodoのisPinned切り替え
     static func switchIsPinned(id: Int) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
