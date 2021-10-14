@@ -137,42 +137,7 @@ struct FirstView: View, EditProtocol {
                             }))
                         }
                         .onMove {sourceIndexSet, destination in
-                            guard let source = sourceIndexSet.first else {
-                                return
-                            }
-                            
-                            let realm = Todo.customRealm()
-                            let moveId = unpinnedTodos[source].id
-
-                            if source < destination {
-                                print("down")
-                                try! realm.write {
-                                    for i in (source + 1)...(destination - 1) {
-                                        let todoA = realm.objects(Todo.self).filter("id == \(unpinnedTodos[i].id)").first!
-                                        todoA.order = unpinnedTodos[i].order - 1
-                                    }
-                                    let todoB = realm.objects(Todo.self).filter("id == \(moveId)").first!
-                                    todoB.order = destination - 1
-                                }
-                                reloadRecords()
-                            } else if destination < source {
-                                print("up")
-                                try! realm.write {
-                                    
-                                    for i in (destination...(source - 1)).reversed() {
-                                        let todoA = realm.objects(Todo.self).filter("id == \(unpinnedTodos[i].id)").first!
-                                        todoA.order = unpinnedTodos[i].order + 1
-                                    }
-                                    let todoB = realm.objects(Todo.self).filter("id == \(moveId)").first!
-                                    todoB.order = destination
-                                    
-                                    
-                                }
-                                
-                                reloadRecords()
-                            } else {
-                                return
-                            }
+                            sortUnpinnedTodos(sourceIndexSet: sourceIndexSet, destination: destination)
                         }
 //                        .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
                     }
@@ -276,6 +241,47 @@ struct FirstView: View, EditProtocol {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
+    func sortUnpinnedTodos(sourceIndexSet: IndexSet, destination: Int) {
+        guard let source = sourceIndexSet.first else {
+            return
+        }
+        
+        let realm = Todo.customRealm()
+        let moveId = unpinnedTodos[source].id
+
+        if source < destination {
+            print("down")
+            try! realm.write {
+                for i in (source + 1)...(destination - 1) {
+                    let todoA = realm.objects(Todo.self).filter("id == \(unpinnedTodos[i].id)").first!
+                    todoA.order = unpinnedTodos[i].order - 1
+                }
+                let todoB = realm.objects(Todo.self).filter("id == \(moveId)").first!
+                todoB.order = destination - 1
+            }
+            reloadRecords()
+        } else if destination < source {
+            print("up")
+            try! realm.write {
+                
+                for i in (destination...(source - 1)).reversed() {
+                    let todoA = realm.objects(Todo.self).filter("id == \(unpinnedTodos[i].id)").first!
+                    todoA.order = unpinnedTodos[i].order + 1
+                }
+                let todoB = realm.objects(Todo.self).filter("id == \(moveId)").first!
+                todoB.order = destination
+                
+                
+            }
+            
+            reloadRecords()
+        } else {
+            return
+        }
+    }
     
+    func sortPinnedTodos() {
+        
+    }
 
 }
