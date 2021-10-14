@@ -105,7 +105,7 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    //既存Todo更新
+    //Todo更新
     static func updateTodo(id: Int, content: String, isPinned: Bool, isAchieved: Bool, achievedDate: Date) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
@@ -123,7 +123,17 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    //既存TodoのisPinned設定
+    //Todo削除
+    static func deleteTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            realm.delete(todo)
+        }
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    //TodoのisPinned設定
     static func switchIsPinned(id: Int) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
@@ -133,7 +143,7 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    //既存TodoのisAchieved切り替え
+    //TodoのisAchieved切り替え
     static func switchIsAchieved(id: Int) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
@@ -143,15 +153,6 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    
-    //既存Todo削除
-    static func deleteTodo(id: Int) {
-        let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        try! realm.write {
-            realm.delete(todo)
-        }
-        WidgetCenter.shared.reloadAllTimelines()
-    }
+    //Todoを並べ替え
     
 }
