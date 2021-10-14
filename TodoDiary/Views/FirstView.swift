@@ -35,7 +35,7 @@ struct FirstView: View, EditProtocol {
                                 }
                                 .foregroundColor(.primary)
                                 .contextMenu(ContextMenu(menuItems: {
-                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet)
+                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                                 }))
                             }
                             .onMove {sourceIndexSet, destination in
@@ -55,7 +55,7 @@ struct FirstView: View, EditProtocol {
                                 }
                                 .foregroundColor(.primary)
                                 .contextMenu(ContextMenu(menuItems: {
-                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet)
+                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                                 }))
                             }
                             .onMove {sourceIndexSet, destination in
@@ -74,7 +74,7 @@ struct FirstView: View, EditProtocol {
                             }
                             .foregroundColor(.primary)
                             .contextMenu(ContextMenu(menuItems: {
-                                ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet)
+                                ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                             }))
                         }
                         .onMove {sourceIndexSet, destination in

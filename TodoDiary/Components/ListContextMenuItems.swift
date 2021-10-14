@@ -16,6 +16,7 @@ struct ListContextMenuItems: View {
     let isAchieved: Bool
     
     @Binding var isShowActionSheet: Bool
+    @Binding var selectedTodoId: Int
     
     var body: some View {
         Group {
@@ -62,6 +63,7 @@ struct ListContextMenuItems: View {
             
             //削除ボタン
             Button(action: {
+                selectedTodoId = todoId
                 isShowActionSheet.toggle()
             }){
                 Label("削除", systemImage: "trash")

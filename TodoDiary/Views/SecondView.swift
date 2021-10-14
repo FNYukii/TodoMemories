@@ -49,7 +49,7 @@ struct SecondView: View, EditProtocol {
                                     }
                                 }
                                 .contextMenu(ContextMenu(menuItems: {
-                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet)
+                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                                 }))
                                 
                             }
