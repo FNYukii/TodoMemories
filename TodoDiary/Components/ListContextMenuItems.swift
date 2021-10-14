@@ -24,7 +24,8 @@ struct ListContextMenuItems: View {
             //固定ボタン
             if !isAchieved && !isPinned {
                 Button(action: {
-                    Todo.switchIsPinned(id: todoId)
+//                    Todo.switchIsPinned(id: todoId)
+                    Todo.pinTodo(id: todoId)
                     editProtocol.reloadRecords()
                 }){
                     Label("固定する", systemImage: "pin")
