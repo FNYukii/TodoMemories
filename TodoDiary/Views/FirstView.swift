@@ -9,6 +9,12 @@ import SwiftUI
 import RealmSwift
 import WidgetKit
 
+struct todoMirror: Identifiable {
+    var id: Int
+    let content: String
+}
+
+
 struct FirstView: View, EditProtocol {
     
     @State var pinnedTodos = Todo.pinnedTodos()
@@ -18,12 +24,33 @@ struct FirstView: View, EditProtocol {
     @State var selectedTodoId = 0
     @State var isShowActionSheet = false
     
+    @State var todoMirrors: [todoMirror] = [
+        todoMirror(id: 3, content: "hello"),
+        todoMirror(id: 5, content: "Snow"),
+        todoMirror(id: 6, content: "Moon")
+    ]
+    
     var body: some View {
         NavigationView {
             
             ZStack {
                 
                 List {
+                    
+                    Section(header: Text("Test")) {
+                        ForEach(todoMirrors) {todoMirror in
+                            Text("\(todoMirror.content)")
+                        }
+                        .onMove {(indexSet, index) in
+                            self.todoMirrors.move(fromOffsets: indexSet, toOffset: index)
+                        }
+                        .onDelete {index in
+                            
+                        }
+                    }
+                    
+                    
+                    
                     //固定済みTodoが1件以上
                     if pinnedTodos.count != 0 {
                         Section(header: Text("固定済み")) {
@@ -51,6 +78,9 @@ struct FirstView: View, EditProtocol {
                                         Label("削除", systemImage: "trash")
                                     }
                                 }))
+                            }
+                            .onMove{_, _ in
+
                             }
                         }
                     }
@@ -82,9 +112,6 @@ struct FirstView: View, EditProtocol {
                                     }
                                 }))
                             }
-//                            .onMove{_, _ in
-//
-//                            }
                         }
                     }
                     //未固定Todoしか存在しないならSectionHeaderのテキストは非表示
