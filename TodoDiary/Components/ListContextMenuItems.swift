@@ -24,7 +24,6 @@ struct ListContextMenuItems: View {
             //固定ボタン
             if !isAchieved && !isPinned {
                 Button(action: {
-//                    Todo.switchIsPinned(id: todoId)
                     Todo.pinTodo(id: todoId)
                     editProtocol.reloadRecords()
                 }){
@@ -35,7 +34,7 @@ struct ListContextMenuItems: View {
             //固定解除ボタン
             if !isAchieved && isPinned {
                 Button(action: {
-                    Todo.switchIsPinned(id: todoId)
+                    Todo.unpinTodo(id: todoId)
                     editProtocol.reloadRecords()
                 }){
                     Label("固定を解除", systemImage: "pin")

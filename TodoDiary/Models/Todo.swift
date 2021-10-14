@@ -184,7 +184,31 @@ class Todo: Object, Identifiable {
             todo.isPinned = true
             todo.order = newOrder
         }
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    //Todoの固定を解除する
+    static func unpinTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
         
+        //選択されたTodo以外のpinnedTodosのTodoのorderを調整
+        let selectedOrder = todo.order
+        let todos = Todo.pinnedTodos()
+        let pinnedTodosMaxOrder = todos.sorted(byKeyPath: "order").last?.order ?? -1
+        if selectedOrder != pinnedTodosMaxOrder {
+            for index in selectedOrder + 1 ... pinnedTodosMaxOrder {
+                Todo.changeOrder(id: todos[index].id, newOrder: todos[index].order - 1)
+            }
+        }
+        
+        //選択されたTodoの固定を解除し、unPinnedTodosの後尾に追加
+        let maxOrder = Todo.unpinnedTodos().sorted(byKeyPath: "order").last?.order ?? -1
+        let newOrder = maxOrder + 1
+        try! realm.write {
+            todo.isPinned = false
+            todo.order = newOrder
+        }
         WidgetCenter.shared.reloadAllTimelines()
     }
     
