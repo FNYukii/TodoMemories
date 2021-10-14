@@ -39,7 +39,7 @@ struct FirstView: View, EditProtocol {
                                 }))
                             }
                             .onMove {sourceIndexSet, destination in
-                                Todo.sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
+                                Todo.sortTodos(todos: pinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
                                 reloadRecords()
                             }
                         }

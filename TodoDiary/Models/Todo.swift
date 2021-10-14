@@ -167,35 +167,33 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
+    static func changeOrder(id: Int, newOrder: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            todo.order = newOrder
+        }
+    }
+    
     //Todoを並べ替え
     static func sortTodos(todos: Results<Todo>, sourceIndexSet: IndexSet, destination: Int) {
         guard let source = sourceIndexSet.first else {
             return
         }
-        let realm = Todo.customRealm()
         let moveId = todos[source].id
         if source < destination {
             print("down")
-            try! realm.write {
-                for i in (source + 1)...(destination - 1) {
-                    let todoA = realm.objects(Todo.self).filter("id == \(todos[i].id)").first!
-                    todoA.order = todos[i].order - 1
-                }
-                let todoB = realm.objects(Todo.self).filter("id == \(moveId)").first!
-                todoB.order = destination - 1
+            for i in (source + 1)...(destination - 1) {
+                Todo.changeOrder(id: todos[i].id, newOrder: todos[i].order - 1)
             }
+            Todo.changeOrder(id: moveId, newOrder: destination - 1)
         }
         if destination < source {
             print("up")
-            try! realm.write {
-                
-                for i in (destination...(source - 1)).reversed() {
-                    let todoA = realm.objects(Todo.self).filter("id == \(todos[i].id)").first!
-                    todoA.order = todos[i].order + 1
-                }
-                let todoB = realm.objects(Todo.self).filter("id == \(moveId)").first!
-                todoB.order = destination
+            for i in (destination...(source - 1)).reversed() {
+                Todo.changeOrder(id: todos[i].id, newOrder: todos[i].order + 1)
             }
+            Todo.changeOrder(id: moveId, newOrder: destination)
         }
         WidgetCenter.shared.reloadAllTimelines()
     }
