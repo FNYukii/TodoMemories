@@ -67,10 +67,9 @@ struct FirstView: View, EditProtocol {
                                     }
                                 }))
                             }
-                            .onMove{indexSet, index in
-
+                            .onMove {sourceIndexSet, destination in
+                                sortTodos(todos: pinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
                             }
-//                            .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
                         }
                     }
                     
@@ -102,10 +101,9 @@ struct FirstView: View, EditProtocol {
                                     }
                                 }))
                             }
-                            .onMove{indexSet, index in
-
+                            .onMove {sourceIndexSet, destination in
+                                sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
                             }
-//                            .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
                         }
                     }
                     
@@ -137,9 +135,8 @@ struct FirstView: View, EditProtocol {
                             }))
                         }
                         .onMove {sourceIndexSet, destination in
-                            sortUnpinnedTodos(sourceIndexSet: sourceIndexSet, destination: destination)
+                            sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
                         }
-//                        .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
                     }
                     
                 }
@@ -171,9 +168,7 @@ struct FirstView: View, EditProtocol {
                     ]
                 )
             }
-            
-//            .environment(\.editMode, .constant(EditMode.active))
-            
+                        
             .navigationBarTitle("Todo")
             .navigationBarItems(
                 leading: EditButton(),
@@ -241,20 +236,18 @@ struct FirstView: View, EditProtocol {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    func sortUnpinnedTodos(sourceIndexSet: IndexSet, destination: Int) {
+    func sortTodos(todos: Results<Todo>, sourceIndexSet: IndexSet, destination: Int) {
         guard let source = sourceIndexSet.first else {
             return
         }
-        
         let realm = Todo.customRealm()
-        let moveId = unpinnedTodos[source].id
-
+        let moveId = todos[source].id
         if source < destination {
             print("down")
             try! realm.write {
                 for i in (source + 1)...(destination - 1) {
-                    let todoA = realm.objects(Todo.self).filter("id == \(unpinnedTodos[i].id)").first!
-                    todoA.order = unpinnedTodos[i].order - 1
+                    let todoA = realm.objects(Todo.self).filter("id == \(todos[i].id)").first!
+                    todoA.order = todos[i].order - 1
                 }
                 let todoB = realm.objects(Todo.self).filter("id == \(moveId)").first!
                 todoB.order = destination - 1
@@ -266,21 +259,14 @@ struct FirstView: View, EditProtocol {
             try! realm.write {
                 
                 for i in (destination...(source - 1)).reversed() {
-                    let todoA = realm.objects(Todo.self).filter("id == \(unpinnedTodos[i].id)").first!
-                    todoA.order = unpinnedTodos[i].order + 1
+                    let todoA = realm.objects(Todo.self).filter("id == \(todos[i].id)").first!
+                    todoA.order = todos[i].order + 1
                 }
                 let todoB = realm.objects(Todo.self).filter("id == \(moveId)").first!
                 todoB.order = destination
-                
-                
             }
-            
             reloadRecords()
         }
-    }
-    
-    func sortPinnedTodos() {
-        
     }
 
 }
