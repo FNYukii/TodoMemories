@@ -29,7 +29,7 @@ struct FirstView: View, EditProtocol {
                     if pinnedTodos.count != 0 {
                         Section(header: Text("固定済み")) {
                             ForEach(pinnedTodos.freeze()) { todo in
-                                Button("\(todo.content) : \(todo.order)"){
+                                Button("\(todo.order). \(todo.content)"){
                                     selectedTodoId = todo.id
                                     isShowSheet.toggle()
                                 }
@@ -49,7 +49,7 @@ struct FirstView: View, EditProtocol {
                     if unpinnedTodos.count != 0 && pinnedTodos.count != 0 {
                         Section(header: Text("その他")) {
                             ForEach(unpinnedTodos.freeze()) { todo in
-                                Button("\(todo.content) : \(todo.order)"){
+                                Button("\(todo.order). \(todo.content)"){
                                     selectedTodoId = todo.id
                                     isShowSheet.toggle()
                                 }
@@ -68,7 +68,7 @@ struct FirstView: View, EditProtocol {
                     //未固定Todoしか存在しないならSectionHeaderのテキストは非表示
                     if unpinnedTodos.count != 0 && pinnedTodos.count == 0 {
                         ForEach(unpinnedTodos.freeze()) { todo in
-                            Button("\(todo.content) : \(todo.order)"){
+                            Button("\(todo.order). \(todo.content)"){
                                 selectedTodoId = todo.id
                                 isShowSheet.toggle()
                             }

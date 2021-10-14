@@ -24,6 +24,10 @@ struct EditView: View {
     @State var isAchieved = false
     @State var achievedDate = Date()
     
+    //編集前の値
+    @State var oldIsPinned = false
+    @State var oldIsAchieved = false
+    
     var body: some View {
         NavigationView {
             
@@ -100,8 +104,21 @@ struct EditView: View {
                 trailing: Button(navBarDoneText){
                     if id == 0 {
                         Todo.insertTodo(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedDate: achievedDate)
-                    } else {
-                        Todo.updateTodo(id: id, content: content, isPinned: isPinned, isAchieved: isAchieved, achievedDate: achievedDate)
+                    }
+                    if id != 0 {
+                        Todo.updateTodoContentAndDate(id: id, newContent: content, newAchievedDate: achievedDate)
+                        if !oldIsAchieved && isAchieved {
+                            Todo.achieveTodo(id: id)
+                        } else if oldIsAchieved && !isAchieved {
+                            Todo.unachieveTodo(id: id)
+                        }
+                        if !isAchieved {
+                            if !oldIsPinned && isPinned {
+                                Todo.pinTodo(id: id)
+                            } else if oldIsPinned && !isPinned {
+                                Todo.unpinTodo(id: id)
+                            }
+                        }
                     }
                     editProtocol.reloadRecords()
                     presentation.wrappedValue.dismiss()
@@ -122,6 +139,8 @@ struct EditView: View {
             achievedDate = todo.achievedDate
             navBarTitle = "Todoを編集"
             navBarDoneText = "完了"
+            oldIsPinned = todo.isPinned
+            oldIsAchieved = todo.isAchieved
         }
     }
     

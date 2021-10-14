@@ -13,7 +13,7 @@ class Todo: Object, Identifiable {
     
     //Todoの列定義
     @objc dynamic var id = 0
-    @objc dynamic var order = 0
+    @objc dynamic var order = -1
     @objc dynamic var content = ""
     @objc dynamic var isPinned = false
     @objc dynamic var isAchieved = false
@@ -151,6 +151,22 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
+    //Todoのcontentを更新
+    static func updateTodoContentAndDate(id: Int, newContent: String, newAchievedDate: Date) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            todo.content = newContent
+            todo.achievedDate = newAchievedDate
+            let calendar = Calendar(identifier: .gregorian)
+            let year = calendar.component(.year, from: newAchievedDate)
+            let month = calendar.component(.month, from: newAchievedDate)
+            let day = calendar.component(.day, from: newAchievedDate)
+            todo.achievedYmd = year * 10000 + month * 100 + day
+        }
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
     //Todo削除
     static func deleteTodo(id: Int) {
         let realm = Todo.customRealm()
@@ -184,6 +200,7 @@ class Todo: Object, Identifiable {
             todo.order = newOrder
         }
         WidgetCenter.shared.reloadAllTimelines()
+        print("固定")
     }
     
     //Todoの固定を解除する
@@ -209,6 +226,7 @@ class Todo: Object, Identifiable {
             todo.order = newOrder
         }
         WidgetCenter.shared.reloadAllTimelines()
+        print("固定解除")
     }
     
     //Todoを達成済みに変更する
@@ -244,6 +262,7 @@ class Todo: Object, Identifiable {
             todo.achievedYmd = year * 10000 + month * 100 + day
         }
         WidgetCenter.shared.reloadAllTimelines()
+        print("達成")
     }
     
     //Todoを未達成に戻す
@@ -257,6 +276,7 @@ class Todo: Object, Identifiable {
             todo.isAchieved = false
         }
         WidgetCenter.shared.reloadAllTimelines()
+        print("達成解除")
     }
     
     //Todoのorderを変更する
