@@ -30,24 +30,15 @@ struct FirstView: View, EditProtocol {
         todoMirror(id: 6, content: "Moon")
     ]
     
+    @Environment(\.editMode) var editMode
+    
     var body: some View {
         NavigationView {
             
             ZStack {
                 
                 List {
-                    
-                    Section(header: Text("Test")) {
-                        ForEach(todoMirrors) {todoMirror in
-                            Text("\(todoMirror.content)")
-                        }
-                        .onMove {(indexSet, index) in
-                            self.todoMirrors.move(fromOffsets: indexSet, toOffset: index)
-                        }
-                        .onDelete {index in
-                            
-                        }
-                    }
+
                     
                     
                     
@@ -82,6 +73,7 @@ struct FirstView: View, EditProtocol {
                             .onMove{_, _ in
 
                             }
+                            .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
                         }
                     }
                     //固定済みTodoと未固定Todo両方存在する
@@ -173,9 +165,10 @@ struct FirstView: View, EditProtocol {
                 )
             }
             
+            .environment(\.editMode, .constant(EditMode.active))
+            
             .navigationBarTitle("Todo")
             .navigationBarItems(
-                leading: EditButton(),
                 trailing: Button(action: {
                     selectedTodoId = 0
                     isShowSheet.toggle()
