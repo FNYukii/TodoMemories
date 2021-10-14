@@ -81,7 +81,7 @@ struct EditView: View {
                     message: Text("このTodoを削除してもよろしいですか?"),
                     buttons:[
                         .destructive(Text("Todoを削除")) {
-                            deleteRecord()
+                            Todo.deleteTodo(id: id)
                             WidgetCenter.shared.reloadAllTimelines()
                             editProtocol.reloadRecords()
                             presentation.wrappedValue.dismiss()
@@ -101,7 +101,11 @@ struct EditView: View {
                         .fontWeight(.regular)
                 },
                 trailing: Button(navBarDoneText){
-                    saveRecord()
+                    if id == 0 {
+                        Todo.insertTodo(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedDate: achievedDate)
+                    } else {
+                        Todo.updateTodo(id: id, content: content, isPinned: isPinned, isAchieved: isAchieved, achievedDate: achievedDate)
+                    }
                     WidgetCenter.shared.reloadAllTimelines()
                     editProtocol.reloadRecords()
                     presentation.wrappedValue.dismiss()
@@ -123,56 +127,6 @@ struct EditView: View {
             achievedDate = todo.achievedDate
             navBarTitle = "Todoを編集"
             navBarDoneText = "完了"
-        }
-    }
-    
-    func saveRecord() {
-        //レコードを追加する場合
-        if id == 0 {
-            //新規レコード用のidを生成
-            let realm = Todo.customRealm()
-            let maxId = realm.objects(Todo.self).sorted(byKeyPath: "id").last?.id ?? 0
-            let newId = maxId + 1
-            
-            //新規レコード用のorderを生成
-            let maxOrder = Todo.all().sorted(byKeyPath: "order").last?.order ?? 0
-            let newOrder = maxOrder + 1
-            
-            //新規レコード生成
-            let todo = Todo()
-            todo.id = newId
-            todo.order = newOrder
-            todo.content = content
-            todo.isPinned = isPinned
-            todo.isAchieved = isAchieved
-            todo.achievedDate = achievedDate
-            let converter = Converter()
-            todo.achievedYmd = converter.toYmd(inputDate: achievedDate)
-            //新規レコード追加
-            try! realm.write {
-                realm.add(todo)
-            }
-        }
-        //レコードを更新する場合
-        if id != 0 {
-            let realm = Todo.customRealm()
-            let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-            try! realm.write {
-                todo.content = content
-                todo.isPinned = isPinned
-                todo.isAchieved = isAchieved
-                todo.achievedDate = achievedDate
-                let converter = Converter()
-                todo.achievedYmd = converter.toYmd(inputDate: achievedDate)
-            }
-        }
-    }
-    
-    func deleteRecord() {
-        let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        try! realm.write {
-            realm.delete(todo)
         }
     }
     

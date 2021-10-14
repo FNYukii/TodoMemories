@@ -21,9 +21,6 @@ class Todo: Object, Identifiable {
     
     //realmインスタンス
     static func customRealm() -> Realm {
-        
-        
-        
         var realm: Realm {
             var config = Realm.Configuration(
                 //Realmデータベースのマイグレーションを行う
@@ -76,6 +73,60 @@ class Todo: Object, Identifiable {
     static func noRecord() -> Results<Todo> {
         let realm = Todo.customRealm()
         return realm.objects(Todo.self).filter("id == -1")
+    }
+        
+    //新規Todo追加
+    static func insertTodo(content: String, isPinned: Bool, isAchieved: Bool, achievedDate: Date) {
+        let realm = Todo.customRealm()
+        //新規レコード用のidを生成
+        let maxId = realm.objects(Todo.self).sorted(byKeyPath: "id").last?.id ?? 0
+        let newId = maxId + 1
+        //新規レコード用のorderを生成
+        let maxOrder = Todo.all().sorted(byKeyPath: "order").last?.order ?? 0
+        let newOrder = maxOrder + 1
+        //新規レコード生成
+        let todo = Todo()
+        todo.id = newId
+        todo.order = newOrder
+        todo.content = content
+        todo.isPinned = isPinned
+        todo.isAchieved = isAchieved
+        todo.achievedDate = achievedDate
+        let calendar = Calendar(identifier: .gregorian)
+        let year = calendar.component(.year, from: achievedDate)
+        let month = calendar.component(.month, from: achievedDate)
+        let day = calendar.component(.day, from: achievedDate)
+        todo.achievedYmd = year * 10000 + month * 100 + day
+        //新規レコード追加
+        try! realm.write {
+            realm.add(todo)
+        }
+    }
+    
+    //既存Todo更新
+    static func updateTodo(id: Int, content: String, isPinned: Bool, isAchieved: Bool, achievedDate: Date) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            todo.content = content
+            todo.isPinned = isPinned
+            todo.isAchieved = isAchieved
+            todo.achievedDate = achievedDate
+            let calendar = Calendar(identifier: .gregorian)
+            let year = calendar.component(.year, from: achievedDate)
+            let month = calendar.component(.month, from: achievedDate)
+            let day = calendar.component(.day, from: achievedDate)
+            todo.achievedYmd = year * 10000 + month * 100 + day
+        }
+    }
+    
+    //既存Todo削除
+    static func deleteTodo(id: Int) {
+        let realm = Todo.customRealm()
+        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        try! realm.write {
+            realm.delete(todo)
+        }
     }
     
 }
