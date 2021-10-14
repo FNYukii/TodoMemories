@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import RealmSwift
-import WidgetKit
 
 struct ResultView: View, EditProtocol {
     
@@ -20,7 +18,7 @@ struct ResultView: View, EditProtocol {
     @State var selectedTodoId = 0
     @State var isShowActionSheet = false
     
-    @State var todos = Todo.noRecord()
+    @State var todosOfTheDay = Todo.noRecord()
     
     @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
     @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
@@ -31,7 +29,7 @@ struct ResultView: View, EditProtocol {
         
         List {
             Section(header: Text("\(converter.toYmdwText(inputDate: selectedDate))")) {
-                ForEach(todos.freeze()) { todo in
+                ForEach(todosOfTheDay.freeze()) { todo in
                     Button(action: {
                         selectedTodoId = todo.id
                         isShowSheet.toggle()
@@ -106,10 +104,9 @@ struct ResultView: View, EditProtocol {
     }
     
     func reloadRecords()  {
-        let realm = Todo.customRealm()
         let achievedYmd = converter.toYmd(inputDate: selectedDate)
-        todos = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isAscending)
-        if todos.count == 0 {
+        todosOfTheDay = Todo.todosOfTheDay(achievedYmd: achievedYmd, isAscending: isAscending)
+        if todosOfTheDay.count == 0 {
             presentation.wrappedValue.dismiss()
         }
     }

@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import RealmSwift
-import WidgetKit
 
 struct SecondView: View, EditProtocol {
     
