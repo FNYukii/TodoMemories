@@ -260,7 +260,8 @@ struct FirstView: View, EditProtocol {
                 todoB.order = destination - 1
             }
             reloadRecords()
-        } else if destination < source {
+        }
+        if destination < source {
             print("up")
             try! realm.write {
                 
@@ -275,8 +276,6 @@ struct FirstView: View, EditProtocol {
             }
             
             reloadRecords()
-        } else {
-            return
         }
     }
     
