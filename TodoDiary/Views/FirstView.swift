@@ -40,7 +40,7 @@ struct FirstView: View, EditProtocol {
                             }
                             .onMove {sourceIndexSet, destination in
                                 Todo.sortTodos(todos: pinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
-                                reloadRecords()
+                                loadData()
                             }
                         }
                     }
@@ -60,7 +60,7 @@ struct FirstView: View, EditProtocol {
                             }
                             .onMove {sourceIndexSet, destination in
                                 Todo.sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
-                                reloadRecords()
+                                loadData()
                             }
                         }
                     }
@@ -79,14 +79,14 @@ struct FirstView: View, EditProtocol {
                         }
                         .onMove {sourceIndexSet, destination in
                             Todo.sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
-                            reloadRecords()
+                            loadData()
                         }
                     }
                     
                 }
                 .listStyle(InsetGroupedListStyle())
                 .onAppear {
-                    reloadRecords()
+                    loadData()
                 }
                 
                 if pinnedTodos.count == 0 && unpinnedTodos.count == 0 {
@@ -127,7 +127,7 @@ struct FirstView: View, EditProtocol {
         }
     }
     
-    func reloadRecords()  {
+    func loadData()  {
         pinnedTodos = Todo.pinnedTodos()
         unpinnedTodos = Todo.unpinnedTodos()
     }

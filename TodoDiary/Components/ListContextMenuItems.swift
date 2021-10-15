@@ -25,7 +25,7 @@ struct ListContextMenuItems: View {
             if !isAchieved && !isPinned {
                 Button(action: {
                     Todo.pinTodo(id: todoId)
-                    editProtocol.reloadRecords()
+                    editProtocol.loadData()
                 }){
                     Label("固定する", systemImage: "pin")
                 }
@@ -35,7 +35,7 @@ struct ListContextMenuItems: View {
             if !isAchieved && isPinned {
                 Button(action: {
                     Todo.unpinTodo(id: todoId)
-                    editProtocol.reloadRecords()
+                    editProtocol.loadData()
                 }){
                     Label("固定を解除", systemImage: "pin")
                 }
@@ -45,7 +45,7 @@ struct ListContextMenuItems: View {
             if !isAchieved {
                 Button(action: {
                     Todo.achieveTodo(id: todoId, achievedDate: Date())
-                    editProtocol.reloadRecords()
+                    editProtocol.loadData()
                 }){
                     Label("達成済みに変更", systemImage: "checkmark")
                 }
@@ -55,7 +55,7 @@ struct ListContextMenuItems: View {
             if isAchieved {
                 Button(action: {
                     Todo.unachieveTodo(id: todoId)
-                    editProtocol.reloadRecords()
+                    editProtocol.loadData()
                 }){
                     Label("未達成に戻す", systemImage: "checkmark")
                 }

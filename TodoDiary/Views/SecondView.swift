@@ -58,7 +58,7 @@ struct SecondView: View, EditProtocol {
                 }
                 .listStyle(InsetGroupedListStyle())
                 .onAppear {
-                    reloadRecords()
+                    loadData()
                 }
                 
                 if achievedYmds.count == 0 {
@@ -113,7 +113,7 @@ struct SecondView: View, EditProtocol {
         return ymds
     }
     
-    func reloadRecords() {
+    func loadData() {
         achievedYmds = []
         achievedYmds = getAchievedYmds()
     }

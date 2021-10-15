@@ -84,7 +84,7 @@ struct EditView: View {
                     buttons:[
                         .destructive(Text("Todoを削除")) {
                             Todo.deleteTodo(id: id)
-                            editProtocol.reloadRecords()
+                            editProtocol.loadData()
                             presentation.wrappedValue.dismiss()
                         },
                         .cancel()
@@ -120,7 +120,7 @@ struct EditView: View {
                             }
                         }
                     }
-                    editProtocol.reloadRecords()
+                    editProtocol.loadData()
                     presentation.wrappedValue.dismiss()
                 }
                     .disabled(content.isEmpty)

@@ -51,7 +51,7 @@ struct ResultView: View, EditProtocol {
         }
         .listStyle(InsetGroupedListStyle())
         .onAppear {
-            reloadRecords()
+            loadData()
         }
         
         .sheet(isPresented: $isShowSheet) {
@@ -83,7 +83,7 @@ struct ResultView: View, EditProtocol {
         
     }
     
-    func reloadRecords()  {
+    func loadData()  {
         let achievedYmd = converter.toYmd(inputDate: selectedDate)
         todosOfTheDay = Todo.todosOfTheDay(achievedYmd: achievedYmd, isAscending: isAscending)
         if todosOfTheDay.count == 0 {
