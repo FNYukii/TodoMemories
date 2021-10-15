@@ -14,7 +14,6 @@ struct UnachievedTodoSection: View {
     
     let todos: Results<Todo>
     let headerText: String
-    let isShowHeader: Bool
     
     @Binding var isShowActionSheet: Bool
     @Binding var selectedTodoId: Int
@@ -24,7 +23,7 @@ struct UnachievedTodoSection: View {
         
     var body: some View {
         
-        if isShowHeader {
+        if !headerText.isEmpty {
             Section(header: Text(headerText)) {
                 ForEach(todos.freeze()) { todo in
                     Button(action: {
