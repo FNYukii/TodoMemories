@@ -108,7 +108,7 @@ struct EditView: View {
                     if id != 0 {
                         Todo.updateTodoContentAndDate(id: id, newContent: content, newAchievedDate: achievedDate)
                         if !oldIsAchieved && isAchieved {
-                            Todo.achieveTodo(id: id)
+                            Todo.achieveTodo(id: id, achievedDate: achievedDate)
                         } else if oldIsAchieved && !isAchieved {
                             Todo.unachieveTodo(id: id)
                         }

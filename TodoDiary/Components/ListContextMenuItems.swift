@@ -44,7 +44,7 @@ struct ListContextMenuItems: View {
             //達成ボタン
             if !isAchieved {
                 Button(action: {
-                    Todo.achieveTodo(id: todoId)
+                    Todo.achieveTodo(id: todoId, achievedDate: Date())
                     editProtocol.reloadRecords()
                 }){
                     Label("達成済みに変更", systemImage: "checkmark")

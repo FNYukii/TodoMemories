@@ -230,7 +230,7 @@ class Todo: Object, Identifiable {
     }
     
     //Todoを達成済みに変更する
-    static func achieveTodo(id: Int) {
+    static func achieveTodo(id: Int, achievedDate: Date) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
         
@@ -254,11 +254,11 @@ class Todo: Object, Identifiable {
             todo.order = -1
             todo.isPinned = false
             todo.isAchieved = true
-            todo.achievedDate = Date()
+            todo.achievedDate = achievedDate
             let calendar = Calendar(identifier: .gregorian)
-            let year = calendar.component(.year, from: Date())
-            let month = calendar.component(.month, from: Date())
-            let day = calendar.component(.day, from: Date())
+            let year = calendar.component(.year, from: achievedDate)
+            let month = calendar.component(.month, from: achievedDate)
+            let day = calendar.component(.day, from: achievedDate)
             todo.achievedYmd = year * 10000 + month * 100 + day
         }
         WidgetCenter.shared.reloadAllTimelines()
