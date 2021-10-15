@@ -13,16 +13,17 @@ struct TodosSection: View {
     var editProtocol: EditProtocol
     
     let todos: Results<Todo>
+    let headerText: String
     let isShowHeader: Bool
     
     @Binding var isShowActionSheet: Bool
     @Binding var selectedTodoId: Int
     @Binding var isShowSheet: Bool
-    
+        
     var body: some View {
         
         if isShowHeader {
-            Section(header: Text("固定済み")) {
+            Section(header: Text(headerText)) {
                 ForEach(todos.freeze()) { todo in
                     Button("\(todo.order). \(todo.content)"){
                         selectedTodoId = todo.id
@@ -30,7 +31,7 @@ struct TodosSection: View {
                     }
                     .foregroundColor(.primary)
                     .contextMenu(ContextMenu(menuItems: {
-                        ListContextMenuItems(editProtocol: FirstView().self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                        ListContextMenuItems(editProtocol: editProtocol, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                     }))
                 }
                 .onMove {sourceIndexSet, destination in
@@ -38,9 +39,7 @@ struct TodosSection: View {
                     editProtocol.loadData()
                 }
             }
-        }
-        
-        if !isShowHeader {
+        } else {
             Section {
                 ForEach(todos.freeze()) { todo in
                     Button("\(todo.order). \(todo.content)"){
@@ -49,7 +48,7 @@ struct TodosSection: View {
                     }
                     .foregroundColor(.primary)
                     .contextMenu(ContextMenu(menuItems: {
-                        ListContextMenuItems(editProtocol: FirstView().self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                        ListContextMenuItems(editProtocol: editProtocol, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                     }))
                 }
                 .onMove {sourceIndexSet, destination in

@@ -24,68 +24,18 @@ struct FirstView: View, EditProtocol {
             ZStack {
                 
                 List {
-
-                    //固定済みTodoが1件以上
+                    
+                    //固定済みTodo
                     if pinnedTodos.count != 0 {
-                        Section(header: Text("固定済み")) {
-                            ForEach(pinnedTodos.freeze()) { todo in
-                                Button("\(todo.order). \(todo.content)"){
-                                    selectedTodoId = todo.id
-                                    isShowSheet.toggle()
-                                }
-                                .foregroundColor(.primary)
-                                .contextMenu(ContextMenu(menuItems: {
-                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
-                                }))
-                            }
-                            .onMove {sourceIndexSet, destination in
-                                Todo.sortTodos(todos: pinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
-                                loadData()
-                            }
-                        }
+                        TodosSection(editProtocol: self, todos: pinnedTodos, headerText: "固定済み", isShowHeader: true, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
                     }
-                    
-                    //固定済みTodoと未固定Todo両方存在する
+                    //未固定Todo(固定済みTodoと共に表示)
                     if unpinnedTodos.count != 0 && pinnedTodos.count != 0 {
-                        Section(header: Text("その他")) {
-                            ForEach(unpinnedTodos.freeze()) { todo in
-                                Button("\(todo.order). \(todo.content)"){
-                                    selectedTodoId = todo.id
-                                    isShowSheet.toggle()
-                                }
-                                .foregroundColor(.primary)
-                                .contextMenu(ContextMenu(menuItems: {
-                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
-                                }))
-                            }
-                            .onMove {sourceIndexSet, destination in
-                                Todo.sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
-                                loadData()
-                            }
-                        }
+                        TodosSection(editProtocol: self, todos: unpinnedTodos, headerText: "その他", isShowHeader: true, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
                     }
-                    
-                    //未固定Todoしか存在しないならSectionHeaderのテキストは非表示
+                    //未固定Todo(単独表示)
                     if unpinnedTodos.count != 0 && pinnedTodos.count == 0 {
-                        
-                        Section(header: Text("")) {
-                            ForEach(unpinnedTodos.freeze()) { todo in
-                                Button("\(todo.order). \(todo.content)"){
-                                    selectedTodoId = todo.id
-                                    isShowSheet.toggle()
-                                }
-                                .foregroundColor(.primary)
-                                .contextMenu(ContextMenu(menuItems: {
-                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
-                                }))
-                            }
-                            .onMove {sourceIndexSet, destination in
-                                Todo.sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
-                                loadData()
-                            }
-                        }
-                        
-                        
+                        TodosSection(editProtocol: self, todos: unpinnedTodos, headerText: "", isShowHeader: false, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
                     }
                     
                 }
