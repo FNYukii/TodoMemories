@@ -38,7 +38,7 @@ struct TodosSection: View {
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
                     editProtocol.loadData()
                 }
-                .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
+//                .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
             }
         } else {
             Section {
@@ -56,7 +56,7 @@ struct TodosSection: View {
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
                     editProtocol.loadData()
                 }
-                .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
+//                .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
             }
         }
         

@@ -40,7 +40,7 @@ struct FirstView: View, EditProtocol {
                     
                 }
                 .listStyle(InsetGroupedListStyle())
-                .environment(\.editMode, .constant(EditMode.active))
+//                .environment(\.editMode, .constant(EditMode.active))
                 .onAppear {
                     loadData()
                 }
@@ -71,6 +71,7 @@ struct FirstView: View, EditProtocol {
                         
             .navigationBarTitle("Todo")
             .navigationBarItems(
+                leading: CustomEditButton(),
                 trailing: Button(action: {
                     selectedTodoId = 0
                     isShowSheet.toggle()
