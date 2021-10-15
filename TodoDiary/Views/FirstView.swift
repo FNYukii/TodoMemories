@@ -15,9 +15,7 @@ struct FirstView: View, EditProtocol {
     @State var isShowSheet = false
     @State var selectedTodoId = 0
     @State var isShowActionSheet = false
-    
-    @Environment(\.editMode) var editMode
-    
+        
     var body: some View {
         NavigationView {
             

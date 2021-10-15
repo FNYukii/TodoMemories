@@ -19,15 +19,42 @@ struct UnachievedTodoSection: View {
     @Binding var isShowActionSheet: Bool
     @Binding var selectedTodoId: Int
     @Binding var isShowSheet: Bool
+    
+    @Environment(\.editMode) var editMode
         
     var body: some View {
         
         if isShowHeader {
             Section(header: Text(headerText)) {
                 ForEach(todos.freeze()) { todo in
-                    Button("\(todo.content)"){
+                    Button(action: {
                         selectedTodoId = todo.id
                         isShowSheet.toggle()
+                    }){
+                        HStack {
+                            if editMode?.wrappedValue.isEditing == true {
+                                if todo.isPinned {
+                                    Button(action: {
+                                        Todo.unpinTodo(id: todo.id)
+                                        editProtocol.loadData()
+                                    }){
+                                        Image(systemName: "arrow.down.circle")
+                                            .font(.system(size: 20))
+                                    }
+                                    .foregroundColor(.accentColor)
+                                } else {
+                                    Button(action: {
+                                        Todo.pinTodo(id: todo.id)
+                                        editProtocol.loadData()
+                                    }){
+                                        Image(systemName: "arrow.up.circle")
+                                            .font(.system(size: 20))
+                                    }
+                                    .foregroundColor(.accentColor)
+                                }
+                            }
+                            Text("\(todo.content)")
+                        }
                     }
                     .foregroundColor(.primary)
                     .contextMenu(ContextMenu(menuItems: {
@@ -38,13 +65,28 @@ struct UnachievedTodoSection: View {
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
                     editProtocol.loadData()
                 }
+//                .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
             }
         } else {
             Section {
                 ForEach(todos.freeze()) { todo in
-                    Button("\(todo.content)"){
+                    Button(action: {
                         selectedTodoId = todo.id
                         isShowSheet.toggle()
+                    }){
+                        HStack {
+                            if editMode?.wrappedValue.isEditing == true {
+                                Button(action: {
+                                    Todo.pinTodo(id: todo.id)
+                                    editProtocol.loadData()
+                                }){
+                                    Image(systemName: "arrow.up.circle")
+                                        .font(.system(size: 20))
+                                }
+                                .foregroundColor(.accentColor)
+                            }
+                            Text("\(todo.content)")
+                        }
                     }
                     .foregroundColor(.primary)
                     .contextMenu(ContextMenu(menuItems: {
@@ -55,6 +97,7 @@ struct UnachievedTodoSection: View {
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
                     editProtocol.loadData()
                 }
+//                .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
             }
         }
         
