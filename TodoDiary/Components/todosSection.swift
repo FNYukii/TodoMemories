@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct todosSection: View {
+struct TodosSection: View {
     
     var editProtocol: EditProtocol
     
