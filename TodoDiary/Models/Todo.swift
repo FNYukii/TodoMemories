@@ -218,13 +218,20 @@ class Todo: Object, Identifiable {
             }
         }
         
-        //選択されたTodoの固定を解除し、unPinnedTodosの後尾に追加
-        let maxOrder = Todo.unpinnedTodos().sorted(byKeyPath: "order").last?.order ?? -1
-        let newOrder = maxOrder + 1
+        //unpinnedTodosの要素のorderを全てインクリメント
+        let unpinnedTodos = Todo.unpinnedTodos()
+        try! realm.write {
+            for index in 0..<unpinnedTodos.count {
+                unpinnedTodos[index].order = unpinnedTodos[index].order + 1
+            }
+        }
+        
+        //選択されたTodoの固定を解除し、unPinnedTodosの先頭に追加
         try! realm.write {
             todo.isPinned = false
-            todo.order = newOrder
+            todo.order = 0
         }
+        
         WidgetCenter.shared.reloadAllTimelines()
         print("固定解除")
     }
