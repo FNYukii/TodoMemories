@@ -25,7 +25,7 @@ struct UnachievedTodoSection: View {
         if isShowHeader {
             Section(header: Text(headerText)) {
                 ForEach(todos.freeze()) { todo in
-                    Button("\(todo.order). \(todo.content)"){
+                    Button("\(todo.content)"){
                         selectedTodoId = todo.id
                         isShowSheet.toggle()
                     }
@@ -42,7 +42,7 @@ struct UnachievedTodoSection: View {
         } else {
             Section {
                 ForEach(todos.freeze()) { todo in
-                    Button("\(todo.order). \(todo.content)"){
+                    Button("\(todo.content)"){
                         selectedTodoId = todo.id
                         isShowSheet.toggle()
                     }

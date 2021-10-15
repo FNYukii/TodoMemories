@@ -39,7 +39,7 @@ struct ResultView: View, EditProtocol {
                                 Text("\(converter.toHmText(inputDate: todo.achievedDate))")
                                     .foregroundColor(.secondary)
                             }
-                            Text("\(todo.order). \(todo.content)")
+                            Text("\(todo.content)")
                                 .foregroundColor(.primary)
                         }
                     }
