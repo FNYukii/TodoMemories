@@ -60,7 +60,5 @@ struct TodosSection: View {
             }
         }
         
-        
-        
     }
 }
