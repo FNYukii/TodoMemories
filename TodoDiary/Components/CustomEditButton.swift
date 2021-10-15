@@ -24,7 +24,7 @@ struct CustomEditButton: View {
             if editMode?.wrappedValue.isEditing == true {
                 Text("終了")
             } else {
-                Text("編集")
+                Text("並べ替え")
             }
         }
     }

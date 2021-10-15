@@ -18,7 +18,7 @@ struct EditView: View {
     @State var isShowActionSheet = false
     @State var isStartEditing = true
     
-    @State var id = 0
+    @Binding var id: Int
     @State var content = ""
     @State var isPinned = false
     @State var isAchieved = false
@@ -130,7 +130,7 @@ struct EditView: View {
     }
     
     func loadTodo() {
-        id = editProtocol.getSelectedDiaryId()
+//        id = editProtocol.getSelectedDiaryId()
         if id != 0 {
             let todo = Todo.oneTodo(id: id)
             content = todo.content

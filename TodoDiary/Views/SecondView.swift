@@ -69,7 +69,7 @@ struct SecondView: View, EditProtocol {
             }
             
             .sheet(isPresented: $isShowSheet) {
-                EditView(editProtocol: self)
+                EditView(editProtocol: self, id: $selectedTodoId)
             }
             
             .actionSheet(isPresented: $isShowActionSheet) {
@@ -116,10 +116,6 @@ struct SecondView: View, EditProtocol {
     func reloadRecords() {
         achievedYmds = []
         achievedYmds = getAchievedYmds()
-    }
-    
-    func getSelectedDiaryId() -> Int {
-        return selectedTodoId
     }
     
 }

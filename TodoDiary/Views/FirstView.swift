@@ -97,7 +97,7 @@ struct FirstView: View, EditProtocol {
             }
             
             .sheet(isPresented: $isShowSheet) {
-                EditView(editProtocol: self)
+                EditView(editProtocol: self, id: $selectedTodoId)
             }
             
             .actionSheet(isPresented: $isShowActionSheet) {
@@ -130,10 +130,6 @@ struct FirstView: View, EditProtocol {
     func reloadRecords()  {
         pinnedTodos = Todo.pinnedTodos()
         unpinnedTodos = Todo.unpinnedTodos()
-    }
-    
-    func getSelectedDiaryId() -> Int {
-        return selectedTodoId
     }
 
 }
