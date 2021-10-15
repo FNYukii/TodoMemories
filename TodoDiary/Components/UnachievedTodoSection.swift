@@ -31,31 +31,8 @@ struct UnachievedTodoSection: View {
                         selectedTodoId = todo.id
                         isShowSheet.toggle()
                     }){
-                        HStack {
-                            if editMode?.wrappedValue.isEditing == true {
-                                if todo.isPinned {
-                                    Button(action: {
-                                        Todo.unpinTodo(id: todo.id)
-                                        editProtocol.loadData()
-                                    }){
-                                        Image(systemName: "arrow.down.circle")
-                                            .font(.system(size: 20))
-                                    }
-                                    .foregroundColor(.accentColor)
-                                } else {
-                                    Button(action: {
-                                        Todo.pinTodo(id: todo.id)
-                                        editProtocol.loadData()
-                                    }){
-                                        Image(systemName: "arrow.up.circle")
-                                            .font(.system(size: 20))
-                                    }
-                                    .foregroundColor(.accentColor)
-                                }
-                            }
-                            Text("\(todo.content)")
-                        }
-                        .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
+                        Text("\(todo.content)")
+                            .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
                     }
                     .foregroundColor(.primary)
                     .contextMenu(ContextMenu(menuItems: {
@@ -74,20 +51,8 @@ struct UnachievedTodoSection: View {
                         selectedTodoId = todo.id
                         isShowSheet.toggle()
                     }){
-                        HStack {
-                            if editMode?.wrappedValue.isEditing == true {
-                                Button(action: {
-                                    Todo.pinTodo(id: todo.id)
-                                    editProtocol.loadData()
-                                }){
-                                    Image(systemName: "arrow.up.circle")
-                                        .font(.system(size: 20))
-                                }
-                                .foregroundColor(.accentColor)
-                            }
-                            Text("\(todo.content)")
-                        }
-                        .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
+                        Text("\(todo.content)")
+                            .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
                     }
                     .foregroundColor(.primary)
                     .contextMenu(ContextMenu(menuItems: {
