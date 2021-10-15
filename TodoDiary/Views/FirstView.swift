@@ -67,20 +67,25 @@ struct FirstView: View, EditProtocol {
                     
                     //未固定Todoしか存在しないならSectionHeaderのテキストは非表示
                     if unpinnedTodos.count != 0 && pinnedTodos.count == 0 {
-                        ForEach(unpinnedTodos.freeze()) { todo in
-                            Button("\(todo.order). \(todo.content)"){
-                                selectedTodoId = todo.id
-                                isShowSheet.toggle()
+                        
+                        Section(header: Text("")) {
+                            ForEach(unpinnedTodos.freeze()) { todo in
+                                Button("\(todo.order). \(todo.content)"){
+                                    selectedTodoId = todo.id
+                                    isShowSheet.toggle()
+                                }
+                                .foregroundColor(.primary)
+                                .contextMenu(ContextMenu(menuItems: {
+                                    ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                                }))
                             }
-                            .foregroundColor(.primary)
-                            .contextMenu(ContextMenu(menuItems: {
-                                ListContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
-                            }))
+                            .onMove {sourceIndexSet, destination in
+                                Todo.sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
+                                loadData()
+                            }
                         }
-                        .onMove {sourceIndexSet, destination in
-                            Todo.sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
-                            loadData()
-                        }
+                        
+                        
                     }
                     
                 }
