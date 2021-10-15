@@ -55,6 +55,7 @@ struct UnachievedTodoSection: View {
                             }
                             Text("\(todo.content)")
                         }
+                        .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
                     }
                     .foregroundColor(.primary)
                     .contextMenu(ContextMenu(menuItems: {
@@ -65,7 +66,6 @@ struct UnachievedTodoSection: View {
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
                     editProtocol.loadData()
                 }
-//                .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
             }
         } else {
             Section {
@@ -87,6 +87,7 @@ struct UnachievedTodoSection: View {
                             }
                             Text("\(todo.content)")
                         }
+                        .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
                     }
                     .foregroundColor(.primary)
                     .contextMenu(ContextMenu(menuItems: {
@@ -97,7 +98,6 @@ struct UnachievedTodoSection: View {
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
                     editProtocol.loadData()
                 }
-//                .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
             }
         }
         
