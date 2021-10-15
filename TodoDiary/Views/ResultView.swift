@@ -74,27 +74,7 @@ struct ResultView: View, EditProtocol {
         .navigationBarTitle("達成済み")
         .navigationBarItems(
             trailing: Menu {
-                Button(action: {
-                    isAscending.toggle()
-                    UserDefaults.standard.setValue(isAscending, forKey: "isAscending")
-                    reloadRecords()
-                }){
-                    if isAscending {
-                        Label("新しい順に並べる", systemImage: "arrow.up")
-                    } else {
-                        Label("古い順に並べる", systemImage: "arrow.down")
-                    }
-                }
-                Button(action: {
-                    isShowTime.toggle()
-                    UserDefaults.standard.setValue(isShowTime, forKey: "isShowTime")
-                }){
-                    if isShowTime {
-                        Label("達成時刻を非表示", systemImage: "clock")
-                    } else {
-                        Label("達成時刻を非表示", systemImage: "clock.fill")
-                    }
-                }
+                SettingMenu(editProtocol: self, isAscending: $isAscending, isShowTime: $isShowTime)
             } label: {
                 Image(systemName: "ellipsis.circle")
                     .font(.title2)
