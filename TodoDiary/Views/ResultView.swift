@@ -30,18 +30,13 @@ struct ResultView: View, EditProtocol {
         List {
             Section(header: Text("\(converter.toYmdwText(inputDate: selectedDate))")) {
                 ForEach(todosOfTheDay.freeze()) { todo in
-                    Button(action: {
-                        selectedTodoId = todo.id
-                        isShowSheet.toggle()
-                    }){
-                        HStack {
-                            if isShowTime {
-                                Text("\(converter.toHmText(inputDate: todo.achievedDate))")
-                                    .foregroundColor(.secondary)
-                            }
-                            Text("\(todo.content)")
-                                .foregroundColor(.primary)
+                    HStack {
+                        if isShowTime {
+                            Text("\(converter.toHmText(inputDate: todo.achievedDate))")
+                                .foregroundColor(.secondary)
                         }
+                        Text("\(todo.content)")
+                            .foregroundColor(.primary)
                     }
                     .contextMenu {
                         UnachievedTodoContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
