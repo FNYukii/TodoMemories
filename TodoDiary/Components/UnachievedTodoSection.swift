@@ -26,12 +26,9 @@ struct UnachievedTodoSection: View {
         if !headerText.isEmpty {
             Section(header: Text(headerText)) {
                 ForEach(todos.freeze()) { todo in
-                    Button(action: {
+                    Button("\(todo.content)"){
                         selectedTodoId = todo.id
                         isShowSheet.toggle()
-                    }){
-                        Text("\(todo.content)")
-                            .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
                     }
                     .foregroundColor(.primary)
                     .contextMenu {
@@ -41,17 +38,20 @@ struct UnachievedTodoSection: View {
                 .onMove {sourceIndexSet, destination in
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
                     editProtocol.loadData()
+                }
+                .onDelete {indexSet in
+                    indexSet.sorted(by: > ).forEach { (i) in
+                        selectedTodoId = todos[i].id
+                    }
+                    isShowActionSheet.toggle()
                 }
             }
         } else {
             Section {
                 ForEach(todos.freeze()) { todo in
-                    Button(action: {
+                    Button("\(todo.content)"){
                         selectedTodoId = todo.id
                         isShowSheet.toggle()
-                    }){
-                        Text("\(todo.content)")
-                            .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
                     }
                     .foregroundColor(.primary)
                     .contextMenu {
@@ -61,6 +61,12 @@ struct UnachievedTodoSection: View {
                 .onMove {sourceIndexSet, destination in
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
                     editProtocol.loadData()
+                }
+                .onDelete {indexSet in
+                    indexSet.sorted(by: > ).forEach { (i) in
+                        selectedTodoId = todos[i].id
+                    }
+                    isShowActionSheet.toggle()
                 }
             }
         }

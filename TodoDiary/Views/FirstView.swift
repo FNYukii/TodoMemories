@@ -68,13 +68,13 @@ struct FirstView: View, EditProtocol {
                         
             .navigationBarTitle("Todo")
             .navigationBarItems(
-                leading:  Button(action: {
+                leading: CustomEditButton(),
+                trailing: Button(action: {
                     selectedTodoId = 0
                     isShowSheet.toggle()
                 }){
                     Label("新しいTodo", systemImage: "plus.circle.fill")
-                },
-                trailing: CustomEditButton()
+                }
             )
             
         }
