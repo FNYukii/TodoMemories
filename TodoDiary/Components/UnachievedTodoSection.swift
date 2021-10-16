@@ -34,9 +34,9 @@ struct UnachievedTodoSection: View {
                             .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
                     }
                     .foregroundColor(.primary)
-                    .contextMenu(ContextMenu(menuItems: {
+                    .contextMenu {
                         UnachievedTodoContextMenuItems(editProtocol: editProtocol, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
-                    }))
+                    }
                 }
                 .onMove {sourceIndexSet, destination in
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
@@ -54,9 +54,9 @@ struct UnachievedTodoSection: View {
                             .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
                     }
                     .foregroundColor(.primary)
-                    .contextMenu(ContextMenu(menuItems: {
+                    .contextMenu {
                         UnachievedTodoContextMenuItems(editProtocol: editProtocol, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
-                    }))
+                    }
                 }
                 .onMove {sourceIndexSet, destination in
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)

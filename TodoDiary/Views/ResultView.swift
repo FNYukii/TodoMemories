@@ -43,9 +43,9 @@ struct ResultView: View, EditProtocol {
                                 .foregroundColor(.primary)
                         }
                     }
-                    .contextMenu(ContextMenu(menuItems: {
+                    .contextMenu {
                         UnachievedTodoContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
-                    }))
+                    }
                 }
             }
         }
