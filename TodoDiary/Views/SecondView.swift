@@ -34,16 +34,21 @@ struct SecondView: View, EditProtocol {
                     ForEach(0..<achievedYmds.count) { index in
                         Section(header: Text("\(converter.toYmdwText(inputDate: converter.toDate(inputYmd: achievedYmds[index])))")) {
                             ForEach(Todo.todosOfTheDay(achievedYmd: achievedYmds[index], isAscending: isAscending).freeze()){ todo in
-                                HStack {
-                                    if isShowTime {
-                                        Text("\(converter.toHmText(inputDate: todo.achievedDate))")
-                                            .foregroundColor(.secondary)
+                                Button(action: {
+                                    selectedTodoId = todo.id
+                                    isShowSheet.toggle()
+                                }){
+                                    HStack {
+                                        if isShowTime {
+                                            Text("\(converter.toHmText(inputDate: todo.achievedDate))")
+                                                .foregroundColor(.secondary)
+                                        }
+                                        Text("\(todo.content)")
+                                            .foregroundColor(.primary)
                                     }
-                                    Text("\(todo.content)")
-                                        .foregroundColor(.primary)
                                 }
                                 .contextMenu {
-                                    UnachievedTodoContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
+                                    UnachievedTodoContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                                 }
                                 
                             }
