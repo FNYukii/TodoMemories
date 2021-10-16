@@ -26,13 +26,7 @@ struct UnachievedTodoSection: View {
         if !headerText.isEmpty {
             Section(header: Text(headerText)) {
                 ForEach(todos.freeze()) { todo in
-                    Button(action: {
-                        selectedTodoId = todo.id
-                        isShowSheet.toggle()
-                    }){
-                        Text("\(todo.content)")
-                            .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
-                    }
+                    Text("\(todo.content)")
                     .foregroundColor(.primary)
                     .contextMenu {
                         UnachievedTodoContextMenuItems(editProtocol: editProtocol, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
@@ -42,17 +36,12 @@ struct UnachievedTodoSection: View {
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
                     editProtocol.loadData()
                 }
+                .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
             }
         } else {
             Section {
                 ForEach(todos.freeze()) { todo in
-                    Button(action: {
-                        selectedTodoId = todo.id
-                        isShowSheet.toggle()
-                    }){
-                        Text("\(todo.content)")
-                            .offset(x: editMode?.wrappedValue.isEditing == true ? -40 : 0)
-                    }
+                    Text("\(todo.content)")
                     .foregroundColor(.primary)
                     .contextMenu {
                         UnachievedTodoContextMenuItems(editProtocol: editProtocol, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
@@ -62,6 +51,7 @@ struct UnachievedTodoSection: View {
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
                     editProtocol.loadData()
                 }
+                .listRowInsets(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
             }
         }
         
