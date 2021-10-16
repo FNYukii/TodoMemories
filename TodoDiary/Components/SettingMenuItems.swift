@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SettingMenu: View {
+struct SettingMenuItems: View {
     
     var editProtocol: EditProtocol
     

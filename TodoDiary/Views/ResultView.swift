@@ -74,7 +74,7 @@ struct ResultView: View, EditProtocol {
         .navigationBarTitle("達成済み")
         .navigationBarItems(
             trailing: Menu {
-                SettingMenu(editProtocol: self, isAscending: $isAscending, isShowTime: $isShowTime)
+                SettingMenuItems(editProtocol: self, isAscending: $isAscending, isShowTime: $isShowTime)
             } label: {
                 Image(systemName: "ellipsis.circle")
                     .font(.title2)
