@@ -35,7 +35,7 @@ struct UnachievedTodoSection: View {
                     }
                     .foregroundColor(.primary)
                     .contextMenu(ContextMenu(menuItems: {
-                        ListContextMenuItems(editProtocol: editProtocol, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                        UnachievedTodoContextMenuItems(editProtocol: editProtocol, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
                     }))
                 }
                 .onMove {sourceIndexSet, destination in
@@ -55,7 +55,7 @@ struct UnachievedTodoSection: View {
                     }
                     .foregroundColor(.primary)
                     .contextMenu(ContextMenu(menuItems: {
-                        ListContextMenuItems(editProtocol: editProtocol, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                        UnachievedTodoContextMenuItems(editProtocol: editProtocol, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
                     }))
                 }
                 .onMove {sourceIndexSet, destination in

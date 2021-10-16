@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListContextMenuItems: View {
+struct UnachievedTodoContextMenuItems: View {
     
     var editProtocol: EditProtocol
     
@@ -17,9 +17,18 @@ struct ListContextMenuItems: View {
     
     @Binding var isShowActionSheet: Bool
     @Binding var selectedTodoId: Int
+    @Binding var isShowSheet: Bool
     
     var body: some View {
         Group {
+            
+            //編集ボタン
+            Button(action: {
+                selectedTodoId = todoId
+                isShowSheet.toggle()
+            }){
+                Label("編集", systemImage: "square.and.pencil")
+            }
             
             //固定ボタン
             if !isAchieved && !isPinned {
