@@ -37,7 +37,7 @@ struct UnachievedTodoContextMenuItems: View {
                     Todo.unpinTodo(id: todoId)
                     editProtocol.loadData()
                 }){
-                    Label("固定を解除", systemImage: "pin")
+                    Label("固定を解除", systemImage: "pin.slash")
                 }
             }
             
@@ -57,7 +57,7 @@ struct UnachievedTodoContextMenuItems: View {
                     Todo.unachieveTodo(id: todoId)
                     editProtocol.loadData()
                 }){
-                    Label("未達成に戻す", systemImage: "checkmark")
+                    Label("未達成に戻す", systemImage: "xmark")
                 }
             }
             
