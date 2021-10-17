@@ -57,49 +57,61 @@ struct FirstWidgetEntryView : View {
     var entry: Provider.Entry
     
     //Todoテキストの行の高さ
-    let lineHeight: CGFloat = 28
+    let lineHeight: CGFloat = 23
+    
+    var itemCount = 0
 
     var body: some View {
         ZStack {
             
             Color("background")
             
-            HStack {
-                VStack(alignment: .leading) {
-                    //固定済みラベル
-                    if entry.pinnedTodoStrs.count != 0 {
+            VStack(alignment: .leading) {
+                
+                //固定済みラベル
+                if entry.pinnedTodoStrs.count != 0 {
+                    ZStack(alignment: .leading) {
+                        Color.red
+                            .frame(height: 30)
                         Text("固定済み")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+                            .padding(.leading)
                     }
-                    //固定済みTodo一覧
+                }
+                
+                //固定済みTodoが5つ未満
+                if entry.pinnedTodoStrs.count < 5 {
                     ForEach(0..<entry.pinnedTodoStrs.count) { index in
                         Text("\(entry.pinnedTodoStrs[index])")
                             .font(.subheadline)
                             .frame(height: lineHeight)
+                            .padding(.leading)
                     }
-                    //スペース
-                    if entry.pinnedTodoStrs.count != 0 && entry.unpinnedTodoStrs.count != 0 {
-                        Text("")
-                            .frame(height: 8)
-                    }
-                    //その他ラベル
-                    if entry.pinnedTodoStrs.count != 0 && entry.unpinnedTodoStrs.count != 0 {
-                        Text("その他")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                    //未固定Todo一覧
-                    ForEach(0..<entry.unpinnedTodoStrs.count) { index in
-                        Text("\(entry.unpinnedTodoStrs[index])")
+                }
+                
+                //固定済みTodoが5つ以上
+                if entry.pinnedTodoStrs.count > 4 {
+                    ForEach(0..<4) { index in
+                        Text("\(entry.pinnedTodoStrs[index])")
                             .font(.subheadline)
                             .frame(height: lineHeight)
+                            .padding(.leading)
                     }
-                    Spacer()
                 }
+                
+                
+                if entry.pinnedTodoStrs.count > 4 {
+                    Text("\(entry.pinnedTodoStrs.count - 4) More")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.leading)
+                }
+                
                 Spacer()
+                
             }
-            .padding()
             
         }
     }
