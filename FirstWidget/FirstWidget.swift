@@ -21,21 +21,6 @@ struct Provider: IntentTimelineProvider {
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
                 
-//        //固定済みTodoの文字列型配列を生成
-//        var pinnedTodoStrs: [String] = []
-//        let pinnedTodos = Todo.pinnedTodos()
-//        for pinnedTodo in pinnedTodos {
-//            pinnedTodoStrs.append(pinnedTodo.content)
-//        }
-//
-//        //未固定Todoの文字列型配列を生成
-//        var unpinnedTodoStrs: [String] = []
-//        let unpinnedTodos = Todo.unpinnedTodos()
-//        for unpinnedTodo in unpinnedTodos {
-//            unpinnedTodoStrs.append(unpinnedTodo.content)
-//        }
-        
-        
         let pinnedTodos = Todo.pinnedTodos()
         let unpinnedTodos = Todo.unpinnedTodos()
         var todos = Todo.noRecord()
