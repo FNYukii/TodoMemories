@@ -55,13 +55,25 @@ struct SimpleEntry: TimelineEntry {
 
 struct FirstWidgetEntryView : View {
     
+    //Widgetの大きさ
+    @Environment(\.widgetFamily) var widgetFamily
+    
     //Todoのデータ
     var entry: Provider.Entry
     
     //Todoテキストの行の高さ
     let lineHeight: CGFloat = 23
     
-    var itemCount = 0
+    //4 or 12
+    var maxItemCount: Int {
+        switch self.widgetFamily {
+            case .systemSmall: return 4
+            case .systemMedium: return 4
+            case .systemLarge: return 12
+            case .systemExtraLarge: return 12
+            default: return 4
+        }
+    }
 
     var body: some View {
         ZStack {
@@ -82,7 +94,7 @@ struct FirstWidgetEntryView : View {
                 }
                 
                 //固定済みTodoが5つ未満
-                if entry.todoContents.count < 5 {
+                if entry.todoContents.count <= maxItemCount {
                     ForEach(0..<entry.todoContents.count) { index in
                         Text("\(entry.todoContents[index])")
                             .font(.subheadline)
@@ -92,8 +104,8 @@ struct FirstWidgetEntryView : View {
                 }
                 
                 //固定済みTodoが5つ以上
-                if entry.todoContents.count > 4 {
-                    ForEach(0..<4) { index in
+                if entry.todoContents.count > maxItemCount {
+                    ForEach(0..<maxItemCount) { index in
                         Text("\(entry.todoContents[index])")
                             .font(.subheadline)
                             .frame(height: lineHeight)
@@ -102,8 +114,8 @@ struct FirstWidgetEntryView : View {
                 }
                 
                 
-                if entry.todoContents.count > 4 {
-                    Text("\(entry.todoContents.count - 4) More")
+                if entry.todoContents.count > maxItemCount {
+                    Text("\(entry.todoContents.count - maxItemCount) More")
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .padding(.leading)
