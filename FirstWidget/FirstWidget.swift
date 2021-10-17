@@ -74,6 +74,14 @@ struct FirstWidgetEntryView : View {
             default: return 4
         }
     }
+    
+    var showItemCount: Int {
+        if entry.todoContents.count > maxItemCount {
+            return maxItemCount
+        } else {
+            return entry.todoContents.count
+        }
+    }
 
     var body: some View {
         ZStack {
@@ -93,26 +101,13 @@ struct FirstWidgetEntryView : View {
                         .padding(.leading)
                 }
                 
-                //固定済みTodoが5つ未満
-                if entry.todoContents.count <= maxItemCount {
-                    ForEach(0..<entry.todoContents.count) { index in
-                        Text("\(entry.todoContents[index])")
-                            .font(.subheadline)
-                            .frame(height: lineHeight)
-                            .padding(.leading)
-                    }
+                //Todo一覧
+                ForEach(0..<showItemCount) { index in
+                    Text("\(entry.todoContents[index])")
+                        .font(.subheadline)
+                        .frame(height: lineHeight)
+                        .padding(.leading)
                 }
-                
-                //固定済みTodoが5つ以上
-                if entry.todoContents.count > maxItemCount {
-                    ForEach(0..<maxItemCount) { index in
-                        Text("\(entry.todoContents[index])")
-                            .font(.subheadline)
-                            .frame(height: lineHeight)
-                            .padding(.leading)
-                    }
-                }
-                
                 
                 if entry.todoContents.count > maxItemCount {
                     Text("\(entry.todoContents.count - maxItemCount) More")
