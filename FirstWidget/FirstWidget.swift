@@ -61,9 +61,6 @@ struct FirstWidgetEntryView : View {
     //Todoのデータ
     var entry: Provider.Entry
     
-    //Todoテキストの行の高さ
-    let lineHeight: CGFloat = 23
-    
     //4 or 12
     var maxItemCount: Int {
         switch self.widgetFamily {
@@ -93,7 +90,7 @@ struct FirstWidgetEntryView : View {
                 //ラベル
                 ZStack(alignment: .leading) {
                     Color.red
-                        .frame(height: 30)
+                        .frame(height: 25)
                     Text(entry.isPinned ? "固定済み" : "Todo")
                         .font(.subheadline)
                         .fontWeight(.bold)
@@ -105,7 +102,7 @@ struct FirstWidgetEntryView : View {
                 ForEach(0..<showItemCount) { index in
                     Text("\(entry.todoContents[index])")
                         .font(.subheadline)
-                        .frame(height: lineHeight)
+                        .frame(height: 23)
                         .padding(.leading)
                 }
                 
@@ -113,6 +110,7 @@ struct FirstWidgetEntryView : View {
                     Text("\(entry.todoContents.count - maxItemCount) More")
                         .font(.caption)
                         .foregroundColor(.secondary)
+                        .frame(height: 23)
                         .padding(.leading)
                 }
                 
