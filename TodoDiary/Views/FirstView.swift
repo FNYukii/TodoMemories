@@ -68,7 +68,6 @@ struct FirstView: View, EditProtocol {
                         
             .navigationBarTitle("Todo")
             .navigationBarItems(
-                leading: CustomEditButton(),
                 trailing: Button(action: {
                     selectedTodoId = 0
                     isShowSheet.toggle()
