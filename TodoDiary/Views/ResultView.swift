@@ -65,6 +65,7 @@ struct ResultView: View, EditProtocol {
                 buttons:[
                     .destructive(Text("Todoを削除")) {
                         Todo.deleteTodo(id: selectedTodoId)
+                        loadData()
                     },
                     .cancel()
                 ]
