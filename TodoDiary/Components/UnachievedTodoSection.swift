@@ -39,12 +39,12 @@ struct UnachievedTodoSection: View {
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
                     editProtocol.loadData()
                 }
-//                .onDelete {indexSet in
-//                    indexSet.sorted(by: > ).forEach { (i) in
-//                        selectedTodoId = todos[i].id
-//                    }
-//                    isShowActionSheet.toggle()
-//                }
+                .onDelete {indexSet in
+                    indexSet.sorted(by: > ).forEach { (i) in
+                        selectedTodoId = todos[i].id
+                    }
+                    isShowActionSheet.toggle()
+                }
             }
         } else {
             Section {
