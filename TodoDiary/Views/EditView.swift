@@ -101,7 +101,7 @@ struct EditView: View {
                     Text("キャンセル")
                         .fontWeight(.regular)
                 },
-                trailing: Button(navBarDoneText){
+                trailing: Button(action: {
                     if id == 0 {
                         Todo.insertTodo(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedDate: achievedDate)
                     }
@@ -122,6 +122,9 @@ struct EditView: View {
                     }
                     editProtocol.loadData()
                     presentation.wrappedValue.dismiss()
+                }){
+                    Text(navBarDoneText)
+                        .fontWeight(.bold)
                 }
                     .disabled(content.isEmpty)
             )
