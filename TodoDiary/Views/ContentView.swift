@@ -20,7 +20,7 @@ struct ContentView: View {
                 }
             ThirdView()
                 .tabItem {
-                    Label("達成グラフ", systemImage: "chart.bar.xaxis")
+                    Label("達成グラフ", systemImage: "chart.xyaxis.line")
                 }
         }
         .accentColor(.red)
