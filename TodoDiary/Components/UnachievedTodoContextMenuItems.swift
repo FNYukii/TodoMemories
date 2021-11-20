@@ -62,10 +62,10 @@ struct UnachievedTodoContextMenuItems: View {
             }
             
             //削除ボタン
-            Button(action: {
+            Button(role: .destructive) {
                 selectedTodoId = todoId
                 isShowActionSheet.toggle()
-            }){
+            } label: {
                 Label("削除", systemImage: "trash")
             }
             
