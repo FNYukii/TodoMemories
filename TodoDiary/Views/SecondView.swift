@@ -90,7 +90,6 @@ struct SecondView: View, EditProtocol {
                     SettingMenuItems(editProtocol: self, isAscending: $isAscending, isShowTime: $isShowTime)
                 } label: {
                     Image(systemName: "ellipsis.circle")
-                        .font(.title2)
                 }
             )
             
