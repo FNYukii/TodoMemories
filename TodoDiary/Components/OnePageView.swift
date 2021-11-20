@@ -60,9 +60,12 @@ struct OnePageView: View, CalendarProtocol {
             
             LineChart(showYear: showYear, showMonth: showMonth)
                 .padding(.horizontal, 5)
+                .frame(maxHeight: 250)
             
             CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
                 .padding(.horizontal, 5)
+            
+            Spacer()
             
             NavigationLink(destination: ResultView(selectedDate: selectedDate), isActive: $isNavLinkActive) {
                 EmptyView()
