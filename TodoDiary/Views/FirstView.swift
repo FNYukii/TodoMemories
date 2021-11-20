@@ -73,7 +73,8 @@ struct FirstView: View, EditProtocol {
                     selectedTodoId = 0
                     isShowSheet.toggle()
                 }){
-                    Label("新しいTodo", systemImage: "plus.circle.fill")
+                    Image(systemName: "plus.circle.fill")
+                    Text("新しいTodo")
                 }
             )
             
