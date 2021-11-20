@@ -8,27 +8,19 @@
 import SwiftUI
 
 struct ThirdView: View {
-    
-    let pageCount = 100
-    var pages: [AnyView] = []
-    @State var currentPage = 0
-    
-    init() {
-        //最初に表示するページの番号を決める
-        _currentPage = State(initialValue: pageCount / 2)
-        //pageCountの分だけページを用意する
-        for index in 0..<pageCount {
-            let offset = index - pageCount / 2
-            pages.append(AnyView(OnaPageView(offset: offset)))
-        }
-    }
+
+    @State var currentPageIndex = 0
     
     var body: some View {
         NavigationView {
-            PageView(pages, currentPage: $currentPage)
+            
+            TabView(selection: $currentPageIndex) {
+                ForEach(-50..<51) {index in
+                    OnePageView(offset: index).tag(index)
+                }
+            }.tabViewStyle(PageTabViewStyle())
+            
             .navigationBarTitle("達成グラフ")
         }
-        
     }
-    
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnaPageView: View, CalendarProtocol {
+struct OnePageView: View, CalendarProtocol {
     
     //NavigationLink
     @State var isNavLinkActive = false
