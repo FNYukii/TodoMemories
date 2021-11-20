@@ -133,7 +133,6 @@ struct EditView: View {
     }
     
     func loadTodo() {
-//        id = editProtocol.getSelectedDiaryId()
         if id != 0 {
             let todo = Todo.oneTodo(id: id)
             content = todo.content
