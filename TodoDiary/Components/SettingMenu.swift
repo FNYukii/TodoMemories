@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-struct SettingMenuItems: View {
+struct SettingMenu: View {
     
     var editProtocol: EditProtocol
-    
     @Binding var isAscending: Bool
     @Binding var isShowTime: Bool
     
     var body: some View {
-        Group {
+        Menu {
             Button(action: {
                 isAscending.toggle()
                 UserDefaults.standard.setValue(isAscending, forKey: "isAscending")
@@ -37,6 +36,8 @@ struct SettingMenuItems: View {
                     Label("達成時刻を表示", systemImage: "clock.fill")
                 }
             }
+        } label: {
+            Image(systemName: "ellipsis.circle")
         }
     }
 }

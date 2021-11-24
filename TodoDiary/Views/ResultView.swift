@@ -74,13 +74,8 @@ struct ResultView: View, EditProtocol {
         
         .navigationBarTitle("達成済み")
         .navigationBarItems(
-            trailing: Menu {
-                SettingMenuItems(editProtocol: self, isAscending: $isAscending, isShowTime: $isShowTime)
-            } label: {
-                Image(systemName: "ellipsis.circle")
-            }
+            trailing: SettingMenu(editProtocol: self, isAscending: $isAscending, isShowTime: $isShowTime)
         )
-        
     }
     
     func loadData()  {
@@ -90,5 +85,4 @@ struct ResultView: View, EditProtocol {
             presentation.wrappedValue.dismiss()
         }
     }
-    
 }

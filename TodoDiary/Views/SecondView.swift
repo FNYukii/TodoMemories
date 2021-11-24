@@ -64,7 +64,6 @@ struct SecondView: View, EditProtocol {
                     Text("達成済みのTodoはありません")
                         .foregroundColor(.secondary)
                 }
-                
             }
             
             .sheet(isPresented: $isShowSheet) {
@@ -86,13 +85,8 @@ struct SecondView: View, EditProtocol {
             
             .navigationBarTitle("達成済み")
             .navigationBarItems(
-                trailing: Menu {
-                    SettingMenuItems(editProtocol: self, isAscending: $isAscending, isShowTime: $isShowTime)
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                }
+                trailing: SettingMenu(editProtocol: self, isAscending: $isAscending, isShowTime: $isShowTime)
             )
-            
         }
     }
     
@@ -115,5 +109,4 @@ struct SecondView: View, EditProtocol {
         achievedYmds = []
         achievedYmds = getAchievedYmds()
     }
-    
 }
