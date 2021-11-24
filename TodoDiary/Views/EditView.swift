@@ -16,7 +16,6 @@ struct EditView: View {
     @State var navBarTitle = "新しいTodo"
     @State var navBarDoneText = "追加"
     @State var isShowActionSheet = false
-    @State var isStartEditing = true
     
     @Binding var id: Int
     @State var content = ""
@@ -32,21 +31,18 @@ struct EditView: View {
         NavigationView {
             
             Form {
-                //Todo内容入力エリア
                 TextField("Todoを入力", text: $content)
                     .introspectTextField { textField in
                         textField.returnKeyType = .done
-                        if isStartEditing && id == 0 {
-                            textField.becomeFirstResponder()
-                            isStartEditing = false
-                            print("hello")
+                        textField.becomeFirstResponder()
+                        if id != 0 {
+                            textField.resignFirstResponder()
                         }
                     }
+                
                 Section {
-                    //固定切り替えスイッチ
                     Toggle("Todoを固定", isOn: $isPinned)
                         .disabled(isAchieved)
-                    //達成切り替えスイッチ
                     Toggle("達成済み", isOn: $isAchieved)
                         .onChange(of: isAchieved) {value in
                             if value {
@@ -54,13 +50,12 @@ struct EditView: View {
                                 achievedDate = Date()
                             }
                         }
-                    //達成日時
                     if isAchieved {
                         DatePicker("達成日時", selection: $achievedDate)
                             .environment(\.locale, Locale(identifier: "ja_JP"))
                     }
                 }
-                //削除ボタン
+                
                 if id != 0 {
                     Section {
                         Button(action: {
@@ -77,7 +72,6 @@ struct EditView: View {
                 loadTodo()
             }
             
-            //削除確認アクションシート
             .actionSheet(isPresented: $isShowActionSheet) {
                 ActionSheet(
                     title: Text(""),
@@ -93,7 +87,6 @@ struct EditView: View {
                 )
             }
             
-            //ナビゲーションバーの設定
             .navigationBarTitle(navBarTitle, displayMode: .inline)
             .navigationBarItems(
                 leading: Button(action: {
