@@ -39,6 +39,7 @@ struct EditView: View {
                         if isStartEditing && id == 0 {
                             textField.becomeFirstResponder()
                             isStartEditing = false
+                            print("hello")
                         }
                     }
                 Section {
