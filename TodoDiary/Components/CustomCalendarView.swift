@@ -8,31 +8,28 @@
 import SwiftUI
 
 struct CustomCalendarView: View {
-    
-    var calendarProtocol: CalendarProtocol
-    let changeFrag: Int
+        
+    //NavLink
+    @Binding var isNavLinkActive: Bool
+    @Binding var selectedDate: Date
     
     //カレンダーに表示する年と月
-    @State var showYear = 0
-    @State var showMonth = 0
-    
-    //本日の年と月
-    @State var currentYear = 0
-    @State var currentMonth = 0
+    let showYear: Int
+    let showMonth: Int
     
     //カレンダーの日付の高さ
     let lineHeight: CGFloat = 45
     
-    //日別Todo完了数
+    //日別Todo完了数と日付
     @State var achieveCounts: [Int] = []
-
-    let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     @State var showDays: [Int] = []
+
+    //曜日
+    let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     
     var body: some View {
         VStack {
             
-            //曜日を表示
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
                 ForEach((0..<weekDays.count), id: \.self) { index in
                     Text("\(weekDays[index])")
@@ -42,7 +39,6 @@ struct CustomCalendarView: View {
                 }
             }
             
-            //日を表示
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
                 ForEach((0..<showDays.count), id: \.self) { index in
                     
@@ -60,7 +56,7 @@ struct CustomCalendarView: View {
                                 //Todo達成済み
                                 if achieveCounts[showDays[index] - 1] != 0 {
                                     Button(action: {
-                                        calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                                        jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
                                     }){
                                         Text("\(showDays[index])")
                                             .fontWeight(.bold)
@@ -78,7 +74,7 @@ struct CustomCalendarView: View {
                                 //Todo達成済み
                                 if achieveCounts[showDays[index] - 1] != 0 {
                                     Button("\(showDays[index])") {
-                                        calendarProtocol.jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                                        jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
                                     }
                                 }
                                 //Todo未達成
@@ -87,21 +83,15 @@ struct CustomCalendarView: View {
                                     .foregroundColor(.secondary)
                                 }
                             }
-                            
                         }
                         .font(.subheadline)
                         .frame(height: lineHeight, alignment: .top)
                     }
-
                 }
             }
             .onAppear {
                 loadCalendar()
             }
-            .onChange(of: changeFrag, perform: { _ in
-                loadCalendar()
-            })
-            
         }
     }
     
@@ -158,11 +148,6 @@ struct CustomCalendarView: View {
     
     //カレンダーを更新する
     func loadCalendar() {
-        let calenar = Calendar(identifier: .gregorian)
-        currentYear = calenar.component(.year, from: Date())
-        currentMonth = calenar.component(.month, from: Date())
-        showYear = calendarProtocol.getShowYear()
-        showMonth = calendarProtocol.getShowMonth()
         showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
         achieveCounts = dailyAchieveCounts()
     }
@@ -189,7 +174,11 @@ struct CustomCalendarView: View {
         return achieveCounts
     }
     
+    //その日が今日かどうか確認
     func isToday(showDay: Int) -> Bool {
+        let calenar = Calendar(identifier: .gregorian)
+        let currentYear = calenar.component(.year, from: Date())
+        let currentMonth = calenar.component(.month, from: Date())
         if showDay == today() && showYear == currentYear && showMonth == currentMonth {
             return true
         } else {
@@ -197,4 +186,11 @@ struct CustomCalendarView: View {
         }
     }
     
+    //ResultViewへ遷移する
+    func jumpToResultView(year: Int, month: Int, day: Int) {
+        let selectedYmd = year * 10000 + month * 100 + day
+        let converter = Converter()
+        selectedDate = converter.toDate(inputYmd: selectedYmd)
+        isNavLinkActive.toggle()
+    }
 }

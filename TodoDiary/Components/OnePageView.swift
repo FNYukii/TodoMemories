@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnePageView: View, CalendarProtocol {
+struct OnePageView: View {
     
     //NavigationLink
     @State var isNavLinkActive = false
@@ -62,7 +62,7 @@ struct OnePageView: View, CalendarProtocol {
                 .padding(.horizontal, 5)
                 .frame(maxHeight: 250)
             
-            CustomCalendarView(calendarProtocol: self, changeFrag: showMonth)
+            CustomCalendarView(isNavLinkActive: $isNavLinkActive, selectedDate: $selectedDate, showYear: showYear, showMonth: showMonth)
                 .padding(.horizontal, 5)
             
             Spacer()
@@ -70,25 +70,6 @@ struct OnePageView: View, CalendarProtocol {
             NavigationLink(destination: ResultView(selectedDate: selectedDate), isActive: $isNavLinkActive) {
                 EmptyView()
             }
-                
         }
     }
-    
-    //CustomCalendarViewに表示年を渡す
-    func getShowYear() -> Int {
-        return showYear
-    }
-    
-    //CustomCalendarViewに表示月を渡す
-    func getShowMonth() -> Int {
-        return showMonth
-    }
-    
-    func jumpToResultView(year: Int, month: Int, day: Int) {
-        let selectedYmd = year * 10000 + month * 100 + day
-        let converter = Converter()
-        selectedDate = converter.toDate(inputYmd: selectedYmd)
-        isNavLinkActive.toggle()
-    }
-    
 }

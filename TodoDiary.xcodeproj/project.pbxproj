@@ -33,7 +33,6 @@
 		54B6709E26F70EDE00DB5688 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */; };
 		54CD1834274E82E00063C42E /* TodoDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1833274E82E00063C42E /* TodoDiaryApp.swift */; };
 		54CD1836274E8A370063C42E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1835274E8A370063C42E /* AppDelegate.swift */; };
-		54DE523A26F74D130053F126 /* CalendarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE523926F74D130053F126 /* CalendarProtocol.swift */; };
 		54DE528826F8A1DF0053F126 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528726F8A1DF0053F126 /* WidgetKit.framework */; };
 		54DE528A26F8A1DF0053F126 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528926F8A1DF0053F126 /* SwiftUI.framework */; };
 		54DE528D26F8A1DF0053F126 /* FirstWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE528C26F8A1DF0053F126 /* FirstWidget.swift */; };
@@ -115,7 +114,6 @@
 		54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		54CD1833274E82E00063C42E /* TodoDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDiaryApp.swift; sourceTree = "<group>"; };
 		54CD1835274E8A370063C42E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		54DE523926F74D130053F126 /* CalendarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProtocol.swift; sourceTree = "<group>"; };
 		54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FirstWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DE528726F8A1DF0053F126 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		54DE528926F8A1DF0053F126 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -241,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				54B6708226F35E0900DB5688 /* EditProtocol.swift */,
-				54DE523926F74D130053F126 /* CalendarProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -490,7 +487,6 @@
 				54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
 				5407BBD327197760005D1E29 /* UnachievedTodoSection.swift in Sources */,
 				54FFFCE227184947007C5D7A /* UnachievedTodoContextMenuItems.swift in Sources */,
-				54DE523A26F74D130053F126 /* CalendarProtocol.swift in Sources */,
 				54B6709E26F70EDE00DB5688 /* CustomCalendarView.swift in Sources */,
 				54B6707A26F1C63700DB5688 /* EditView.swift in Sources */,
 				54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */,
