@@ -23,15 +23,14 @@ struct CalendarDayCell: View {
     var body: some View {
         if isNotEmpty {
             Button(action: {
-                if isHasAchieved {
-                    jumpToResultView(year: year, month: month, day: day)
-                }
+                jumpToResultView(year: year, month: month, day: day)
             }){
                 Text("\(day)")
                     .fontWeight(isBold ? .bold : .regular)
                     .foregroundColor(isHasAchieved ? .accentColor : .secondary)
                     .frame(height: 45, alignment: .top)
             }
+            .disabled(!isHasAchieved)
         }
         if !isNotEmpty {
             Text("")
