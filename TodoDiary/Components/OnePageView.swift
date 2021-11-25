@@ -9,15 +9,12 @@ import SwiftUI
 
 struct OnePageView: View {
     
-    //NavigationLink
-    @State var isNavLinkActive = false
-    @State var selectedDate: Date = Date()
-    
-    //現在の年月と表示する予定の年月との差分
     var offset: Int
-    //表示する年月
     var showYear: Int
     var showMonth: Int
+    
+    @State var isNavLinkActive = false
+    @State var selectedDate: Date = Date()
     
     init(offset: Int) {
         //offsetと現在の年月を取得
@@ -62,7 +59,7 @@ struct OnePageView: View {
                 .padding(.horizontal, 5)
                 .frame(maxHeight: 250)
             
-            CustomCalendarView(isNavLinkActive: $isNavLinkActive, selectedDate: $selectedDate, showYear: showYear, showMonth: showMonth)
+            CustomCalendarView(showYear: showYear, showMonth: showMonth, isNavLinkActive: $isNavLinkActive, selectedDate: $selectedDate)
                 .padding(.horizontal, 5)
             
             Spacer()

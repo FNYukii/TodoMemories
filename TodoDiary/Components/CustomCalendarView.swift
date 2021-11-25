@@ -9,17 +9,23 @@ import SwiftUI
 
 struct CustomCalendarView: View {
         
-    //NavLink
-    @Binding var isNavLinkActive: Bool
-    @Binding var selectedDate: Date
-    
-    //カレンダーに表示する年と月
     let showYear: Int
     let showMonth: Int
+    @Binding var isNavLinkActive: Bool
+    @Binding var selectedDate: Date
         
-    //日別Todo完了数と日付
-    @State var achieveCounts: [Int] = []
+    //日付と日別Todo完了数
     @State var showDays: [Int] = []
+    @State var achieveCounts: [Int] = []
+    
+    init(showYear: Int, showMonth: Int, isNavLinkActive: Binding<Bool>, selectedDate: Binding<Date>) {
+        self.showYear = showYear
+        self.showMonth = showMonth
+        self._isNavLinkActive = isNavLinkActive
+        self._selectedDate = selectedDate
+        _showDays = State(initialValue: daysOfMonth(inputYear: showYear, inputMonth: showMonth))
+        _achieveCounts = State(initialValue: dailyAchieveCounts())
+    }
     
     var body: some View {
         VStack {
@@ -84,21 +90,18 @@ struct CustomCalendarView: View {
                     }
                 }
             }
-            .onAppear {
-                loadCalendar()
-            }
+            .onAppear(perform: loadCalendar)
         }
     }
     
-    //今日の日をInt型で返す
-    func today() -> Int {
-        let calendar = Calendar(identifier: .gregorian)
-        return calendar.component(.day, from: Date())
+    //カレンダーを更新する
+    func loadCalendar() {
+        achieveCounts = dailyAchieveCounts()
+        showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
     }
     
-    //表示月の日の配列 例: [0, 0, 0, 1, 2, 3, ...]
+    //showDaysを取得 例: [0, 0, 0, 1, 2, 3, ...]
     func daysOfMonth(inputYear: Int, inputMonth: Int) -> [Int] {
-        
         //表示月の日数を取得
         let calendar = Calendar(identifier: .gregorian)
         var components = DateComponents()
@@ -141,13 +144,7 @@ struct CustomCalendarView: View {
         return days
     }
     
-    //カレンダーを更新する
-    func loadCalendar() {
-        showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
-        achieveCounts = dailyAchieveCounts()
-    }
-    
-    //日別Todo達成数の配列 例: [0, 0, 1, 0, 3, 2...]
+    //achieveCountsを取得 例: [0, 0, 1, 0, 3, 2...]
     func dailyAchieveCounts() -> [Int] {
         //当月の日数を取得
         let calendar = Calendar(identifier: .gregorian)
@@ -171,10 +168,11 @@ struct CustomCalendarView: View {
     
     //その日が今日かどうか確認
     func isToday(showDay: Int) -> Bool {
-        let calenar = Calendar(identifier: .gregorian)
-        let currentYear = calenar.component(.year, from: Date())
-        let currentMonth = calenar.component(.month, from: Date())
-        if showDay == today() && showYear == currentYear && showMonth == currentMonth {
+        let calendar = Calendar(identifier: .gregorian)
+        let currentYear = calendar.component(.year, from: Date())
+        let currentMonth = calendar.component(.month, from: Date())
+        let currentDay = calendar.component(.day, from: Date())
+        if showDay == currentDay && showYear == currentYear && showMonth == currentMonth {
             return true
         } else {
             return false
