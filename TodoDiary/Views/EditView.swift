@@ -32,8 +32,8 @@ struct EditView: View {
         NavigationView {
             Form {
                 TextField("Todoを入力", text: $content)
+                    .submitLabel(.done)
                     .introspectTextField { textField in
-                        textField.returnKeyType = .done
                         textField.becomeFirstResponder()
                         if id != 0 && isJustAppeared {
                             textField.resignFirstResponder()
