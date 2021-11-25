@@ -28,7 +28,6 @@ struct CustomCalendarView: View {
     
     var body: some View {
         VStack {
-            
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
                 let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
                 ForEach((0..<weekDays.count), id: \.self) { index in
@@ -41,52 +40,7 @@ struct CustomCalendarView: View {
             
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
                 ForEach((0..<days.count), id: \.self) { index in
-                    
-                    if days[index] == 0 {
-                        Text("")
-                            .foregroundColor(.clear)
-                            .frame(height: 45)
-                    }
-                    
-                    if days[index] != 0 {
-                        VStack {
-                            
-                            //表示する日付が今日
-                            if isToday(showDay: days[index]) {
-                                //Todo達成済み
-                                if achieveCountsByDay[days[index] - 1] != 0 {
-                                    Button(action: {
-                                        jumpToResultView(year: showYear, month: showMonth, day: days[index])
-                                    }){
-                                        Text("\(days[index])")
-                                            .fontWeight(.bold)
-                                    }
-                                }
-                                //Todo未達成
-                                else {
-                                    Text("\(days[index])")
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.secondary)
-                                }
-                            }
-                            //表示する日付が今日でない
-                            else {
-                                //Todo達成済み
-                                if achieveCountsByDay[days[index] - 1] != 0 {
-                                    Button("\(days[index])") {
-                                        jumpToResultView(year: showYear, month: showMonth, day: days[index])
-                                    }
-                                }
-                                //Todo未達成
-                                else {
-                                    Text("\(days[index])")
-                                    .foregroundColor(.secondary)
-                                }
-                            }
-                        }
-                        .font(.subheadline)
-                        .frame(height: 45, alignment: .top)
-                    }
+                    CalendarDayCell(year: showYear, month: showMonth, day: days[index], isNotEmpty: days[index] != 0, isBold: isToday(showDay: days[index]), isHasAchieved: days[index] != 0 ? achieveCountsByDay[days[index] - 1] != 0 : false, isNavLinkActive: $isNavLinkActive, selectedDate: $selectedDate)
                 }
             }
             .onAppear(perform: loadCalendar)
@@ -176,13 +130,5 @@ struct CustomCalendarView: View {
         } else {
             return false
         }
-    }
-    
-    //ResultViewへ遷移する
-    func jumpToResultView(year: Int, month: Int, day: Int) {
-        let selectedYmd = year * 10000 + month * 100 + day
-        let converter = Converter()
-        selectedDate = converter.toDate(inputYmd: selectedYmd)
-        isNavLinkActive.toggle()
     }
 }
