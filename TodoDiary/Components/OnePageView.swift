@@ -16,8 +16,8 @@ struct OnePageView: View, CalendarProtocol {
     //現在の年月と表示する予定の年月との差分
     var offset: Int
     //表示する年月
-    var showYear = 0
-    var showMonth = 0
+    var showYear: Int
+    var showMonth: Int
     
     init(offset: Int) {
         //offsetと現在の年月を取得
