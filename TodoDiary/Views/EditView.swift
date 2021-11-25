@@ -26,6 +26,7 @@ struct EditView: View {
     @State var navBarDoneText = "追加"
     
     @State var isShowActionSheet = false
+    @State var isJustAppeared = true
     
     var body: some View {
         NavigationView {
@@ -34,8 +35,9 @@ struct EditView: View {
                     .introspectTextField { textField in
                         textField.returnKeyType = .done
                         textField.becomeFirstResponder()
-                        if id != 0 {
+                        if id != 0 && isJustAppeared {
                             textField.resignFirstResponder()
+                            isJustAppeared = false
                         }
                     }
                 
