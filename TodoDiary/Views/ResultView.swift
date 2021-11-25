@@ -49,7 +49,7 @@ struct ResultView: View, EditProtocol {
             }
         }
         .listStyle(InsetGroupedListStyle())
-        .onAppear(perform: loadData)
+        .onAppear(perform: reloadTodos)
         
         .sheet(isPresented: $isShowSheet) {
             EditView(editProtocol: self, id: $selectedTodoId)
@@ -62,7 +62,7 @@ struct ResultView: View, EditProtocol {
                 buttons:[
                     .destructive(Text("Todoを削除")) {
                         Todo.deleteTodo(id: selectedTodoId)
-                        loadData()
+                        reloadTodos()
                     },
                     .cancel()
                 ]
@@ -75,7 +75,7 @@ struct ResultView: View, EditProtocol {
         )
     }
     
-    func loadData()  {
+    func reloadTodos()  {
         let achievedYmd = converter.toYmd(inputDate: selectedDate)
         todosOfTheDay = Todo.todosOfTheDay(achievedYmd: achievedYmd, isAscending: isAscending)
         if todosOfTheDay.count == 0 {

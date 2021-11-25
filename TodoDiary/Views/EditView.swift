@@ -11,21 +11,21 @@ import Introspect
 struct EditView: View {
     
     @Environment(\.presentationMode) var presentation
+    
     var editProtocol: EditProtocol
-    
-    @State var navBarTitle = "新しいTodo"
-    @State var navBarDoneText = "追加"
-    @State var isShowActionSheet = false
-    
     @Binding var id: Int
+    
     @State var content = ""
     @State var isPinned = false
     @State var isAchieved = false
     @State var achievedDate = Date()
-    
-    //編集前の値
     @State var oldIsPinned = false
     @State var oldIsAchieved = false
+    
+    @State var navBarTitle = "新しいTodo"
+    @State var navBarDoneText = "追加"
+    
+    @State var isShowActionSheet = false
     
     var body: some View {
         NavigationView {
@@ -76,7 +76,7 @@ struct EditView: View {
                     buttons:[
                         .destructive(Text("Todoを削除")) {
                             Todo.deleteTodo(id: id)
-                            editProtocol.loadData()
+                            editProtocol.reloadTodos()
                             presentation.wrappedValue.dismiss()
                         },
                         .cancel()
@@ -111,7 +111,7 @@ struct EditView: View {
                             }
                         }
                     }
-                    editProtocol.loadData()
+                    editProtocol.reloadTodos()
                     presentation.wrappedValue.dismiss()
                 }){
                     Text(navBarDoneText)

@@ -34,7 +34,7 @@ struct FirstView: View, EditProtocol {
                     }
                 }
                 .listStyle(InsetGroupedListStyle())
-                .onAppear(perform: loadData)
+                .onAppear(perform: reloadTodos)
                 
                 if pinnedTodos.count == 0 && unpinnedTodos.count == 0 {
                     Text("まだTodoがありません")
@@ -73,7 +73,7 @@ struct FirstView: View, EditProtocol {
         }
     }
     
-    func loadData()  {
+    func reloadTodos()  {
         pinnedTodos = Todo.pinnedTodos()
         unpinnedTodos = Todo.unpinnedTodos()
     }

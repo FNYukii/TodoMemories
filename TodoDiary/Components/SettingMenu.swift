@@ -18,7 +18,7 @@ struct SettingMenu: View {
             Button(action: {
                 isAscending.toggle()
                 UserDefaults.standard.setValue(isAscending, forKey: "isAscending")
-                editProtocol.loadData()
+                editProtocol.reloadTodos()
             }){
                 if isAscending {
                     Label("新しい順に並べる", systemImage: "arrow.up")

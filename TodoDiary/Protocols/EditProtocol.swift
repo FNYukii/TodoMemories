@@ -8,5 +8,5 @@
 import Foundation
 
 protocol EditProtocol {
-    func loadData()
+    func reloadTodos()
 }

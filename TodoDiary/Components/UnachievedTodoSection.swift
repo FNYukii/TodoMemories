@@ -36,7 +36,7 @@ struct UnachievedTodoSection: View {
                 }
                 .onMove {sourceIndexSet, destination in
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
-                    editProtocol.loadData()
+                    editProtocol.reloadTodos()
                 }
                 .onDelete {indexSet in
                     indexSet.sorted(by: > ).forEach { (i) in
@@ -59,7 +59,7 @@ struct UnachievedTodoSection: View {
                 }
                 .onMove {sourceIndexSet, destination in
                     Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
-                    editProtocol.loadData()
+                    editProtocol.reloadTodos()
                 }
                 .onDelete {indexSet in
                     indexSet.sorted(by: > ).forEach { (i) in

@@ -54,7 +54,7 @@ struct SecondView: View, EditProtocol {
                     }
                 }
                 .listStyle(InsetGroupedListStyle())
-                .onAppear(perform: loadData)
+                .onAppear(perform: reloadTodos)
                 
                 if achievedYmds.count == 0 {
                     Text("達成済みのTodoはありません")
@@ -101,7 +101,7 @@ struct SecondView: View, EditProtocol {
         return ymds
     }
     
-    func loadData() {
+    func reloadTodos() {
         achievedYmds = []
         achievedYmds = getAchievedYmds()
     }
