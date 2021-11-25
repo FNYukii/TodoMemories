@@ -16,21 +16,16 @@ struct CustomCalendarView: View {
     //カレンダーに表示する年と月
     let showYear: Int
     let showMonth: Int
-    
-    //カレンダーの日付の高さ
-    let lineHeight: CGFloat = 45
-    
+        
     //日別Todo完了数と日付
     @State var achieveCounts: [Int] = []
     @State var showDays: [Int] = []
-
-    //曜日
-    let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     
     var body: some View {
         VStack {
             
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
+                let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
                 ForEach((0..<weekDays.count), id: \.self) { index in
                     Text("\(weekDays[index])")
                         .font(.subheadline)
@@ -45,7 +40,7 @@ struct CustomCalendarView: View {
                     if showDays[index] == 0 {
                         Text("")
                             .foregroundColor(.clear)
-                            .frame(height: lineHeight)
+                            .frame(height: 45)
                     }
                     
                     if showDays[index] != 0 {
@@ -85,7 +80,7 @@ struct CustomCalendarView: View {
                             }
                         }
                         .font(.subheadline)
-                        .frame(height: lineHeight, alignment: .top)
+                        .frame(height: 45, alignment: .top)
                     }
                 }
             }
