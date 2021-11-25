@@ -17,7 +17,6 @@ struct OnePageView: View {
     @State var selectedDate: Date = Date()
     
     init(offset: Int) {
-        //offsetと現在の年月を取得
         self.offset = offset
         let calendar = Calendar(identifier: .gregorian)
         var year = calendar.component(.year, from: Date())
@@ -50,7 +49,6 @@ struct OnePageView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-                            
             Text("\(String(showYear))年 \(showMonth)月")
                 .font(.title2)
                 .padding(.leading)

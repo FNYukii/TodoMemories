@@ -14,17 +14,16 @@ struct CustomCalendarView: View {
     @Binding var isNavLinkActive: Bool
     @Binding var selectedDate: Date
         
-    //日付と日別Todo完了数
-    @State var showDays: [Int] = []
-    @State var achieveCounts: [Int] = []
+    @State var days: [Int] = []
+    @State var achieveCountsByDay: [Int] = []
     
     init(showYear: Int, showMonth: Int, isNavLinkActive: Binding<Bool>, selectedDate: Binding<Date>) {
         self.showYear = showYear
         self.showMonth = showMonth
         self._isNavLinkActive = isNavLinkActive
         self._selectedDate = selectedDate
-        _showDays = State(initialValue: daysOfMonth(inputYear: showYear, inputMonth: showMonth))
-        _achieveCounts = State(initialValue: dailyAchieveCounts())
+        _days = State(initialValue: daysOfMonth(inputYear: showYear, inputMonth: showMonth))
+        _achieveCountsByDay = State(initialValue: dailyAchieveCounts())
     }
     
     var body: some View {
@@ -41,31 +40,31 @@ struct CustomCalendarView: View {
             }
             
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 7)) {
-                ForEach((0..<showDays.count), id: \.self) { index in
+                ForEach((0..<days.count), id: \.self) { index in
                     
-                    if showDays[index] == 0 {
+                    if days[index] == 0 {
                         Text("")
                             .foregroundColor(.clear)
                             .frame(height: 45)
                     }
                     
-                    if showDays[index] != 0 {
+                    if days[index] != 0 {
                         VStack {
                             
                             //表示する日付が今日
-                            if isToday(showDay: showDays[index]) {
+                            if isToday(showDay: days[index]) {
                                 //Todo達成済み
-                                if achieveCounts[showDays[index] - 1] != 0 {
+                                if achieveCountsByDay[days[index] - 1] != 0 {
                                     Button(action: {
-                                        jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                                        jumpToResultView(year: showYear, month: showMonth, day: days[index])
                                     }){
-                                        Text("\(showDays[index])")
+                                        Text("\(days[index])")
                                             .fontWeight(.bold)
                                     }
                                 }
                                 //Todo未達成
                                 else {
-                                    Text("\(showDays[index])")
+                                    Text("\(days[index])")
                                         .fontWeight(.bold)
                                         .foregroundColor(.secondary)
                                 }
@@ -73,14 +72,14 @@ struct CustomCalendarView: View {
                             //表示する日付が今日でない
                             else {
                                 //Todo達成済み
-                                if achieveCounts[showDays[index] - 1] != 0 {
-                                    Button("\(showDays[index])") {
-                                        jumpToResultView(year: showYear, month: showMonth, day: showDays[index])
+                                if achieveCountsByDay[days[index] - 1] != 0 {
+                                    Button("\(days[index])") {
+                                        jumpToResultView(year: showYear, month: showMonth, day: days[index])
                                     }
                                 }
                                 //Todo未達成
                                 else {
-                                    Text("\(showDays[index])")
+                                    Text("\(days[index])")
                                     .foregroundColor(.secondary)
                                 }
                             }
@@ -96,8 +95,8 @@ struct CustomCalendarView: View {
     
     //カレンダーを更新する
     func loadCalendar() {
-        achieveCounts = dailyAchieveCounts()
-        showDays = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
+        achieveCountsByDay = dailyAchieveCounts()
+        days = daysOfMonth(inputYear: showYear, inputMonth: showMonth)
     }
     
     //showDaysを取得 例: [0, 0, 0, 1, 2, 3, ...]
