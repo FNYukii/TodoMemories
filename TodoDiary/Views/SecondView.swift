@@ -10,8 +10,8 @@ import SwiftUI
 struct SecondView: View, EditProtocol {
     
     @State var isShowSheet = false
-    @State var selectedTodoId = 0
     @State var isShowActionSheet = false
+    @State var selectedTodoId = 0
     
     //Todoを達成した年月日の配列
     @State var achievedYmds: [Int] = []
@@ -28,7 +28,6 @@ struct SecondView: View, EditProtocol {
     
     var body: some View {
         NavigationView {
-            
             ZStack {
                 List {
                     ForEach(0..<achievedYmds.count) { index in
@@ -50,15 +49,12 @@ struct SecondView: View, EditProtocol {
                                 .contextMenu {
                                     UnachievedTodoContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                                 }
-                                
                             }
                         }
                     }
                 }
                 .listStyle(InsetGroupedListStyle())
-                .onAppear {
-                    loadData()
-                }
+                .onAppear(perform: loadData)
                 
                 if achievedYmds.count == 0 {
                     Text("達成済みのTodoはありません")

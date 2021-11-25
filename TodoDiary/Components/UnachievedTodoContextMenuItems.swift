@@ -20,7 +20,6 @@ struct UnachievedTodoContextMenuItems: View {
     
     var body: some View {
         Group {
-            
             //固定ボタン
             if !isAchieved && !isPinned {
                 Button(action: {
@@ -68,7 +67,6 @@ struct UnachievedTodoContextMenuItems: View {
             } label: {
                 Label("削除", systemImage: "trash")
             }
-            
         }
     }
 }

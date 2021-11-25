@@ -14,7 +14,6 @@ struct LineChart : UIViewRepresentable {
     let showMonth: Int
     
     func makeUIView(context: Context) -> LineChartView {
-
         //チャートを生成
         let lineChartView = LineChartView()
         
@@ -49,7 +48,7 @@ struct LineChart : UIViewRepresentable {
             let todos = Todo.todosOfTheDay(achievedYmd: achievedYmd, isAscending: true)
             achieveCounts.append(todos.count)
         }
-                
+        
         //achieveCountsを元に折れ線用のデータを生成
         var lineChartEntry : [ChartDataEntry] = []
         for day in (0..<dayCount) {
@@ -78,7 +77,5 @@ struct LineChart : UIViewRepresentable {
         }else{
             uiView.leftAxis.axisMaximum = 5.0
         }
-        
     }
-        
 }

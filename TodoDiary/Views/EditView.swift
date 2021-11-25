@@ -29,7 +29,6 @@ struct EditView: View {
     
     var body: some View {
         NavigationView {
-            
             Form {
                 TextField("Todoを入力", text: $content)
                     .introspectTextField { textField in
@@ -68,9 +67,7 @@ struct EditView: View {
                     }
                 }
             }
-            .onAppear {
-                loadTodo()
-            }
+            .onAppear(perform: loadTodo)
             
             .actionSheet(isPresented: $isShowActionSheet) {
                 ActionSheet(
@@ -139,5 +136,4 @@ struct EditView: View {
             oldIsAchieved = todo.isAchieved
         }
     }
-    
 }

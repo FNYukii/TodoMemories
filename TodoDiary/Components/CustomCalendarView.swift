@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct CustomCalendarView: View {
-        
+    
     let showYear: Int
     let showMonth: Int
     @Binding var isNavLinkActive: Bool
     @Binding var selectedDate: Date
-        
+    
     @State var days: [Int] = []
     @State var achieveCountsByDay: [Int] = []
     
@@ -67,7 +67,7 @@ struct CustomCalendarView: View {
         //表示月一日の曜日を取得 Sat: 1, Sun: 2, Mon: 3... Fri: 7
         let firstDate = calendar.date(from: DateComponents(year: inputYear, month: inputMonth, day: 1, hour: 21, minute: 0, second: 0))!
         let firstWeekday = calendar.component(.weekday, from: firstDate)
-
+        
         //表示月の全ての日の配列を生成
         var days: [Int] = []
         

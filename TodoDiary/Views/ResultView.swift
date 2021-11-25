@@ -26,7 +26,6 @@ struct ResultView: View, EditProtocol {
     let converter = Converter()
     
     var body: some View {
-        
         List {
             Section(header: Text("\(converter.toYmdwText(inputDate: selectedDate))")) {
                 ForEach(todosOfTheDay.freeze()) { todo in
@@ -50,9 +49,7 @@ struct ResultView: View, EditProtocol {
             }
         }
         .listStyle(InsetGroupedListStyle())
-        .onAppear {
-            loadData()
-        }
+        .onAppear(perform: loadData)
         
         .sheet(isPresented: $isShowSheet) {
             EditView(editProtocol: self, id: $selectedTodoId)

@@ -8,7 +8,7 @@
 import Foundation
 
 class Converter {
-        
+    
     //Int型の年月日をDate型に変換する
     func toDate(inputYmd: Int) -> Date {
         let year = inputYmd / 10000

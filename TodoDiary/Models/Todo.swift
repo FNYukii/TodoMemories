@@ -10,7 +10,6 @@ import RealmSwift
 import WidgetKit
 
 class Todo: Object, Identifiable {
-    
     //Todoの列定義
     @objc dynamic var id = 0
     @objc dynamic var order = -1
@@ -88,7 +87,7 @@ class Todo: Object, Identifiable {
         let realm = Todo.customRealm()
         return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isAscending)
     }
-        
+    
     
     //新規Todo追加
     static func insertTodo(content: String, isPinned: Bool, isAchieved: Bool, achievedDate: Date) {
@@ -317,5 +316,4 @@ class Todo: Object, Identifiable {
         }
         WidgetCenter.shared.reloadAllTimelines()
     }
-    
 }

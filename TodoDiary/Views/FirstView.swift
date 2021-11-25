@@ -13,16 +13,13 @@ struct FirstView: View, EditProtocol {
     @State var unpinnedTodos = Todo.unpinnedTodos()
     
     @State var isShowSheet = false
-    @State var selectedTodoId = 0
     @State var isShowActionSheet = false
-        
+    @State var selectedTodoId = 0
+    
     var body: some View {
         NavigationView {
-            
             ZStack {
-                
                 List {
-                    
                     //固定済みTodo
                     if pinnedTodos.count != 0 {
                         UnachievedTodoSection(editProtocol: self, todos: pinnedTodos, headerText: "固定済み", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
@@ -35,18 +32,14 @@ struct FirstView: View, EditProtocol {
                     if unpinnedTodos.count != 0 && pinnedTodos.count == 0 {
                         UnachievedTodoSection(editProtocol: self, todos: unpinnedTodos, headerText: "", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
                     }
-                    
                 }
                 .listStyle(InsetGroupedListStyle())
-                .onAppear {
-                    loadData()
-                }
+                .onAppear(perform: loadData)
                 
                 if pinnedTodos.count == 0 && unpinnedTodos.count == 0 {
                     Text("まだTodoがありません")
                         .foregroundColor(.secondary)
                 }
-                
             }
             
             .sheet(isPresented: $isShowSheet) {
@@ -65,7 +58,7 @@ struct FirstView: View, EditProtocol {
                     ]
                 )
             }
-                        
+            
             .navigationBarTitle("Todo")
             .navigationBarItems(
                 leading: CustomEditButton(),
@@ -77,7 +70,6 @@ struct FirstView: View, EditProtocol {
                     Text("新しいTodo")
                 }
             )
-            
         }
     }
     
@@ -85,5 +77,4 @@ struct FirstView: View, EditProtocol {
         pinnedTodos = Todo.pinnedTodos()
         unpinnedTodos = Todo.unpinnedTodos()
     }
-
 }

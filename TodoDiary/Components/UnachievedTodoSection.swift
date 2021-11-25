@@ -20,9 +20,8 @@ struct UnachievedTodoSection: View {
     @Binding var isShowSheet: Bool
     
     @Environment(\.editMode) var editMode
-        
+    
     var body: some View {
-        
         if !headerText.isEmpty {
             Section(header: Text(headerText)) {
                 ForEach(todos.freeze()) { todo in
@@ -70,6 +69,5 @@ struct UnachievedTodoSection: View {
                 }
             }
         }
-        
     }
 }
