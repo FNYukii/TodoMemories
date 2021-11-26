@@ -77,7 +77,7 @@ class Todo: Object, Identifiable {
     }
     
     //指定されたidのTodo
-    static func oneTodo(id: Int) -> Todo {
+    static func oneTodoById(id: Int) -> Todo {
         let realm = Todo.customRealm()
         return realm.objects(Todo.self).filter("id == \(id)").first!
     }
@@ -133,7 +133,7 @@ class Todo: Object, Identifiable {
     //Todo更新
     static func updateTodo(id: Int, content: String, isPinned: Bool, isAchieved: Bool, achievedDate: Date) {
         let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        let todo = oneTodoById(id: id)
         try! realm.write {
             todo.content = content
             todo.isPinned = isPinned
@@ -153,7 +153,7 @@ class Todo: Object, Identifiable {
     //Todoのcontentを更新
     static func updateTodoContentAndDate(id: Int, newContent: String, newAchievedDate: Date) {
         let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        let todo = oneTodoById(id: id)
         try! realm.write {
             todo.content = newContent
             todo.achievedDate = newAchievedDate
@@ -169,7 +169,7 @@ class Todo: Object, Identifiable {
     //Todo削除
     static func deleteTodo(id: Int) {
         let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        let todo = oneTodoById(id: id)
         //選択されたTodoを削除
         try! realm.write {
             realm.delete(todo)
@@ -181,7 +181,7 @@ class Todo: Object, Identifiable {
     //Todoを固定する
     static func pinTodo(id: Int) {
         let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        let todo = oneTodoById(id: id)
         //選択されたTodo以外のunpinnedTodosのTodoのorderをデクリメント
         let selectedOrder = todo.order
         let todos = Todo.unpinnedTodos()
@@ -204,7 +204,7 @@ class Todo: Object, Identifiable {
     //Todoの固定を解除する
     static func unpinTodo(id: Int) {
         let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        let todo = oneTodoById(id: id)
         //選択されたTodo以外のpinnedTodosのTodoのorderをデクリメント
         let selectedOrder = todo.order
         let todos = Todo.pinnedTodos()
@@ -214,7 +214,7 @@ class Todo: Object, Identifiable {
                 Todo.changeOrder(id: todos[index].id, newOrder: todos[index].order - 1)
             }
         }
-        //unpinnedTodosの要素のorderを全てインクリメント
+        //unpinnedTodosの全Todoのorderをインクリメント
         let unpinnedTodos = Todo.unpinnedTodos()
         try! realm.write {
             for index in 0..<unpinnedTodos.count {
@@ -232,16 +232,11 @@ class Todo: Object, Identifiable {
     //Todoを達成済みに変更する
     static func achieveTodo(id: Int, achievedDate: Date) {
         let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        //選択されたTodo以外のTodoのorderを調整
+        let todo = oneTodoById(id: id)
         let selectedOrder = todo.order
-        var todos = Todo.noRecord()
-        if !todo.isPinned {
-            todos = Todo.unpinnedTodos()
-        } else {
-            todos = Todo.pinnedTodos()
-        }
+        let todos = todo.isPinned ? Todo.pinnedTodos() : Todo.unpinnedTodos()
         let todosMaxOrder = todos.sorted(byKeyPath: "order").last?.order ?? -1
+        //選択されたTodo以降のTodoのorderをデクリメント
         if selectedOrder != todosMaxOrder {
             for index in selectedOrder + 1 ... todosMaxOrder {
                 Todo.changeOrder(id: todos[index].id, newOrder: todos[index].order - 1)
@@ -265,7 +260,7 @@ class Todo: Object, Identifiable {
     //Todoを未達成に戻す
     static func unachieveTodo(id: Int) {
         let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        let todo = oneTodoById(id: id)
         let maxOrder = Todo.unpinnedTodos().sorted(byKeyPath: "order").last?.order ?? -1
         let newOrder = maxOrder + 1
         try! realm.write {
@@ -278,7 +273,7 @@ class Todo: Object, Identifiable {
     //Todoのorderを変更する
     static func changeOrder(id: Int, newOrder: Int) {
         let realm = Todo.customRealm()
-        let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        let todo = oneTodoById(id: id)
         try! realm.write {
             todo.order = newOrder
         }
@@ -305,5 +300,11 @@ class Todo: Object, Identifiable {
             Todo.changeOrder(id: moveId, newOrder: destination)
         }
         WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    //指定したTodos配列の特定のTodo以降のTodoをデクリメント
+    static func decrementTodos(isPinnedTodos: Bool, id: Int) {
+//        let todo = oneTodoById(id: id)
+//        let todos = isPinnedTodos ? Todo.pinnedTodos() : Todo.unpinnedTodos()
     }
 }

@@ -127,7 +127,7 @@ struct EditView: View {
     
     func loadTodo() {
         if id != 0 {
-            let todo = Todo.oneTodo(id: id)
+            let todo = Todo.oneTodoById(id: id)
             content = todo.content
             isPinned = todo.isPinned
             isAchieved = todo.isAchieved
