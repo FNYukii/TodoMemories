@@ -169,8 +169,8 @@ class Todo: Object, Identifiable {
     //Todo削除
     static func deleteTodo(id: Int) {
         let realm = Todo.customRealm()
-        let todo = oneTodoById(id: id)
         //選択されたTodoを削除
+        let todo = oneTodoById(id: id)
         try! realm.write {
             realm.delete(todo)
         }
@@ -181,17 +181,10 @@ class Todo: Object, Identifiable {
     //Todoを固定する
     static func pinTodo(id: Int) {
         let realm = Todo.customRealm()
-        let todo = oneTodoById(id: id)
-        //選択されたTodo以外のunpinnedTodosのTodoのorderをデクリメント
-        let selectedOrder = todo.order
-        let todos = Todo.unpinnedTodos()
-        let unpinnedTodosMaxOrder = todos.sorted(byKeyPath: "order").last?.order ?? -1
-        if selectedOrder != unpinnedTodosMaxOrder {
-            for index in selectedOrder + 1 ... unpinnedTodosMaxOrder {
-                Todo.changeOrder(id: todos[index].id, newOrder: todos[index].order - 1)
-            }
-        }
+        //選択されたTodo以降のunpinnedTodosのTodoのorderをデクリメント
+        decrementTodos(isPinnedTodos: false, id: id)
         //選択されたTodoを固定し、pinnedTodosの後尾に追加
+        let todo = oneTodoById(id: id)
         let maxOrder = Todo.pinnedTodos().sorted(byKeyPath: "order").last?.order ?? -1
         let newOrder = maxOrder + 1
         try! realm.write {
@@ -204,16 +197,8 @@ class Todo: Object, Identifiable {
     //Todoの固定を解除する
     static func unpinTodo(id: Int) {
         let realm = Todo.customRealm()
-        let todo = oneTodoById(id: id)
-        //選択されたTodo以外のpinnedTodosのTodoのorderをデクリメント
-        let selectedOrder = todo.order
-        let todos = Todo.pinnedTodos()
-        let pinnedTodosMaxOrder = todos.sorted(byKeyPath: "order").last?.order ?? -1
-        if selectedOrder != pinnedTodosMaxOrder {
-            for index in selectedOrder + 1 ... pinnedTodosMaxOrder {
-                Todo.changeOrder(id: todos[index].id, newOrder: todos[index].order - 1)
-            }
-        }
+        //選択されたTodo以降のpinnedTodosのTodoのorderをデクリメント
+        decrementTodos(isPinnedTodos: true, id: id)
         //unpinnedTodosの全Todoのorderをインクリメント
         let unpinnedTodos = Todo.unpinnedTodos()
         try! realm.write {
@@ -222,6 +207,7 @@ class Todo: Object, Identifiable {
             }
         }
         //選択されたTodoの固定を解除し、unPinnedTodosの先頭に追加
+        let todo = oneTodoById(id: id)
         try! realm.write {
             todo.isPinned = false
             todo.order = 0
@@ -232,16 +218,9 @@ class Todo: Object, Identifiable {
     //Todoを達成済みに変更する
     static func achieveTodo(id: Int, achievedDate: Date) {
         let realm = Todo.customRealm()
-        let todo = oneTodoById(id: id)
-        let selectedOrder = todo.order
-        let todos = todo.isPinned ? Todo.pinnedTodos() : Todo.unpinnedTodos()
-        let todosMaxOrder = todos.sorted(byKeyPath: "order").last?.order ?? -1
         //選択されたTodo以降のTodoのorderをデクリメント
-        if selectedOrder != todosMaxOrder {
-            for index in selectedOrder + 1 ... todosMaxOrder {
-                Todo.changeOrder(id: todos[index].id, newOrder: todos[index].order - 1)
-            }
-        }
+        let todo = oneTodoById(id: id)
+        decrementTodos(isPinnedTodos: todo.isPinned, id: id)
         //選択されたTodoを達成済みにする
         try! realm.write {
             todo.order = -1
@@ -304,7 +283,14 @@ class Todo: Object, Identifiable {
     
     //指定したTodos配列の特定のTodo以降のTodoをデクリメント
     static func decrementTodos(isPinnedTodos: Bool, id: Int) {
-//        let todo = oneTodoById(id: id)
-//        let todos = isPinnedTodos ? Todo.pinnedTodos() : Todo.unpinnedTodos()
+        let todos = isPinnedTodos ? Todo.pinnedTodos() : Todo.unpinnedTodos()
+        let todo = oneTodoById(id: id)
+        let selectedOrder = todo.order
+        let todosMaxOrder = todos.sorted(byKeyPath: "order").last?.order ?? -1
+        if selectedOrder != todosMaxOrder {
+            for index in selectedOrder + 1 ... todosMaxOrder {
+                Todo.changeOrder(id: todos[index].id, newOrder: todos[index].order - 1)
+            }
+        }
     }
 }
