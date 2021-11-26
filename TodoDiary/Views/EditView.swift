@@ -26,6 +26,7 @@ struct EditView: View {
     @State var navBarDoneText = "追加"
     
     @State var isShowActionSheet = false
+    @FocusState var isTextFieldFocused: Bool
     
     var body: some View {
         NavigationView {
@@ -35,6 +36,14 @@ struct EditView: View {
                     .introspectTextField { textField in
                         textField.becomeFirstResponder()
                         textField.resignFirstResponder()
+                    }
+                    .focused($isTextFieldFocused)
+                    .onAppear {
+                        if id == 0 {
+                            DispatchQueue.main.asyncAfter(deadline: .now()+0.6) {
+                                isTextFieldFocused = true
+                            }
+                        }
                     }
                 
                 Section {
