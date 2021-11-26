@@ -84,6 +84,7 @@ struct SecondView: View, EditProtocol {
                 trailing: SettingMenu(editProtocol: self, isAscending: $isAscending, isShowTime: $isShowTime)
             )
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     //Todo達成年月日の配列を生成する

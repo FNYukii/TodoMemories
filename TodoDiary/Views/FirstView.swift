@@ -71,6 +71,7 @@ struct FirstView: View, EditProtocol {
                 }
             )
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func reloadTodos()  {

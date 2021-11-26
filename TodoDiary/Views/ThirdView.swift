@@ -18,5 +18,6 @@ struct ThirdView: View {
             }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .navigationBarTitle("達成グラフ")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
