@@ -94,28 +94,7 @@ struct EditView: View {
                     Text("キャンセル")
                         .fontWeight(.regular)
                 },
-                trailing: Button(action: {
-                    if id == 0 {
-                        Todo.insertTodo(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedDate: achievedDate)
-                    }
-                    if id != 0 {
-                        Todo.updateTodoContentAndDate(id: id, newContent: content, newAchievedDate: achievedDate)
-                        if !oldIsAchieved && isAchieved {
-                            Todo.achieveTodo(id: id, achievedDate: achievedDate)
-                        } else if oldIsAchieved && !isAchieved {
-                            Todo.unachieveTodo(id: id)
-                        }
-                        if !isAchieved {
-                            if !oldIsPinned && isPinned {
-                                Todo.pinTodo(id: id)
-                            } else if oldIsPinned && !isPinned {
-                                Todo.unpinTodo(id: id)
-                            }
-                        }
-                    }
-                    editProtocol.reloadTodos()
-                    presentation.wrappedValue.dismiss()
-                }){
+                trailing: Button(action: saveTodo){
                     Text(navBarDoneText)
                         .fontWeight(.bold)
                 }
@@ -137,5 +116,28 @@ struct EditView: View {
             oldIsPinned = todo.isPinned
             oldIsAchieved = todo.isAchieved
         }
+    }
+    
+    func saveTodo() {
+        if id == 0 {
+            Todo.insertTodo(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedDate: achievedDate)
+        }
+        if id != 0 {
+            Todo.updateTodoContentAndDate(id: id, newContent: content, newAchievedDate: achievedDate)
+            if !oldIsAchieved && isAchieved {
+                Todo.achieveTodo(id: id, achievedDate: achievedDate)
+            } else if oldIsAchieved && !isAchieved {
+                Todo.unachieveTodo(id: id)
+            }
+            if !isAchieved {
+                if !oldIsPinned && isPinned {
+                    Todo.pinTodo(id: id)
+                } else if oldIsPinned && !isPinned {
+                    Todo.unpinTodo(id: id)
+                }
+            }
+        }
+        editProtocol.reloadTodos()
+        presentation.wrappedValue.dismiss()
     }
 }
