@@ -169,9 +169,11 @@ class Todo: Object, Identifiable {
     //Todo削除
     static func deleteTodo(id: Int) {
         let realm = Todo.customRealm()
-        //選択されたTodo以降のTodoのorderをデクリメントする
+        //もし未達成Todoを削除するなら、選択されたTodo以降のTodoのorderをデクリメントする
         let todo = oneTodoById(id: id)
-        decrementTodos(isPinnedTodos: todo.isPinned, id: id)
+        if !todo.isAchieved {
+            decrementTodos(isPinnedTodos: todo.isPinned, id: id)
+        }
         //選択されたTodoを削除
         try! realm.write {
             realm.delete(todo)
