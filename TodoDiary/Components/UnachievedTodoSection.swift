@@ -24,15 +24,9 @@ struct UnachievedTodoSection: View {
     var body: some View {
         Section(header: !headerText.isEmpty ? Text(headerText) : Text("")) {
             ForEach(todos.freeze()) { todo in
-                Button(action: {
+                Button(todo.content) {
                     selectedTodoId = todo.id
                     isShowSheet.toggle()
-                }) {
-                    HStack {
-                        Text("\(todo.order)")
-                            .foregroundColor(.secondary)
-                        Text(todo.content)
-                    }
                 }
                 .foregroundColor(.primary)
                 .contextMenu {
