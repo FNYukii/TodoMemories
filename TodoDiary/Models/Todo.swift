@@ -166,6 +166,7 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
+    //TODO: 選択されたTodo以降のTodoのorderをデクリメントする
     //Todo削除
     static func deleteTodo(id: Int) {
         let realm = Todo.customRealm()
@@ -180,7 +181,6 @@ class Todo: Object, Identifiable {
     static func pinTodo(id: Int) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        
         //選択されたTodo以外のunpinnedTodosのTodoのorderを調整
         let selectedOrder = todo.order
         let todos = Todo.unpinnedTodos()
@@ -190,7 +190,6 @@ class Todo: Object, Identifiable {
                 Todo.changeOrder(id: todos[index].id, newOrder: todos[index].order - 1)
             }
         }
-        
         //選択されたTodoを固定し、pinnedTodosの後尾に追加
         let maxOrder = Todo.pinnedTodos().sorted(byKeyPath: "order").last?.order ?? -1
         let newOrder = maxOrder + 1
@@ -199,14 +198,12 @@ class Todo: Object, Identifiable {
             todo.order = newOrder
         }
         WidgetCenter.shared.reloadAllTimelines()
-        print("固定")
     }
     
     //Todoの固定を解除する
     static func unpinTodo(id: Int) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        
         //選択されたTodo以外のpinnedTodosのTodoのorderを調整
         let selectedOrder = todo.order
         let todos = Todo.pinnedTodos()
@@ -216,7 +213,6 @@ class Todo: Object, Identifiable {
                 Todo.changeOrder(id: todos[index].id, newOrder: todos[index].order - 1)
             }
         }
-        
         //unpinnedTodosの要素のorderを全てインクリメント
         let unpinnedTodos = Todo.unpinnedTodos()
         try! realm.write {
@@ -224,22 +220,18 @@ class Todo: Object, Identifiable {
                 unpinnedTodos[index].order = unpinnedTodos[index].order + 1
             }
         }
-        
         //選択されたTodoの固定を解除し、unPinnedTodosの先頭に追加
         try! realm.write {
             todo.isPinned = false
             todo.order = 0
         }
-        
         WidgetCenter.shared.reloadAllTimelines()
-        print("固定解除")
     }
     
     //Todoを達成済みに変更する
     static func achieveTodo(id: Int, achievedDate: Date) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        
         //選択されたTodo以外のTodoのorderを調整
         let selectedOrder = todo.order
         var todos = Todo.noRecord()
@@ -254,7 +246,6 @@ class Todo: Object, Identifiable {
                 Todo.changeOrder(id: todos[index].id, newOrder: todos[index].order - 1)
             }
         }
-        
         //選択されたTodoを達成済みにする
         try! realm.write {
             todo.order = -1
@@ -268,7 +259,6 @@ class Todo: Object, Identifiable {
             todo.achievedYmd = year * 10000 + month * 100 + day
         }
         WidgetCenter.shared.reloadAllTimelines()
-        print("達成")
     }
     
     //Todoを未達成に戻す
@@ -282,7 +272,6 @@ class Todo: Object, Identifiable {
             todo.isAchieved = false
         }
         WidgetCenter.shared.reloadAllTimelines()
-        print("達成解除")
     }
     
     //Todoのorderを変更する
