@@ -166,14 +166,15 @@ class Todo: Object, Identifiable {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    //TODO: 選択されたTodo以降のTodoのorderをデクリメントする
     //Todo削除
     static func deleteTodo(id: Int) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
+        //選択されたTodoを削除
         try! realm.write {
             realm.delete(todo)
         }
+        //TODO: 選択されたTodo以降のTodoのorderをデクリメントする
         WidgetCenter.shared.reloadAllTimelines()
     }
     
@@ -181,7 +182,7 @@ class Todo: Object, Identifiable {
     static func pinTodo(id: Int) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        //選択されたTodo以外のunpinnedTodosのTodoのorderを調整
+        //選択されたTodo以外のunpinnedTodosのTodoのorderをデクリメント
         let selectedOrder = todo.order
         let todos = Todo.unpinnedTodos()
         let unpinnedTodosMaxOrder = todos.sorted(byKeyPath: "order").last?.order ?? -1
@@ -204,7 +205,7 @@ class Todo: Object, Identifiable {
     static func unpinTodo(id: Int) {
         let realm = Todo.customRealm()
         let todo = realm.objects(Todo.self).filter("id == \(id)").first!
-        //選択されたTodo以外のpinnedTodosのTodoのorderを調整
+        //選択されたTodo以外のpinnedTodosのTodoのorderをデクリメント
         let selectedOrder = todo.order
         let todos = Todo.pinnedTodos()
         let pinnedTodosMaxOrder = todos.sorted(byKeyPath: "order").last?.order ?? -1
