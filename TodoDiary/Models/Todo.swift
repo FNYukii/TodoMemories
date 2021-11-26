@@ -169,12 +169,13 @@ class Todo: Object, Identifiable {
     //Todo削除
     static func deleteTodo(id: Int) {
         let realm = Todo.customRealm()
-        //選択されたTodoを削除
+        //選択されたTodo以降のTodoのorderをデクリメントする
         let todo = oneTodoById(id: id)
+        decrementTodos(isPinnedTodos: todo.isPinned, id: id)
+        //選択されたTodoを削除
         try! realm.write {
             realm.delete(todo)
         }
-        //TODO: 選択されたTodo以降のTodoのorderをデクリメントする
         WidgetCenter.shared.reloadAllTimelines()
     }
     
