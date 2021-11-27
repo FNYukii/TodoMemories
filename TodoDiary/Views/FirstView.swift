@@ -78,4 +78,8 @@ struct FirstView: View, EditProtocol {
         pinnedTodos = Todo.pinnedTodos()
         unpinnedTodos = Todo.unpinnedTodos()
     }
+    
+    func reloadView() {
+        print("reload FirstView")
+    }
 }

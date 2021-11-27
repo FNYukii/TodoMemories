@@ -106,4 +106,8 @@ struct SecondView: View, EditProtocol {
         achievedYmds = []
         achievedYmds = getAchievedYmds()
     }
+    
+    func reloadView() {
+        print("reload SecondView")
+    }
 }

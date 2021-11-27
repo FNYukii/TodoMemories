@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ThirdView: View {
+    
     @State var currentPageIndex = 0
+    
     var body: some View {
         NavigationView {
             TabView(selection: $currentPageIndex) {
@@ -19,5 +21,9 @@ struct ThirdView: View {
                 .navigationBarTitle("達成グラフ")
         }
         .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    func reloadView() {
+        print("reload ThirdView")
     }
 }

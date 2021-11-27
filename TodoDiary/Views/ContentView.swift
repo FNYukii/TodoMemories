@@ -14,9 +14,17 @@ struct ContentView: View {
     var handler: Binding<Int> { Binding(
         get: { self.selection },
         set: {
-            print("tab\($0) selected")
-            if $0 == self.selection {
-                print("reload view")
+            if $0 == 0 && self.selection == 0 {
+                let firstView = FirstView()
+                firstView.reloadView()
+            }
+            if $0 == 1 && self.selection == 1 {
+                let secondView = SecondView()
+                secondView.reloadView()
+            }
+            if $0 == 2 && self.selection == 2 {
+                let thirdView = ThirdView()
+                thirdView.reloadView()
             }
             self.selection = $0
         }
