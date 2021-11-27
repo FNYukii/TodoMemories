@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ThirdView: View {
     
-    @State var currentPageIndex = 0
+    @State var selection = 0
     
     var body: some View {
         NavigationView {
-            TabView(selection: $currentPageIndex) {
+            TabView(selection: $selection) {
                 ForEach(-50..<51) {index in
                     OnePageView(offset: index).tag(index)
                 }
