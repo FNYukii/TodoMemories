@@ -24,6 +24,7 @@ struct ThirdView: View {
     }
     
     func reloadView() {
+        //TODO: 0番のページまでもどる
         print("reload ThirdView")
     }
 }

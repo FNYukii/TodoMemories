@@ -53,6 +53,7 @@ struct OnePageView: View {
                 .font(.title2)
                 .padding(.leading)
             
+            //TODO: データベース更新時にLineChartも更新されるようにする
             LineChart(showYear: showYear, showMonth: showMonth)
                 .padding(.horizontal, 5)
                 .frame(maxHeight: 250)
