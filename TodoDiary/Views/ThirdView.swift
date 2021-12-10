@@ -15,7 +15,7 @@ struct ThirdView: View {
         NavigationView {
             TabView(selection: $selection) {
                 ForEach(-50..<51) {index in
-                    OnePageView(offset: index).tag(index)
+                    OnePage(offset: index).tag(index)
                 }
             }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .navigationBarTitle("達成グラフ")

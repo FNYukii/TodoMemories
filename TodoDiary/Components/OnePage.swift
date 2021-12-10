@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnePageView: View {
+struct OnePage: View {
     
     var offset: Int
     var showYear: Int
@@ -58,7 +58,7 @@ struct OnePageView: View {
                 .padding(.horizontal, 5)
                 .frame(maxHeight: 250)
             
-            CustomCalendarView(showYear: showYear, showMonth: showMonth, isNavLinkActive: $isNavLinkActive, selectedDate: $selectedDate)
+            CustomCalendar(showYear: showYear, showMonth: showMonth, isNavLinkActive: $isNavLinkActive, selectedDate: $selectedDate)
                 .padding(.horizontal, 5)
             
             Spacer()

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomCalendarView: View {
+struct CustomCalendar: View {
     
     let showYear: Int
     let showMonth: Int
