@@ -32,7 +32,6 @@
 		54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709B26F644EC00DB5688 /* LineChart.swift */; };
 		54B6709E26F70EDE00DB5688 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */; };
 		54CD1834274E82E00063C42E /* TodoDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1833274E82E00063C42E /* TodoDiaryApp.swift */; };
-		54CD1836274E8A370063C42E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1835274E8A370063C42E /* AppDelegate.swift */; };
 		54CD1838274F2C390063C42E /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1837274F2C390063C42E /* CalendarDayCell.swift */; };
 		54DE528826F8A1DF0053F126 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528726F8A1DF0053F126 /* WidgetKit.framework */; };
 		54DE528A26F8A1DF0053F126 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528926F8A1DF0053F126 /* SwiftUI.framework */; };
@@ -114,7 +113,6 @@
 		54B6709B26F644EC00DB5688 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		54B6709D26F70EDE00DB5688 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		54CD1833274E82E00063C42E /* TodoDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDiaryApp.swift; sourceTree = "<group>"; };
-		54CD1835274E8A370063C42E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54CD1837274F2C390063C42E /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FirstWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DE528726F8A1DF0053F126 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -198,7 +196,6 @@
 			children = (
 				54DE52A126F8B7D50053F126 /* TodoDiary.entitlements */,
 				54CD1833274E82E00063C42E /* TodoDiaryApp.swift */,
-				54CD1835274E8A370063C42E /* AppDelegate.swift */,
 				54DE523D26F7946C0053F126 /* Models */,
 				54DE523C26F794300053F126 /* Views */,
 				54DE523B26F793CF0053F126 /* Protocols */,
@@ -487,7 +484,6 @@
 				5403442D26FA0D4700BC8C97 /* Converter.swift in Sources */,
 				5407BBD127195F5B005D1E29 /* SettingMenu.swift in Sources */,
 				54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */,
-				54CD1836274E8A370063C42E /* AppDelegate.swift in Sources */,
 				54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
 				5407BBD327197760005D1E29 /* UnachievedTodoSection.swift in Sources */,
 				54FFFCE227184947007C5D7A /* UnachievedTodoContextMenuItems.swift in Sources */,
