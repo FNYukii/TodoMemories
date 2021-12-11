@@ -31,7 +31,6 @@ struct SecondView: View, EditProtocol {
             ZStack {
                 List {
                     ForEach(0..<achievedYmds.count) { index in
-                        //FIXME: achievedYmdsの要素数が減少した際、Index out of rangeが発生している
                         Section(header: Text("\(converter.toYmdwText(inputDate: converter.toDate(inputYmd: achievedYmds[index])))")) {
                             ForEach(Todo.todosOfTheDay(achievedYmd: achievedYmds[index], isAscending: isAscending).freeze()){ todo in
                                 Button(action: {
