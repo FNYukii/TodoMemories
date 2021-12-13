@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5403442D26FA0D4700BC8C97 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5403442C26FA0D4700BC8C97 /* Converter.swift */; };
-		5403443326FA105F00BC8C97 /* OnePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5403443226FA105F00BC8C97 /* OnePage.swift */; };
+		5403443326FA105F00BC8C97 /* ThirdViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5403443226FA105F00BC8C97 /* ThirdViewPage.swift */; };
 		5407BBCF27195E0C005D1E29 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */; };
 		5407BBD127195F5B005D1E29 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBD027195F5B005D1E29 /* SettingMenu.swift */; };
 		5407BBD327197760005D1E29 /* TodoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBD227197760005D1E29 /* TodoSection.swift */; };
@@ -86,7 +86,7 @@
 
 /* Begin PBXFileReference section */
 		5403442C26FA0D4700BC8C97 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
-		5403443226FA105F00BC8C97 /* OnePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePage.swift; sourceTree = "<group>"; };
+		5403443226FA105F00BC8C97 /* ThirdViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewPage.swift; sourceTree = "<group>"; };
 		5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
 		5407BBD027195F5B005D1E29 /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		5407BBD227197760005D1E29 /* TodoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSection.swift; sourceTree = "<group>"; };
@@ -272,7 +272,7 @@
 				5407BBD227197760005D1E29 /* TodoSection.swift */,
 				54FFFCE127184947007C5D7A /* TodoContextMenuItems.swift */,
 				5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */,
-				5403443226FA105F00BC8C97 /* OnePage.swift */,
+				5403443226FA105F00BC8C97 /* ThirdViewPage.swift */,
 				5403442C26FA0D4700BC8C97 /* Converter.swift */,
 				54B6709B26F644EC00DB5688 /* LineChart.swift */,
 			);
@@ -480,7 +480,7 @@
 				54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */,
 				54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */,
 				54CD1838274F2C390063C42E /* CalendarDayCell.swift in Sources */,
-				5403443326FA105F00BC8C97 /* OnePage.swift in Sources */,
+				5403443326FA105F00BC8C97 /* ThirdViewPage.swift in Sources */,
 				5403442D26FA0D4700BC8C97 /* Converter.swift in Sources */,
 				5407BBD127195F5B005D1E29 /* SettingMenu.swift in Sources */,
 				54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnePage: View {
+struct ThirdViewPage: View {
     
     var offset: Int
     var showYear: Int
