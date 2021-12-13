@@ -22,15 +22,15 @@ struct FirstView: View, EditProtocol {
                 List {
                     //固定済みTodo
                     if pinnedTodos.count != 0 {
-                        UnachievedTodoSection(editProtocol: self, todos: pinnedTodos, headerText: "固定済み", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
+                        TodoSection(editProtocol: self, todos: pinnedTodos, headerText: "固定済み", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
                     }
                     //未固定Todo(固定済みTodoと共に表示)
                     if unpinnedTodos.count != 0 && pinnedTodos.count != 0 {
-                        UnachievedTodoSection(editProtocol: self, todos: unpinnedTodos, headerText: "その他", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
+                        TodoSection(editProtocol: self, todos: unpinnedTodos, headerText: "その他", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
                     }
                     //未固定Todo(単独表示)
                     if unpinnedTodos.count != 0 && pinnedTodos.count == 0 {
-                        UnachievedTodoSection(editProtocol: self, todos: unpinnedTodos, headerText: "", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
+                        TodoSection(editProtocol: self, todos: unpinnedTodos, headerText: "", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
                     }
                 }
                 .listStyle(InsetGroupedListStyle())

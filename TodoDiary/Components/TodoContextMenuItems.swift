@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UnachievedTodoContextMenuItems: View {
+struct TodoContextMenuItems: View {
     
     var editProtocol: EditProtocol
     
