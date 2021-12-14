@@ -52,6 +52,7 @@ struct TodoSectionForEach: View {
             .contextMenu {
                 TodoContextMenuItems(editProtocol: editProtocol, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
             }
+            .deleteDisabled(editMode?.wrappedValue.isEditing == false)
         }
         .onMove {sourceIndexSet, destination in
             Todo.sortTodos(todos: todos, sourceIndexSet: sourceIndexSet, destination: destination)
