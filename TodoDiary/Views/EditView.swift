@@ -107,7 +107,7 @@ struct EditView: View {
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .accentColor(.green)
+        .accentColor(.red)
     }
     
     func loadTodo() {
