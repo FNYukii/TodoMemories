@@ -10,7 +10,7 @@ import Introspect
 
 struct EditView: View {
     
-    @Environment(\.presentationMode) var presentation
+    @Environment(\.dismiss) var dismiss
     
     var editProtocol: EditProtocol
     @State var id = 0
@@ -84,7 +84,7 @@ struct EditView: View {
                         .destructive(Text("Todoを削除")) {
                             Todo.deleteTodo(id: id)
                             editProtocol.reloadTodos()
-                            presentation.wrappedValue.dismiss()
+                            dismiss()
                         },
                         .cancel()
                     ]
@@ -94,7 +94,7 @@ struct EditView: View {
             .navigationBarTitle(navBarTitle, displayMode: .inline)
             .navigationBarItems(
                 leading: Button(action: {
-                    presentation.wrappedValue.dismiss()
+                    dismiss()
                 }){
                     Text("キャンセル")
                         .fontWeight(.regular)
@@ -145,6 +145,6 @@ struct EditView: View {
             }
         }
         editProtocol.reloadTodos()
-        presentation.wrappedValue.dismiss()
+        dismiss()
     }
 }

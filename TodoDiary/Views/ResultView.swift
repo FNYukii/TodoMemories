@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ResultView: View, EditProtocol {
     
-    @Environment(\.presentationMode) var presentation
+    @Environment(\.dismiss) var dismiss
     
     //ThirdViewのカレンダーで選択された日
     let selectedDate: Date
@@ -79,7 +79,7 @@ struct ResultView: View, EditProtocol {
         let achievedYmd = converter.toYmd(inputDate: selectedDate)
         todosOfTheDay = Todo.todosOfTheDay(achievedYmd: achievedYmd, isAscending: isAscending)
         if todosOfTheDay.count == 0 {
-            presentation.wrappedValue.dismiss()
+            dismiss()
         }
     }
     
