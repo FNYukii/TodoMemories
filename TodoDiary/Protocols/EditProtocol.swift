@@ -9,4 +9,5 @@ import Foundation
 
 protocol EditProtocol {
     func reloadTodos()
+    func todoId() -> Int
 }

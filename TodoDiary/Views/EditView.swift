@@ -13,7 +13,7 @@ struct EditView: View {
     @Environment(\.presentationMode) var presentation
     
     var editProtocol: EditProtocol
-    @Binding var id: Int
+    @State var id = 0
     
     @State var content = ""
     @State var isPinned = false
@@ -111,6 +111,7 @@ struct EditView: View {
     }
     
     func loadTodo() {
+        id = editProtocol.todoId()
         if id != 0 {
             let todo = Todo.oneTodoById(id: id)
             content = todo.content

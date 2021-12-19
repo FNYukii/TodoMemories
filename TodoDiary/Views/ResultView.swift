@@ -52,7 +52,7 @@ struct ResultView: View, EditProtocol {
         .onAppear(perform: reloadTodos)
         
         .sheet(isPresented: $isShowSheet) {
-            EditView(editProtocol: self, id: $selectedTodoId)
+            EditView(editProtocol: self)
         }
         
         .actionSheet(isPresented: $isShowActionSheet) {
@@ -81,5 +81,9 @@ struct ResultView: View, EditProtocol {
         if todosOfTheDay.count == 0 {
             presentation.wrappedValue.dismiss()
         }
+    }
+    
+    func todoId() -> Int {
+        return selectedTodoId
     }
 }

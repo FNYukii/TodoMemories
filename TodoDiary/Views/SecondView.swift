@@ -63,7 +63,7 @@ struct SecondView: View, EditProtocol {
             }
             
             .sheet(isPresented: $isShowSheet) {
-                EditView(editProtocol: self, id: $selectedTodoId)
+                EditView(editProtocol: self)
             }
             
             .actionSheet(isPresented: $isShowActionSheet) {
@@ -105,6 +105,10 @@ struct SecondView: View, EditProtocol {
     func reloadTodos() {
         achievedYmds = []
         achievedYmds = getAchievedYmds()
+    }
+    
+    func todoId() -> Int {
+        return selectedTodoId
     }
     
     func reloadView() {
