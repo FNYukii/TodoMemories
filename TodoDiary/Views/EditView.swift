@@ -51,7 +51,7 @@ struct EditView: View {
                         .disabled(isAchieved)
                     Toggle("達成済み", isOn: $isAchieved)
                         .onChange(of: isAchieved) {value in
-                            if value {
+                            if value && !oldIsAchieved {
                                 isPinned = false
                                 achievedDate = Date()
                             }
