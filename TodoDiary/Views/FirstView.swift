@@ -12,7 +12,8 @@ struct FirstView: View, EditProtocol {
     @State var pinnedTodos = Todo.pinnedTodos()
     @State var unpinnedTodos = Todo.unpinnedTodos()
     
-    @State var isShowSheet = false
+    @State var isShowCreateSheet = false
+    @State var isShowEditSheet = false
     @State var isShowActionSheet = false
     @State var selectedTodoId = 0
     
@@ -22,15 +23,15 @@ struct FirstView: View, EditProtocol {
                 List {
                     //固定済みTodo
                     if pinnedTodos.count != 0 {
-                        TodoSection(editProtocol: self, todos: pinnedTodos, headerText: "固定済み", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
+                        TodoSection(editProtocol: self, todos: pinnedTodos, headerText: "固定済み", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowEditSheet)
                     }
                     //未固定Todo(固定済みTodoと共に表示)
                     if unpinnedTodos.count != 0 && pinnedTodos.count != 0 {
-                        TodoSection(editProtocol: self, todos: unpinnedTodos, headerText: "その他", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
+                        TodoSection(editProtocol: self, todos: unpinnedTodos, headerText: "その他", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowEditSheet)
                     }
                     //未固定Todo(単独表示)
                     if unpinnedTodos.count != 0 && pinnedTodos.count == 0 {
-                        TodoSection(editProtocol: self, todos: unpinnedTodos, headerText: "", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowSheet)
+                        TodoSection(editProtocol: self, todos: unpinnedTodos, headerText: "", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowEditSheet)
                     }
                 }
                 .listStyle(InsetGroupedListStyle())
@@ -42,7 +43,11 @@ struct FirstView: View, EditProtocol {
                 }
             }
             
-            .sheet(isPresented: $isShowSheet) {
+            .sheet(isPresented: $isShowCreateSheet) {
+                CreateView()
+            }
+            
+            .sheet(isPresented: $isShowEditSheet) {
                 EditView(editProtocol: self)
             }
             
@@ -63,8 +68,7 @@ struct FirstView: View, EditProtocol {
             .navigationBarItems(
                 leading: CustomEditButton(),
                 trailing: Button(action: {
-                    selectedTodoId = 0
-                    isShowSheet.toggle()
+                    isShowCreateSheet.toggle()
                 }){
                     Image(systemName: "plus.circle.fill")
                     Text("新しいTodo")

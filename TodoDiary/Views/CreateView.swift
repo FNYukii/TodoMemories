@@ -51,6 +51,7 @@ struct CreateView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         Todo.insertTodo(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedDate: achievedDate)
+                        dismiss()
                     }){
                         Text("追加")
                             .fontWeight(.bold)
@@ -58,5 +59,6 @@ struct CreateView: View {
                 }
             }
         }
+        .accentColor(.red)
     }
 }
