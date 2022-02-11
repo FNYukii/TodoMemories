@@ -24,7 +24,6 @@
 		54B6707D26F2CB9B00DB5688 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6707C26F2CB9B00DB5688 /* Realm */; };
 		54B6707F26F2CB9B00DB5688 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6707E26F2CB9B00DB5688 /* RealmSwift */; };
 		54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708026F2CBCF00DB5688 /* Todo.swift */; };
-		54B6708326F35E0900DB5688 /* EditProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708226F35E0900DB5688 /* EditProtocol.swift */; };
 		54B6708E26F4CE9200DB5688 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708D26F4CE9200DB5688 /* ResultView.swift */; };
 		54B6709A26F644DE00DB5688 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6709926F644DE00DB5688 /* Charts */; };
 		54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709B26F644EC00DB5688 /* LineChart.swift */; };
@@ -102,7 +101,6 @@
 		54B6707726F1C55600DB5688 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		54B6707926F1C63700DB5688 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		54B6708026F2CBCF00DB5688 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		54B6708226F35E0900DB5688 /* EditProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProtocol.swift; sourceTree = "<group>"; };
 		54B6708D26F4CE9200DB5688 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		54B6709B26F644EC00DB5688 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 				54CD1833274E82E00063C42E /* TodoDiaryApp.swift */,
 				54DE523D26F7946C0053F126 /* Models */,
 				54DE523C26F794300053F126 /* Views */,
-				54DE523B26F793CF0053F126 /* Protocols */,
 				54DE523E26F794A00053F126 /* Components */,
 				54B6704926F1C2DD00DB5688 /* Assets.xcassets */,
 				54B6704E26F1C2DD00DB5688 /* LaunchScreen.storyboard */,
@@ -206,14 +203,6 @@
 				54B6704C26F1C2DD00DB5688 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		54DE523B26F793CF0053F126 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				54B6708226F35E0900DB5688 /* EditProtocol.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		54DE523C26F794300053F126 /* Views */ = {
@@ -464,7 +453,6 @@
 				54B6707A26F1C63700DB5688 /* EditView.swift in Sources */,
 				5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */,
 				54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */,
-				54B6708326F35E0900DB5688 /* EditProtocol.swift in Sources */,
 				54B6707826F1C55600DB5688 /* ThirdView.swift in Sources */,
 				54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */,
 				54CD1834274E82E00063C42E /* TodoDiaryApp.swift in Sources */,

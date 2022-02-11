@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FirstView: View, EditProtocol {
+struct FirstView: View {
     
     @Environment(\.editMode) var editMode
     
@@ -33,9 +33,12 @@ struct FirstView: View, EditProtocol {
                                 }
                                 .foregroundColor(.primary)
                                 .contextMenu {
-                                    TodoContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                                 }
                                 .deleteDisabled(editMode?.wrappedValue.isEditing == false)
+                                .sheet(isPresented: $isShowEditSheet) {
+                                    EditView(todo: todo)
+                                }
                             }
                             .onMove {sourceIndexSet, destination in
                                 Todo.sortTodos(todos: pinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
@@ -59,9 +62,12 @@ struct FirstView: View, EditProtocol {
                                 }
                                 .foregroundColor(.primary)
                                 .contextMenu {
-                                    TodoContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                                 }
                                 .deleteDisabled(editMode?.wrappedValue.isEditing == false)
+                                .sheet(isPresented: $isShowEditSheet) {
+                                    EditView(todo: todo)
+                                }
                             }
                             .onMove {sourceIndexSet, destination in
                                 Todo.sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
@@ -88,10 +94,6 @@ struct FirstView: View, EditProtocol {
             
             .sheet(isPresented: $isShowCreateSheet) {
                 CreateView()
-            }
-            
-            .sheet(isPresented: $isShowEditSheet) {
-                EditView(editProtocol: self)
             }
             
             .actionSheet(isPresented: $isShowActionSheet) {
@@ -124,10 +126,6 @@ struct FirstView: View, EditProtocol {
     func reloadTodos()  {
         pinnedTodos = Todo.pinnedTodos()
         unpinnedTodos = Todo.unpinnedTodos()
-    }
-    
-    func todoId() -> Int {
-        return selectedTodoId
     }
     
     func reloadView() {

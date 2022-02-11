@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct TodoContextMenuItems: View {
-    
-    var editProtocol: EditProtocol
-    
+        
     let todoId: Int
     let isPinned: Bool
     let isAchieved: Bool
@@ -24,7 +22,6 @@ struct TodoContextMenuItems: View {
             if !isAchieved && !isPinned {
                 Button(action: {
                     Todo.pinTodo(id: todoId)
-                    editProtocol.reloadTodos()
                 }){
                     Label("固定する", systemImage: "pin")
                 }
@@ -34,7 +31,6 @@ struct TodoContextMenuItems: View {
             if !isAchieved && isPinned {
                 Button(action: {
                     Todo.unpinTodo(id: todoId)
-                    editProtocol.reloadTodos()
                 }){
                     Label("固定を解除", systemImage: "pin.slash")
                 }
@@ -44,7 +40,6 @@ struct TodoContextMenuItems: View {
             if !isAchieved {
                 Button(action: {
                     Todo.achieveTodo(id: todoId, achievedDate: Date())
-                    editProtocol.reloadTodos()
                 }){
                     Label("達成済みに変更", systemImage: "checkmark")
                 }
@@ -54,7 +49,6 @@ struct TodoContextMenuItems: View {
             if isAchieved {
                 Button(action: {
                     Todo.unachieveTodo(id: todoId)
-                    editProtocol.reloadTodos()
                 }){
                     Label("未達成に戻す", systemImage: "xmark")
                 }

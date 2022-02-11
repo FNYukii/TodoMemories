@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SecondView: View, EditProtocol {
+struct SecondView: View {
     
     @State var isShowSheet = false
     @State var isShowActionSheet = false
@@ -47,7 +47,10 @@ struct SecondView: View, EditProtocol {
                                     }
                                 }
                                 .contextMenu {
-                                    TodoContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                                }
+                                .sheet(isPresented: $isShowSheet) {
+                                    EditView(todo: todo)
                                 }
                             }
                         }
@@ -60,10 +63,6 @@ struct SecondView: View, EditProtocol {
                     Text("達成済みのTodoはありません")
                         .foregroundColor(.secondary)
                 }
-            }
-            
-            .sheet(isPresented: $isShowSheet) {
-                EditView(editProtocol: self)
             }
             
             .actionSheet(isPresented: $isShowActionSheet) {
@@ -81,7 +80,7 @@ struct SecondView: View, EditProtocol {
             
             .navigationBarTitle("達成済み")
             .navigationBarItems(
-                trailing: SettingMenu(editProtocol: self, isAscending: $isAscending, isShowTime: $isShowTime)
+                trailing: SettingMenu(isAscending: $isAscending, isShowTime: $isShowTime)
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())

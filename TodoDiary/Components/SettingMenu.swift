@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SettingMenu: View {
     
-    var editProtocol: EditProtocol
     @Binding var isAscending: Bool
     @Binding var isShowTime: Bool
     
@@ -18,7 +17,6 @@ struct SettingMenu: View {
             Button(action: {
                 isAscending.toggle()
                 UserDefaults.standard.setValue(isAscending, forKey: "isAscending")
-                editProtocol.reloadTodos()
             }){
                 if isAscending {
                     Label("新しい順に並べる", systemImage: "arrow.up")

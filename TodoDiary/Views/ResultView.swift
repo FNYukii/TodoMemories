@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ResultView: View, EditProtocol {
+struct ResultView: View {
     
     @Environment(\.dismiss) var dismiss
     
@@ -43,17 +43,16 @@ struct ResultView: View, EditProtocol {
                         }
                     }
                     .contextMenu {
-                        TodoContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                        TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                    }
+                    .sheet(isPresented: $isShowSheet) {
+                        EditView(todo: todo)
                     }
                 }
             }
         }
         .listStyle(InsetGroupedListStyle())
         .onAppear(perform: reloadTodos)
-        
-        .sheet(isPresented: $isShowSheet) {
-            EditView(editProtocol: self)
-        }
         
         .actionSheet(isPresented: $isShowActionSheet) {
             ActionSheet(
@@ -71,7 +70,7 @@ struct ResultView: View, EditProtocol {
         
         .navigationBarTitle("達成済み")
         .navigationBarItems(
-            trailing: SettingMenu(editProtocol: self, isAscending: $isAscending, isShowTime: $isShowTime)
+            trailing: SettingMenu(isAscending: $isAscending, isShowTime: $isShowTime)
         )
     }
     
@@ -81,9 +80,5 @@ struct ResultView: View, EditProtocol {
         if todosOfTheDay.count == 0 {
             dismiss()
         }
-    }
-    
-    func todoId() -> Int {
-        return selectedTodoId
     }
 }

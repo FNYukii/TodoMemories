@@ -12,9 +12,7 @@ struct EditView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    var editProtocol: EditProtocol
-    @State var id = 0
-    
+    let todo: Todo
     @State var content = ""
     @State var isPinned = false
     @State var isAchieved = false
@@ -23,6 +21,16 @@ struct EditView: View {
     @State var oldIsAchieved = false
         
     @State var isShowActionSheet = false
+    
+    init(todo: Todo) {
+        self.todo = todo
+        _content = State(initialValue: todo.content)
+        _isPinned = State(initialValue: todo.isPinned)
+        _isAchieved = State(initialValue: todo.isAchieved)
+        _achievedDate = State(initialValue: todo.achievedDate)
+        _oldIsPinned = State(initialValue: todo.isPinned)
+        _oldIsAchieved = State(initialValue: todo.isAchieved)
+    }
     
     var body: some View {
         NavigationView {
@@ -56,7 +64,6 @@ struct EditView: View {
                     }
                 }
             }
-            .onAppear(perform: loadTodo)
             
             .actionSheet(isPresented: $isShowActionSheet) {
                 ActionSheet(
@@ -64,8 +71,7 @@ struct EditView: View {
                     message: Text("このTodoを削除してもよろしいですか?"),
                     buttons:[
                         .destructive(Text("Todoを削除")) {
-                            Todo.deleteTodo(id: id)
-                            editProtocol.reloadTodos()
+                            Todo.deleteTodo(id: todo.id)
                             dismiss()
                         },
                         .cancel()
@@ -92,32 +98,20 @@ struct EditView: View {
         .accentColor(.red)
     }
     
-    func loadTodo() {
-        id = editProtocol.todoId()
-        let todo = Todo.oneTodoById(id: id)
-        content = todo.content
-        isPinned = todo.isPinned
-        isAchieved = todo.isAchieved
-        achievedDate = todo.achievedDate
-        oldIsPinned = todo.isPinned
-        oldIsAchieved = todo.isAchieved
-    }
-    
     func saveTodo() {
-        Todo.updateTodoContentAndDate(id: id, newContent: content, newAchievedDate: achievedDate)
+        Todo.updateTodoContentAndDate(id: todo.id, newContent: content, newAchievedDate: achievedDate)
         if !oldIsAchieved && isAchieved {
-            Todo.achieveTodo(id: id, achievedDate: achievedDate)
+            Todo.achieveTodo(id: todo.id, achievedDate: achievedDate)
         } else if oldIsAchieved && !isAchieved {
-            Todo.unachieveTodo(id: id)
+            Todo.unachieveTodo(id: todo.id)
         }
         if !isAchieved {
             if !oldIsPinned && isPinned {
-                Todo.pinTodo(id: id)
+                Todo.pinTodo(id: todo.id)
             } else if oldIsPinned && !isPinned {
-                Todo.unpinTodo(id: id)
+                Todo.unpinTodo(id: todo.id)
             }
         }
-        editProtocol.reloadTodos()
         dismiss()
     }
 }
