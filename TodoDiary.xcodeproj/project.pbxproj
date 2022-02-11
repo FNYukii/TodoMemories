@@ -12,6 +12,7 @@
 		5407BBCF27195E0C005D1E29 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */; };
 		5407BBD127195F5B005D1E29 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBD027195F5B005D1E29 /* SettingMenu.swift */; };
 		5407BBD327197760005D1E29 /* TodoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBD227197760005D1E29 /* TodoSection.swift */; };
+		5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6E27B6C460007D98B0 /* CreateView.swift */; };
 		54919C6C27101C1700EC9907 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54919C6B27101C1700EC9907 /* Introspect */; };
 		54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6704726F1C2DB00DB5688 /* ContentView.swift */; };
 		54B6704A26F1C2DD00DB5688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704926F1C2DD00DB5688 /* Assets.xcassets */; };
@@ -88,6 +89,7 @@
 		5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
 		5407BBD027195F5B005D1E29 /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		5407BBD227197760005D1E29 /* TodoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSection.swift; sourceTree = "<group>"; };
+		5418DC6E27B6C460007D98B0 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		542F9A8E270BE7A3003ACEE7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		54B6704026F1C2DB00DB5688 /* TodoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B6704726F1C2DB00DB5688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				54B6707926F1C63700DB5688 /* EditView.swift */,
+				5418DC6E27B6C460007D98B0 /* CreateView.swift */,
 				54B6707726F1C55600DB5688 /* ThirdView.swift */,
 				54B6708D26F4CE9200DB5688 /* ResultView.swift */,
 				54B6707326F1C4F900DB5688 /* FirstView.swift */,
@@ -463,6 +466,7 @@
 				54FFFCE227184947007C5D7A /* TodoContextMenuItems.swift in Sources */,
 				54B6709E26F70EDE00DB5688 /* CustomCalendar.swift in Sources */,
 				54B6707A26F1C63700DB5688 /* EditView.swift in Sources */,
+				5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */,
 				54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */,
 				54B6708326F35E0900DB5688 /* EditProtocol.swift in Sources */,
 				54B6707826F1C55600DB5688 /* ThirdView.swift in Sources */,
