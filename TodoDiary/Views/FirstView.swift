@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FirstView: View, EditProtocol {
     
+    @Environment(\.editMode) var editMode
+    
     @State var pinnedTodos = Todo.pinnedTodos()
     @State var unpinnedTodos = Todo.unpinnedTodos()
     
@@ -21,18 +23,59 @@ struct FirstView: View, EditProtocol {
         NavigationView {
             ZStack {
                 List {
-                    //固定済みTodo
+                    
                     if pinnedTodos.count != 0 {
-                        TodoSection(editProtocol: self, todos: pinnedTodos, headerText: "固定済み", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowEditSheet)
+                        Section(header: Text("固定済み")) {
+                            ForEach(pinnedTodos.freeze()) { todo in
+                                Button(todo.content) {
+                                    selectedTodoId = todo.id
+                                    isShowEditSheet.toggle()
+                                }
+                                .foregroundColor(.primary)
+                                .contextMenu {
+                                    TodoContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                                }
+                                .deleteDisabled(editMode?.wrappedValue.isEditing == false)
+                            }
+                            .onMove {sourceIndexSet, destination in
+                                Todo.sortTodos(todos: pinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
+                                reloadTodos()
+                            }
+                            .onDelete {indexSet in
+                                indexSet.sorted(by: > ).forEach { (i) in
+                                    selectedTodoId = pinnedTodos[i].id
+                                }
+                                isShowActionSheet.toggle()
+                            }
+                        }
                     }
-                    //未固定Todo(固定済みTodoと共に表示)
-                    if unpinnedTodos.count != 0 && pinnedTodos.count != 0 {
-                        TodoSection(editProtocol: self, todos: unpinnedTodos, headerText: "その他", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowEditSheet)
+                    
+                    if unpinnedTodos.count != 0 {
+                        Section(header: pinnedTodos.count == 0 ? nil : Text("その他")) {
+                            ForEach(unpinnedTodos.freeze()) { todo in
+                                Button(todo.content) {
+                                    selectedTodoId = todo.id
+                                    isShowEditSheet.toggle()
+                                }
+                                .foregroundColor(.primary)
+                                .contextMenu {
+                                    TodoContextMenuItems(editProtocol: self, todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                                }
+                                .deleteDisabled(editMode?.wrappedValue.isEditing == false)
+                            }
+                            .onMove {sourceIndexSet, destination in
+                                Todo.sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
+                                reloadTodos()
+                            }
+                            .onDelete {indexSet in
+                                indexSet.sorted(by: > ).forEach { (i) in
+                                    selectedTodoId = unpinnedTodos[i].id
+                                }
+                                isShowActionSheet.toggle()
+                            }
+                        }
                     }
-                    //未固定Todo(単独表示)
-                    if unpinnedTodos.count != 0 && pinnedTodos.count == 0 {
-                        TodoSection(editProtocol: self, todos: unpinnedTodos, headerText: "", isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId, isShowSheet: $isShowEditSheet)
-                    }
+                    
                 }
                 .listStyle(InsetGroupedListStyle())
                 .onAppear(perform: reloadTodos)
