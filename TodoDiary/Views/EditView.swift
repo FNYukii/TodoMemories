@@ -21,10 +21,7 @@ struct EditView: View {
     @State var achievedDate = Date()
     @State var oldIsPinned = false
     @State var oldIsAchieved = false
-    
-    @State var navBarTitle = "新しいTodo"
-    @State var navBarDoneText = "追加"
-    
+        
     @State var isShowActionSheet = false
     
     var body: some View {
@@ -76,7 +73,7 @@ struct EditView: View {
                 )
             }
             
-            .navigationBarTitle(navBarTitle, displayMode: .inline)
+            .navigationBarTitle("Todoを編集", displayMode: .inline)
             .navigationBarItems(
                 leading: Button(action: {
                     dismiss()
@@ -85,7 +82,7 @@ struct EditView: View {
                         .fontWeight(.regular)
                 },
                 trailing: Button(action: saveTodo){
-                    Text(navBarDoneText)
+                    Text("完了")
                         .fontWeight(.bold)
                 }
                     .disabled(content.isEmpty)
@@ -102,8 +99,6 @@ struct EditView: View {
         isPinned = todo.isPinned
         isAchieved = todo.isAchieved
         achievedDate = todo.achievedDate
-        navBarTitle = "Todoを編集"
-        navBarDoneText = "完了"
         oldIsPinned = todo.isPinned
         oldIsAchieved = todo.isAchieved
     }
