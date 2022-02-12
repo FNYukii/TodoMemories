@@ -21,22 +21,20 @@ struct SecondView: View {
     @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
     //達成日が古い順に並べるかどうか
     @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
-    
-    let converter = Converter()
-    
+        
     var body: some View {
         NavigationView {
             ZStack {
                 List {
                     ForEach(0..<achievedYmds.count) { index in
-                        Section(header: Text("\(converter.toYmdwText(inputDate: converter.toDate(inputYmd: achievedYmds[index])))")) {
+                        Section(header: Text("\(Converter.toYmdwText(inputDate: Converter.toDate(inputYmd: achievedYmds[index])))")) {
                             ForEach(Todo.todosOfTheDay(achievedYmd: achievedYmds[index], isAscending: isAscending).freeze()){ todo in
                                 Button(action: {
                                     isShowSheet.toggle()
                                 }){
                                     HStack {
                                         if isShowTime {
-                                            Text("\(converter.toHmText(inputDate: todo.achievedDate))")
+                                            Text("\(Converter.toHmText(inputDate: todo.achievedDate))")
                                                 .foregroundColor(.secondary)
                                         }
                                         Text("\(todo.content)")

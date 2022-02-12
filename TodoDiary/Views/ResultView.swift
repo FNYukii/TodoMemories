@@ -20,19 +20,17 @@ struct ResultView: View {
     
     @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
     @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
-    
-    let converter = Converter()
-    
+        
     var body: some View {
         List {
-            Section(header: Text("\(converter.toYmdwText(inputDate: selectedDate))")) {
+            Section(header: Text("\(Converter.toYmdwText(inputDate: selectedDate))")) {
                 ForEach(todosOfTheDay.freeze()) { todo in
                     Button(action: {
                         isShowSheet.toggle()
                     }){
                         HStack {
                             if isShowTime {
-                                Text("\(converter.toHmText(inputDate: todo.achievedDate))")
+                                Text("\(Converter.toHmText(inputDate: todo.achievedDate))")
                                     .foregroundColor(.secondary)
                             }
                             Text("\(todo.content)")
@@ -60,7 +58,7 @@ struct ResultView: View {
     }
     
     func reloadTodos()  {
-        let achievedYmd = converter.toYmd(inputDate: selectedDate)
+        let achievedYmd = Converter.toYmd(inputDate: selectedDate)
         todosOfTheDay = Todo.todosOfTheDay(achievedYmd: achievedYmd, isAscending: isAscending)
         if todosOfTheDay.count == 0 {
             dismiss()
