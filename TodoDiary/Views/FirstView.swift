@@ -11,8 +11,7 @@ struct FirstView: View {
     
     @Environment(\.editMode) var editMode
     
-    @State var pinnedTodos = Todo.pinnedTodos()
-    @State var unpinnedTodos = Todo.unpinnedTodos()
+    @ObservedObject var todoViewModel = TodoViewModel()
     
     @State var isShowCreateSheet = false
     @State var isShowEditSheet = false
@@ -24,9 +23,9 @@ struct FirstView: View {
             ZStack {
                 List {
                     
-                    if pinnedTodos.count != 0 {
+                    if todoViewModel.pinnedTodos.count != 0 {
                         Section(header: Text("固定済み")) {
-                            ForEach(pinnedTodos.freeze()) { todo in
+                            ForEach(todoViewModel.pinnedTodos.freeze()) { todo in
                                 Button(todo.content) {
                                     selectedTodoId = todo.id
                                     isShowEditSheet.toggle()
@@ -41,21 +40,20 @@ struct FirstView: View {
                                 }
                             }
                             .onMove {sourceIndexSet, destination in
-                                Todo.sortTodos(todos: pinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
-                                reloadTodos()
+                                Todo.sortTodos(todos: todoViewModel.pinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
                             }
                             .onDelete {indexSet in
                                 indexSet.sorted(by: > ).forEach { (i) in
-                                    selectedTodoId = pinnedTodos[i].id
+                                    selectedTodoId = todoViewModel.pinnedTodos[i].id
                                 }
                                 isShowActionSheet.toggle()
                             }
                         }
                     }
                     
-                    if unpinnedTodos.count != 0 {
-                        Section(header: pinnedTodos.count == 0 ? nil : Text("その他")) {
-                            ForEach(unpinnedTodos.freeze()) { todo in
+                    if todoViewModel.unpinnedTodos.count != 0 {
+                        Section(header: todoViewModel.pinnedTodos.count == 0 ? nil : Text("その他")) {
+                            ForEach(todoViewModel.unpinnedTodos.freeze()) { todo in
                                 Button(todo.content) {
                                     selectedTodoId = todo.id
                                     isShowEditSheet.toggle()
@@ -70,12 +68,11 @@ struct FirstView: View {
                                 }
                             }
                             .onMove {sourceIndexSet, destination in
-                                Todo.sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
-                                reloadTodos()
+                                Todo.sortTodos(todos: todoViewModel.unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
                             }
                             .onDelete {indexSet in
                                 indexSet.sorted(by: > ).forEach { (i) in
-                                    selectedTodoId = unpinnedTodos[i].id
+                                    selectedTodoId = todoViewModel.unpinnedTodos[i].id
                                 }
                                 isShowActionSheet.toggle()
                             }
@@ -84,9 +81,8 @@ struct FirstView: View {
                     
                 }
                 .listStyle(InsetGroupedListStyle())
-                .onAppear(perform: reloadTodos)
                 
-                if pinnedTodos.count == 0 && unpinnedTodos.count == 0 {
+                if todoViewModel.pinnedTodos.count == 0 && todoViewModel.unpinnedTodos.count == 0 {
                     Text("まだTodoがありません")
                         .foregroundColor(.secondary)
                 }
@@ -121,11 +117,6 @@ struct FirstView: View {
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-    func reloadTodos()  {
-        pinnedTodos = Todo.pinnedTodos()
-        unpinnedTodos = Todo.unpinnedTodos()
     }
     
     func reloadView() {
