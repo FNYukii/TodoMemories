@@ -16,7 +16,7 @@ struct EditView: View {
     @State var isPinned = false
     @State var isAchieved = false
     @State var achievedDate = Date()
-        
+    
     @State var isShowActionSheet = false
     
     init(todo: Todo) {

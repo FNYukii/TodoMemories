@@ -10,11 +10,11 @@ import RealmSwift
 import SwiftUI
 
 class TodoViewModel: ObservableObject {
-        
+    
     @Published var todos = Todo.noRecord()
     
     var token: NotificationToken? = nil
-        
+    
     init(isAchieved: Bool = false, isPinned: Bool = false) {
         
         if !isAchieved && isPinned {
@@ -36,7 +36,7 @@ class TodoViewModel: ObservableObject {
             }
         }
     }
-
+    
     deinit {
         token?.invalidate()
     }

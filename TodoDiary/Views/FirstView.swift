@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FirstView: View {
-        
+    
     @ObservedObject var pinnedTodoViewModel = TodoViewModel(isPinned: true)
     @ObservedObject var unpinnedTodoViewModel = TodoViewModel()
     

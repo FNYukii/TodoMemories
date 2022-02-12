@@ -21,7 +21,7 @@ struct SecondView: View {
     @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
     //達成日が古い順に並べるかどうか
     @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
-        
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -59,7 +59,7 @@ struct SecondView: View {
                         .foregroundColor(.secondary)
                 }
             }
-                        
+            
             .navigationBarTitle("達成済み")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -88,7 +88,7 @@ struct SecondView: View {
         achievedYmds = []
         achievedYmds = getAchievedYmds()
     }
-        
+    
     func reloadView() {
         //TODO: 画面の一番上までスクロールし、リストを更新する
         print("reload SecondView")

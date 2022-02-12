@@ -20,7 +20,7 @@ struct ResultView: View {
     
     @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
     @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
-        
+    
     var body: some View {
         List {
             Section(header: Text("\(Converter.toYmdwText(inputDate: selectedDate))")) {

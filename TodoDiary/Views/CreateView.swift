@@ -21,9 +21,7 @@ struct CreateView: View {
         NavigationView {
             
             Form {
-                
-                
-                
+                                
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $content)
                         .introspectTextView { textEditor in
