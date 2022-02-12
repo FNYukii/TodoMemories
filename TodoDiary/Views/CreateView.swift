@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct CreateView: View {
     
@@ -25,7 +26,6 @@ struct CreateView: View {
                 
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $content)
-                        .submitLabel(.done)
                         .introspectTextView { textEditor in
                             textEditor.becomeFirstResponder()
                         }
