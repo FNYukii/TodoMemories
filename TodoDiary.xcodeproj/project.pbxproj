@@ -13,6 +13,7 @@
 		5407BBD127195F5B005D1E29 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBD027195F5B005D1E29 /* SettingMenu.swift */; };
 		5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6E27B6C460007D98B0 /* CreateView.swift */; };
 		5418DC7127B7361E007D98B0 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC7027B7361E007D98B0 /* TodoViewModel.swift */; };
+		5418DC7327B75968007D98B0 /* YmdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC7227B75968007D98B0 /* YmdViewModel.swift */; };
 		54919C6C27101C1700EC9907 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54919C6B27101C1700EC9907 /* Introspect */; };
 		54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6704726F1C2DB00DB5688 /* ContentView.swift */; };
 		54B6704A26F1C2DD00DB5688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704926F1C2DD00DB5688 /* Assets.xcassets */; };
@@ -89,6 +90,7 @@
 		5407BBD027195F5B005D1E29 /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		5418DC6E27B6C460007D98B0 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		5418DC7027B7361E007D98B0 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
+		5418DC7227B75968007D98B0 /* YmdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YmdViewModel.swift; sourceTree = "<group>"; };
 		542F9A8E270BE7A3003ACEE7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		54B6704026F1C2DB00DB5688 /* TodoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B6704726F1C2DB00DB5688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				54B6708026F2CBCF00DB5688 /* Todo.swift */,
 				5418DC7027B7361E007D98B0 /* TodoViewModel.swift */,
+				5418DC7227B75968007D98B0 /* YmdViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				54B6707826F1C55600DB5688 /* ThirdView.swift in Sources */,
 				54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */,
 				54CD1834274E82E00063C42E /* TodoDiaryApp.swift in Sources */,
+				5418DC7327B75968007D98B0 /* YmdViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

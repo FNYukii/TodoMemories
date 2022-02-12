@@ -8,25 +8,20 @@
 import SwiftUI
 
 struct SecondView: View {
-    
-    //Todoを達成した年月日の配列
-    @State var achievedYmds: [Int] = []
+        
+    @ObservedObject var ymdViewModel = YmdViewModel()
     
     @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
     @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
     @State var isShowSheet = false
     
-    init() {
-        _achievedYmds = State(initialValue: getAchievedYmds())
-    }
-    
     var body: some View {
         NavigationView {
             ZStack {
                 List {
-                    ForEach(0..<achievedYmds.count) { index in
-                        Section(header: Text("\(Converter.toYmdwText(inputDate: Converter.toDate(inputYmd: achievedYmds[index])))")) {
-                            ForEach(Todo.todosOfTheDay(achievedYmd: achievedYmds[index], isAscending: isAscending).freeze()){ todo in
+                    ForEach(0..<ymdViewModel.achievedYmds.count) { index in
+                        Section(header: Text("\(Converter.toYmdwText(inputDate: Converter.toDate(inputYmd: ymdViewModel.achievedYmds[index])))")) {
+                            ForEach(Todo.todosOfTheDay(achievedYmd: ymdViewModel.achievedYmds[index], isAscending: isAscending).freeze()){ todo in
                                 Button(action: {
                                     isShowSheet.toggle()
                                 }){
@@ -50,12 +45,15 @@ struct SecondView: View {
                     }
                 }
                 .listStyle(InsetGroupedListStyle())
-                .onAppear(perform: reloadTodos)
                 
-                if achievedYmds.count == 0 {
+                if ymdViewModel.achievedYmds.count == 0 {
                     Text("達成済みのTodoはありません")
                         .foregroundColor(.secondary)
                 }
+            }
+            
+            .onChange(of: isAscending){value in
+                ymdViewModel.loadAchievedYmds()
             }
             
             .navigationBarTitle("達成済み")
@@ -65,26 +63,6 @@ struct SecondView: View {
                 }
             }
         }
-    }
-    
-    //Todo達成年月日の配列を生成する
-    func getAchievedYmds() -> [Int] {
-        var ymds: [Int] = []
-        let achievedTodos = Todo.achievedTodos()
-        for achievedTodo in achievedTodos {
-            ymds.append(achievedTodo.achievedYmd)
-        }
-        let orderedSet = NSOrderedSet(array: ymds)
-        ymds = orderedSet.array as! [Int]
-        if (isAscending) {
-            ymds = ymds.reversed()
-        }
-        return ymds
-    }
-    
-    func reloadTodos() {
-        achievedYmds = []
-        achievedYmds = getAchievedYmds()
     }
     
     func reloadView() {
