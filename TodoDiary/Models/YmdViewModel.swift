@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import SwiftUI
 
 class YmdViewModel: ObservableObject {
     
@@ -15,14 +16,12 @@ class YmdViewModel: ObservableObject {
     var token: NotificationToken? = nil
     
     init() {
-        
         loadAchievedYmds()
         
         let realm = Todo.customRealm()
         token = realm.observe { (notification, realm) in
             self.loadAchievedYmds()
         }
-        
     }
     
     public func loadAchievedYmds() {
@@ -38,7 +37,9 @@ class YmdViewModel: ObservableObject {
         if (isAscending) {
             ymds = ymds.reversed()
         }
-        self.achievedYmds = ymds
+        withAnimation {
+            self.achievedYmds = ymds
+        }
     }
     
     deinit {

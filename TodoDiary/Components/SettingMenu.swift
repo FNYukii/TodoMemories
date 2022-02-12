@@ -25,7 +25,9 @@ struct SettingMenu: View {
                 }
             }
             Button(action: {
-                isShowTime.toggle()
+                withAnimation {
+                    isShowTime.toggle()
+                }
                 UserDefaults.standard.setValue(isShowTime, forKey: "isShowTime")
             }){
                 if isShowTime {
