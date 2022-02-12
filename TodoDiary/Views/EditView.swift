@@ -16,8 +16,6 @@ struct EditView: View {
     @State var isPinned = false
     @State var isAchieved = false
     @State var achievedDate = Date()
-    @State var oldIsPinned = false
-    @State var oldIsAchieved = false
         
     @State var isShowActionSheet = false
     
@@ -27,8 +25,6 @@ struct EditView: View {
         _isPinned = State(initialValue: todo.isPinned)
         _isAchieved = State(initialValue: todo.isAchieved)
         _achievedDate = State(initialValue: todo.achievedDate)
-        _oldIsPinned = State(initialValue: todo.isPinned)
-        _oldIsAchieved = State(initialValue: todo.isAchieved)
     }
     
     var body: some View {
@@ -49,7 +45,7 @@ struct EditView: View {
                         .disabled(isAchieved)
                     Toggle("達成済み", isOn: $isAchieved)
                         .onChange(of: isAchieved) {value in
-                            if value && !oldIsAchieved {
+                            if value && !todo.isAchieved  {
                                 isPinned = false
                                 achievedDate = Date()
                             }
@@ -90,15 +86,15 @@ struct EditView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         Todo.updateTodoContentAndDate(id: todo.id, newContent: content, newAchievedDate: achievedDate)
-                        if !oldIsAchieved && isAchieved {
+                        if !todo.isAchieved && isAchieved {
                             Todo.achieveTodo(id: todo.id, achievedDate: achievedDate)
-                        } else if oldIsAchieved && !isAchieved {
+                        } else if todo.isAchieved && !isAchieved {
                             Todo.unachieveTodo(id: todo.id)
                         }
                         if !isAchieved {
-                            if !oldIsPinned && isPinned {
+                            if !todo.isPinned && isPinned {
                                 Todo.pinTodo(id: todo.id)
-                            } else if oldIsPinned && !isPinned {
+                            } else if todo.isPinned && !isPinned {
                                 Todo.unpinTodo(id: todo.id)
                             }
                         }
