@@ -210,13 +210,13 @@
 		54DE523C26F794300053F126 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				54B6707926F1C63700DB5688 /* EditView.swift */,
-				5418DC6E27B6C460007D98B0 /* CreateView.swift */,
-				54B6707726F1C55600DB5688 /* ThirdView.swift */,
-				54B6708D26F4CE9200DB5688 /* ResultView.swift */,
-				54B6707326F1C4F900DB5688 /* FirstView.swift */,
 				54B6704726F1C2DB00DB5688 /* ContentView.swift */,
+				54B6707326F1C4F900DB5688 /* FirstView.swift */,
 				54B6707526F1C54A00DB5688 /* SecondView.swift */,
+				54B6707726F1C55600DB5688 /* ThirdView.swift */,
+				5418DC6E27B6C460007D98B0 /* CreateView.swift */,
+				54B6707926F1C63700DB5688 /* EditView.swift */,
+				54B6708D26F4CE9200DB5688 /* ResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,13 +233,13 @@
 		54DE523E26F794A00053F126 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */,
-				54CD1837274F2C390063C42E /* CalendarDayCell.swift */,
-				5407BBD027195F5B005D1E29 /* SettingMenu.swift */,
 				54FFFCE127184947007C5D7A /* TodoContextMenuItems.swift */,
 				5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */,
-				5403443226FA105F00BC8C97 /* ThirdViewPage.swift */,
+				5407BBD027195F5B005D1E29 /* SettingMenu.swift */,
 				5403442C26FA0D4700BC8C97 /* Converter.swift */,
+				5403443226FA105F00BC8C97 /* ThirdViewPage.swift */,
+				54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */,
+				54CD1837274F2C390063C42E /* CalendarDayCell.swift */,
 				54B6709B26F644EC00DB5688 /* LineChart.swift */,
 			);
 			path = Components;
