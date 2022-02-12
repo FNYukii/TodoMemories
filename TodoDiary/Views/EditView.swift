@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct EditView: View {
     
@@ -35,8 +34,15 @@ struct EditView: View {
     var body: some View {
         NavigationView {
             Form {
-                TextField("Todoを入力", text: $content)
-                    .submitLabel(.done)
+                
+                ZStack(alignment: .topLeading) {
+                    TextEditor(text: $content)
+                    Text("やること")
+                        .foregroundColor(Color(UIColor.placeholderText))
+                        .opacity(content.isEmpty ? 1 : 0)
+                        .padding(.top, 8)
+                        .padding(.leading, 5)
+                }
                 
                 Section {
                     Toggle("Todoを固定", isOn: $isPinned)
