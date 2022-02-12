@@ -35,19 +35,12 @@ struct FirstView: View {
                                 .contextMenu {
                                     TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                                 }
-                                .deleteDisabled(editMode?.wrappedValue.isEditing == false)
                                 .sheet(isPresented: $isShowEditSheet) {
                                     EditView(todo: todo)
                                 }
                             }
                             .onMove {sourceIndexSet, destination in
                                 Todo.sortTodos(todos: pinnedTodoViewModel.todos, sourceIndexSet: sourceIndexSet, destination: destination)
-                            }
-                            .onDelete {indexSet in
-                                indexSet.sorted(by: > ).forEach { (i) in
-                                    selectedTodoId = pinnedTodoViewModel.todos[i].id
-                                }
-                                isShowActionSheet.toggle()
                             }
                         }
                     }
@@ -63,19 +56,12 @@ struct FirstView: View {
                                 .contextMenu {
                                     TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
                                 }
-                                .deleteDisabled(editMode?.wrappedValue.isEditing == false)
                                 .sheet(isPresented: $isShowEditSheet) {
                                     EditView(todo: todo)
                                 }
                             }
                             .onMove {sourceIndexSet, destination in
                                 Todo.sortTodos(todos: unpinnedTodoViewModel.todos, sourceIndexSet: sourceIndexSet, destination: destination)
-                            }
-                            .onDelete {indexSet in
-                                indexSet.sorted(by: > ).forEach { (i) in
-                                    selectedTodoId = unpinnedTodoViewModel.todos[i].id
-                                }
-                                isShowActionSheet.toggle()
                             }
                         }
                     }
