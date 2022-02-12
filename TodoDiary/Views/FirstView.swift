@@ -14,7 +14,6 @@ struct FirstView: View {
     
     @State var isShowCreateSheet = false
     @State var isShowEditSheet = false
-    @State var isShowActionSheet = false
     @State var selectedTodoId = 0
     
     var body: some View {
@@ -31,7 +30,7 @@ struct FirstView: View {
                                 }
                                 .foregroundColor(.primary)
                                 .contextMenu {
-                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
                                 }
                                 .sheet(isPresented: $isShowEditSheet) {
                                     EditView(todo: todo)
@@ -52,7 +51,7 @@ struct FirstView: View {
                                 }
                                 .foregroundColor(.primary)
                                 .contextMenu {
-                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
                                 }
                                 .sheet(isPresented: $isShowEditSheet) {
                                     EditView(todo: todo)
@@ -75,19 +74,6 @@ struct FirstView: View {
             
             .sheet(isPresented: $isShowCreateSheet) {
                 CreateView()
-            }
-            
-            .actionSheet(isPresented: $isShowActionSheet) {
-                ActionSheet(
-                    title: Text(""),
-                    message: Text("このTodoを削除してもよろしいですか?"),
-                    buttons:[
-                        .destructive(Text("Todoを削除")) {
-                            Todo.deleteTodo(id: selectedTodoId)
-                        },
-                        .cancel()
-                    ]
-                )
             }
             
             .navigationBarTitle("Todo")

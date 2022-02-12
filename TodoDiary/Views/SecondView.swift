@@ -47,7 +47,7 @@ struct SecondView: View {
                                     }
                                 }
                                 .contextMenu {
-                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved, isShowActionSheet: $isShowActionSheet, selectedTodoId: $selectedTodoId)
+                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
                                 }
                                 .sheet(isPresented: $isShowSheet) {
                                     EditView(todo: todo)

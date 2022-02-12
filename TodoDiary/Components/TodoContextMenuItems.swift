@@ -13,8 +13,7 @@ struct TodoContextMenuItems: View {
     let isPinned: Bool
     let isAchieved: Bool
     
-    @Binding var isShowActionSheet: Bool
-    @Binding var selectedTodoId: Int
+    @State var isShowDialog = false
     
     var body: some View {
         Group {
@@ -56,11 +55,21 @@ struct TodoContextMenuItems: View {
             
             //削除ボタン
             Button(role: .destructive) {
-                selectedTodoId = todoId
-                isShowActionSheet.toggle()
+                isShowDialog.toggle()
             } label: {
                 Label("削除", systemImage: "trash")
             }
+            
+            .confirmationDialog("", isPresented: $isShowDialog, titleVisibility: .hidden) {
+                Button("Todoを削除", role: .destructive) {
+                    Todo.deleteTodo(id: todoId)
+                }
+            } message: {
+                Text("このTodoを削除してもよろしいですか?").bold()
+            }
         }
+        
+        
+        
     }
 }
