@@ -11,7 +11,8 @@ struct FirstView: View {
     
     @Environment(\.editMode) var editMode
     
-    @ObservedObject var todoViewModel = TodoViewModel()
+    @ObservedObject var pinnedTodoViewModel = TodoViewModel(isPinned: true)
+    @ObservedObject var unpinnedTodoViewModel = TodoViewModel()
     
     @State var isShowCreateSheet = false
     @State var isShowEditSheet = false
@@ -23,9 +24,9 @@ struct FirstView: View {
             ZStack {
                 List {
                     
-                    if todoViewModel.pinnedTodos.count != 0 {
+                    if pinnedTodoViewModel.todos.count != 0 {
                         Section(header: Text("固定済み")) {
-                            ForEach(todoViewModel.pinnedTodos.freeze()) { todo in
+                            ForEach(pinnedTodoViewModel.todos.freeze()) { todo in
                                 Button(todo.content) {
                                     selectedTodoId = todo.id
                                     isShowEditSheet.toggle()
@@ -40,20 +41,20 @@ struct FirstView: View {
                                 }
                             }
                             .onMove {sourceIndexSet, destination in
-                                Todo.sortTodos(todos: todoViewModel.pinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
+                                Todo.sortTodos(todos: pinnedTodoViewModel.todos, sourceIndexSet: sourceIndexSet, destination: destination)
                             }
                             .onDelete {indexSet in
                                 indexSet.sorted(by: > ).forEach { (i) in
-                                    selectedTodoId = todoViewModel.pinnedTodos[i].id
+                                    selectedTodoId = pinnedTodoViewModel.todos[i].id
                                 }
                                 isShowActionSheet.toggle()
                             }
                         }
                     }
                     
-                    if todoViewModel.unpinnedTodos.count != 0 {
-                        Section(header: todoViewModel.pinnedTodos.count == 0 ? nil : Text("その他")) {
-                            ForEach(todoViewModel.unpinnedTodos.freeze()) { todo in
+                    if unpinnedTodoViewModel.todos.count != 0 {
+                        Section(header: pinnedTodoViewModel.todos.count == 0 ? nil : Text("その他")) {
+                            ForEach(unpinnedTodoViewModel.todos.freeze()) { todo in
                                 Button(todo.content) {
                                     selectedTodoId = todo.id
                                     isShowEditSheet.toggle()
@@ -68,11 +69,11 @@ struct FirstView: View {
                                 }
                             }
                             .onMove {sourceIndexSet, destination in
-                                Todo.sortTodos(todos: todoViewModel.unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
+                                Todo.sortTodos(todos: unpinnedTodoViewModel.todos, sourceIndexSet: sourceIndexSet, destination: destination)
                             }
                             .onDelete {indexSet in
                                 indexSet.sorted(by: > ).forEach { (i) in
-                                    selectedTodoId = todoViewModel.unpinnedTodos[i].id
+                                    selectedTodoId = unpinnedTodoViewModel.todos[i].id
                                 }
                                 isShowActionSheet.toggle()
                             }
@@ -82,7 +83,7 @@ struct FirstView: View {
                 }
                 .listStyle(InsetGroupedListStyle())
                 
-                if todoViewModel.pinnedTodos.count == 0 && todoViewModel.unpinnedTodos.count == 0 {
+                if pinnedTodoViewModel.todos.count == 0 && unpinnedTodoViewModel.todos.count == 0 {
                     Text("まだTodoがありません")
                         .foregroundColor(.secondary)
                 }

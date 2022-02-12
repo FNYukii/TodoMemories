@@ -10,20 +10,29 @@ import RealmSwift
 import SwiftUI
 
 class TodoViewModel: ObservableObject {
-    
-    @Published var unpinnedTodos = Todo.unpinnedTodos()
-    @Published var pinnedTodos = Todo.pinnedTodos()
-    @Published var achievedTodos = Todo.achievedTodos()
+        
+    @Published var todos = Todo.noRecord()
     
     var token: NotificationToken? = nil
         
-    init() {
+    init(isAchieved: Bool = false, isPinned: Bool = false) {
+        
+        if !isAchieved && isPinned {
+            self.todos = Todo.pinnedTodos()
+        }
+        if !isAchieved && !isPinned {
+            self.todos = Todo.unpinnedTodos()
+        }
+        
         let realm = Todo.customRealm()
         token = realm.observe { (notification, realm) in
             withAnimation {
-                self.unpinnedTodos = Todo.unpinnedTodos()
-                self.pinnedTodos = Todo.pinnedTodos()
-                self.achievedTodos = Todo.achievedTodos()
+                if !isAchieved && isPinned {
+                    self.todos = Todo.pinnedTodos()
+                }
+                if !isAchieved && !isPinned {
+                    self.todos = Todo.unpinnedTodos()
+                }
             }
         }
     }
