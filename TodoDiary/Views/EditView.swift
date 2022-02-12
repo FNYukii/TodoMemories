@@ -65,18 +65,13 @@ struct EditView: View {
                 }
             }
             
-            .actionSheet(isPresented: $isShowActionSheet) {
-                ActionSheet(
-                    title: Text(""),
-                    message: Text("このTodoを削除してもよろしいですか?"),
-                    buttons:[
-                        .destructive(Text("Todoを削除")) {
-                            Todo.deleteTodo(id: todo.id)
-                            dismiss()
-                        },
-                        .cancel()
-                    ]
-                )
+            .confirmationDialog("", isPresented: $isShowActionSheet, titleVisibility: .hidden) {
+                Button("スレッドを削除", role: .destructive) {
+                    Todo.deleteTodo(id: todo.id)
+                    dismiss()
+                }
+            } message: {
+                Text("このスレッドを削除してもよろしいですか?").bold()
             }
             
             .navigationBarTitle("Todoを編集", displayMode: .inline)
@@ -87,7 +82,22 @@ struct EditView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: saveTodo){
+                    Button(action: {
+                        Todo.updateTodoContentAndDate(id: todo.id, newContent: content, newAchievedDate: achievedDate)
+                        if !oldIsAchieved && isAchieved {
+                            Todo.achieveTodo(id: todo.id, achievedDate: achievedDate)
+                        } else if oldIsAchieved && !isAchieved {
+                            Todo.unachieveTodo(id: todo.id)
+                        }
+                        if !isAchieved {
+                            if !oldIsPinned && isPinned {
+                                Todo.pinTodo(id: todo.id)
+                            } else if oldIsPinned && !isPinned {
+                                Todo.unpinTodo(id: todo.id)
+                            }
+                        }
+                        dismiss()
+                    }){
                         Text("完了")
                             .fontWeight(.bold)
                     }
@@ -98,20 +108,4 @@ struct EditView: View {
         .accentColor(.red)
     }
     
-    func saveTodo() {
-        Todo.updateTodoContentAndDate(id: todo.id, newContent: content, newAchievedDate: achievedDate)
-        if !oldIsAchieved && isAchieved {
-            Todo.achieveTodo(id: todo.id, achievedDate: achievedDate)
-        } else if oldIsAchieved && !isAchieved {
-            Todo.unachieveTodo(id: todo.id)
-        }
-        if !isAchieved {
-            if !oldIsPinned && isPinned {
-                Todo.pinTodo(id: todo.id)
-            } else if oldIsPinned && !isPinned {
-                Todo.unpinTodo(id: todo.id)
-            }
-        }
-        dismiss()
-    }
 }
