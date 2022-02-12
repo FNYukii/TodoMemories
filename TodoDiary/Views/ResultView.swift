@@ -15,8 +15,6 @@ struct ResultView: View {
     let selectedDate: Date
     
     @State var isShowSheet = false
-    @State var selectedTodoId = 0
-    @State var isShowActionSheet = false
     
     @State var todosOfTheDay = Todo.noRecord()
     
@@ -30,7 +28,6 @@ struct ResultView: View {
             Section(header: Text("\(converter.toYmdwText(inputDate: selectedDate))")) {
                 ForEach(todosOfTheDay.freeze()) { todo in
                     Button(action: {
-                        selectedTodoId = todo.id
                         isShowSheet.toggle()
                     }){
                         HStack {
@@ -53,20 +50,6 @@ struct ResultView: View {
         }
         .listStyle(InsetGroupedListStyle())
         .onAppear(perform: reloadTodos)
-        
-        .actionSheet(isPresented: $isShowActionSheet) {
-            ActionSheet(
-                title: Text(""),
-                message: Text("このTodoを削除してもよろしいですか?"),
-                buttons:[
-                    .destructive(Text("Todoを削除")) {
-                        Todo.deleteTodo(id: selectedTodoId)
-                        reloadTodos()
-                    },
-                    .cancel()
-                ]
-            )
-        }
         
         .navigationBarTitle("達成済み")
         .toolbar {

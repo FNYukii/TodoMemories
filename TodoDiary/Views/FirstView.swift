@@ -14,7 +14,6 @@ struct FirstView: View {
     
     @State var isShowCreateSheet = false
     @State var isShowEditSheet = false
-    @State var selectedTodoId = 0
     
     var body: some View {
         NavigationView {
@@ -25,7 +24,6 @@ struct FirstView: View {
                         Section(header: Text("固定済み")) {
                             ForEach(pinnedTodoViewModel.todos.freeze()) { todo in
                                 Button(todo.content) {
-                                    selectedTodoId = todo.id
                                     isShowEditSheet.toggle()
                                 }
                                 .foregroundColor(.primary)
@@ -46,7 +44,6 @@ struct FirstView: View {
                         Section(header: pinnedTodoViewModel.todos.count == 0 ? nil : Text("その他")) {
                             ForEach(unpinnedTodoViewModel.todos.freeze()) { todo in
                                 Button(todo.content) {
-                                    selectedTodoId = todo.id
                                     isShowEditSheet.toggle()
                                 }
                                 .foregroundColor(.primary)

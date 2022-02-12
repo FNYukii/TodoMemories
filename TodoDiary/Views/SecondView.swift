@@ -10,8 +10,6 @@ import SwiftUI
 struct SecondView: View {
     
     @State var isShowSheet = false
-    @State var isShowActionSheet = false
-    @State var selectedTodoId = 0
     
     //Todoを達成した年月日の配列
     @State var achievedYmds: [Int] = []
@@ -34,7 +32,6 @@ struct SecondView: View {
                         Section(header: Text("\(converter.toYmdwText(inputDate: converter.toDate(inputYmd: achievedYmds[index])))")) {
                             ForEach(Todo.todosOfTheDay(achievedYmd: achievedYmds[index], isAscending: isAscending).freeze()){ todo in
                                 Button(action: {
-                                    selectedTodoId = todo.id
                                     isShowSheet.toggle()
                                 }){
                                     HStack {
@@ -64,20 +61,7 @@ struct SecondView: View {
                         .foregroundColor(.secondary)
                 }
             }
-            
-            .actionSheet(isPresented: $isShowActionSheet) {
-                ActionSheet(
-                    title: Text(""),
-                    message: Text("このTodoを削除してもよろしいですか?"),
-                    buttons:[
-                        .destructive(Text("Todoを削除")) {
-                            Todo.deleteTodo(id: selectedTodoId)
-                        },
-                        .cancel()
-                    ]
-                )
-            }
-            
+                        
             .navigationBarTitle("達成済み")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -106,11 +90,7 @@ struct SecondView: View {
         achievedYmds = []
         achievedYmds = getAchievedYmds()
     }
-    
-    func todoId() -> Int {
-        return selectedTodoId
-    }
-    
+        
     func reloadView() {
         //TODO: 画面の一番上までスクロールし、リストを更新する
         print("reload SecondView")
