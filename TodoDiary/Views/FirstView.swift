@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct FirstView: View {
-    
-    @Environment(\.editMode) var editMode
-    
+        
     @ObservedObject var pinnedTodoViewModel = TodoViewModel(isPinned: true)
     @ObservedObject var unpinnedTodoViewModel = TodoViewModel()
     
@@ -93,17 +91,20 @@ struct FirstView: View {
             }
             
             .navigationBarTitle("Todo")
-            .navigationBarItems(
-                leading: CustomEditButton(),
-                trailing: Button(action: {
-                    isShowCreateSheet.toggle()
-                }){
-                    Image(systemName: "plus.circle.fill")
-                    Text("新しいTodo")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    CustomEditButton()
                 }
-            )
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isShowCreateSheet.toggle()
+                    }){
+                        Image(systemName: "plus.circle.fill")
+                        Text("新しいTodo")
+                    }
+                }
+            }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func reloadView() {

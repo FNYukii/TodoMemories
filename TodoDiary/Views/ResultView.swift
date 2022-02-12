@@ -69,9 +69,11 @@ struct ResultView: View {
         }
         
         .navigationBarTitle("達成済み")
-        .navigationBarItems(
-            trailing: SettingMenu(isAscending: $isAscending, isShowTime: $isShowTime)
-        )
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                SettingMenu(isAscending: $isAscending, isShowTime: $isShowTime)
+            }
+        }
     }
     
     func reloadTodos()  {

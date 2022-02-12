@@ -79,11 +79,12 @@ struct SecondView: View {
             }
             
             .navigationBarTitle("達成済み")
-            .navigationBarItems(
-                trailing: SettingMenu(isAscending: $isAscending, isShowTime: $isShowTime)
-            )
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    SettingMenu(isAscending: $isAscending, isShowTime: $isShowTime)
+                }
+            }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     //Todo達成年月日の配列を生成する

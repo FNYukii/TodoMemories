@@ -80,21 +80,21 @@ struct EditView: View {
             }
             
             .navigationBarTitle("Todoを編集", displayMode: .inline)
-            .navigationBarItems(
-                leading: Button(action: {
-                    dismiss()
-                }){
-                    Text("キャンセル")
-                        .fontWeight(.regular)
-                },
-                trailing: Button(action: saveTodo){
-                    Text("完了")
-                        .fontWeight(.bold)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("キャンセル") {
+                        dismiss()
+                    }
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: saveTodo){
+                        Text("完了")
+                            .fontWeight(.bold)
+                    }
                     .disabled(content.isEmpty)
-            )
+                }
+            }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(.red)
     }
     
