@@ -9,18 +9,16 @@ import SwiftUI
 
 struct SecondView: View {
     
-    @State var isShowSheet = false
-    
     //Todoを達成した年月日の配列
     @State var achievedYmds: [Int] = []
+    
+    @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
+    @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
+    @State var isShowSheet = false
+    
     init() {
         _achievedYmds = State(initialValue: getAchievedYmds())
     }
-    
-    //達成時刻を表示するかどうか
-    @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
-    //達成日が古い順に並べるかどうか
-    @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
     
     var body: some View {
         NavigationView {
