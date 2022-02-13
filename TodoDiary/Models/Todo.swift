@@ -11,13 +11,13 @@ import WidgetKit
 
 class Todo: Object, Identifiable {
     //Todoの列定義
-    @objc dynamic var id = 0
-    @objc dynamic var order = -1
-    @objc dynamic var content = ""
-    @objc dynamic var isPinned = false
-    @objc dynamic var isAchieved = false
-    @objc dynamic var achievedDate = Date()
-    @objc dynamic var achievedYmd = 0
+    @Persisted var id = 0
+    @Persisted var order = -1
+    @Persisted var content = ""
+    @Persisted var isPinned = false
+    @Persisted var isAchieved = false
+    @Persisted var achievedDate = Date()
+    @Persisted var achievedYmd = 0
     
     //realmインスタンス
     static func customRealm() -> Realm {
