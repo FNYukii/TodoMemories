@@ -68,12 +68,12 @@ struct EditView: View {
             }
             
             .confirmationDialog("", isPresented: $isShowActionSheet, titleVisibility: .hidden) {
-                Button("スレッドを削除", role: .destructive) {
+                Button("Todoを削除", role: .destructive) {
                     Todo.deleteTodo(id: todo.id)
                     dismiss()
                 }
             } message: {
-                Text("このスレッドを削除してもよろしいですか?").bold()
+                Text("このTodoを削除してもよろしいですか?").bold()
             }
             
             .navigationBarTitle("Todoを編集", displayMode: .inline)
