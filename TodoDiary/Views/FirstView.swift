@@ -24,7 +24,7 @@ struct FirstView: View {
                     if pinnedTodos.count != 0 {
                         Section(header: Text("固定済み")) {
                             ForEach(pinnedTodos) { todo in
-                                Button("\(todo.order). \(todo.content)") {
+                                Button(todo.content) {
                                     isShowEditSheet.toggle()
                                 }
                                 .foregroundColor(.primary)
@@ -44,7 +44,7 @@ struct FirstView: View {
                     if unpinnedTodos.count != 0 {
                         Section(header: pinnedTodos.count == 0 ? nil : Text("その他")) {
                             ForEach(unpinnedTodos) { todo in
-                                Button("\(todo.order). \(todo.content)") {
+                                Button(todo.content) {
                                     isShowEditSheet.toggle()
                                 }
                                 .foregroundColor(.primary)
