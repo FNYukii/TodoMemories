@@ -11,7 +11,7 @@ import WidgetKit
 
 class Todo: Object, Identifiable {
     //Todoの列定義
-    @Persisted var id = 0
+    @Persisted(primaryKey: true) var id = 0
     @Persisted var order = -1
     @Persisted var content = ""
     @Persisted var isPinned = false
@@ -31,10 +31,10 @@ class Todo: Object, Identifiable {
     
     static func customRealmConfig() -> Realm.Configuration {
         var config = Realm.Configuration(
-            //Realmデータベースのマイグレーションを行う
-            schemaVersion: 5,
+            // Realmのスキーマのバージョンを管理
+            schemaVersion: 6,
             migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {
+                if (oldSchemaVersion < 6) {
                     //Do nothing
                 }
             }
@@ -83,7 +83,7 @@ class Todo: Object, Identifiable {
     //指定されたidのTodo
     static func oneTodoById(id: Int) -> Todo {
         let realm = Todo.customRealm()
-        return realm.objects(Todo.self).filter("id == \(id)").first!
+        return realm.object(ofType: Todo.self, forPrimaryKey: id)!
     }
     
     //指定された年月日に達成されたTodo
