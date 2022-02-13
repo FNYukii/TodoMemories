@@ -9,7 +9,7 @@ import Foundation
 
 class Converter {
     
-    //Int型の年月日をDate型に変換する
+    // 20210923 -> Date
     static func toDate(from: Int) -> Date {
         let inputYmd = from
         let year = inputYmd / 10000
@@ -19,7 +19,7 @@ class Converter {
         return dateComponent.date!
     }
     
-    //Date型変数を年月日の数字に変換する
+    // Date -> 20210923
     static func toYmd(from: Date) -> Int {
         let inputDate = from
         let calendar = Calendar(identifier: .gregorian)
@@ -29,7 +29,7 @@ class Converter {
         return year * 10000 + month * 100 + day
     }
     
-    //Date型変数を年月日と曜日のテキストに変換する
+    // Date -> "2021年 10月 21日 木"
     static func toYmdwText(from: Date) -> String {
         let inputDate = from
         //年月日のテキストを生成
@@ -48,8 +48,8 @@ class Converter {
         //２つのテキストを文字列連結する
         return ymdText + " " + weekDayText
     }
-    
-    //Date型変数を時刻のテキストに変換する
+        
+    // Date -> "14:53"
     static func toHmText(from: Date) -> String {
         let inputDate = from
         let calendar = Calendar(identifier: .gregorian)
