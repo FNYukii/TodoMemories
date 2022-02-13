@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ContentView: View {
     
@@ -33,6 +34,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: handler) {
             FirstView()
+                .environment(\.realmConfiguration, Todo.customRealmConfig())
                 .tabItem {
                     Label("Todo", systemImage: "list.bullet")
                 }
