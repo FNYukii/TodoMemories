@@ -22,21 +22,26 @@ class Todo: Object, Identifiable {
     //realmインスタンス
     static func customRealm() -> Realm {
         var realm: Realm {
-            var config = Realm.Configuration(
-                //Realmデータベースのマイグレーションを行う
-                schemaVersion: 5,
-                migrationBlock: { migration, oldSchemaVersion in
-                    if (oldSchemaVersion < 1) {
-                        //Do nothing
-                    }
-                }
-            )
-            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.example.y.TodoDiary")!
-            config.fileURL = url.appendingPathComponent("db.realm")
+            let config = customRealmConfig()
             let realm = try! Realm(configuration: config)
             return realm
         }
         return realm
+    }
+    
+    static func customRealmConfig() -> Realm.Configuration {
+        var config = Realm.Configuration(
+            //Realmデータベースのマイグレーションを行う
+            schemaVersion: 5,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                    //Do nothing
+                }
+            }
+        )
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.example.y.TodoDiary")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        return config
     }
     
     //全てのレコード
