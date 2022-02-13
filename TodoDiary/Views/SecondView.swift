@@ -20,14 +20,14 @@ struct SecondView: View {
             ZStack {
                 List {
                     ForEach(0..<ymdViewModel.achievedYmds.count) { index in
-                        Section(header: Text("\(Converter.toYmdwText(inputDate: Converter.toDate(inputYmd: ymdViewModel.achievedYmds[index])))")) {
+                        Section(header: Text("\(Converter.toYmdwText(from: Converter.toDate(from: ymdViewModel.achievedYmds[index])))")) {
                             ForEach(Todo.todosOfTheDay(achievedYmd: ymdViewModel.achievedYmds[index], isAscending: isAscending).freeze()){ todo in
                                 Button(action: {
                                     isShowSheet.toggle()
                                 }){
                                     HStack {
                                         if isShowTime {
-                                            Text("\(Converter.toHmText(inputDate: todo.achievedDate))")
+                                            Text("\(Converter.toHmText(from: todo.achievedDate))")
                                                 .foregroundColor(.secondary)
                                         }
                                         Text("\(todo.content)")

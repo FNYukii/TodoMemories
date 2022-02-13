@@ -10,7 +10,8 @@ import Foundation
 class Converter {
     
     //Int型の年月日をDate型に変換する
-    static func toDate(inputYmd: Int) -> Date {
+    static func toDate(from: Int) -> Date {
+        let inputYmd = from
         let year = inputYmd / 10000
         let month = (inputYmd % 10000) / 100
         let day = (inputYmd % 100)
@@ -19,7 +20,8 @@ class Converter {
     }
     
     //Date型変数を年月日の数字に変換する
-    static func toYmd(inputDate: Date) -> Int {
+    static func toYmd(from: Date) -> Int {
+        let inputDate = from
         let calendar = Calendar(identifier: .gregorian)
         let year = calendar.component(.year, from: inputDate)
         let month = calendar.component(.month, from: inputDate)
@@ -28,7 +30,8 @@ class Converter {
     }
     
     //Date型変数を年月日と曜日のテキストに変換する
-    static func toYmdwText(inputDate: Date) -> String {
+    static func toYmdwText(from: Date) -> String {
+        let inputDate = from
         //年月日のテキストを生成
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ja_JP")
@@ -47,7 +50,8 @@ class Converter {
     }
     
     //Date型変数を時刻のテキストに変換する
-    static func toHmText(inputDate: Date) -> String {
+    static func toHmText(from: Date) -> String {
+        let inputDate = from
         let calendar = Calendar(identifier: .gregorian)
         let hour = calendar.component(.hour, from: inputDate)
         let minute = calendar.component(.minute, from: inputDate)

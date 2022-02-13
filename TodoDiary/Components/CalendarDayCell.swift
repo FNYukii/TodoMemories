@@ -41,7 +41,7 @@ struct CalendarDayCell: View {
     
     func jumpToResultView(year: Int, month: Int, day: Int) {
         let selectedYmd = year * 10000 + month * 100 + day
-        selectedDate = Converter.toDate(inputYmd: selectedYmd)
+        selectedDate = Converter.toDate(from: selectedYmd)
         isNavLinkActive.toggle()
     }
 }

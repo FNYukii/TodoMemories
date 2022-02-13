@@ -23,14 +23,14 @@ struct ResultView: View {
     
     var body: some View {
         List {
-            Section(header: Text("\(Converter.toYmdwText(inputDate: selectedDate))")) {
+            Section(header: Text("\(Converter.toYmdwText(from: selectedDate))")) {
                 ForEach(todosOfTheDay.freeze()) { todo in
                     Button(action: {
                         isShowSheet.toggle()
                     }){
                         HStack {
                             if isShowTime {
-                                Text("\(Converter.toHmText(inputDate: todo.achievedDate))")
+                                Text("\(Converter.toHmText(from: todo.achievedDate))")
                                     .foregroundColor(.secondary)
                             }
                             Text("\(todo.content)")
@@ -58,7 +58,7 @@ struct ResultView: View {
     }
     
     func reloadTodos()  {
-        let achievedYmd = Converter.toYmd(inputDate: selectedDate)
+        let achievedYmd = Converter.toYmd(from: selectedDate)
         todosOfTheDay = Todo.todosOfTheDay(achievedYmd: achievedYmd, isAscending: isAscending)
         if todosOfTheDay.count == 0 {
             dismiss()
