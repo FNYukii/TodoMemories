@@ -206,10 +206,12 @@ class Todo: Object, Identifiable {
         //選択されたTodo以降のpinnedTodosのTodoのorderをデクリメント
         decrementTodos(isPinnedTodos: true, id: id)
         //unpinnedTodosの全Todoのorderをインクリメント
-        let unpinnedTodos = Todo.unpinnedTodos()
+        // Realmコレクションは通常ライブ。今回は凍結して扱う
+        let unpinnedTodos = Todo.unpinnedTodos().freeze()
         try! realm.write {
             for index in 0..<unpinnedTodos.count {
-                unpinnedTodos[index].order = unpinnedTodos[index].order + 1
+                // Realmオブジェクトのプロパティを更新するときだけ、Realmオブジェクトを解凍する
+                unpinnedTodos[index].thaw()!.order = unpinnedTodos[index].order + 1
             }
         }
         //選択されたTodoの固定を解除し、unPinnedTodosの先頭に追加
@@ -271,14 +273,14 @@ class Todo: Object, Identifiable {
         }
         let moveId = todos[source].id
         if source < destination {
-            print("down")
+            print("HELLO \(todos[source].content) down")
             for i in (source + 1)...(destination - 1) {
                 Todo.changeOrder(id: todos[i].id, newOrder: todos[i].order - 1)
             }
             Todo.changeOrder(id: moveId, newOrder: destination - 1)
         }
         if destination < source {
-            print("up")
+            print("HELLO \(todos[source].content) up")
             for i in (destination...(source - 1)).reversed() {
                 Todo.changeOrder(id: todos[i].id, newOrder: todos[i].order + 1)
             }
