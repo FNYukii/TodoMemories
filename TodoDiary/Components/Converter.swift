@@ -48,6 +48,12 @@ class Converter {
         //２つのテキストを文字列連結する
         return ymdText + " " + weekDayText
     }
+    
+    // 20210923 -> "2021年 10月 21日 木"
+    static func toYmdwText(from: Int) -> String {
+        let date = toDate(from: from)
+        return toYmdwText(from: date)
+    }
         
     // Date -> "14:53"
     static func toHmText(from: Date) -> String {
