@@ -13,6 +13,7 @@
 		5407BBD127195F5B005D1E29 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBD027195F5B005D1E29 /* SettingMenu.swift */; };
 		5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6E27B6C460007D98B0 /* CreateView.swift */; };
 		5418DC7327B75968007D98B0 /* YmdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC7227B75968007D98B0 /* YmdViewModel.swift */; };
+		545C16D02859BF6A0037C723 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 545C16CF2859BF6A0037C723 /* Introspect */; };
 		54919C6C27101C1700EC9907 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54919C6B27101C1700EC9907 /* Introspect */; };
 		54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6704726F1C2DB00DB5688 /* ContentView.swift */; };
 		54B6704A26F1C2DD00DB5688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704926F1C2DD00DB5688 /* Assets.xcassets */; };
@@ -29,7 +30,7 @@
 		54B6709A26F644DE00DB5688 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6709926F644DE00DB5688 /* Charts */; };
 		54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709B26F644EC00DB5688 /* LineChart.swift */; };
 		54B6709E26F70EDE00DB5688 /* CustomCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */; };
-		54CD1834274E82E00063C42E /* TodoDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1833274E82E00063C42E /* TodoDiaryApp.swift */; };
+		54CD1834274E82E00063C42E /* TodoMemoriesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1833274E82E00063C42E /* TodoMemoriesApp.swift */; };
 		54CD1838274F2C390063C42E /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1837274F2C390063C42E /* CalendarDayCell.swift */; };
 		54DE528826F8A1DF0053F126 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528726F8A1DF0053F126 /* WidgetKit.framework */; };
 		54DE528A26F8A1DF0053F126 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528926F8A1DF0053F126 /* SwiftUI.framework */; };
@@ -90,14 +91,14 @@
 		5418DC6E27B6C460007D98B0 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		5418DC7227B75968007D98B0 /* YmdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YmdViewModel.swift; sourceTree = "<group>"; };
 		542F9A8E270BE7A3003ACEE7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		54B6704026F1C2DB00DB5688 /* TodoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		54B6704026F1C2DB00DB5688 /* TodoMemories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMemories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B6704726F1C2DB00DB5688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		54B6704926F1C2DD00DB5688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54B6704C26F1C2DD00DB5688 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		54B6704F26F1C2DD00DB5688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54B6705126F1C2DD00DB5688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		54B6705626F1C2DD00DB5688 /* TodoDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		54B6706126F1C2DD00DB5688 /* TodoDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54B6705626F1C2DD00DB5688 /* TodoMemoriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoMemoriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54B6706126F1C2DD00DB5688 /* TodoMemoriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoMemoriesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B6707326F1C4F900DB5688 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		54B6707526F1C54A00DB5688 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		54B6707726F1C55600DB5688 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
@@ -106,7 +107,7 @@
 		54B6708D26F4CE9200DB5688 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		54B6709B26F644EC00DB5688 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
-		54CD1833274E82E00063C42E /* TodoDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDiaryApp.swift; sourceTree = "<group>"; };
+		54CD1833274E82E00063C42E /* TodoMemoriesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMemoriesApp.swift; sourceTree = "<group>"; };
 		54CD1837274F2C390063C42E /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FirstWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DE528726F8A1DF0053F126 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -127,6 +128,7 @@
 			files = (
 				54B6707F26F2CB9B00DB5688 /* RealmSwift in Frameworks */,
 				54919C6C27101C1700EC9907 /* Introspect in Frameworks */,
+				545C16D02859BF6A0037C723 /* Introspect in Frameworks */,
 				54B6707D26F2CB9B00DB5688 /* Realm in Frameworks */,
 				54B6709A26F644DE00DB5688 /* Charts in Frameworks */,
 			);
@@ -175,9 +177,9 @@
 		54B6704126F1C2DB00DB5688 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				54B6704026F1C2DB00DB5688 /* TodoDiary.app */,
-				54B6705626F1C2DD00DB5688 /* TodoDiaryTests.xctest */,
-				54B6706126F1C2DD00DB5688 /* TodoDiaryUITests.xctest */,
+				54B6704026F1C2DB00DB5688 /* TodoMemories.app */,
+				54B6705626F1C2DD00DB5688 /* TodoMemoriesTests.xctest */,
+				54B6706126F1C2DD00DB5688 /* TodoMemoriesUITests.xctest */,
 				54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */,
 			);
 			name = Products;
@@ -187,7 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				54DE52A126F8B7D50053F126 /* TodoDiary.entitlements */,
-				54CD1833274E82E00063C42E /* TodoDiaryApp.swift */,
+				54CD1833274E82E00063C42E /* TodoMemoriesApp.swift */,
 				54DE523D26F7946C0053F126 /* Models */,
 				54DE523C26F794300053F126 /* Views */,
 				54DE523E26F794A00053F126 /* Components */,
@@ -268,9 +270,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		54B6703F26F1C2DB00DB5688 /* TodoDiary */ = {
+		54B6703F26F1C2DB00DB5688 /* TodoMemories */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 54B6706A26F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoDiary" */;
+			buildConfigurationList = 54B6706A26F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoMemories" */;
 			buildPhases = (
 				54B6703C26F1C2DB00DB5688 /* Sources */,
 				54B6703D26F1C2DB00DB5688 /* Frameworks */,
@@ -282,20 +284,21 @@
 			dependencies = (
 				54DE529526F8A1E00053F126 /* PBXTargetDependency */,
 			);
-			name = TodoDiary;
+			name = TodoMemories;
 			packageProductDependencies = (
 				54B6707C26F2CB9B00DB5688 /* Realm */,
 				54B6707E26F2CB9B00DB5688 /* RealmSwift */,
 				54B6709926F644DE00DB5688 /* Charts */,
 				54919C6B27101C1700EC9907 /* Introspect */,
+				545C16CF2859BF6A0037C723 /* Introspect */,
 			);
 			productName = TodoDiary;
-			productReference = 54B6704026F1C2DB00DB5688 /* TodoDiary.app */;
+			productReference = 54B6704026F1C2DB00DB5688 /* TodoMemories.app */;
 			productType = "com.apple.product-type.application";
 		};
-		54B6705526F1C2DD00DB5688 /* TodoDiaryTests */ = {
+		54B6705526F1C2DD00DB5688 /* TodoMemoriesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 54B6706D26F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoDiaryTests" */;
+			buildConfigurationList = 54B6706D26F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoMemoriesTests" */;
 			buildPhases = (
 				54B6705226F1C2DD00DB5688 /* Sources */,
 				54B6705326F1C2DD00DB5688 /* Frameworks */,
@@ -306,14 +309,14 @@
 			dependencies = (
 				54B6705826F1C2DD00DB5688 /* PBXTargetDependency */,
 			);
-			name = TodoDiaryTests;
+			name = TodoMemoriesTests;
 			productName = TodoDiaryTests;
-			productReference = 54B6705626F1C2DD00DB5688 /* TodoDiaryTests.xctest */;
+			productReference = 54B6705626F1C2DD00DB5688 /* TodoMemoriesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		54B6706026F1C2DD00DB5688 /* TodoDiaryUITests */ = {
+		54B6706026F1C2DD00DB5688 /* TodoMemoriesUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 54B6707026F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoDiaryUITests" */;
+			buildConfigurationList = 54B6707026F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoMemoriesUITests" */;
 			buildPhases = (
 				54B6705D26F1C2DD00DB5688 /* Sources */,
 				54B6705E26F1C2DD00DB5688 /* Frameworks */,
@@ -324,9 +327,9 @@
 			dependencies = (
 				54B6706326F1C2DD00DB5688 /* PBXTargetDependency */,
 			);
-			name = TodoDiaryUITests;
+			name = TodoMemoriesUITests;
 			productName = TodoDiaryUITests;
-			productReference = 54B6706126F1C2DD00DB5688 /* TodoDiaryUITests.xctest */;
+			productReference = 54B6706126F1C2DD00DB5688 /* TodoMemoriesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		54DE528426F8A1DF0053F126 /* FirstWidgetExtension */ = {
@@ -375,7 +378,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 54B6703B26F1C2DB00DB5688 /* Build configuration list for PBXProject "TodoDiary" */;
+			buildConfigurationList = 54B6703B26F1C2DB00DB5688 /* Build configuration list for PBXProject "TodoMemories" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -388,14 +391,15 @@
 				54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				54B6709826F644DE00DB5688 /* XCRemoteSwiftPackageReference "Charts" */,
 				54919C6A27101C1700EC9907 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				545C16CE2859BF6A0037C723 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 54B6704126F1C2DB00DB5688 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				54B6703F26F1C2DB00DB5688 /* TodoDiary */,
-				54B6705526F1C2DD00DB5688 /* TodoDiaryTests */,
-				54B6706026F1C2DD00DB5688 /* TodoDiaryUITests */,
+				54B6703F26F1C2DB00DB5688 /* TodoMemories */,
+				54B6705526F1C2DD00DB5688 /* TodoMemoriesTests */,
+				54B6706026F1C2DD00DB5688 /* TodoMemoriesUITests */,
 				54DE528426F8A1DF0053F126 /* FirstWidgetExtension */,
 			);
 		};
@@ -458,7 +462,7 @@
 				54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */,
 				54B6707826F1C55600DB5688 /* ThirdView.swift in Sources */,
 				54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */,
-				54CD1834274E82E00063C42E /* TodoDiaryApp.swift in Sources */,
+				54CD1834274E82E00063C42E /* TodoMemoriesApp.swift in Sources */,
 				5418DC7327B75968007D98B0 /* YmdViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,12 +496,12 @@
 /* Begin PBXTargetDependency section */
 		54B6705826F1C2DD00DB5688 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 54B6703F26F1C2DB00DB5688 /* TodoDiary */;
+			target = 54B6703F26F1C2DB00DB5688 /* TodoMemories */;
 			targetProxy = 54B6705726F1C2DD00DB5688 /* PBXContainerItemProxy */;
 		};
 		54B6706326F1C2DD00DB5688 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 54B6703F26F1C2DB00DB5688 /* TodoDiary */;
+			target = 54B6703F26F1C2DB00DB5688 /* TodoMemories */;
 			targetProxy = 54B6706226F1C2DD00DB5688 /* PBXContainerItemProxy */;
 		};
 		54DE529526F8A1E00053F126 /* PBXTargetDependency */ = {
@@ -699,7 +703,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TodoDiary.app/TodoDiary";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TodoMemories.app/TodoMemories";
 			};
 			name = Debug;
 		};
@@ -721,7 +725,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TodoDiary.app/TodoDiary";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TodoMemories.app/TodoMemories";
 			};
 			name = Release;
 		};
@@ -812,7 +816,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		54B6703B26F1C2DB00DB5688 /* Build configuration list for PBXProject "TodoDiary" */ = {
+		54B6703B26F1C2DB00DB5688 /* Build configuration list for PBXProject "TodoMemories" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				54B6706826F1C2DD00DB5688 /* Debug */,
@@ -821,7 +825,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		54B6706A26F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoDiary" */ = {
+		54B6706A26F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoMemories" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				54B6706B26F1C2DD00DB5688 /* Debug */,
@@ -830,7 +834,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		54B6706D26F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoDiaryTests" */ = {
+		54B6706D26F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoMemoriesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				54B6706E26F1C2DD00DB5688 /* Debug */,
@@ -839,7 +843,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		54B6707026F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoDiaryUITests" */ = {
+		54B6707026F1C2DD00DB5688 /* Build configuration list for PBXNativeTarget "TodoMemoriesUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				54B6707126F1C2DD00DB5688 /* Debug */,
@@ -860,6 +864,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		545C16CE2859BF6A0037C723 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		54919C6A27101C1700EC9907 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
@@ -887,6 +899,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		545C16CF2859BF6A0037C723 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 545C16CE2859BF6A0037C723 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
 		54919C6B27101C1700EC9907 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 54919C6A27101C1700EC9907 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;

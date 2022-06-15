@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 @main
-struct TodoDiaryApp: App {
+struct TodoMemoriesApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
