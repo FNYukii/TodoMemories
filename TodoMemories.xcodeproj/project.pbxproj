@@ -116,7 +116,7 @@
 		54DE528E26F8A1DF0053F126 /* FirstWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = FirstWidget.intentdefinition; sourceTree = "<group>"; };
 		54DE528F26F8A1E00053F126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54DE529126F8A1E00053F126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		54DE52A126F8B7D50053F126 /* TodoDiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodoDiary.entitlements; sourceTree = "<group>"; };
+		54DE52A126F8B7D50053F126 /* TodoMemories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodoMemories.entitlements; sourceTree = "<group>"; };
 		54DE52A226F8B80C0053F126 /* FirstWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FirstWidgetExtension.entitlements; sourceTree = "<group>"; };
 		54FFFCE127184947007C5D7A /* TodoContextMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoContextMenuItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,7 +167,7 @@
 			children = (
 				54DE52A226F8B80C0053F126 /* FirstWidgetExtension.entitlements */,
 				542F9A8E270BE7A3003ACEE7 /* .gitignore */,
-				54B6704226F1C2DB00DB5688 /* TodoDiary */,
+				54B6704226F1C2DB00DB5688 /* TodoMemories */,
 				54DE528B26F8A1DF0053F126 /* FirstWidget */,
 				54DE528626F8A1DF0053F126 /* Frameworks */,
 				54B6704126F1C2DB00DB5688 /* Products */,
@@ -185,10 +185,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		54B6704226F1C2DB00DB5688 /* TodoDiary */ = {
+		54B6704226F1C2DB00DB5688 /* TodoMemories */ = {
 			isa = PBXGroup;
 			children = (
-				54DE52A126F8B7D50053F126 /* TodoDiary.entitlements */,
+				54DE52A126F8B7D50053F126 /* TodoMemories.entitlements */,
 				54CD1833274E82E00063C42E /* TodoMemoriesApp.swift */,
 				54DE523D26F7946C0053F126 /* Models */,
 				54DE523C26F794300053F126 /* Views */,
@@ -198,7 +198,7 @@
 				54B6705126F1C2DD00DB5688 /* Info.plist */,
 				54B6704B26F1C2DD00DB5688 /* Preview Content */,
 			);
-			path = TodoDiary;
+			path = TodoMemories;
 			sourceTree = "<group>";
 		};
 		54B6704B26F1C2DD00DB5688 /* Preview Content */ = {
@@ -645,12 +645,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TodoDiary/TodoDiary.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TodoMemories/TodoMemories.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"TodoDiary/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TodoMemories/Preview Content\"";
 				DEVELOPMENT_TEAM = RY7754Y275;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TodoDiary/Info.plist;
+				INFOPLIST_FILE = TodoMemories/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -668,12 +668,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TodoDiary/TodoDiary.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TodoMemories/TodoMemories.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"TodoDiary/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TodoMemories/Preview Content\"";
 				DEVELOPMENT_TEAM = RY7754Y275;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TodoDiary/Info.plist;
+				INFOPLIST_FILE = TodoMemories/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
