@@ -5,8 +5,8 @@
 //  Created by Yu on 2022/06/22.
 //
 
-import Foundation
 import RealmSwift
+import SwiftUI
 
 class AchievedDaysViewModel: ObservableObject {
     
@@ -52,8 +52,10 @@ class AchievedDaysViewModel: ObservableObject {
         }
         
         // プロパティに格納
-        self.days = days
-        self.isLoaded = true
+        withAnimation {
+            self.days = days
+            self.isLoaded = true
+        }
     }
     
     deinit {
