@@ -28,8 +28,10 @@ class AchievedDaysViewModel: ObservableObject {
     private func loadDays() {
         
         // 全ての達成済みTodoを取得
+        let achievedTodos = Array(Todo.achievedTodos())
         
         // 配列daysを生成
+        
         
         // プロパティに格納
         
