@@ -119,6 +119,16 @@ class Todo: Object, Identifiable {
         return counts
     }
     
+    // 指定された年月日に達成されたTodoの数
+    static func countOfTodoAtDay(year: Int, month: Int, day: Int) -> Int {
+        
+        let achievedYmd = year * 10000 + month * 100 + day
+        
+        let realm = Todo.customRealm()
+        let count = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate").count
+        return count
+    }
+    
     //新規Todo追加
     static func insertTodo(content: String, isPinned: Bool, isAchieved: Bool, achievedDate: Date) {
         let realm = Todo.customRealm()
