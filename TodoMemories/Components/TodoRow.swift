@@ -54,7 +54,7 @@ struct TodoRow: View {
                 Button(action: {
                     Todo.achieveTodo(id: todo.id, achievedDate: Date())
                 }) {
-                    Label("achieve", systemImage: "checkmark")
+                    Label("make_achieved", systemImage: "checkmark")
                 }
             }
             
@@ -62,7 +62,7 @@ struct TodoRow: View {
                 Button(action: {
                     Todo.unachieveTodo(id: todo.id)
                 }) {
-                    Label("unachieve", systemImage: "xmark")
+                    Label("make_unachieved", systemImage: "xmark")
                 }
             }
             

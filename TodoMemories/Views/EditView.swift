@@ -41,9 +41,9 @@ struct EditView: View {
                 }
                 
                 Section {
-                    Toggle("pin_todo", isOn: $isPinned)
+                    Toggle("pin", isOn: $isPinned)
                         .disabled(isAchieved)
-                    Toggle("achieve_todo", isOn: $isAchieved)
+                    Toggle("make_achieved", isOn: $isAchieved)
                         .onChange(of: isAchieved) {value in
                             if value && !todo.isAchieved  {
                                 isPinned = false
