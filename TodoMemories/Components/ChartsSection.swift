@@ -11,10 +11,6 @@ struct ChartsSection: View {
     
     @State private var pageSelection = 0
     
-//    init() {
-//        UITableView.appearance().rowHeight = 300
-//    }
-    
     var body: some View {
         Section {
             TabView(selection: $pageSelection) {
