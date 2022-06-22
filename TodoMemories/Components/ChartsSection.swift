@@ -19,8 +19,8 @@ struct ChartsSection: View {
                         .tag(index)
                 }
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .frame(height: 300)
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         }
     }
 }

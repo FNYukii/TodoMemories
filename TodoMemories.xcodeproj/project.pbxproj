@@ -10,6 +10,7 @@
 		5407BBCF27195E0C005D1E29 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */; };
 		5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6E27B6C460007D98B0 /* CreateView.swift */; };
 		545C16D02859BF6A0037C723 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 545C16CF2859BF6A0037C723 /* Introspect */; };
+		54795ADD28634DF800DA0856 /* MyTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54795ADC28634DF800DA0856 /* MyTextEditor.swift */; };
 		547AC6102862B9BB000ABE3C /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC60F2862B9BB000ABE3C /* Day.swift */; };
 		547AC6132862BA18000ABE3C /* AchievedDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6122862BA18000ABE3C /* AchievedDaysViewModel.swift */; };
 		547AC6162862C58A000ABE3C /* DayConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6152862C58A000ABE3C /* DayConverter.swift */; };
@@ -87,6 +88,7 @@
 		5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
 		5418DC6E27B6C460007D98B0 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		542F9A8E270BE7A3003ACEE7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		54795ADC28634DF800DA0856 /* MyTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextEditor.swift; sourceTree = "<group>"; };
 		547AC60F2862B9BB000ABE3C /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		547AC6122862BA18000ABE3C /* AchievedDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedDaysViewModel.swift; sourceTree = "<group>"; };
 		547AC6152862C58A000ABE3C /* DayConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayConverter.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */,
 				547AC6172862E6C5000ABE3C /* TodoRow.swift */,
+				54795ADC28634DF800DA0856 /* MyTextEditor.swift */,
 				547AC6192862EE71000ABE3C /* BarChart.swift */,
 				547AC61E2862F00E000ABE3C /* ChartPage.swift */,
 				547AC6202862F672000ABE3C /* ChartsSection.swift */,
@@ -483,6 +486,7 @@
 				54CD1834274E82E00063C42E /* TodoMemoriesApp.swift in Sources */,
 				547AC61A2862EE71000ABE3C /* BarChart.swift in Sources */,
 				547AC6102862B9BB000ABE3C /* Day.swift in Sources */,
+				54795ADD28634DF800DA0856 /* MyTextEditor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

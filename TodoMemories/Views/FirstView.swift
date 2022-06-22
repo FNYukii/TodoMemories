@@ -73,6 +73,7 @@ struct FirstView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func reloadView() {

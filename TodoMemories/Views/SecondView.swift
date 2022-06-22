@@ -32,8 +32,9 @@ struct SecondView: View {
                 }
             }
             
-            .navigationBarTitle("history")
+            .navigationTitle("history")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func reloadView() {
