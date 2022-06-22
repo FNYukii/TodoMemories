@@ -50,11 +50,6 @@ struct ResultView: View {
         .onAppear(perform: reloadTodos)
         
         .navigationBarTitle("達成済み")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                SettingMenu(isAscending: $isAscending, isShowTime: $isShowTime)
-            }
-        }
     }
     
     func reloadTodos()  {

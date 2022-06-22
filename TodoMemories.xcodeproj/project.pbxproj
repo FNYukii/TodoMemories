@@ -10,7 +10,6 @@
 		5403442D26FA0D4700BC8C97 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5403442C26FA0D4700BC8C97 /* Converter.swift */; };
 		5403443326FA105F00BC8C97 /* ThirdViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5403443226FA105F00BC8C97 /* ThirdViewPage.swift */; };
 		5407BBCF27195E0C005D1E29 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */; };
-		5407BBD127195F5B005D1E29 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBD027195F5B005D1E29 /* SettingMenu.swift */; };
 		5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6E27B6C460007D98B0 /* CreateView.swift */; };
 		545C16D02859BF6A0037C723 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 545C16CF2859BF6A0037C723 /* Introspect */; };
 		547AC6102862B9BB000ABE3C /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC60F2862B9BB000ABE3C /* Day.swift */; };
@@ -89,7 +88,6 @@
 		5403442C26FA0D4700BC8C97 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		5403443226FA105F00BC8C97 /* ThirdViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewPage.swift; sourceTree = "<group>"; };
 		5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
-		5407BBD027195F5B005D1E29 /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		5418DC6E27B6C460007D98B0 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		542F9A8E270BE7A3003ACEE7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		547AC60F2862B9BB000ABE3C /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 			children = (
 				54FFFCE127184947007C5D7A /* TodoContextMenuItems.swift */,
 				5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */,
-				5407BBD027195F5B005D1E29 /* SettingMenu.swift */,
 				5403442C26FA0D4700BC8C97 /* Converter.swift */,
 				5403443226FA105F00BC8C97 /* ThirdViewPage.swift */,
 				54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */,
@@ -474,7 +471,6 @@
 				54CD1838274F2C390063C42E /* CalendarDayCell.swift in Sources */,
 				5403443326FA105F00BC8C97 /* ThirdViewPage.swift in Sources */,
 				5403442D26FA0D4700BC8C97 /* Converter.swift in Sources */,
-				5407BBD127195F5B005D1E29 /* SettingMenu.swift in Sources */,
 				54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */,
 				54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
 				547AC6132862BA18000ABE3C /* AchievedDaysViewModel.swift in Sources */,

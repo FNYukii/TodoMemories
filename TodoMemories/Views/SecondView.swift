@@ -10,9 +10,6 @@ import SwiftUI
 struct SecondView: View {
         
     @ObservedObject private var achievedDaysViewModel = AchievedDaysViewModel()
-    
-    @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
-    @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
     @State var isShowSheet = false
     
     var body: some View {
@@ -26,10 +23,8 @@ struct SecondView: View {
                                     isShowSheet.toggle()
                                 }){
                                     HStack {
-                                        if isShowTime {
-                                            Text("\(Converter.toHmText(from: todo.achievedDate))")
-                                                .foregroundColor(.secondary)
-                                        }
+                                        Text("\(Converter.toHmText(from: todo.achievedDate))")
+                                            .foregroundColor(.secondary)
                                         Text("\(todo.content)")
                                             .foregroundColor(.primary)
                                     }
@@ -53,11 +48,6 @@ struct SecondView: View {
             }
             
             .navigationBarTitle("達成済み")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    SettingMenu(isAscending: $isAscending, isShowTime: $isShowTime)
-                }
-            }
         }
     }
     
