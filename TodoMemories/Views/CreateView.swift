@@ -40,7 +40,6 @@ struct CreateView: View {
                     Toggle("make_achieved", isOn: $isAchieved)
                     if isAchieved {
                         DatePicker("achieved_at", selection: $achievedDate)
-                            .environment(\.locale, Locale(identifier: "ja_JP"))
                     }
                 }
             }

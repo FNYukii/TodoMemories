@@ -5,3 +5,50 @@
   Created by Yu on 2022/06/22.
   
 */
+
+// ContentView
+"todos" = "Todos";
+"history" = "履歴";
+"stats" = "統計";
+
+// FirstView
+"new_todo" = "新規Todo";
+"pinned" = "固定済み";
+"others" = "その他";
+"there_is_no_todo_yet" = "まだTodoはありません。";
+
+// TodoRow
+"pin" = "固定する";
+"unpin" = "固定を解除";
+"make_achieved" = "達成済みにする";
+"make_unachieved" = "未達成にする";
+"delete" = "削除する";
+"are_you_sure_you_want_to_delete_this_todo" = "このTodoを削除してもよろしいですか?";
+"delete_todo" = "Todoを削除";
+
+// CustomEditButton
+"done" = "完了";
+"edit" = "編集";
+
+// CreateView
+"todo" = "Todo";
+"achieved_at" = "達成日時";
+"cancel" = "キャンセル";
+"add" = "追加";
+
+// EditView
+"edit_todo" = "Todoを編集";
+
+// SecondView
+"no_todo_achieved_yet" = "まだ達成済みのTodoはありません。";
+
+// ChartPage
+"achieved_todos" = "達成済みTodo";
+
+// HighlightsSection
+"highlights" = "ハイライト";
+"today" = "今日";
+"yesterday" = "昨日";
+"the_count_of_todos_achieved_today_is_the_same_as_yesterday" = "今日のTodo達成数は昨日と同じです。";
+"the_count_of_todos_achieved_today_is_less_than_yesterday" = "今日のTodo達成数は昨日よりも少ないです。";
+"the_count_of_todos_achieved_today_is_higher_than_yesterday" = "今日のTodo達成数は昨日よりも多いです。";
