@@ -46,7 +46,7 @@ struct ContentView: View {
                 .tag(1)
             ThirdView()
                 .tabItem {
-                    Label("stats", systemImage: "chart.xyaxis.line")
+                    Label("stats", systemImage: "chart.bar.xaxis")
                 }
                 .tag(2)
         }
