@@ -16,7 +16,7 @@ Realmを使用しており、データはデバイス内に保存されます。
 
 ## スクリーンショット
 <div style="display: flex; justify-content: space-between;">
-  <img style="display: block; width: 30%;" src="https://i.imgur.com/1Cu1XTW.png"/>
-  <img style="display: block; width: 30%;" src="https://i.imgur.com/2Kl6Xv7.png"/>
-  <img style="display: block; width: 30%;" src="https://i.imgur.com/7zaAghS.png"/>
+  <img style="display: block; width: 30%;" src="https://user-images.githubusercontent.com/65577595/174990185-d91a826c-3e04-41be-9df7-da0beb690c98.png"/>
+  <img style="display: block; width: 30%;" src="https://user-images.githubusercontent.com/65577595/174990200-7a9f9d23-85b2-457b-80a8-629410d06ed7.png"/>
+  <img style="display: block; width: 30%;" src="https://user-images.githubusercontent.com/65577595/174990215-fd7cba42-5019-4abe-a4ec-17337ee44800.png"/>
 </div>
