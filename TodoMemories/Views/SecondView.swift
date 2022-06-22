@@ -19,22 +19,7 @@ struct SecondView: View {
                     ForEach(achievedDaysViewModel.days) { day in
                         Section(header: Text("\(DayConverter.toStringUpToWeekday(from: day.ymd))")) {
                             ForEach(day.achievedTodos) { todo in
-                                Button(action: {
-                                    isShowSheet.toggle()
-                                }){
-                                    HStack {
-                                        Text("\(DayConverter.toHmText(from: todo.achievedDate))")
-                                            .foregroundColor(.secondary)
-                                        Text("\(todo.content)")
-                                            .foregroundColor(.primary)
-                                    }
-                                }
-                                .contextMenu {
-                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
-                                }
-                                .sheet(isPresented: $isShowSheet) {
-                                    EditView(todo: todo)
-                                }
+                                TodoRow(todo: todo)
                             }
                         }
                     }
