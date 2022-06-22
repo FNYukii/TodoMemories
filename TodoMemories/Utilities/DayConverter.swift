@@ -18,4 +18,21 @@ class DayConverter {
         let day = calendar.component(.day, from: inputDate)
         return year * 10000 + month * 100 + day
     }
+    
+    // DateComponents -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
+    static func toStringUpToWeekday(from: Int) -> String {
+        let date = toDate(from: from)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        return dateFormatter.string(from: date)
+    }
+    
+    // 20210923 -> Date
+    static func toDate(from: Int) -> Date {
+        let year = from / 10000
+        let month = (from % 10000) / 100
+        let day = (from % 100)
+        let date = DateComponents(calendar: Calendar.current, year: year, month: month, day: day).date!
+        return date
+    }
 }

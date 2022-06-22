@@ -10,6 +10,7 @@ import SwiftUI
 struct SecondView: View {
         
     @ObservedObject var ymdViewModel = YmdViewModel()
+    @ObservedObject private var achievedDaysViewModel = AchievedDaysViewModel()
     
     @State var isShowTime = UserDefaults.standard.bool(forKey: "isShowTime")
     @State var isAscending = UserDefaults.standard.bool(forKey: "isAscending")
@@ -19,9 +20,34 @@ struct SecondView: View {
         NavigationView {
             ZStack {
                 List {
-                    ForEach(0..<ymdViewModel.achievedYmds.count) { index in
-                        Section(header: Text("\(Converter.toYmdwText(from: ymdViewModel.achievedYmds[index]))")) {
-                            ForEach(Todo.todosOfTheDay(achievedYmd: ymdViewModel.achievedYmds[index], isAscending: isAscending).freeze()){ todo in
+//                    ForEach(0..<ymdViewModel.achievedYmds.count) { index in
+//                        Section(header: Text("\(Converter.toYmdwText(from: ymdViewModel.achievedYmds[index]))")) {
+//                            ForEach(Todo.todosOfTheDay(achievedYmd: ymdViewModel.achievedYmds[index], isAscending: isAscending).freeze()){ todo in
+//                                Button(action: {
+//                                    isShowSheet.toggle()
+//                                }){
+//                                    HStack {
+//                                        if isShowTime {
+//                                            Text("\(Converter.toHmText(from: todo.achievedDate))")
+//                                                .foregroundColor(.secondary)
+//                                        }
+//                                        Text("\(todo.content)")
+//                                            .foregroundColor(.primary)
+//                                    }
+//                                }
+//                                .contextMenu {
+//                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
+//                                }
+//                                .sheet(isPresented: $isShowSheet) {
+//                                    EditView(todo: todo)
+//                                }
+//                            }
+//                        }
+//                    }
+                    
+                    ForEach(achievedDaysViewModel.days) { day in
+                        Section(header: Text("\(DayConverter.toStringUpToWeekday(from: day.ymd))")) {
+                            ForEach(day.achievedTodos) { todo in
                                 Button(action: {
                                     isShowSheet.toggle()
                                 }){
