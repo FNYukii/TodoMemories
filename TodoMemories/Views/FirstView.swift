@@ -24,16 +24,7 @@ struct FirstView: View {
                     if pinnedTodos.count != 0 {
                         Section(header: Text("固定済み")) {
                             ForEach(pinnedTodos) { todo in
-                                Button(todo.content) {
-                                    isShowEditSheet.toggle()
-                                }
-                                .foregroundColor(.primary)
-                                .contextMenu {
-                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
-                                }
-                                .sheet(isPresented: $isShowEditSheet) {
-                                    EditView(todo: todo)
-                                }
+                                TodoRow(todo: todo)
                             }
                             .onMove {sourceIndexSet, destination in
                                 Todo.sortTodos(todos: pinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
@@ -44,16 +35,7 @@ struct FirstView: View {
                     if unpinnedTodos.count != 0 {
                         Section(header: pinnedTodos.count == 0 ? nil : Text("その他")) {
                             ForEach(unpinnedTodos) { todo in
-                                Button(todo.content) {
-                                    isShowEditSheet.toggle()
-                                }
-                                .foregroundColor(.primary)
-                                .contextMenu {
-                                    TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
-                                }
-                                .sheet(isPresented: $isShowEditSheet) {
-                                    EditView(todo: todo)
-                                }
+                                TodoRow(todo: todo)
                             }
                             .onMove {sourceIndexSet, destination in
                                 Todo.sortTodos(todos: unpinnedTodos, sourceIndexSet: sourceIndexSet, destination: destination)
