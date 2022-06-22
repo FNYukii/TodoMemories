@@ -11,6 +11,10 @@ struct ChartsSection: View {
     
     @State private var pageSelection = 0
     
+//    init() {
+//        UITableView.appearance().rowHeight = 300
+//    }
+    
     var body: some View {
         Section {
             TabView(selection: $pageSelection) {
@@ -19,8 +23,8 @@ struct ChartsSection: View {
                         .tag(index)
                 }
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .frame(height: 300)
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         }
     }
 }

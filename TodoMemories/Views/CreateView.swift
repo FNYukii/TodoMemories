@@ -21,18 +21,7 @@ struct CreateView: View {
         NavigationView {
             
             Form {
-                                
-                ZStack(alignment: .topLeading) {
-                    TextEditor(text: $content)
-                        .introspectTextView { textEditor in
-                            textEditor.becomeFirstResponder()
-                        }
-                    Text("todo")
-                        .foregroundColor(Color(UIColor.placeholderText))
-                        .opacity(content.isEmpty ? 1 : 0)
-                        .padding(.top, 8)
-                        .padding(.leading, 5)
-                }
+                MyTextEditor(hintText: Text("todo"), text: $content)
                 
                 Section {
                     Toggle("pin", isOn: $isPinned)
