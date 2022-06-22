@@ -23,28 +23,28 @@ struct ResultView: View {
     
     var body: some View {
         List {
-            Section(header: Text("\(Converter.toYmdwText(from: selectedDate))")) {
-                ForEach(todosOfTheDay.freeze()) { todo in
-                    Button(action: {
-                        isShowSheet.toggle()
-                    }){
-                        HStack {
-                            if isShowTime {
-                                Text("\(Converter.toHmText(from: todo.achievedDate))")
-                                    .foregroundColor(.secondary)
-                            }
-                            Text("\(todo.content)")
-                                .foregroundColor(.primary)
-                        }
-                    }
-                    .contextMenu {
-                        TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
-                    }
-                    .sheet(isPresented: $isShowSheet) {
-                        EditView(todo: todo)
-                    }
-                }
-            }
+//            Section(header: Text("\(DayConverter.toStringUpToWeekday(from: selectedDate))")) {
+//                ForEach(todosOfTheDay.freeze()) { todo in
+//                    Button(action: {
+//                        isShowSheet.toggle()
+//                    }){
+//                        HStack {
+//                            if isShowTime {
+//                                Text("\(DayConverter.toHmText(from: todo.achievedDate))")
+//                                    .foregroundColor(.secondary)
+//                            }
+//                            Text("\(todo.content)")
+//                                .foregroundColor(.primary)
+//                        }
+//                    }
+//                    .contextMenu {
+//                        TodoContextMenuItems(todoId: todo.id, isPinned: todo.isPinned, isAchieved: todo.isAchieved)
+//                    }
+//                    .sheet(isPresented: $isShowSheet) {
+//                        EditView(todo: todo)
+//                    }
+//                }
+//            }
         }
         .listStyle(InsetGroupedListStyle())
         .onAppear(perform: reloadTodos)
@@ -53,7 +53,7 @@ struct ResultView: View {
     }
     
     func reloadTodos()  {
-        let achievedYmd = Converter.toYmd(from: selectedDate)
+        let achievedYmd = DayConverter.toInt(from: selectedDate)
         todosOfTheDay = Todo.todosOfTheDay(achievedYmd: achievedYmd, isAscending: isAscending)
         if todosOfTheDay.count == 0 {
             dismiss()

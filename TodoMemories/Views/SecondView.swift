@@ -23,7 +23,7 @@ struct SecondView: View {
                                     isShowSheet.toggle()
                                 }){
                                     HStack {
-                                        Text("\(Converter.toHmText(from: todo.achievedDate))")
+                                        Text("\(DayConverter.toHmText(from: todo.achievedDate))")
                                             .foregroundColor(.secondary)
                                         Text("\(todo.content)")
                                             .foregroundColor(.primary)
