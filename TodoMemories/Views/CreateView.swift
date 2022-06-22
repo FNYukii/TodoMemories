@@ -65,6 +65,7 @@ struct CreateView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(.red)
     }
 }
