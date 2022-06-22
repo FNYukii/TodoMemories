@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5403443326FA105F00BC8C97 /* ThirdViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5403443226FA105F00BC8C97 /* ThirdViewPage.swift */; };
 		5407BBCF27195E0C005D1E29 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */; };
 		5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6E27B6C460007D98B0 /* CreateView.swift */; };
 		545C16D02859BF6A0037C723 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 545C16CF2859BF6A0037C723 /* Introspect */; };
@@ -27,12 +26,9 @@
 		54B6707D26F2CB9B00DB5688 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6707C26F2CB9B00DB5688 /* Realm */; };
 		54B6707F26F2CB9B00DB5688 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6707E26F2CB9B00DB5688 /* RealmSwift */; };
 		54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708026F2CBCF00DB5688 /* Todo.swift */; };
-		54B6708E26F4CE9200DB5688 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708D26F4CE9200DB5688 /* ResultView.swift */; };
 		54B6709A26F644DE00DB5688 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6709926F644DE00DB5688 /* Charts */; };
 		54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709B26F644EC00DB5688 /* LineChart.swift */; };
-		54B6709E26F70EDE00DB5688 /* CustomCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */; };
 		54CD1834274E82E00063C42E /* TodoMemoriesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1833274E82E00063C42E /* TodoMemoriesApp.swift */; };
-		54CD1838274F2C390063C42E /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1837274F2C390063C42E /* CalendarDayCell.swift */; };
 		54DE528826F8A1DF0053F126 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528726F8A1DF0053F126 /* WidgetKit.framework */; };
 		54DE528A26F8A1DF0053F126 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528926F8A1DF0053F126 /* SwiftUI.framework */; };
 		54DE528D26F8A1DF0053F126 /* FirstWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE528C26F8A1DF0053F126 /* FirstWidget.swift */; };
@@ -84,7 +80,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5403443226FA105F00BC8C97 /* ThirdViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewPage.swift; sourceTree = "<group>"; };
 		5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
 		5418DC6E27B6C460007D98B0 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		542F9A8E270BE7A3003ACEE7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -105,11 +100,8 @@
 		54B6707726F1C55600DB5688 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		54B6707926F1C63700DB5688 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		54B6708026F2CBCF00DB5688 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		54B6708D26F4CE9200DB5688 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		54B6709B26F644EC00DB5688 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
-		54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
 		54CD1833274E82E00063C42E /* TodoMemoriesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMemoriesApp.swift; sourceTree = "<group>"; };
-		54CD1837274F2C390063C42E /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FirstWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DE528726F8A1DF0053F126 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		54DE528926F8A1DF0053F126 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -236,7 +228,6 @@
 				54B6707726F1C55600DB5688 /* ThirdView.swift */,
 				5418DC6E27B6C460007D98B0 /* CreateView.swift */,
 				54B6707926F1C63700DB5688 /* EditView.swift */,
-				54B6708D26F4CE9200DB5688 /* ResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,9 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */,
-				5403443226FA105F00BC8C97 /* ThirdViewPage.swift */,
-				54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */,
-				54CD1837274F2C390063C42E /* CalendarDayCell.swift */,
 				54B6709B26F644EC00DB5688 /* LineChart.swift */,
 				547AC6172862E6C5000ABE3C /* TodoRow.swift */,
 			);
@@ -462,16 +450,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5407BBCF27195E0C005D1E29 /* CustomEditButton.swift in Sources */,
-				54B6708E26F4CE9200DB5688 /* ResultView.swift in Sources */,
 				547AC6182862E6C5000ABE3C /* TodoRow.swift in Sources */,
 				54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */,
 				54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */,
-				54CD1838274F2C390063C42E /* CalendarDayCell.swift in Sources */,
-				5403443326FA105F00BC8C97 /* ThirdViewPage.swift in Sources */,
 				54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */,
 				54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
 				547AC6132862BA18000ABE3C /* AchievedDaysViewModel.swift in Sources */,
-				54B6709E26F70EDE00DB5688 /* CustomCalendar.swift in Sources */,
 				54B6707A26F1C63700DB5688 /* EditView.swift in Sources */,
 				5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */,
 				54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */,

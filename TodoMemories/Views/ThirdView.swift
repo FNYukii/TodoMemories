@@ -13,13 +13,10 @@ struct ThirdView: View {
     
     var body: some View {
         NavigationView {
-            TabView(selection: $selection) {
-                ForEach(-50..<51) {index in
-                    ThirdViewPage(offset: index).tag(index)
-                }
-            }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .navigationBarTitle("達成グラフ")
+            Text("hello")
+                .navigationTitle("stats")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func reloadView() {
