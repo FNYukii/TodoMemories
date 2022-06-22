@@ -14,6 +14,8 @@
 		5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6E27B6C460007D98B0 /* CreateView.swift */; };
 		5418DC7327B75968007D98B0 /* YmdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC7227B75968007D98B0 /* YmdViewModel.swift */; };
 		545C16D02859BF6A0037C723 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 545C16CF2859BF6A0037C723 /* Introspect */; };
+		547AC6102862B9BB000ABE3C /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC60F2862B9BB000ABE3C /* Day.swift */; };
+		547AC6132862BA18000ABE3C /* AchievedDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6122862BA18000ABE3C /* AchievedDaysViewModel.swift */; };
 		54919C6C27101C1700EC9907 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54919C6B27101C1700EC9907 /* Introspect */; };
 		54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6704726F1C2DB00DB5688 /* ContentView.swift */; };
 		54B6704A26F1C2DD00DB5688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704926F1C2DD00DB5688 /* Assets.xcassets */; };
@@ -91,6 +93,8 @@
 		5418DC6E27B6C460007D98B0 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		5418DC7227B75968007D98B0 /* YmdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YmdViewModel.swift; sourceTree = "<group>"; };
 		542F9A8E270BE7A3003ACEE7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		547AC60F2862B9BB000ABE3C /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		547AC6122862BA18000ABE3C /* AchievedDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedDaysViewModel.swift; sourceTree = "<group>"; };
 		54B6704026F1C2DB00DB5688 /* TodoMemories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMemories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B6704726F1C2DB00DB5688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		54B6704926F1C2DD00DB5688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +166,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		547AC6112862BA02000ABE3C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				547AC6122862BA18000ABE3C /* AchievedDaysViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		54B6703726F1C2DB00DB5688 = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +203,7 @@
 				54DE52A126F8B7D50053F126 /* TodoMemories.entitlements */,
 				54CD1833274E82E00063C42E /* TodoMemoriesApp.swift */,
 				54DE523D26F7946C0053F126 /* Entities */,
+				547AC6112862BA02000ABE3C /* ViewModels */,
 				54DE523C26F794300053F126 /* Views */,
 				54DE523E26F794A00053F126 /* Components */,
 				54B6704926F1C2DD00DB5688 /* Assets.xcassets */,
@@ -228,6 +241,7 @@
 			children = (
 				54B6708026F2CBCF00DB5688 /* Todo.swift */,
 				5418DC7227B75968007D98B0 /* YmdViewModel.swift */,
+				547AC60F2862B9BB000ABE3C /* Day.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -455,6 +469,7 @@
 				5407BBD127195F5B005D1E29 /* SettingMenu.swift in Sources */,
 				54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */,
 				54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
+				547AC6132862BA18000ABE3C /* AchievedDaysViewModel.swift in Sources */,
 				54FFFCE227184947007C5D7A /* TodoContextMenuItems.swift in Sources */,
 				54B6709E26F70EDE00DB5688 /* CustomCalendar.swift in Sources */,
 				54B6707A26F1C63700DB5688 /* EditView.swift in Sources */,
@@ -464,6 +479,7 @@
 				54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */,
 				54CD1834274E82E00063C42E /* TodoMemoriesApp.swift in Sources */,
 				5418DC7327B75968007D98B0 /* YmdViewModel.swift in Sources */,
+				547AC6102862B9BB000ABE3C /* Day.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
