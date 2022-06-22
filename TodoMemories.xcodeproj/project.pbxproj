@@ -190,7 +190,7 @@
 			children = (
 				54DE52A126F8B7D50053F126 /* TodoMemories.entitlements */,
 				54CD1833274E82E00063C42E /* TodoMemoriesApp.swift */,
-				54DE523D26F7946C0053F126 /* Models */,
+				54DE523D26F7946C0053F126 /* Entities */,
 				54DE523C26F794300053F126 /* Views */,
 				54DE523E26F794A00053F126 /* Components */,
 				54B6704926F1C2DD00DB5688 /* Assets.xcassets */,
@@ -223,13 +223,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		54DE523D26F7946C0053F126 /* Models */ = {
+		54DE523D26F7946C0053F126 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				54B6708026F2CBCF00DB5688 /* Todo.swift */,
 				5418DC7227B75968007D98B0 /* YmdViewModel.swift */,
 			);
-			path = Models;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		54DE523E26F794A00053F126 /* Components */ = {
