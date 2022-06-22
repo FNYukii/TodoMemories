@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  TodoMemories
+
+  Created by Yu on 2022/06/22.
+  
+*/
+
+CFBundleDisplayName = "Todo Memories";

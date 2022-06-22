@@ -20,10 +20,11 @@
 		547AC6212862F672000ABE3C /* ChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6202862F672000ABE3C /* ChartsSection.swift */; };
 		547AC6232862F7C6000ABE3C /* HorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6222862F7C6000ABE3C /* HorizontalBarChart.swift */; };
 		547AC6252862F86E000ABE3C /* HighlightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6242862F86E000ABE3C /* HighlightsSection.swift */; };
+		547AC6282862FD6A000ABE3C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 547AC62A2862FD6A000ABE3C /* Localizable.strings */; };
+		547AC62E28630FD9000ABE3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 547AC63028630FD9000ABE3C /* InfoPlist.strings */; };
 		54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6704726F1C2DB00DB5688 /* ContentView.swift */; };
 		54B6704A26F1C2DD00DB5688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704926F1C2DD00DB5688 /* Assets.xcassets */; };
 		54B6704D26F1C2DD00DB5688 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704C26F1C2DD00DB5688 /* Preview Assets.xcassets */; };
-		54B6705026F1C2DD00DB5688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704E26F1C2DD00DB5688 /* LaunchScreen.storyboard */; };
 		54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6707326F1C4F900DB5688 /* FirstView.swift */; };
 		54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6707526F1C54A00DB5688 /* SecondView.swift */; };
 		54B6707826F1C55600DB5688 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6707726F1C55600DB5688 /* ThirdView.swift */; };
@@ -95,11 +96,14 @@
 		547AC6202862F672000ABE3C /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
 		547AC6222862F7C6000ABE3C /* HorizontalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBarChart.swift; sourceTree = "<group>"; };
 		547AC6242862F86E000ABE3C /* HighlightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsSection.swift; sourceTree = "<group>"; };
+		547AC6292862FD6A000ABE3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		547AC62B2862FD81000ABE3C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		547AC62F28630FD9000ABE3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		547AC63128630FDC000ABE3C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		54B6704026F1C2DB00DB5688 /* TodoMemories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMemories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B6704726F1C2DB00DB5688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		54B6704926F1C2DD00DB5688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54B6704C26F1C2DD00DB5688 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		54B6704F26F1C2DD00DB5688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54B6705126F1C2DD00DB5688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54B6705626F1C2DD00DB5688 /* TodoMemoriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoMemoriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B6706126F1C2DD00DB5688 /* TodoMemoriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoMemoriesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +206,7 @@
 		54B6704226F1C2DB00DB5688 /* TodoMemories */ = {
 			isa = PBXGroup;
 			children = (
+				54B6705126F1C2DD00DB5688 /* Info.plist */,
 				54DE52A126F8B7D50053F126 /* TodoMemories.entitlements */,
 				54CD1833274E82E00063C42E /* TodoMemoriesApp.swift */,
 				54DE523D26F7946C0053F126 /* Entities */,
@@ -209,9 +214,9 @@
 				54DE523C26F794300053F126 /* Views */,
 				54DE523E26F794A00053F126 /* Components */,
 				547AC6142862C57A000ABE3C /* Utilities */,
+				547AC62A2862FD6A000ABE3C /* Localizable.strings */,
+				547AC63028630FD9000ABE3C /* InfoPlist.strings */,
 				54B6704926F1C2DD00DB5688 /* Assets.xcassets */,
-				54B6704E26F1C2DD00DB5688 /* LaunchScreen.storyboard */,
-				54B6705126F1C2DD00DB5688 /* Info.plist */,
 				54B6704B26F1C2DD00DB5688 /* Preview Content */,
 			);
 			path = TodoMemories;
@@ -398,6 +403,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 54B6703726F1C2DB00DB5688;
 			packageReferences = (
@@ -422,8 +428,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54B6705026F1C2DD00DB5688 /* LaunchScreen.storyboard in Resources */,
 				54B6704D26F1C2DD00DB5688 /* Preview Assets.xcassets in Resources */,
+				547AC62E28630FD9000ABE3C /* InfoPlist.strings in Resources */,
+				547AC6282862FD6A000ABE3C /* Localizable.strings in Resources */,
 				54B6704A26F1C2DD00DB5688 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,12 +531,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		54B6704E26F1C2DD00DB5688 /* LaunchScreen.storyboard */ = {
+		547AC62A2862FD6A000ABE3C /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				54B6704F26F1C2DD00DB5688 /* Base */,
+				547AC6292862FD6A000ABE3C /* en */,
+				547AC62B2862FD81000ABE3C /* ja */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		547AC63028630FD9000ABE3C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				547AC62F28630FD9000ABE3C /* en */,
+				547AC63128630FDC000ABE3C /* ja */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -539,6 +556,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -600,6 +618,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

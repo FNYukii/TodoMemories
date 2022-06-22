@@ -33,7 +33,7 @@ struct EditView: View {
                 
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $content)
-                    Text("やること")
+                    Text("todo")
                         .foregroundColor(Color(UIColor.placeholderText))
                         .opacity(content.isEmpty ? 1 : 0)
                         .padding(.top, 8)
@@ -41,9 +41,9 @@ struct EditView: View {
                 }
                 
                 Section {
-                    Toggle("Todoを固定", isOn: $isPinned)
+                    Toggle("pin", isOn: $isPinned)
                         .disabled(isAchieved)
-                    Toggle("達成済み", isOn: $isAchieved)
+                    Toggle("make_achieved", isOn: $isAchieved)
                         .onChange(of: isAchieved) {value in
                             if value && !todo.isAchieved  {
                                 isPinned = false
@@ -51,8 +51,7 @@ struct EditView: View {
                             }
                         }
                     if isAchieved {
-                        DatePicker("達成日時", selection: $achievedDate)
-                            .environment(\.locale, Locale(identifier: "ja_JP"))
+                        DatePicker("achieved_at", selection: $achievedDate)
                     }
                 }
                 
@@ -60,7 +59,7 @@ struct EditView: View {
                     Button(action: {
                         isShowActionSheet.toggle()
                     }){
-                        Text("Todoを削除")
+                        Text("delete_todo")
                             .foregroundColor(.red)
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
@@ -68,18 +67,18 @@ struct EditView: View {
             }
             
             .confirmationDialog("", isPresented: $isShowActionSheet, titleVisibility: .hidden) {
-                Button("Todoを削除", role: .destructive) {
+                Button("delete_todo", role: .destructive) {
                     Todo.deleteTodo(id: todo.id)
                     dismiss()
                 }
             } message: {
-                Text("このTodoを削除してもよろしいですか?").bold()
+                Text("are_you_sure_you_want_to_delete_this_todo").bold()
             }
             
-            .navigationBarTitle("Todoを編集", displayMode: .inline)
+            .navigationBarTitle("edit_todo", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("キャンセル") {
+                    Button("cancel") {
                         dismiss()
                     }
                 }
@@ -100,7 +99,7 @@ struct EditView: View {
                         }
                         dismiss()
                     }){
-                        Text("完了")
+                        Text("done")
                             .fontWeight(.bold)
                     }
                     .disabled(content.isEmpty)
