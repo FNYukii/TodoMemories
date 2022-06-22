@@ -34,7 +34,43 @@ struct TodoRow: View {
         }
         
         .contextMenu {
+            if !todo.isPinned && !todo.isAchieved {
+                Button(action: {
+                    Todo.pinTodo(id: todo.id)
+                }) {
+                    Label("pin", systemImage: "pin")
+                }
+            }
             
+            if todo.isPinned && !todo.isAchieved {
+                Button(action: {
+                    Todo.unpinTodo(id: todo.id)
+                }) {
+                    Label("unpin", systemImage: "pin.slash")
+                }
+            }
+            
+            if !todo.isAchieved {
+                Button(action: {
+                    Todo.achieveTodo(id: todo.id, achievedDate: Date())
+                }) {
+                    Label("makeAchieved", systemImage: "checkmark")
+                }
+            }
+            
+            if todo.isAchieved {
+                Button(action: {
+                    Todo.unachieveTodo(id: todo.id)
+                }) {
+                    Label("makeUnachieved", systemImage: "xmark")
+                }
+            }
+            
+            Button(role: .destructive) {
+                isConfirming.toggle()
+            } label: {
+                Label("delete", systemImage: "trash")
+            }
         }
         
         .swipeActions(edge: .leading, allowsFullSwipe: true) {

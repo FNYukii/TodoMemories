@@ -43,7 +43,6 @@
 		54DE529C26F8B6E10053F126 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708026F2CBCF00DB5688 /* Todo.swift */; };
 		54DE529E26F8B7310053F126 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 54DE529D26F8B7310053F126 /* Realm */; };
 		54DE52A026F8B7340053F126 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54DE529F26F8B7340053F126 /* RealmSwift */; };
-		54FFFCE227184947007C5D7A /* TodoContextMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FFFCE127184947007C5D7A /* TodoContextMenuItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,7 +119,6 @@
 		54DE529126F8A1E00053F126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54DE52A126F8B7D50053F126 /* TodoMemories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodoMemories.entitlements; sourceTree = "<group>"; };
 		54DE52A226F8B80C0053F126 /* FirstWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FirstWidgetExtension.entitlements; sourceTree = "<group>"; };
-		54FFFCE127184947007C5D7A /* TodoContextMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoContextMenuItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,7 +253,6 @@
 		54DE523E26F794A00053F126 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				54FFFCE127184947007C5D7A /* TodoContextMenuItems.swift */,
 				5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */,
 				5403443226FA105F00BC8C97 /* ThirdViewPage.swift */,
 				54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */,
@@ -474,7 +471,6 @@
 				54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */,
 				54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
 				547AC6132862BA18000ABE3C /* AchievedDaysViewModel.swift in Sources */,
-				54FFFCE227184947007C5D7A /* TodoContextMenuItems.swift in Sources */,
 				54B6709E26F70EDE00DB5688 /* CustomCalendar.swift in Sources */,
 				54B6707A26F1C63700DB5688 /* EditView.swift in Sources */,
 				5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */,
