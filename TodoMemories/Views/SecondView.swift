@@ -27,12 +27,12 @@ struct SecondView: View {
                 .listStyle(InsetGroupedListStyle())
                 
                 if achievedDaysViewModel.days.count == 0 {
-                    Text("達成済みのTodoはありません")
+                    Text("no_todo_achieved_yet")
                         .foregroundColor(.secondary)
                 }
             }
             
-            .navigationBarTitle("達成済み")
+            .navigationBarTitle("history")
         }
     }
     

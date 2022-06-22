@@ -36,17 +36,17 @@ struct ContentView: View {
             FirstView()
                 .environment(\.realmConfiguration, Todo.customRealmConfig())
                 .tabItem {
-                    Label("Todo", systemImage: "checkmark")
+                    Label("todo", systemImage: "checkmark")
                 }
                 .tag(0)
             SecondView()
                 .tabItem {
-                    Label("達成済み", systemImage: "calendar")
+                    Label("history", systemImage: "calendar")
                 }
                 .tag(1)
             ThirdView()
                 .tabItem {
-                    Label("達成グラフ", systemImage: "chart.xyaxis.line")
+                    Label("stats", systemImage: "chart.xyaxis.line")
                 }
                 .tag(2)
         }

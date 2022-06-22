@@ -22,7 +22,7 @@ struct FirstView: View {
                 List {
                                         
                     if pinnedTodos.count != 0 {
-                        Section(header: Text("固定済み")) {
+                        Section(header: Text("pinned")) {
                             ForEach(pinnedTodos) { todo in
                                 TodoRow(todo: todo)
                             }
@@ -33,7 +33,7 @@ struct FirstView: View {
                     }
                     
                     if unpinnedTodos.count != 0 {
-                        Section(header: pinnedTodos.count == 0 ? nil : Text("その他")) {
+                        Section(header: pinnedTodos.count == 0 ? nil : Text("others")) {
                             ForEach(unpinnedTodos) { todo in
                                 TodoRow(todo: todo)
                             }
@@ -49,7 +49,7 @@ struct FirstView: View {
                 .animation(.default, value: unpinnedTodos)
                 
                 if pinnedTodos.count == 0 && unpinnedTodos.count == 0 {
-                    Text("まだTodoがありません")
+                    Text("there_is_no_todo_yet")
                         .foregroundColor(.secondary)
                 }
             }
@@ -58,7 +58,7 @@ struct FirstView: View {
                 CreateView()
             }
             
-            .navigationBarTitle("Todo")
+            .navigationTitle("todos")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     CustomEditButton()
@@ -68,7 +68,7 @@ struct FirstView: View {
                         isShowCreateSheet.toggle()
                     }){
                         Image(systemName: "plus.circle.fill")
-                        Text("新しいTodo")
+                        Text("new_todo")
                     }
                 }
             }

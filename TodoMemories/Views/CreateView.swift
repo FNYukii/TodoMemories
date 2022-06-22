@@ -27,7 +27,7 @@ struct CreateView: View {
                         .introspectTextView { textEditor in
                             textEditor.becomeFirstResponder()
                         }
-                    Text("やること")
+                    Text("todo")
                         .foregroundColor(Color(UIColor.placeholderText))
                         .opacity(content.isEmpty ? 1 : 0)
                         .padding(.top, 8)
@@ -35,23 +35,23 @@ struct CreateView: View {
                 }
                 
                 Section {
-                    Toggle("Todoを固定", isOn: $isPinned)
+                    Toggle("pin_todo", isOn: $isPinned)
                         .disabled(isAchieved)
-                    Toggle("達成済み", isOn: $isAchieved)
+                    Toggle("achieve_todo", isOn: $isAchieved)
                     if isAchieved {
-                        DatePicker("達成日時", selection: $achievedDate)
+                        DatePicker("achieved_at", selection: $achievedDate)
                             .environment(\.locale, Locale(identifier: "ja_JP"))
                     }
                 }
             }
             
-            .navigationBarTitle("新規Todo", displayMode: .inline)
+            .navigationBarTitle("new_todo", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         dismiss()
                     }){
-                        Text("キャンセル")
+                        Text("cancel")
                             .fontWeight(.regular)
                     }
                 }
@@ -60,7 +60,7 @@ struct CreateView: View {
                         Todo.insertTodo(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedDate: achievedDate)
                         dismiss()
                     }){
-                        Text("追加")
+                        Text("add")
                             .fontWeight(.bold)
                     }
                 }

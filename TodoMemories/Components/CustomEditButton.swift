@@ -22,9 +22,9 @@ struct CustomEditButton: View {
             }
         }){
             if editMode?.wrappedValue.isEditing == true {
-                Text("完了")
+                Text("done")
             } else {
-                Text("編集")
+                Text("edit")
             }
         }
     }
