@@ -100,4 +100,47 @@ class DayConverter {
         }
         return monthStrings
     }
+    
+    // 年単位でシフトされた、年が入ったDateComponents
+    static func nowShiftedByYear(offset: Int) -> DateComponents {
+        let date = Date()
+        let shiftedDate = Calendar.current.date(byAdding: .year, value: offset, to: date)!
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: shiftedDate)
+        return dateComponents
+    }
+    
+    // 月単位でシフトされた、年・月が入ったDateComponents
+    static func nowShiftedByMonth(offset: Int) -> DateComponents {
+        let date = Date()
+        let shiftedDate = Calendar.current.date(byAdding: .month, value: offset, to: date)!
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: shiftedDate)
+        return dateComponents
+    }
+    
+    //　日単位でシフトされた、年・月・日が入ったDateComponents
+    static func nowShiftedByDay(offset: Int) -> DateComponents {
+        let date = Date()
+        let shiftedDate = Calendar.current.date(byAdding: .day, value: offset, to: date)!
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: shiftedDate)
+        return dateComponents
+    }
+    
+    // Date -> "February 2022", "2022年 2月"
+    static func toStringUpToMonth(from: DateComponents) -> String {
+        let date = Calendar.current.date(from: from)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("YYYY MMMM")
+        return dateFormatter.string(from: date)
+    }
+    
+    // その月の日数
+    static func dayCountAtTheMonth(year: Int, month: Int) -> Int {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month + 1
+        dateComponents.day = 0
+        let date = Calendar.current.date(from: dateComponents)!
+        let dayCount = Calendar.current.component(.day, from: date)
+        return dayCount
+    }
 }

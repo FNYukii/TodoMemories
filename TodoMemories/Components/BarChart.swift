@@ -10,7 +10,6 @@ import Charts
 
 struct BarChart: UIViewRepresentable {
     
-    let unitSelection: Int
     let countsOfTodoAchieved: [Int]
     
     func makeUIView(context: Context) -> BarChartView {
@@ -63,7 +62,7 @@ struct BarChart: UIViewRepresentable {
         }
         // BarChartDataSetを生成
         let barChartDataSet = BarChartDataSet(barChartDataEntries)
-        barChartDataSet.setColor(UIColor.systemBlue)
+        barChartDataSet.setColor(UIColor.systemRed)
         // BarChartDataを生成
         let barChartData = BarChartData()
         barChartData.addDataSet(barChartDataSet)
@@ -81,16 +80,8 @@ struct BarChart: UIViewRepresentable {
     }
     
     private func xAxisValueFormatter() -> IndexAxisValueFormatter {
-        if unitSelection == 0 {
-            let strings = DayConverter.hourStrings()
-            return IndexAxisValueFormatter(values:strings)
-        } else if unitSelection == 1 {
-            let strings = DayConverter.dayStrings()
-            return IndexAxisValueFormatter(values:strings)
-        } else {
-            let strings = DayConverter.monthStrings()
-            return IndexAxisValueFormatter(values:strings)
-        }
+        let strings = DayConverter.dayStrings()
+        return IndexAxisValueFormatter(values:strings)
     }
 }
 

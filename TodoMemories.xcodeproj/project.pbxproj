@@ -16,6 +16,8 @@
 		547AC6182862E6C5000ABE3C /* TodoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6172862E6C5000ABE3C /* TodoRow.swift */; };
 		547AC61A2862EE71000ABE3C /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6192862EE71000ABE3C /* BarChart.swift */; };
 		547AC61D2862EF7D000ABE3C /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 547AC61C2862EF7D000ABE3C /* Charts */; };
+		547AC61F2862F00E000ABE3C /* ChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC61E2862F00E000ABE3C /* ChartPage.swift */; };
+		547AC6212862F672000ABE3C /* ChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6202862F672000ABE3C /* ChartsSection.swift */; };
 		54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6704726F1C2DB00DB5688 /* ContentView.swift */; };
 		54B6704A26F1C2DD00DB5688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704926F1C2DD00DB5688 /* Assets.xcassets */; };
 		54B6704D26F1C2DD00DB5688 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704C26F1C2DD00DB5688 /* Preview Assets.xcassets */; };
@@ -87,6 +89,8 @@
 		547AC6152862C58A000ABE3C /* DayConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayConverter.swift; sourceTree = "<group>"; };
 		547AC6172862E6C5000ABE3C /* TodoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRow.swift; sourceTree = "<group>"; };
 		547AC6192862EE71000ABE3C /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
+		547AC61E2862F00E000ABE3C /* ChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPage.swift; sourceTree = "<group>"; };
+		547AC6202862F672000ABE3C /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
 		54B6704026F1C2DB00DB5688 /* TodoMemories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMemories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B6704726F1C2DB00DB5688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		54B6704926F1C2DD00DB5688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 				5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */,
 				547AC6172862E6C5000ABE3C /* TodoRow.swift */,
 				547AC6192862EE71000ABE3C /* BarChart.swift */,
+				547AC61E2862F00E000ABE3C /* ChartPage.swift */,
+				547AC6202862F672000ABE3C /* ChartsSection.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -449,11 +455,13 @@
 				547AC6182862E6C5000ABE3C /* TodoRow.swift in Sources */,
 				54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */,
 				54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */,
+				547AC6212862F672000ABE3C /* ChartsSection.swift in Sources */,
 				54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */,
 				54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
 				547AC6132862BA18000ABE3C /* AchievedDaysViewModel.swift in Sources */,
 				54B6707A26F1C63700DB5688 /* EditView.swift in Sources */,
 				5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */,
+				547AC61F2862F00E000ABE3C /* ChartPage.swift in Sources */,
 				54B6707826F1C55600DB5688 /* ThirdView.swift in Sources */,
 				547AC6162862C58A000ABE3C /* DayConverter.swift in Sources */,
 				54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */,

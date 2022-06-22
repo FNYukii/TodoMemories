@@ -13,8 +13,10 @@ struct ThirdView: View {
     
     var body: some View {
         NavigationView {
-            Text("hello")
-                .navigationTitle("stats")
+            List {
+                ChartsSection()
+            }
+            .navigationTitle("stats")
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
