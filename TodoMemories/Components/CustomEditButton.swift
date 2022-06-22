@@ -27,5 +27,9 @@ struct CustomEditButton: View {
                 Text("edit")
             }
         }
+        
+        .onDisappear {
+            editMode?.wrappedValue = .inactive
+        }
     }
 }
