@@ -92,6 +92,43 @@ class Todo: Object, Identifiable {
         return realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate", ascending: isAscending)
     }
     
+    //指定された年月内の各日に達成されたTodoの数の配列
+    static func countsOfTodoInMonth(year: Int, month: Int) -> [Int] {
+        // Realmオブジェクト生成
+        let realm = Todo.customRealm()
+        
+        // その月の日数を取得
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month + 1
+        dateComponents.day = 0
+        let date = Calendar.current.date(from: dateComponents)!
+        let dayCountInMonth = Calendar.current.component(.day, from: date)
+        
+        // counts配列生成開始
+        var counts: [Int] = []
+        for index in 1...dayCountInMonth {
+            // YMDを生成
+            let achievedYmd = year * 10000 + month * 100 + index
+            
+            // 指定の年月日に達成したtodosを読み取り
+            let count = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate").count
+            counts.append(count)
+        }
+
+        return counts
+    }
+    
+    // 指定された年月日に達成されたTodoの数
+    static func countOfTodoAtDay(year: Int, month: Int, day: Int) -> Int {
+        
+        let achievedYmd = year * 10000 + month * 100 + day
+        
+        let realm = Todo.customRealm()
+        let count = realm.objects(Todo.self).filter("isAchieved == true && achievedYmd == \(achievedYmd)").sorted(byKeyPath: "achievedDate").count
+        return count
+    }
+    
     //新規Todo追加
     static func insertTodo(content: String, isPinned: Bool, isAchieved: Bool, achievedDate: Date) {
         let realm = Todo.customRealm()

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5403443326FA105F00BC8C97 /* ThirdViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5403443226FA105F00BC8C97 /* ThirdViewPage.swift */; };
 		5407BBCF27195E0C005D1E29 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */; };
 		5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6E27B6C460007D98B0 /* CreateView.swift */; };
 		545C16D02859BF6A0037C723 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 545C16CF2859BF6A0037C723 /* Introspect */; };
@@ -15,7 +14,12 @@
 		547AC6132862BA18000ABE3C /* AchievedDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6122862BA18000ABE3C /* AchievedDaysViewModel.swift */; };
 		547AC6162862C58A000ABE3C /* DayConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6152862C58A000ABE3C /* DayConverter.swift */; };
 		547AC6182862E6C5000ABE3C /* TodoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6172862E6C5000ABE3C /* TodoRow.swift */; };
-		54919C6C27101C1700EC9907 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54919C6B27101C1700EC9907 /* Introspect */; };
+		547AC61A2862EE71000ABE3C /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6192862EE71000ABE3C /* BarChart.swift */; };
+		547AC61D2862EF7D000ABE3C /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 547AC61C2862EF7D000ABE3C /* Charts */; };
+		547AC61F2862F00E000ABE3C /* ChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC61E2862F00E000ABE3C /* ChartPage.swift */; };
+		547AC6212862F672000ABE3C /* ChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6202862F672000ABE3C /* ChartsSection.swift */; };
+		547AC6232862F7C6000ABE3C /* HorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6222862F7C6000ABE3C /* HorizontalBarChart.swift */; };
+		547AC6252862F86E000ABE3C /* HighlightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547AC6242862F86E000ABE3C /* HighlightsSection.swift */; };
 		54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6704726F1C2DB00DB5688 /* ContentView.swift */; };
 		54B6704A26F1C2DD00DB5688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704926F1C2DD00DB5688 /* Assets.xcassets */; };
 		54B6704D26F1C2DD00DB5688 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B6704C26F1C2DD00DB5688 /* Preview Assets.xcassets */; };
@@ -27,12 +31,7 @@
 		54B6707D26F2CB9B00DB5688 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6707C26F2CB9B00DB5688 /* Realm */; };
 		54B6707F26F2CB9B00DB5688 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6707E26F2CB9B00DB5688 /* RealmSwift */; };
 		54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708026F2CBCF00DB5688 /* Todo.swift */; };
-		54B6708E26F4CE9200DB5688 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6708D26F4CE9200DB5688 /* ResultView.swift */; };
-		54B6709A26F644DE00DB5688 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 54B6709926F644DE00DB5688 /* Charts */; };
-		54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709B26F644EC00DB5688 /* LineChart.swift */; };
-		54B6709E26F70EDE00DB5688 /* CustomCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */; };
 		54CD1834274E82E00063C42E /* TodoMemoriesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1833274E82E00063C42E /* TodoMemoriesApp.swift */; };
-		54CD1838274F2C390063C42E /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD1837274F2C390063C42E /* CalendarDayCell.swift */; };
 		54DE528826F8A1DF0053F126 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528726F8A1DF0053F126 /* WidgetKit.framework */; };
 		54DE528A26F8A1DF0053F126 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DE528926F8A1DF0053F126 /* SwiftUI.framework */; };
 		54DE528D26F8A1DF0053F126 /* FirstWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE528C26F8A1DF0053F126 /* FirstWidget.swift */; };
@@ -84,7 +83,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5403443226FA105F00BC8C97 /* ThirdViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewPage.swift; sourceTree = "<group>"; };
 		5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
 		5418DC6E27B6C460007D98B0 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		542F9A8E270BE7A3003ACEE7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -92,6 +90,11 @@
 		547AC6122862BA18000ABE3C /* AchievedDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedDaysViewModel.swift; sourceTree = "<group>"; };
 		547AC6152862C58A000ABE3C /* DayConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayConverter.swift; sourceTree = "<group>"; };
 		547AC6172862E6C5000ABE3C /* TodoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRow.swift; sourceTree = "<group>"; };
+		547AC6192862EE71000ABE3C /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
+		547AC61E2862F00E000ABE3C /* ChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPage.swift; sourceTree = "<group>"; };
+		547AC6202862F672000ABE3C /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
+		547AC6222862F7C6000ABE3C /* HorizontalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBarChart.swift; sourceTree = "<group>"; };
+		547AC6242862F86E000ABE3C /* HighlightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsSection.swift; sourceTree = "<group>"; };
 		54B6704026F1C2DB00DB5688 /* TodoMemories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMemories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B6704726F1C2DB00DB5688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		54B6704926F1C2DD00DB5688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,11 +108,7 @@
 		54B6707726F1C55600DB5688 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		54B6707926F1C63700DB5688 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		54B6708026F2CBCF00DB5688 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		54B6708D26F4CE9200DB5688 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
-		54B6709B26F644EC00DB5688 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
-		54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
 		54CD1833274E82E00063C42E /* TodoMemoriesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMemoriesApp.swift; sourceTree = "<group>"; };
-		54CD1837274F2C390063C42E /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		54DE528526F8A1DF0053F126 /* FirstWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FirstWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		54DE528726F8A1DF0053F126 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		54DE528926F8A1DF0053F126 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -126,11 +125,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				547AC61D2862EF7D000ABE3C /* Charts in Frameworks */,
 				54B6707F26F2CB9B00DB5688 /* RealmSwift in Frameworks */,
-				54919C6C27101C1700EC9907 /* Introspect in Frameworks */,
 				545C16D02859BF6A0037C723 /* Introspect in Frameworks */,
 				54B6707D26F2CB9B00DB5688 /* Realm in Frameworks */,
-				54B6709A26F644DE00DB5688 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +234,6 @@
 				54B6707726F1C55600DB5688 /* ThirdView.swift */,
 				5418DC6E27B6C460007D98B0 /* CreateView.swift */,
 				54B6707926F1C63700DB5688 /* EditView.swift */,
-				54B6708D26F4CE9200DB5688 /* ResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,11 +251,12 @@
 			isa = PBXGroup;
 			children = (
 				5407BBCE27195E0C005D1E29 /* CustomEditButton.swift */,
-				5403443226FA105F00BC8C97 /* ThirdViewPage.swift */,
-				54B6709D26F70EDE00DB5688 /* CustomCalendar.swift */,
-				54CD1837274F2C390063C42E /* CalendarDayCell.swift */,
-				54B6709B26F644EC00DB5688 /* LineChart.swift */,
 				547AC6172862E6C5000ABE3C /* TodoRow.swift */,
+				547AC6192862EE71000ABE3C /* BarChart.swift */,
+				547AC61E2862F00E000ABE3C /* ChartPage.swift */,
+				547AC6202862F672000ABE3C /* ChartsSection.swift */,
+				547AC6222862F7C6000ABE3C /* HorizontalBarChart.swift */,
+				547AC6242862F86E000ABE3C /* HighlightsSection.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -304,9 +302,8 @@
 			packageProductDependencies = (
 				54B6707C26F2CB9B00DB5688 /* Realm */,
 				54B6707E26F2CB9B00DB5688 /* RealmSwift */,
-				54B6709926F644DE00DB5688 /* Charts */,
-				54919C6B27101C1700EC9907 /* Introspect */,
 				545C16CF2859BF6A0037C723 /* Introspect */,
+				547AC61C2862EF7D000ABE3C /* Charts */,
 			);
 			productName = TodoDiary;
 			productReference = 54B6704026F1C2DB00DB5688 /* TodoMemories.app */;
@@ -405,9 +402,8 @@
 			mainGroup = 54B6703726F1C2DB00DB5688;
 			packageReferences = (
 				54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
-				54B6709826F644DE00DB5688 /* XCRemoteSwiftPackageReference "Charts" */,
-				54919C6A27101C1700EC9907 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				545C16CE2859BF6A0037C723 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				547AC61B2862EF7D000ABE3C /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 54B6704126F1C2DB00DB5688 /* Products */;
 			projectDirPath = "";
@@ -462,23 +458,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				5407BBCF27195E0C005D1E29 /* CustomEditButton.swift in Sources */,
-				54B6708E26F4CE9200DB5688 /* ResultView.swift in Sources */,
 				547AC6182862E6C5000ABE3C /* TodoRow.swift in Sources */,
 				54B6707626F1C54A00DB5688 /* SecondView.swift in Sources */,
 				54B6707426F1C4F900DB5688 /* FirstView.swift in Sources */,
-				54CD1838274F2C390063C42E /* CalendarDayCell.swift in Sources */,
-				5403443326FA105F00BC8C97 /* ThirdViewPage.swift in Sources */,
+				547AC6212862F672000ABE3C /* ChartsSection.swift in Sources */,
 				54B6708126F2CBCF00DB5688 /* Todo.swift in Sources */,
+				547AC6232862F7C6000ABE3C /* HorizontalBarChart.swift in Sources */,
 				54DE529326F8A1E00053F126 /* FirstWidget.intentdefinition in Sources */,
 				547AC6132862BA18000ABE3C /* AchievedDaysViewModel.swift in Sources */,
-				54B6709E26F70EDE00DB5688 /* CustomCalendar.swift in Sources */,
 				54B6707A26F1C63700DB5688 /* EditView.swift in Sources */,
 				5418DC6F27B6C460007D98B0 /* CreateView.swift in Sources */,
-				54B6709C26F644EC00DB5688 /* LineChart.swift in Sources */,
+				547AC61F2862F00E000ABE3C /* ChartPage.swift in Sources */,
+				547AC6252862F86E000ABE3C /* HighlightsSection.swift in Sources */,
 				54B6707826F1C55600DB5688 /* ThirdView.swift in Sources */,
 				547AC6162862C58A000ABE3C /* DayConverter.swift in Sources */,
 				54B6704826F1C2DB00DB5688 /* ContentView.swift in Sources */,
 				54CD1834274E82E00063C42E /* TodoMemoriesApp.swift in Sources */,
+				547AC61A2862EE71000ABE3C /* BarChart.swift in Sources */,
 				547AC6102862B9BB000ABE3C /* Day.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -888,12 +884,12 @@
 				kind = branch;
 			};
 		};
-		54919C6A27101C1700EC9907 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+		547AC61B2862EF7D000ABE3C /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			repositoryURL = "https://github.com/danielgindi/Charts";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
+				minimumVersion = 3.0.0;
 			};
 		};
 		54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
@@ -904,14 +900,6 @@
 				minimumVersion = 10.20.0;
 			};
 		};
-		54B6709826F644DE00DB5688 /* XCRemoteSwiftPackageReference "Charts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -920,10 +908,10 @@
 			package = 545C16CE2859BF6A0037C723 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-		54919C6B27101C1700EC9907 /* Introspect */ = {
+		547AC61C2862EF7D000ABE3C /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 54919C6A27101C1700EC9907 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
+			package = 547AC61B2862EF7D000ABE3C /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
 		};
 		54B6707C26F2CB9B00DB5688 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -934,11 +922,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54B6707B26F2CB9B00DB5688 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
-		};
-		54B6709926F644DE00DB5688 /* Charts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 54B6709826F644DE00DB5688 /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = Charts;
 		};
 		54DE529D26F8B7310053F126 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
