@@ -22,6 +22,9 @@ struct CreateView: View {
             
             Form {
                 MyTextEditor(hintText: Text("todo"), text: $content)
+                    .introspectTextView { textEditor in
+                        textEditor.becomeFirstResponder()
+                    }
                 
                 Section {
                     Toggle("pin", isOn: $isPinned)
