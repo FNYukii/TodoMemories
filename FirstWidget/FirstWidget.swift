@@ -60,55 +60,46 @@ struct FirstWidgetEntryView : View {
     //Todoのデータ
     var entry: Provider.Entry
     
-//    //4 or 12
-//    var maxItemCount: Int {
-//        switch self.widgetFamily {
-//            case .systemSmall: return 4
-//            case .systemMedium: return 4
-//            case .systemLarge: return 12
-//            case .systemExtraLarge: return 12
-//            default: return 4
-//        }
-//    }
+    //4 or 12
+    var maxItemCount: Int {
+        switch self.widgetFamily {
+            case .systemSmall, .systemMedium: return 7
+            case .systemLarge, .systemExtraLarge: return 17
+            default: return 4
+        }
+    }
     
-//    var showItemCount: Int {
-//        if entry.todoContents.count > maxItemCount {
-//            return maxItemCount
-//        } else {
-//            return entry.todoContents.count
-//        }
-//    }
+    var showItemCount: Int {
+        if entry.todos.count > maxItemCount {
+            return maxItemCount
+        } else {
+            return entry.todos.count
+        }
+    }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            
-            // Todos
-            ForEach(entry.todos) { todo in
-                Text(todo.content)
-                    .font(.subheadline)
-                    .fontWeight(todo.isPinned ? .bold : .regular)
-                    .lineLimit(1)
+        HStack {
+            VStack(alignment: .leading) {
+                
+                // Todos not limited
+                ForEach(0 ..< showItemCount) { index in
+                    Text(entry.todos[index].content)
+                        .font(.subheadline)
+                        .fontWeight(entry.todos[index].isPinned ? .bold : .regular)
+                        .lineLimit(1)
+                }
+                
+                // HowManyMoreテキスト
+                if entry.todos.count > maxItemCount {
+                    Text("\(entry.todos.count - maxItemCount) More")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
             }
-            
-            // Todos
-//            ForEach(0..<showItemCount) { index in
-//                Text("\(entry.todoContents[index])")
-//                    .font(.subheadline)
-//                    .frame(height: 23)
-//                    .padding(.leading)
-//            }
-
-            // HowManyMoreテキスト
-//            if entry.todoContents.count > maxItemCount {
-//                Text("\(entry.todoContents.count - maxItemCount) More")
-//                    .font(.caption)
-//                    .foregroundColor(.secondary)
-//                    .frame(height: 23)
-//                    .padding(.leading)
-//            }
             Spacer()
         }
-        .padding(6)
+        .padding(8)
     }
 }
 
