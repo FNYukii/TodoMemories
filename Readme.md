@@ -9,6 +9,9 @@ Realmを使用しており、データはデバイス内に保存されます。
 またTodoを達成済みとして保存することができ、過去に達成したTodoを閲覧ことができます。
 日々の生活で達成したTodoを振り返ることで、達成感や充実感を獲得することにつながります。
 
+## 言語
+英語と日本語に対応しています。
+
 ## フレームワーク・ライブラリ
 - [Realm](https://github.com/realm/realm-swift)
 - [Charts](https://github.com/danielgindi/Charts)
