@@ -90,13 +90,22 @@ struct FirstWidgetEntryView : View {
                     .lineLimit(1)
             }
             
-//                if entry.todoContents.count > maxItemCount {
-//                    Text("\(entry.todoContents.count - maxItemCount) More")
-//                        .font(.caption)
-//                        .foregroundColor(.secondary)
-//                        .frame(height: 23)
-//                        .padding(.leading)
-//                }
+            // Todos
+//            ForEach(0..<showItemCount) { index in
+//                Text("\(entry.todoContents[index])")
+//                    .font(.subheadline)
+//                    .frame(height: 23)
+//                    .padding(.leading)
+//            }
+
+            // HowManyMoreテキスト
+//            if entry.todoContents.count > maxItemCount {
+//                Text("\(entry.todoContents.count - maxItemCount) More")
+//                    .font(.caption)
+//                    .foregroundColor(.secondary)
+//                    .frame(height: 23)
+//                    .padding(.leading)
+//            }
             Spacer()
         }
         .padding(6)
