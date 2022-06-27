@@ -63,7 +63,7 @@ struct FirstWidgetEntryView : View {
     //4 or 12
     var maxItemCount: Int {
         switch self.widgetFamily {
-            case .systemSmall, .systemMedium: return 7
+            case .systemSmall, .systemMedium: return 4
             case .systemLarge, .systemExtraLarge: return 17
             default: return 4
         }
@@ -113,7 +113,7 @@ struct FirstWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             FirstWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Todo list")
+        .description("You can check your Todos.")
     }
 }
