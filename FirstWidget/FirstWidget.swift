@@ -64,7 +64,7 @@ struct FirstWidgetEntryView : View {
     var maxItemCount: Int {
         switch self.widgetFamily {
             case .systemSmall, .systemMedium: return 4
-            case .systemLarge, .systemExtraLarge: return 17
+            case .systemLarge, .systemExtraLarge: return 11
             default: return 4
         }
     }
