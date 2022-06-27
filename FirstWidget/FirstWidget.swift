@@ -87,19 +87,21 @@ struct FirstWidgetEntryView : View {
                         .font(.subheadline)
                         .fontWeight(entry.todos[index].isPinned ? .bold : .regular)
                         .lineLimit(1)
+                        .padding(.bottom, 0.5)
                 }
                 
                 // HowManyMoreテキスト
                 if entry.todos.count > maxItemCount {
                     Text("\(entry.todos.count - maxItemCount) More")
-                        .font(.caption)
+                        .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
                 Spacer()
             }
             Spacer()
         }
-        .padding(8)
+        .padding(10)
+        .padding(.top)
     }
 }
 
