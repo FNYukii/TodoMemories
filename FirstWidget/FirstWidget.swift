@@ -63,8 +63,8 @@ struct FirstWidgetEntryView : View {
     //4 or 12
     var maxItemCount: Int {
         switch self.widgetFamily {
-            case .systemSmall, .systemMedium: return 7
-            case .systemLarge, .systemExtraLarge: return 17
+            case .systemSmall, .systemMedium: return 4
+            case .systemLarge, .systemExtraLarge: return 11
             default: return 4
         }
     }
@@ -87,19 +87,21 @@ struct FirstWidgetEntryView : View {
                         .font(.subheadline)
                         .fontWeight(entry.todos[index].isPinned ? .bold : .regular)
                         .lineLimit(1)
+                        .padding(.bottom, 0.5)
                 }
                 
                 // HowManyMoreテキスト
                 if entry.todos.count > maxItemCount {
                     Text("\(entry.todos.count - maxItemCount) More")
-                        .font(.caption)
+                        .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
                 Spacer()
             }
             Spacer()
         }
-        .padding(8)
+        .padding(10)
+        .padding(.top)
     }
 }
 
@@ -111,7 +113,7 @@ struct FirstWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             FirstWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Todo list")
+        .description("You can check your Todos.")
     }
 }
